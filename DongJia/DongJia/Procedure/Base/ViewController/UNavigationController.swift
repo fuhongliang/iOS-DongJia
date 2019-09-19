@@ -9,7 +9,7 @@
 import UIKit
 
 class UNavigationController: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +24,30 @@ class UNavigationController: UINavigationController {
         targetView.addGestureRecognizer(fullScreenGesture)
         interactionGes.isEnabled = false
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        adjustNavigationBarItemsSpacing()
+    }
+    
+    /// ios11调整navigationBar上按钮的左右间距,默认左右各20
+    private func adjustNavigationBarItemsSpacing() {
+        if #available(iOS 11, *) {
+            for subview in self.navigationBar.subviews {
+                if subview.className.contains("UINavigationBarContentView"){
+                    for constant in subview.constraints {
+                        if (constant.constant == 16 ||
+                            constant.constant == -16 ||
+                            constant.constant == 20 ||
+                            constant.constant == -20) {
+                            constant.constant = 15 //在这里更改需要的距离
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if viewControllers.count > 0 { viewController.hidesBottomBarWhenPushed = true }
         super.pushViewController(viewController, animated: animated)
@@ -46,7 +69,8 @@ extension UNavigationController: UIGestureRecognizerDelegate {
 
 extension UNavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        guard let topVC = topViewController else { return .lightContent }
+        //修改状态栏风格
+        guard let topVC = topViewController else { return .default }
         return topVC.preferredStatusBarStyle
     }
 }
@@ -76,8 +100,8 @@ extension UINavigationController {
     func barStyle(_ style: UNavigationBarStyle) {
         switch style {
         case .theme:
-            navigationBar.barStyle = .black
-            navigationBar.setBackgroundImage(UIColor.hex(hexString: "#1C98F6").image(), for: .default)
+            navigationBar.barStyle = .default
+            navigationBar.setBackgroundImage(UIColor.white.image(), for: .default)
             navigationBar.shadowImage = UIImage()
         case .clear:
             navigationBar.barStyle = .black

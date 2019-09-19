@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		4F101B28AF60D2F28070F541 /* Pods_DongJia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BA66E763ECE734FA65A063 /* Pods_DongJia.framework */; };
+		DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800B232F9E79006AE76F /* UHotGoodsCell.swift */; };
+		DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800D2330763F006AE76F /* UMainSuperBrandCell.swift */; };
+		DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */; };
+		DC2380122330D94C006AE76F /* UFeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2380112330D94C006AE76F /* UFeaturedCell.swift */; };
+		DC2380142330E040006AE76F /* UMainFeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2380132330E040006AE76F /* UMainFeaturedCell.swift */; };
+		DC246E002331C4180087D84A /* UIDosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246DFF2331C4180087D84A /* UIDosController.swift */; };
+		DC246E022331C8D90087D84A /* UDosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E012331C8D90087D84A /* UDosCell.swift */; };
+		DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E03233204BC0087D84A /* UDosDetailView.swift */; };
+		DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */; };
+		DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */; };
+		DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */; };
+		DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A22333205000C52E9F /* NSObjectExtension.swift */; };
+		DC768AB023321E0900595E2B /* UIDosDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AAF23321E0900595E2B /* UIDosDetailController.swift */; };
+		DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB12332230F00595E2B /* UILabelExtension.swift */; };
+		DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */; };
+		DC768AB62332359000595E2B /* UContactDesignerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB52332359000595E2B /* UContactDesignerView.swift */; };
 		DCB0644823263AD40094727C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0644723263AD40094727C /* AppDelegate.swift */; };
 		DCB0644A23263AD40094727C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0644923263AD40094727C /* ViewController.swift */; };
 		DCB0644D23263AD50094727C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB0644B23263AD50094727C /* Main.storyboard */; };
@@ -56,6 +72,13 @@
 		DCB064DE232733BC0094727C /* ULoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064DD232733BC0094727C /* ULoginView.swift */; };
 		DCB064E223273BA90094727C /* APIUserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064E123273BA90094727C /* APIUserServices.swift */; };
 		DCB064E9232763E10094727C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB064E8232763E10094727C /* Assets.xcassets */; };
+		DCB064F023277EF30094727C /* UIMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064EF23277EF30094727C /* UIMainController.swift */; };
+		DCB064F2232781690094727C /* UMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064F1232781690094727C /* UMainView.swift */; };
+		DCB064F4232797E50094727C /* UMainSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064F3232797E50094727C /* UMainSearchCell.swift */; };
+		DCB064F62327A7230094727C /* UMainBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064F52327A7230094727C /* UMainBannerCell.swift */; };
+		DCB065082327CDA90094727C /* ZKCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB065072327CDA90094727C /* ZKCycleScrollView.swift */; };
+		DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB065092327CE840094727C /* UBannerImageCell.swift */; };
+		DCB0650C2328F2380094727C /* UMainClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0650B2328F2380094727C /* UMainClassificationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +102,22 @@
 		5A81F6F96F7EEEB3294D7982 /* Pods-DongJia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DongJia.debug.xcconfig"; path = "Target Support Files/Pods-DongJia/Pods-DongJia.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE933D163923E0ABD191878 /* Pods-DongJia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DongJia.release.xcconfig"; path = "Target Support Files/Pods-DongJia/Pods-DongJia.release.xcconfig"; sourceTree = "<group>"; };
 		B5BA66E763ECE734FA65A063 /* Pods_DongJia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DongJia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC23800B232F9E79006AE76F /* UHotGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHotGoodsCell.swift; sourceTree = "<group>"; };
+		DC23800D2330763F006AE76F /* UMainSuperBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainSuperBrandCell.swift; sourceTree = "<group>"; };
+		DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USuperBrandCell.swift; sourceTree = "<group>"; };
+		DC2380112330D94C006AE76F /* UFeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UFeaturedCell.swift; sourceTree = "<group>"; };
+		DC2380132330E040006AE76F /* UMainFeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainFeaturedCell.swift; sourceTree = "<group>"; };
+		DC246DFF2331C4180087D84A /* UIDosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosController.swift; sourceTree = "<group>"; };
+		DC246E012331C8D90087D84A /* UDosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosCell.swift; sourceTree = "<group>"; };
+		DC246E03233204BC0087D84A /* UDosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosDetailView.swift; sourceTree = "<group>"; };
+		DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainLimitedCell.swift; sourceTree = "<group>"; };
+		DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULimitedTimeCell.swift; sourceTree = "<group>"; };
+		DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainHotCell.swift; sourceTree = "<group>"; };
+		DC6133A22333205000C52E9F /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		DC768AAF23321E0900595E2B /* UIDosDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosDetailController.swift; sourceTree = "<group>"; };
+		DC768AB12332230F00595E2B /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIContactDesignerController.swift; sourceTree = "<group>"; };
+		DC768AB52332359000595E2B /* UContactDesignerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UContactDesignerView.swift; sourceTree = "<group>"; };
 		DCB0644423263AD40094727C /* DongJia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DongJia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB0644723263AD40094727C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCB0644923263AD40094727C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +175,13 @@
 		DCB064E123273BA90094727C /* APIUserServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUserServices.swift; sourceTree = "<group>"; };
 		DCB064E3232751950094727C /* DongJia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DongJia.entitlements; sourceTree = "<group>"; };
 		DCB064E8232763E10094727C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCB064EF23277EF30094727C /* UIMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainController.swift; sourceTree = "<group>"; };
+		DCB064F1232781690094727C /* UMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainView.swift; sourceTree = "<group>"; };
+		DCB064F3232797E50094727C /* UMainSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainSearchCell.swift; sourceTree = "<group>"; };
+		DCB064F52327A7230094727C /* UMainBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainBannerCell.swift; sourceTree = "<group>"; };
+		DCB065072327CDA90094727C /* ZKCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZKCycleScrollView.swift; sourceTree = "<group>"; };
+		DCB065092327CE840094727C /* UBannerImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UBannerImageCell.swift; sourceTree = "<group>"; };
+		DCB0650B2328F2380094727C /* UMainClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainClassificationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +225,35 @@
 				ABE933D163923E0ABD191878 /* Pods-DongJia.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DC246DFC2331C3180087D84A /* Dos */ = {
+			isa = PBXGroup;
+			children = (
+				DC246DFE2331C38B0087D84A /* View */,
+				DC246DFD2331C3790087D84A /* ViewController */,
+			);
+			path = Dos;
+			sourceTree = "<group>";
+		};
+		DC246DFD2331C3790087D84A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DC246DFF2331C4180087D84A /* UIDosController.swift */,
+				DC768AAF23321E0900595E2B /* UIDosDetailController.swift */,
+				DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DC246DFE2331C38B0087D84A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC246E012331C8D90087D84A /* UDosCell.swift */,
+				DC246E03233204BC0087D84A /* UDosDetailView.swift */,
+				DC768AB52332359000595E2B /* UContactDesignerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		DCB0643B23263AD40094727C = {
@@ -247,6 +322,8 @@
 				DCB0647C232669510094727C /* UITextFieldExtension.swift */,
 				DCB0647D232669510094727C /* UIViewExtension.swift */,
 				DCB0647E232669510094727C /* UIBarButtonItemExtension.swift */,
+				DC768AB12332230F00595E2B /* UILabelExtension.swift */,
+				DC6133A22333205000C52E9F /* NSObjectExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -254,6 +331,7 @@
 		DCB06485232669FF0094727C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				DCB065062327CDA90094727C /* ZKCycleScrollView */,
 				DCB06486232669FF0094727C /* TextView */,
 				DCB06488232669FF0094727C /* PhotoPicker */,
 				DCB0648A232669FF0094727C /* Picker */,
@@ -336,6 +414,8 @@
 		DCB064B323266A560094727C /* Procedure */ = {
 			isa = PBXGroup;
 			children = (
+				DC246DFC2331C3180087D84A /* Dos */,
+				DCB064EA23277B010094727C /* Main */,
 				DCB064D72327336D0094727C /* Login */,
 				DCB064C623266EE80094727C /* Base */,
 				DCB064B423266A660094727C /* Global.swift */,
@@ -436,6 +516,51 @@
 				DCB064DD232733BC0094727C /* ULoginView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DCB064EA23277B010094727C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DCB064EC23277B1A0094727C /* View */,
+				DCB064EB23277B0F0094727C /* ViewController */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DCB064EB23277B0F0094727C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DCB064EF23277EF30094727C /* UIMainController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DCB064EC23277B1A0094727C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DCB064F1232781690094727C /* UMainView.swift */,
+				DCB064F3232797E50094727C /* UMainSearchCell.swift */,
+				DCB064F52327A7230094727C /* UMainBannerCell.swift */,
+				DCB0650B2328F2380094727C /* UMainClassificationCell.swift */,
+				DCB065092327CE840094727C /* UBannerImageCell.swift */,
+				DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */,
+				DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */,
+				DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */,
+				DC23800B232F9E79006AE76F /* UHotGoodsCell.swift */,
+				DC23800D2330763F006AE76F /* UMainSuperBrandCell.swift */,
+				DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */,
+				DC2380132330E040006AE76F /* UMainFeaturedCell.swift */,
+				DC2380112330D94C006AE76F /* UFeaturedCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DCB065062327CDA90094727C /* ZKCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				DCB065072327CDA90094727C /* ZKCycleScrollView.swift */,
+			);
+			path = ZKCycleScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -636,12 +761,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */,
 				DCB064AC23266A000094727C /* FTCellConfiguration.swift in Sources */,
+				DC246E002331C4180087D84A /* UIDosController.swift in Sources */,
+				DCB064F023277EF30094727C /* UIMainController.swift in Sources */,
+				DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */,
+				DCB064F2232781690094727C /* UMainView.swift in Sources */,
 				DCB064E223273BA90094727C /* APIUserServices.swift in Sources */,
 				DCB064A223266A000094727C /* BPicker.swift in Sources */,
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
 				DCB064A123266A000094727C /* CustomPhotoPickerViewController.swift in Sources */,
 				DCB064AB23266A000094727C /* FTConfiguration.swift in Sources */,
+				DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */,
 				DCB064D6232732720094727C /* APIResponseModels.swift in Sources */,
 				DCB064B723266A660094727C /* Utils.swift in Sources */,
 				DCB064BF23266DF80094727C /* JPushRegistrationID.swift in Sources */,
@@ -649,13 +780,23 @@
 				DCB064AD23266A000094727C /* FTConstants.swift in Sources */,
 				DCB064A523266A000094727C /* URefresh.swift in Sources */,
 				DCB064A923266A000094727C /* UIScrollView+ParallaxHeader.swift in Sources */,
+				DC2380142330E040006AE76F /* UMainFeaturedCell.swift in Sources */,
 				DCB064C123266E040094727C /* APIToken.swift in Sources */,
+				DC768AB62332359000595E2B /* UContactDesignerView.swift in Sources */,
 				DCB064A423266A000094727C /* ScreenHelper.swift in Sources */,
+				DCB065082327CDA90094727C /* ZKCycleScrollView.swift in Sources */,
+				DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */,
+				DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */,
 				DCB0645023263AD50094727C /* DongJia.xcdatamodeld in Sources */,
+				DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */,
 				DCB064D123266EE80094727C /* BaseView.swift in Sources */,
 				DCB064CF23266EE80094727C /* UBaseCollectionViewCell.swift in Sources */,
+				DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */,
+				DCB064F4232797E50094727C /* UMainSearchCell.swift in Sources */,
 				DCB06484232669510094727C /* UIBarButtonItemExtension.swift in Sources */,
 				DCB064D323266EE80094727C /* UTabBarController.swift in Sources */,
+				DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */,
+				DCB064F62327A7230094727C /* UMainBannerCell.swift in Sources */,
 				DCB06482232669510094727C /* UITextFieldExtension.swift in Sources */,
 				DCB064AF23266A000094727C /* FTPopOverMenu.swift in Sources */,
 				DCB064AA23266A000094727C /* ParallaxHeader.swift in Sources */,
@@ -670,6 +811,13 @@
 				DCB064A723266A000094727C /* RPicker.swift in Sources */,
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
+				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
+				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
+				DC2380122330D94C006AE76F /* UFeaturedCell.swift in Sources */,
+				DC246E022331C8D90087D84A /* UDosCell.swift in Sources */,
+				DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */,
+				DC768AB023321E0900595E2B /* UIDosDetailController.swift in Sources */,
+				DCB0650C2328F2380094727C /* UMainClassificationCell.swift in Sources */,
 				DCB0647F232669510094727C /* UIImageViewExtension.swift in Sources */,
 				DCB064A823266A000094727C /* ParallaxHeaderMode.swift in Sources */,
 				DCB064C323266E0D0094727C /* APIServices.swift in Sources */,

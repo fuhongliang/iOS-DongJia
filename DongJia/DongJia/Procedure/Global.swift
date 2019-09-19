@@ -12,8 +12,12 @@ import SnapKit
 import MJRefresh
 import SCLAlertView
 
+/// 屏幕宽高
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
+
+/// 状态栏高度
+let statusbarHeight = UIApplication.shared.statusBarFrame.height
 
 //MARK:时间戳转日期时间
 func dateForMatter(timeString:Int, join:String) -> String{
@@ -34,11 +38,11 @@ func stringArrayConvertDoubleArray(stringArray:[String]) -> [Double]{
 
 extension UIColor {
     class var background: UIColor {
-        return UIColor(r: 242, g: 242, b: 242)
+        return UIColor(r: 245, g: 245, b: 245)
     }
 
     class var theme: UIColor {
-        return UIColor(r: 28, g: 152, b: 246)
+        return UIColor(r: 14, g: 194, b: 98)
     }
 }
 

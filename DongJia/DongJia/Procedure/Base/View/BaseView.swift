@@ -7,6 +7,22 @@
 //
 
 import UIKit
+import Then
+
 class BaseView: UIView {
     //Nothing to do in here now
+    
+    init() {
+        super.init(frame: CGRect.init())
+        self.configUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configUI() {
+        
+    }
+    
 }

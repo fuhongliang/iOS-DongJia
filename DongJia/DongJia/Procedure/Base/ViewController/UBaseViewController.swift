@@ -23,7 +23,6 @@ class UBaseViewController: UIViewController {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-
         configUI()
     }
 
@@ -33,6 +32,10 @@ class UBaseViewController: UIViewController {
     }
 
     func configUI() {}
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
 
     func configNavigationBar() {
         guard let navi = navigationController else { return }
@@ -41,9 +44,7 @@ class UBaseViewController: UIViewController {
             navi.disablePopGesture = false
             navi.setNavigationBarHidden(false, animated: true)
             if navi.viewControllers.count > 1 {
-                navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "nav_back_white"),
-                                                                   target: self,
-                                                                   action: #selector(pressBack))
+                addNavigationBarBackView()
             }
         }
     }
@@ -62,9 +63,51 @@ class UBaseViewController: UIViewController {
 }
 
 extension UBaseViewController {
+    
+    func addNavigationBarBackView(){
+        let leftItem = UIBarButtonItem(image: UIImage(named: "black_back"), target: self, action: #selector(pressBack))
+        if #available(iOS 11, *) {
+            self.navigationItem.leftBarButtonItems = [leftItem]
+        } else {
+            // 用于消除左边空隙，要不然按钮顶不到最左边
+            let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            leftSpace.width = -16
+            self.navigationItem.leftBarButtonItems = [leftSpace, leftItem]
+        }
+    }
+    
+    /// 给系统导航栏添加左边View(删除左边20间隔)
+    ///
+    /// - Parameter leftView: leftView
+    func addNavigationBarLeftView(_ leftView: UIView) {
+        let leftItem = UIBarButtonItem(customView: leftView)
+        if #available(iOS 11, *) {
+            self.navigationItem.leftBarButtonItems = [leftItem]
+        } else {
+            // 用于消除左边空隙，要不然按钮顶不到最左边
+            let leftSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            leftSpace.width = -16
+            self.navigationItem.leftBarButtonItems = [leftSpace, leftItem]
+        }
+    }
+    
+    /// 给系统导航栏添加右边View(删除右边20间隔)
+    ///
+    /// - Parameter rightView: rightView
+    func addNavigationBarRightView(_ rightView: UIView) {
+        let rightItem = UIBarButtonItem(customView: rightView)
+        if #available(iOS 11, *) {
+            self.navigationItem.rightBarButtonItems = [rightItem]
+        } else {
+            // 用于消除右边空隙，要不然按钮顶不到最右边
+            let rightSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            rightSpace.width = -16
+            self.navigationItem.rightBarButtonItems = [rightSpace, rightItem]
+        }
+    }
 
     override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
+        return .default
     }
     
     

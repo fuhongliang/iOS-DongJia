@@ -9,7 +9,10 @@
 import UIKit
 
 extension UIView {
-    //设置部分圆角
+    /**
+     * 设置部分圆角
+     * 使用 setRoundCorners(corners: [.bottomLeft,.bottomRight], with: 2)
+     */
     func setRoundCorners(corners:UIRectCorner,with radii:CGFloat){
         let bezierpath:UIBezierPath = UIBezierPath.init(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radii, height: radii))
         let shape:CAShapeLayer = CAShapeLayer.init()
