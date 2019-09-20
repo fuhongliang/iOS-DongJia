@@ -87,6 +87,8 @@
 		DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB065092327CE840094727C /* UBannerImageCell.swift */; };
 		DCB0650C2328F2380094727C /* UMainClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0650B2328F2380094727C /* UMainClassificationCell.swift */; };
 		DCF5956F2334B64600C50B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF5956E2334B64600C50B88 /* Assets.xcassets */; };
+		DCF595712334CCE200C50B88 /* UIAddAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF595702334CCE200C50B88 /* UIAddAddressController.swift */; };
+		DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF595722334CD2500C50B88 /* UAddAddressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +200,8 @@
 		DCB065092327CE840094727C /* UBannerImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UBannerImageCell.swift; sourceTree = "<group>"; };
 		DCB0650B2328F2380094727C /* UMainClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainClassificationCell.swift; sourceTree = "<group>"; };
 		DCF5956E2334B64600C50B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCF595702334CCE200C50B88 /* UIAddAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAddAddressController.swift; sourceTree = "<group>"; };
+		DCF595722334CD2500C50B88 /* UAddAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAddAddressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +292,7 @@
 				DC19F7A4233468EB00BDFE7D /* UIAboutUsController.swift */,
 				DC19F7A8233478F500BDFE7D /* UIMyCollectionController.swift */,
 				DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */,
+				DCF595702334CCE200C50B88 /* UIAddAddressController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				DC19F7AC23347BCF00BDFE7D /* UMyCollectionCell.swift */,
 				DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */,
 				DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */,
+				DCF595722334CD2500C50B88 /* UAddAddressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -815,6 +821,7 @@
 				DCB064F023277EF30094727C /* UIMainController.swift in Sources */,
 				DC6133A82333377F00C52E9F /* UMineView.swift in Sources */,
 				DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */,
+				DCF595712334CCE200C50B88 /* UIAddAddressController.swift in Sources */,
 				DCB064E223273BA90094727C /* APIUserServices.swift in Sources */,
 				DCB064A223266A000094727C /* BPicker.swift in Sources */,
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
@@ -859,6 +866,7 @@
 				DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */,
 				DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */,
 				DCB06480232669510094727C /* UIColorExtension.swift in Sources */,
+				DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */,
 				DCB064A323266A000094727C /* PickerPresentAnimated.swift in Sources */,
 				DCB064A723266A000094727C /* RPicker.swift in Sources */,
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
