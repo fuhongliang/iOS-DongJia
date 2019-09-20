@@ -19,6 +19,13 @@ let screenHeight = UIScreen.main.bounds.height
 /// 状态栏高度
 let statusbarHeight = UIApplication.shared.statusBarFrame.height
 
+// 获取App的版本号
+let appVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "1.0.0") as! String
+// 获取App的build版本
+let appBuildVersion:String = (Bundle.main.infoDictionary?["CFBundleVersion"] ?? "1") as! String
+// 获取App的名称
+let appName:String = (Bundle.main.infoDictionary?["CFBundleDisplayName"] ?? "懂家") as! String
+
 //MARK:时间戳转日期时间
 func dateForMatter(timeString:Int, join:String) -> String{
     let timeInterval = TimeInterval(timeString)

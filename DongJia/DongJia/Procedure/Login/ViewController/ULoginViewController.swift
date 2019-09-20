@@ -9,10 +9,12 @@
 import UIKit
 import MBProgressHUD
 
-public func showHUDInView(text: String, inView: UIView) {
+/// isClick true 点击 false 不能点击
+public func showHUDInView(text: String, inView: UIView, isClick:Bool = false) {
     let hud = MBProgressHUD.showAdded(to: inView, animated: true)
     hud.mode = MBProgressHUDMode.text
     hud.label.text = text
+    hud.isUserInteractionEnabled = !isClick
     hud.hide(animated: true, afterDelay: 2.0)
 }
 

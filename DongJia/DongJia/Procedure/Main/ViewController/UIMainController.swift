@@ -19,7 +19,6 @@ enum MainItem {
 }
 
 class UIMainController: UBaseViewController {
-    var mainView = UMainView()
     
     var cells: [MainItem] = [.search,
                              .banner,

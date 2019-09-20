@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4F101B28AF60D2F28070F541 /* Pods_DongJia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BA66E763ECE734FA65A063 /* Pods_DongJia.framework */; };
+		DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7A4233468EB00BDFE7D /* UIAboutUsController.swift */; };
+		DC19F7A72334692200BDFE7D /* UAboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7A62334692200BDFE7D /* UAboutUsView.swift */; };
+		DC19F7A9233478F500BDFE7D /* UIMyCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7A8233478F500BDFE7D /* UIMyCollectionController.swift */; };
+		DC19F7AD23347BCF00BDFE7D /* UMyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7AC23347BCF00BDFE7D /* UMyCollectionCell.swift */; };
+		DC19F7AF2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */; };
+		DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */; };
+		DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */; };
 		DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800B232F9E79006AE76F /* UHotGoodsCell.swift */; };
 		DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800D2330763F006AE76F /* UMainSuperBrandCell.swift */; };
 		DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */; };
@@ -73,14 +80,13 @@
 		DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064DB232733B20094727C /* ULoginViewController.swift */; };
 		DCB064DE232733BC0094727C /* ULoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064DD232733BC0094727C /* ULoginView.swift */; };
 		DCB064E223273BA90094727C /* APIUserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064E123273BA90094727C /* APIUserServices.swift */; };
-		DCB064E9232763E10094727C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB064E8232763E10094727C /* Assets.xcassets */; };
 		DCB064F023277EF30094727C /* UIMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064EF23277EF30094727C /* UIMainController.swift */; };
-		DCB064F2232781690094727C /* UMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064F1232781690094727C /* UMainView.swift */; };
 		DCB064F4232797E50094727C /* UMainSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064F3232797E50094727C /* UMainSearchCell.swift */; };
 		DCB064F62327A7230094727C /* UMainBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB064F52327A7230094727C /* UMainBannerCell.swift */; };
 		DCB065082327CDA90094727C /* ZKCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB065072327CDA90094727C /* ZKCycleScrollView.swift */; };
 		DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB065092327CE840094727C /* UBannerImageCell.swift */; };
 		DCB0650C2328F2380094727C /* UMainClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0650B2328F2380094727C /* UMainClassificationCell.swift */; };
+		DCF5956F2334B64600C50B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF5956E2334B64600C50B88 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +110,13 @@
 		5A81F6F96F7EEEB3294D7982 /* Pods-DongJia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DongJia.debug.xcconfig"; path = "Target Support Files/Pods-DongJia/Pods-DongJia.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE933D163923E0ABD191878 /* Pods-DongJia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DongJia.release.xcconfig"; path = "Target Support Files/Pods-DongJia/Pods-DongJia.release.xcconfig"; sourceTree = "<group>"; };
 		B5BA66E763ECE734FA65A063 /* Pods_DongJia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DongJia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC19F7A4233468EB00BDFE7D /* UIAboutUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAboutUsController.swift; sourceTree = "<group>"; };
+		DC19F7A62334692200BDFE7D /* UAboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAboutUsView.swift; sourceTree = "<group>"; };
+		DC19F7A8233478F500BDFE7D /* UIMyCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMyCollectionController.swift; sourceTree = "<group>"; };
+		DC19F7AC23347BCF00BDFE7D /* UMyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMyCollectionCell.swift; sourceTree = "<group>"; };
+		DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMyObtainAddressViewController.swift; sourceTree = "<group>"; };
+		DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMyObtainAddressView.swift; sourceTree = "<group>"; };
+		DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UObtainAddressCell.swift; sourceTree = "<group>"; };
 		DC23800B232F9E79006AE76F /* UHotGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHotGoodsCell.swift; sourceTree = "<group>"; };
 		DC23800D2330763F006AE76F /* UMainSuperBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainSuperBrandCell.swift; sourceTree = "<group>"; };
 		DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USuperBrandCell.swift; sourceTree = "<group>"; };
@@ -178,14 +191,13 @@
 		DCB064E02327385D0094727C /* DongJia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DongJia-Bridging-Header.h"; sourceTree = "<group>"; };
 		DCB064E123273BA90094727C /* APIUserServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUserServices.swift; sourceTree = "<group>"; };
 		DCB064E3232751950094727C /* DongJia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DongJia.entitlements; sourceTree = "<group>"; };
-		DCB064E8232763E10094727C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCB064EF23277EF30094727C /* UIMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainController.swift; sourceTree = "<group>"; };
-		DCB064F1232781690094727C /* UMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainView.swift; sourceTree = "<group>"; };
 		DCB064F3232797E50094727C /* UMainSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainSearchCell.swift; sourceTree = "<group>"; };
 		DCB064F52327A7230094727C /* UMainBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainBannerCell.swift; sourceTree = "<group>"; };
 		DCB065072327CDA90094727C /* ZKCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZKCycleScrollView.swift; sourceTree = "<group>"; };
 		DCB065092327CE840094727C /* UBannerImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UBannerImageCell.swift; sourceTree = "<group>"; };
 		DCB0650B2328F2380094727C /* UMainClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainClassificationCell.swift; sourceTree = "<group>"; };
+		DCF5956E2334B64600C50B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +285,9 @@
 			isa = PBXGroup;
 			children = (
 				DC6133A923335B6000C52E9F /* UIMineController.swift */,
+				DC19F7A4233468EB00BDFE7D /* UIAboutUsController.swift */,
+				DC19F7A8233478F500BDFE7D /* UIMyCollectionController.swift */,
+				DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -281,6 +296,10 @@
 			isa = PBXGroup;
 			children = (
 				DC6133A72333377F00C52E9F /* UMineView.swift */,
+				DC19F7A62334692200BDFE7D /* UAboutUsView.swift */,
+				DC19F7AC23347BCF00BDFE7D /* UMyCollectionCell.swift */,
+				DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */,
+				DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,8 +477,8 @@
 			isa = PBXGroup;
 			children = (
 				DCB0644723263AD40094727C /* AppDelegate.swift */,
-				DCB064E8232763E10094727C /* Assets.xcassets */,
 				DCB064B923266A990094727C /* Swift-Bridging-Header.h */,
+				DCF5956E2334B64600C50B88 /* Assets.xcassets */,
 				DCB064E02327385D0094727C /* DongJia-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
@@ -568,7 +587,6 @@
 		DCB064EC23277B1A0094727C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DCB064F1232781690094727C /* UMainView.swift */,
 				DCB064F3232797E50094727C /* UMainSearchCell.swift */,
 				DCB064F52327A7230094727C /* UMainBannerCell.swift */,
 				DCB0650B2328F2380094727C /* UMainClassificationCell.swift */,
@@ -705,7 +723,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCB064E9232763E10094727C /* Assets.xcassets in Resources */,
+				DCF5956F2334B64600C50B88 /* Assets.xcassets in Resources */,
 				DCB0645523263AD90094727C /* LaunchScreen.storyboard in Resources */,
 				DCB0644D23263AD50094727C /* Main.storyboard in Resources */,
 			);
@@ -797,7 +815,6 @@
 				DCB064F023277EF30094727C /* UIMainController.swift in Sources */,
 				DC6133A82333377F00C52E9F /* UMineView.swift in Sources */,
 				DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */,
-				DCB064F2232781690094727C /* UMainView.swift in Sources */,
 				DCB064E223273BA90094727C /* APIUserServices.swift in Sources */,
 				DCB064A223266A000094727C /* BPicker.swift in Sources */,
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
@@ -815,9 +832,11 @@
 				DCB064C123266E040094727C /* APIToken.swift in Sources */,
 				DC768AB62332359000595E2B /* UContactDesignerView.swift in Sources */,
 				DCB064A423266A000094727C /* ScreenHelper.swift in Sources */,
+				DC19F7A72334692200BDFE7D /* UAboutUsView.swift in Sources */,
 				DCB065082327CDA90094727C /* ZKCycleScrollView.swift in Sources */,
 				DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */,
 				DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */,
+				DC19F7A9233478F500BDFE7D /* UIMyCollectionController.swift in Sources */,
 				DCB0645023263AD50094727C /* DongJia.xcdatamodeld in Sources */,
 				DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */,
 				DCB064D123266EE80094727C /* BaseView.swift in Sources */,
@@ -837,14 +856,18 @@
 				DCB064B623266A660094727C /* Global.swift in Sources */,
 				DCB064B023266A000094727C /* FT+Extension.swift in Sources */,
 				DCB064B123266A000094727C /* FTPopOverMenuCell.swift in Sources */,
+				DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */,
+				DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */,
 				DCB06480232669510094727C /* UIColorExtension.swift in Sources */,
 				DCB064A323266A000094727C /* PickerPresentAnimated.swift in Sources */,
 				DCB064A723266A000094727C /* RPicker.swift in Sources */,
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
+				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
 				DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */,
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
+				DC19F7AF2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift in Sources */,
 				DC2380122330D94C006AE76F /* UFeaturedCell.swift in Sources */,
 				DC246E022331C8D90087D84A /* UDosCell.swift in Sources */,
 				DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */,
@@ -854,6 +877,7 @@
 				DCB064A823266A000094727C /* ParallaxHeaderMode.swift in Sources */,
 				DCB064C323266E0D0094727C /* APIServices.swift in Sources */,
 				DCB064B223266A000094727C /* UIScreen+Frame.swift in Sources */,
+				DC19F7AD23347BCF00BDFE7D /* UMyCollectionCell.swift in Sources */,
 				DCB064AE23266A000094727C /* UIControl+Point.swift in Sources */,
 				DCB06483232669510094727C /* UIViewExtension.swift in Sources */,
 				DCB0644823263AD40094727C /* AppDelegate.swift in Sources */,

@@ -242,6 +242,10 @@ class UMineView: BaseView {
         haveLoginView.addSubview(notSendOrder)
         haveLoginView.addSubview(notObtainOrder)
         haveLoginView.addSubview(completeOrder)
+        notPayOrder.addTarget(self, action: #selector(tapNotPayOrder), for: .touchUpInside)
+        notSendOrder.addTarget(self, action: #selector(tapNotSendOrder), for: .touchUpInside)
+        notObtainOrder.addTarget(self, action: #selector(tapNotObtainOrder), for: .touchUpInside)
+        completeOrder.addTarget(self, action: #selector(tapCompleteOrder), for: .touchUpInside)
         
         mineWhiteBg.addSubview(logoutBgView)
         logoutBgView.addSubview(tipLoginLabel)
@@ -256,7 +260,10 @@ class UMineView: BaseView {
         operationWhiteBg.addSubview(myAfterSalesLine)
         operationWhiteBg.addSubview(myCollectionLine)
         operationWhiteBg.addSubview(myObtainAddressLine)
-        
+        myAfterSales.addTarget(self, action: #selector(tapMyAfterSales), for: .touchUpInside)
+        myCollection.addTarget(self, action: #selector(tapMyCollection), for: .touchUpInside)
+        myObtainAddress.addTarget(self, action: #selector(tapObtainAddress), for: .touchUpInside)
+        aboutOus.addTarget(self, action: #selector(tapAboutOus), for: .touchUpInside)
         
         //MARK:绿色背景
         themeBg.snp.makeConstraints { (make) in
@@ -356,6 +363,8 @@ class UMineView: BaseView {
         notObtainOrder.setImgUpTitleDown()
         completeOrder.setImgUpTitleDown()
         
+        
+        
         //MARK:未登录的背景
         logoutBgView.isHidden = true
         logoutBgView.snp.makeConstraints { (make) in
@@ -438,47 +447,38 @@ class UMineView: BaseView {
     }
     
     @objc func tapMyAllOrder(){
-        showHUDInView(text: "我的全部订单", inView: self)
         delegate?.myAllOrder()
     }
     
     @objc func tapNotPayOrder(){
-        showHUDInView(text: "待发货订单", inView: self)
         delegate?.notPayOrder()
     }
     
     @objc func tapNotSendOrder(){
-        showHUDInView(text: "待发货订单", inView: self)
         delegate?.notSendOrder()
     }
     
     @objc func tapNotObtainOrder(){
-        showHUDInView(text: "待发货订单", inView: self)
         delegate?.notObtainOrder()
     }
     
     @objc func tapCompleteOrder(){
-        showHUDInView(text: "待发货订单", inView: self)
         delegate?.completeOrder()
     }
     
     @objc func tapMyAfterSales(){
-        showHUDInView(text: "待发货订单", inView: self)
         delegate?.myAfterSales()
     }
     
     @objc func tapMyCollection(){
-        showHUDInView(text: "待发货订单", inView: self)
         delegate?.myCollection()
     }
     
     @objc func tapObtainAddress(){
-        showHUDInView(text: "待发货订单", inView: self)
         delegate?.obtainAddress()
     }
     
     @objc func tapAboutOus(){
-        showHUDInView(text: "待发货订单", inView: self)
         delegate?.aboutOus()
     }
     
