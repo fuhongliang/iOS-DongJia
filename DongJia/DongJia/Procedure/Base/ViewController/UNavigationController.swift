@@ -101,7 +101,7 @@ extension UINavigationController {
         switch style {
         case .theme:
             navigationBar.barStyle = .default
-            navigationBar.setBackgroundImage(UIColor.white.image(), for: .default)
+            navigationBar.setBackgroundImage(UIColor.theme.image(), for: .default)
             navigationBar.shadowImage = UIImage()
         case .clear:
             navigationBar.barStyle = .black
@@ -110,7 +110,7 @@ extension UINavigationController {
         case .white:
             navigationBar.barStyle = .default
             navigationBar.setBackgroundImage(UIColor.white.image(), for: .default)
-            navigationBar.shadowImage = nil
+            navigationBar.shadowImage = UIImage()
         }
 
 

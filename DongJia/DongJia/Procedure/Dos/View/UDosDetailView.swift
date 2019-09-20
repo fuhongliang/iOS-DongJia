@@ -73,7 +73,7 @@ class UDosDetailView: BaseView {
     
     override func configUI() {
         dosImg.image = UIImage.init(named: "todo_img")
-        dosAuthorIcon.image = UIImage.init(named: "todo_img")
+        dosAuthorIcon.image = UIImage.init(named: "default_icon")
         dosAuthorName.text = "Alice_Arisu"
         dosTitle.text = "小姐姐的艺术公寓之：假装在北欧"
         releaseTime.text = "10分钟前"

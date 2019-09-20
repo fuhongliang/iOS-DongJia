@@ -13,7 +13,7 @@ class UTabBarController: UITabBarController {
     let mainVC = UIMainController()
     let dosVC = UIDosController() //家装方案
     let shoppingCartVC = ViewController()
-    let mineVC = ViewController()
+    let mineVC = UIMineController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

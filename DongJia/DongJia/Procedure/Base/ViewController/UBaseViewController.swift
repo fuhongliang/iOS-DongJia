@@ -40,7 +40,7 @@ class UBaseViewController: UIViewController {
     func configNavigationBar() {
         guard let navi = navigationController else { return }
         if navi.visibleViewController == self {
-            navi.barStyle(.theme)
+            navi.barStyle(.white)
             navi.disablePopGesture = false
             navi.setNavigationBarHidden(false, animated: true)
             if navi.viewControllers.count > 1 {

@@ -23,7 +23,7 @@ class USuperBrandCell: UBaseCollectionViewCell {
     let shopIcon = UIImageView().then{ //商店头像
         $0.layer.cornerRadius = 3
         $0.layer.masksToBounds = true
-        $0.image = UIImage.init(named: "todo_img")
+        $0.image = UIImage.init(named: "default_icon")
     }
     let shopName = UILabel().then{ //商店名称
         $0.text = "商店名称"

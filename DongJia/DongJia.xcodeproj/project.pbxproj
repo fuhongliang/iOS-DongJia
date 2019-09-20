@@ -20,6 +20,8 @@
 		DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */; };
 		DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */; };
 		DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A22333205000C52E9F /* NSObjectExtension.swift */; };
+		DC6133A82333377F00C52E9F /* UMineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A72333377F00C52E9F /* UMineView.swift */; };
+		DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A923335B6000C52E9F /* UIMineController.swift */; };
 		DC768AB023321E0900595E2B /* UIDosDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AAF23321E0900595E2B /* UIDosDetailController.swift */; };
 		DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB12332230F00595E2B /* UILabelExtension.swift */; };
 		DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */; };
@@ -114,6 +116,8 @@
 		DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULimitedTimeCell.swift; sourceTree = "<group>"; };
 		DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainHotCell.swift; sourceTree = "<group>"; };
 		DC6133A22333205000C52E9F /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		DC6133A72333377F00C52E9F /* UMineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMineView.swift; sourceTree = "<group>"; };
+		DC6133A923335B6000C52E9F /* UIMineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMineController.swift; sourceTree = "<group>"; };
 		DC768AAF23321E0900595E2B /* UIDosDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosDetailController.swift; sourceTree = "<group>"; };
 		DC768AB12332230F00595E2B /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIContactDesignerController.swift; sourceTree = "<group>"; };
@@ -252,6 +256,31 @@
 				DC246E012331C8D90087D84A /* UDosCell.swift */,
 				DC246E03233204BC0087D84A /* UDosDetailView.swift */,
 				DC768AB52332359000595E2B /* UContactDesignerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DC6133A42333373600C52E9F /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				DC6133A62333376300C52E9F /* View */,
+				DC6133A52333374900C52E9F /* ViewController */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		DC6133A52333374900C52E9F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DC6133A923335B6000C52E9F /* UIMineController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DC6133A62333376300C52E9F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC6133A72333377F00C52E9F /* UMineView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,6 +443,7 @@
 		DCB064B323266A560094727C /* Procedure */ = {
 			isa = PBXGroup;
 			children = (
+				DC6133A42333373600C52E9F /* Mine */,
 				DC246DFC2331C3180087D84A /* Dos */,
 				DCB064EA23277B010094727C /* Main */,
 				DCB064D72327336D0094727C /* Login */,
@@ -765,6 +795,7 @@
 				DCB064AC23266A000094727C /* FTCellConfiguration.swift in Sources */,
 				DC246E002331C4180087D84A /* UIDosController.swift in Sources */,
 				DCB064F023277EF30094727C /* UIMainController.swift in Sources */,
+				DC6133A82333377F00C52E9F /* UMineView.swift in Sources */,
 				DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */,
 				DCB064F2232781690094727C /* UMainView.swift in Sources */,
 				DCB064E223273BA90094727C /* APIUserServices.swift in Sources */,
@@ -812,6 +843,7 @@
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
+				DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */,
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
 				DC2380122330D94C006AE76F /* UFeaturedCell.swift in Sources */,
 				DC246E022331C8D90087D84A /* UDosCell.swift in Sources */,

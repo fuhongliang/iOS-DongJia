@@ -108,7 +108,7 @@ class UDosCell: UBaseTableViewCell {
         didSet{
             guard let model = model else { return }
             
-            dosImg.image = UIImage.init(named: "todo_img")
+            dosImg.image = UIImage.init(named: "default_icon")
             dosTitle.text = "[秒懂装修]干湿分离如何做？这3种方法简单让你的家干湿分离,快来试试吧"
             authorIcon.image = UIImage.init(named: "todo_img")
             authorName.text = "Keiven"
