@@ -20,13 +20,21 @@ enum MainItem {
 
 class UIMainController: UBaseViewController {
     
-    var cells: [MainItem] = [.search,
-                             .banner,
-                             .classification,
-                             .limited,
-                             .hot,
-                             .superbrand,
-                             .featured]
+    private let service = APIMainService()
+    
+//    var cells: [MainItem] = [.search,
+//                             .banner,
+//                             .classification,
+//                             .limited,
+//                             .hot,
+//                             .superbrand,
+//                             .featured]
+    
+    var cells: [MainItem]? {
+        didSet{
+            tableView.reloadData()
+        }
+    }
     
     var bannerUrl = [
         "http://ww1.sinaimg.cn/mw690/9bbc284bgw1f9rk86nq06j20fa0a4whs.jpg",
@@ -35,6 +43,12 @@ class UIMainController: UBaseViewController {
         "http://ww2.sinaimg.cn/mw690/9bbc284bgw1f9qg0utssrj20sg0hyx0o.jpg",
         "http://ww2.sinaimg.cn/mw690/9bbc284bgw1f9qg10w0w1j20s40jsah1.jpg"
     ]
+    var bannerList:[banner_list]! //banner图列表
+    var couponList:[coupon_list]!
+    var limitedList:miaosha! //限时抢购列表
+    var hotGoodsList:[recommend_goods]! //爆款热卖列表
+    var superBrandList:[new_mch_list]! //超级品牌列表
+    var featuredList:[miaosha_goods_list]! //精选列表
     
     let tableView = UITableView(frame: .zero, style: .grouped).then {
         $0.frame = .zero
@@ -60,6 +74,24 @@ class UIMainController: UBaseViewController {
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        getMainData()
+    }
+    
+    func getMainData() {
+        service.getMainData(district: "陆丰市", { (Model) in
+            if Model.data == nil {
+                showHUDInView(text: "没有数据", inView: self.view)
+                return
+            }
+            self.bannerList = Model.data?.banner_list
+            self.limitedList = Model.data?.miaosha
+            self.hotGoodsList = Model.data?.recommend_goods
+            self.superBrandList = Model.data?.new_mch_list
+            self.featuredList = Model.data?.miaosha.goods_list
+            self.cells = [.search, .banner, .classification, .limited, .hot, .superbrand, .featured]
+        }) { (APIErrorModel) in
+            print(APIErrorModel.msg ?? "msg为空")
+        }
     }
 
 }
@@ -67,7 +99,7 @@ class UIMainController: UBaseViewController {
 extension UIMainController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return cells.count
+        return cells?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +108,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
     
     //MARK:返回cell的标题头
     func getHeaderTitle(viewForHeaderInSection section: Int) -> String?{
-        let cellModel = cells[section]
+        let cellModel = cells![section]
         switch cellModel {
         case .limited:
             return "限时抢购"
@@ -123,7 +155,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = cells[indexPath.section]
+        let cellModel = cells![indexPath.section]
         switch cellModel {
         case .search:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainSearchCell.self)
@@ -136,7 +168,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .banner:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainBannerCell.self)
-            cell.urlArray = bannerUrl
+            cell.urlArray = bannerList
             return cell
         case .classification:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainClassificationCell.self)
@@ -158,6 +190,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .limited:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainLimitedCell.self)
+            cell.limitedData = limitedList
             return cell
         case .hot:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainHotCell.self)
@@ -165,7 +198,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
             cell.frame = tableView.bounds
             cell.layoutIfNeeded()
             
-            cell.model = ["","","","","",""]
+            cell.model = hotGoodsList
             
             return cell
         case .superbrand:
@@ -174,7 +207,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
             cell.frame = tableView.bounds
             cell.layoutIfNeeded()
             
-            cell.model = ["","",""]
+            cell.model = superBrandList
             return cell
         case .featured:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainFeaturedCell.self)
@@ -182,7 +215,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
             cell.frame = tableView.bounds
             cell.layoutIfNeeded()
             
-            cell.model = ["","",""]
+            cell.model = featuredList
             
             return cell
         }

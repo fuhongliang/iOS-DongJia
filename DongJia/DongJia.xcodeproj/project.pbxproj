@@ -26,6 +26,9 @@
 		DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */; };
 		DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */; };
 		DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */; };
+		DC56BC8B233872770089EE61 /* APIMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8A233872770089EE61 /* APIMainService.swift */; };
+		DC56BC8D2338732C0089EE61 /* APIMainDataResponsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */; };
+		DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8E2338E2B90089EE61 /* URLExtension.swift */; };
 		DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A22333205000C52E9F /* NSObjectExtension.swift */; };
 		DC6133A82333377F00C52E9F /* UMineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A72333377F00C52E9F /* UMineView.swift */; };
 		DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A923335B6000C52E9F /* UIMineController.swift */; };
@@ -130,6 +133,9 @@
 		DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainLimitedCell.swift; sourceTree = "<group>"; };
 		DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULimitedTimeCell.swift; sourceTree = "<group>"; };
 		DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainHotCell.swift; sourceTree = "<group>"; };
+		DC56BC8A233872770089EE61 /* APIMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMainService.swift; sourceTree = "<group>"; };
+		DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMainDataResponsModel.swift; sourceTree = "<group>"; };
+		DC56BC8E2338E2B90089EE61 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		DC6133A22333205000C52E9F /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		DC6133A72333377F00C52E9F /* UMineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMineView.swift; sourceTree = "<group>"; };
 		DC6133A923335B6000C52E9F /* UIMineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMineController.swift; sourceTree = "<group>"; };
@@ -378,6 +384,7 @@
 				DCB0647E232669510094727C /* UIBarButtonItemExtension.swift */,
 				DC768AB12332230F00595E2B /* UILabelExtension.swift */,
 				DC6133A22333205000C52E9F /* NSObjectExtension.swift */,
+				DC56BC8E2338E2B90089EE61 /* URLExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -502,8 +509,9 @@
 		DCB064C423266EB30094727C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				DCB064E123273BA90094727C /* APIUserServices.swift */,
 				DCB064C223266E0D0094727C /* APIServices.swift */,
+				DC56BC8A233872770089EE61 /* APIMainService.swift */,
+				DCB064E123273BA90094727C /* APIUserServices.swift */,
 				DCB064BC23266DE00094727C /* APIUser.swift */,
 				DCB064C023266E040094727C /* APIToken.swift */,
 				DCB064BE23266DF70094727C /* JPushRegistrationID.swift */,
@@ -515,6 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				DCB064D5232732720094727C /* APIResponseModels.swift */,
+				DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -827,6 +836,7 @@
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
 				DCB064A123266A000094727C /* CustomPhotoPickerViewController.swift in Sources */,
 				DCB064AB23266A000094727C /* FTConfiguration.swift in Sources */,
+				DC56BC8D2338732C0089EE61 /* APIMainDataResponsModel.swift in Sources */,
 				DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */,
 				DCB064D6232732720094727C /* APIResponseModels.swift in Sources */,
 				DCB064B723266A660094727C /* Utils.swift in Sources */,
@@ -852,6 +862,7 @@
 				DCB064F4232797E50094727C /* UMainSearchCell.swift in Sources */,
 				DCB06484232669510094727C /* UIBarButtonItemExtension.swift in Sources */,
 				DCB064D323266EE80094727C /* UTabBarController.swift in Sources */,
+				DC56BC8B233872770089EE61 /* APIMainService.swift in Sources */,
 				DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */,
 				DCB064F62327A7230094727C /* UMainBannerCell.swift in Sources */,
 				DCB06482232669510094727C /* UITextFieldExtension.swift in Sources */,
@@ -870,6 +881,7 @@
 				DCB064A323266A000094727C /* PickerPresentAnimated.swift in Sources */,
 				DCB064A723266A000094727C /* RPicker.swift in Sources */,
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
+				DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
 				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
@@ -1080,7 +1092,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DongJia/Supporting Files/DongJia-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1103,7 +1115,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DongJia/Supporting Files/DongJia-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

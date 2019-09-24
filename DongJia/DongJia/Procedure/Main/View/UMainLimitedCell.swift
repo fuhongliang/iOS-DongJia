@@ -17,7 +17,7 @@ class UMainLimitedCell: UBaseTableViewCell {
     
     let layout = UICollectionViewFlowLayout().then{
         $0.scrollDirection = .horizontal //设置滚动方向
-        $0.itemSize = CGSize(width: 120, height: 165)//设置cell的大小
+        $0.itemSize = CGSize(width: 120, height: 186)//设置cell的大小
         $0.minimumInteritemSpacing = 5
         $0.sectionInset = UIEdgeInsets.init(top: 8, left: 10, bottom: -8, right: 10)
     }
@@ -30,11 +30,11 @@ class UMainLimitedCell: UBaseTableViewCell {
         //MARK:白色背景
         whiteBg.snp.makeConstraints { (make) in
             make.width.equalToSuperview().inset(15)
-            make.height.equalTo(165)
+            make.height.equalTo(186)
             make.top.bottom.centerX.equalToSuperview()
         }
         
-        let horizontalView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
             $0.collectionViewLayout = layout
             $0.showsHorizontalScrollIndicator = false
             $0.backgroundColor = UIColor.white
@@ -46,9 +46,16 @@ class UMainLimitedCell: UBaseTableViewCell {
             })
         }
         
-        horizontalView.delegate = self
-        horizontalView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
+    }
+    
+    var limitedData:miaosha? {
+        didSet{
+            guard limitedData != nil else { return }
+            
+        }
     }
     
 }
@@ -57,18 +64,18 @@ extension UMainLimitedCell: UICollectionViewDelegate, UICollectionViewDataSource
     
     //MARK:section数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1//model?.pic_list.count ?? 0 == 0 ? 0 :1;
+        return limitedData?.goods_list.count ?? 0 == 0 ? 0 : 1;
     }
     
     //MARK:每个section有多少Item
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5//model?.pic_list.count ?? 0
+        return limitedData?.goods_list.count ?? 0
     }
     
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: ULimitedTimeCell.self)
-        cell.data = "¥2999"
+        cell.data = limitedData!.goods_list[indexPath.item]
 
         return cell
     }

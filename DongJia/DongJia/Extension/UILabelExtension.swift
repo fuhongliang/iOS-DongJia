@@ -20,4 +20,10 @@ extension UILabel {
         self.attributedText = NSAttributedString(string: text, attributes: attributes)
     }
     
+    func setUnderLine(text: String){
+        let priceString = NSMutableAttributedString.init(string: text)
+        priceString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSNumber.init(value: 1), range: NSRange(location: 0, length: priceString.length))
+        self.attributedText = priceString
+    }
+    
 }

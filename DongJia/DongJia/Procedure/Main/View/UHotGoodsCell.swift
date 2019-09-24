@@ -15,7 +15,6 @@ class UHotGoodsCell: UBaseCollectionViewCell {
     var picture = UIImageView().then{
         $0.layer.cornerRadius = 2
         $0.layer.masksToBounds = true
-        $0.image = UIImage.init(named: "todo_img")
     }
     var timerBg = UIView().then{
         $0.backgroundColor = UIColor.hex(hexString: "#F8F3E6")
@@ -25,12 +24,10 @@ class UHotGoodsCell: UBaseCollectionViewCell {
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     var rmbLabel = UILabel().then{
-        $0.text = "¥19999.99"
         $0.textColor = UIColor.hex(hexString: "#F61616")
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     var originalPriceLabel = UILabel().then{
-        $0.text = "0.00"
         $0.textColor = UIColor.hex(hexString: "#999999")
         $0.font = UIFont.systemFont(ofSize: 9)
     }
@@ -44,12 +41,14 @@ class UHotGoodsCell: UBaseCollectionViewCell {
         contentView.addSubview(originalPriceLabel)
 
         picture.snp.makeConstraints { (make) in
-            make.size.equalTo(hotCellWidth)
+//            make.size.equalTo(hotCellWidth)
+            make.width.equalTo(hotCellWidth)
+            make.height.equalTo(hotCellWidth*0.9)
             make.top.left.equalToSuperview()
         }
 
         goodsNameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(picture)
+            make.left.right.equalTo(picture)
             make.top.equalTo(picture.snp.bottom).offset(5)
         }
         rmbLabel.snp.makeConstraints { (make) in
@@ -70,12 +69,14 @@ class UHotGoodsCell: UBaseCollectionViewCell {
         
     }
     
-    var data:String? {
+    var data: recommend_goods? {
         didSet {
             guard let data = data else { return }
-            let priceString = NSMutableAttributedString.init(string: data)
-            priceString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSNumber.init(value: 1), range: NSRange(location: 0, length: priceString.length))
-            originalPriceLabel.attributedText = priceString
+            
+            picture.load(data.cover_pic)
+            goodsNameLabel.text = data.name
+            originalPriceLabel.setUnderLine(text: "¥\(data.original_price)")
+            rmbLabel.text = "¥\(data.price)"
             
         }
     }

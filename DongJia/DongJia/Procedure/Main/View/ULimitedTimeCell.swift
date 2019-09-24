@@ -16,7 +16,6 @@ class ULimitedTimeCell: UBaseCollectionViewCell {
     }
     var timerBg = UIView().then{
         $0.backgroundColor = UIColor.hex(hexString: "#F8F3E6")
-//        $0.setRoundCorners(corners: [.bottomLeft,.bottomRight], with: 2)
     }
     var timerLabel = UILabel().then{
         $0.text = "距结束24:00:00"
@@ -28,17 +27,15 @@ class ULimitedTimeCell: UBaseCollectionViewCell {
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     var discountPriceLabel = UILabel().then{
-        $0.font = UIFont.systemFont(ofSize: 9)
+        $0.font = UIFont.systemFont(ofSize: 13)
         $0.textColor = UIColor.hex(hexString: "#F61616")
-        $0.text = "券后¥"
+        $0.text = "¥"
     }
     var rmbLabel = UILabel().then{
-        $0.text = "---"
         $0.textColor = UIColor.hex(hexString: "#F61616")
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     var originalPriceLabel = UILabel().then{
-        $0.text = "0.00"
         $0.textColor = UIColor.hex(hexString: "#999999")
         $0.font = UIFont.systemFont(ofSize: 9)
     }
@@ -68,12 +65,12 @@ class ULimitedTimeCell: UBaseCollectionViewCell {
         }
         
         goodsNameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(picture)
+            make.left.right.equalTo(picture)
             make.top.equalTo(picture.snp.bottom).offset(7.5)
         }
         discountPriceLabel.snp.makeConstraints { (make) in
             make.left.equalTo(goodsNameLabel)
-            make.top.equalTo(goodsNameLabel.snp.bottom).offset(9)
+            make.top.equalTo(goodsNameLabel.snp.bottom).offset(7.5)
 //            make.bottom.equalToSuperview()
         }
         rmbLabel.snp.makeConstraints { (make) in
@@ -93,12 +90,13 @@ class ULimitedTimeCell: UBaseCollectionViewCell {
         
     }
     
-    var data:String? {
+    var data: miaosha_goods_list? {
         didSet {
             guard let data = data else { return }
-            let priceString = NSMutableAttributedString.init(string: data)
-            priceString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSNumber.init(value: 1), range: NSRange(location: 0, length: priceString.length))
-            originalPriceLabel.attributedText = priceString
+            goodsNameLabel.text = data.name
+            originalPriceLabel.setUnderLine(text: "¥\(data.price)")
+            rmbLabel.text = data.miaosha_price
+            picture.load(data.pic)
             
         }
     }

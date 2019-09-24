@@ -51,7 +51,8 @@ class UFeaturedCell: UBaseCollectionViewCell {
         
         //MARK:精选商品名称
         featuredName.snp.makeConstraints { (make) in
-            make.left.right.equalTo(featuredPic.snp.right).inset(12)
+            make.left.equalTo(featuredPic.snp.right).offset(12)
+            make.right.equalToSuperview().inset(12)
             make.top.equalToSuperview().offset(12.5)
         }
         
@@ -73,6 +74,17 @@ class UFeaturedCell: UBaseCollectionViewCell {
             make.bottom.equalTo(currentPrice)
         }
         
+    }
+    
+    var data: miaosha_goods_list?{
+        didSet{
+            guard let data = data else { return }
+            featuredPic.load(data.pic)
+            featuredName.text = data.name
+            buyNum.text = "\(data.start_time)人已买"
+            currentPrice.text = "¥\(data.miaosha_price)"
+            beforePrice.setUnderLine(text: "¥\(data.price)")
+        }
     }
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+//MARK:超级品牌cell
 class UMainSuperBrandCell: UBaseTableViewCell {
     
     var heightConstraint:Constraint? = nil
@@ -66,7 +67,7 @@ class UMainSuperBrandCell: UBaseTableViewCell {
         
     }
     
-    var model:[String]? {
+    var model:[new_mch_list]? {
         didSet {
             guard model != nil else { return }
             
@@ -107,12 +108,7 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
             showHUDInView(text: "\(indexPath.item)--3", inView: topVC!.view)
         }
 
-        var dd = [String]()
-        let radom = Int(arc4random() % 3) + 1
-        for _ in 1...radom {
-            dd.append("")
-        }
-        cell.data = dd
+        cell.data = model![indexPath.row]
         return cell
     }
     

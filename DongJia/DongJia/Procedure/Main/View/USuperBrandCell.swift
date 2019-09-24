@@ -146,13 +146,17 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods1(){
-        guard data?.count ?? 0 > 0 else { return }
+        guard data?.goods_list.count ?? 0 > 0 else { return }
         
         contentView.addSubview(goods1BgView)
-        contentView.addSubview(goods1PicView)
-        contentView.addSubview(goods1BeforePrice)
-        contentView.addSubview(goods1CurrentPrice)
-        contentView.addSubview(goods1Btn)
+        goods1BgView.addSubview(goods1PicView)
+        goods1BgView.addSubview(goods1BeforePrice)
+        goods1BgView.addSubview(goods1CurrentPrice)
+        goods1BgView.addSubview(goods1Btn)
+        
+        goods1PicView.load(data!.goods_list[0].cover_pic)
+        goods1BeforePrice.text = data!.goods_list[0].original_price
+        goods1CurrentPrice.text = data?.goods_list[0].price
         
         //MARK:商品1白色背景
         goods1BgView.snp.makeConstraints { (make) in
@@ -188,13 +192,17 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods2(){
-        guard data?.count ?? 0 > 1 else { return }
+        guard data?.goods_list.count ?? 0 > 1 else { return }
         
         contentView.addSubview(goods2BgView)
-        contentView.addSubview(goods2PicView)
-        contentView.addSubview(goods2BeforePrice)
-        contentView.addSubview(goods2CurrentPrice)
-        contentView.addSubview(goods2Btn)
+        goods2BgView.addSubview(goods2PicView)
+        goods2BgView.addSubview(goods2BeforePrice)
+        goods2BgView.addSubview(goods2CurrentPrice)
+        goods2BgView.addSubview(goods2Btn)
+        
+        goods2PicView.load(data!.goods_list[1].cover_pic)
+        goods2BeforePrice.text = data!.goods_list[1].original_price
+        goods2CurrentPrice.text = data?.goods_list[1].price
         
         //MARK:商品2白色背景
         goods2BgView.snp.makeConstraints { (make) in
@@ -230,13 +238,17 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods3(){
-        guard data?.count ?? 0 > 2 else { return }
+        guard data?.goods_list.count ?? 0 > 2 else { return }
         
         contentView.addSubview(goods3BgView)
-        contentView.addSubview(goods3PicView)
-        contentView.addSubview(goods3BeforePrice)
-        contentView.addSubview(goods3CurrentPrice)
-        contentView.addSubview(goods3Btn)
+        goods3BgView.addSubview(goods3PicView)
+        goods3BgView.addSubview(goods3BeforePrice)
+        goods3BgView.addSubview(goods3CurrentPrice)
+        goods3BgView.addSubview(goods3Btn)
+        
+        goods3PicView.load(data!.goods_list[2].cover_pic)
+        goods3BeforePrice.text = data!.goods_list[2].original_price
+        goods3CurrentPrice.text = data?.goods_list[2].price
         
         //MARK:商品3白色背景
         goods3BgView.snp.makeConstraints { (make) in
@@ -280,9 +292,14 @@ class USuperBrandCell: UBaseCollectionViewCell {
         goods3Action?()
     }
     
-    var data:[String]? {
+    var data: new_mch_list? {
         didSet {
-            guard data != nil else { return }
+            guard let data = data else { return }
+            bgColorView.backgroundColor = UIColor.hex(hexString: data.mch_color)
+            bgPicView.load(data.header_bg)
+            shopName.text = data.mch_name
+            shopIcon.load(data.mch_logo)
+            
             configGoods1()
             configGoods2()
             configGoods3()

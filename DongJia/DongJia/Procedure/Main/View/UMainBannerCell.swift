@@ -35,7 +35,7 @@ class UMainBannerCell: UBaseTableViewCell {
         bannerView.adjustWhenViewWillAppear()
     }
     
-    var urlArray : [String]? {
+    var urlArray : [banner_list]? {
         didSet {
             guard urlArray != nil else { return }
             bannerView.reloadData()
@@ -56,7 +56,7 @@ extension UMainBannerCell: ZKCycleScrollViewDataSource {
     
     func cycleScrollView(_ cycleScrollView: ZKCycleScrollView, cellForItemAt indexPath: IndexPath) -> ZKCycleScrollViewCell {
         let cell = cycleScrollView.dequeueReusableCell(for: indexPath) as! UBannerImageCell
-        cell.imageUrl = urlArray![indexPath.item]
+        cell.imageUrl = urlArray![indexPath.item].pic_url
         return cell
     }
 }

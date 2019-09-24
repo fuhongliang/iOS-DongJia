@@ -66,7 +66,7 @@ class UMainFeaturedCell: UBaseTableViewCell {
         
     }
     
-    var model:[String]? {
+    var model:[miaosha_goods_list]? {
         didSet {
             guard model != nil else { return }
             
@@ -97,7 +97,7 @@ extension UMainFeaturedCell: UICollectionViewDelegate, UICollectionViewDataSourc
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UFeaturedCell.self)
-        
+        cell.data = model![indexPath.item]
         return cell
     }
     

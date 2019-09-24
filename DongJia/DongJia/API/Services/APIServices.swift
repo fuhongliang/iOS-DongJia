@@ -13,11 +13,11 @@ import MBProgressHUD
 
 let ssl: Bool = true
 //MARK:开发环境
- let baseHttpsUrl: String = "https://testshequapi.ifhu.cn/mch"
- let baseHttpUrl: String = "https://testshequapi.ifhu.cn/mch"
+ let baseHttpsUrl: String = "https://testjiaju.ifhu.cn"
+ let baseHttpUrl: String = "https://testjiaju.ifhu.cn"
 //MARK:正式环境
-//let baseHttpsUrl: String = "https://shequapi.ifhu.cn/mch"
-//let baseHttpUrl: String = "https://shequapi.ifhu.cn/mch"
+//let baseHttpsUrl: String = "https://jiaju.ifhu.cn"
+//let baseHttpUrl: String = "https://jiaju.ifhu.cn"
 
 // MARK: 网络请求加载插件
 let loadingPlugin = NetworkActivityPlugin { (type, target) in
@@ -47,40 +47,44 @@ let TimeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<NetApi>.Request
 //MARK: 接口函数
 enum NetApi {
     
+    case getMainData(param: [String:Any]) /// 获取首页数据
+    
 }
 
 //MARK: 请求对象的封装
 extension NetApi: TargetType {
     var baseURL: URL {
-        if ssl {
-            return URL(string: baseHttpsUrl)!
-        }
-        else {
-            return URL(string: baseHttpUrl)!
-        }
+        return URL(string: ssl ? baseHttpsUrl : baseHttpUrl)!
     }
 
+    /// 返回路径时 需要动态拼接 则可以在case中添加参数
+    /// 例如:get(let param)
     var path: String {
         switch self {
-        
+        case .getMainData:
+            return "/index.php?r=api/default/index"
         }
     }
 
     var method: Moya.Method {
-//        switch self {
-//        case :
-          return .post
+        switch self {
+        case .getMainData:
+          return .get
 
-//        }
+        }
     }
 
+    /// 用作单元测试  只在单元测试文件中有效
     var sampleData: Data {
         return Data()
     }
 
     var task: Task {
+        switch self {
+        case .getMainData(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
         
-        return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
+        }
         
     }
 
@@ -88,6 +92,7 @@ extension NetApi: TargetType {
         var dict: [String:String] = [
             "Content-Type":"application/json"
         ]
+        
 //        switch self {
 //        case .logout:
 //            let token: String = getToken() // 本地token
@@ -103,10 +108,10 @@ class APIService {
 
     private init(needMBProgressHUD:Bool) {
         if (needMBProgressHUD) {
-            let APIProvider = MoyaProvider<NetApi>(plugins: [loadingPlugin,NetworkLoggerPlugin(verbose: true, cURL: true)])
+            let APIProvider = MoyaProvider<NetApi>(endpointClosure:MoyaProvider.pqEndpointMapping, plugins: [loadingPlugin,NetworkLoggerPlugin(verbose: true, cURL: true)])
             apiProvider = APIProvider
         }else {
-            let APIProvider = MoyaProvider<NetApi>(plugins: [NetworkLoggerPlugin(verbose: true, cURL: true)])
+            let APIProvider = MoyaProvider<NetApi>(endpointClosure:MoyaProvider.pqEndpointMapping, plugins: [NetworkLoggerPlugin(verbose: true, cURL: true)])
             apiProvider = APIProvider
         }
     }
@@ -131,35 +136,32 @@ class APIService {
                     let statusCode =  moyaResponse.statusCode
                     if statusCode == 200 {
                         if let mapData: [String:Any] = anyData as? [String:Any] {
-                            if mapData.keys.contains("code") {
-                                if let code = mapData["code"] as? Int {
-                                    if code == 0 {
+                            if mapData.keys.contains("code") { //判断接口返回是否有code字段
+                                if let code = mapData["code"] as? Int { // 判断接口是否能正确解析code字段
+                                    if code == 0 { // 接口正确返回
                                         success(data)
-                                    }else if code == 10000 {//token过期
+                                    } else if code == 10000 {//---登录暂时没用到---token过期
                                         (UIApplication.shared.delegate as! AppDelegate).showLoginView()
-                                    }
-                                    else {
+                                    } else { // 接口返回其他异常情况
                                         let msg: String = mapData["msg"] as? String ?? "Error message"
                                         let errorModel = APIErrorModel.getErrorModel(_code: code, _msg: msg, _data: nil)
                                         fail(errorModel)
                                     }
-                                }
-                                else {
+                                } else { // 接口没有正确返回code字段值
                                     let errorModel = APIErrorModel.getErrorModel(_code: moyaResponse.statusCode, _msg: "Data not contain code", _data: nil)
                                     fail(errorModel)
                                 }
-                            }else {
+                            } else { // 接口没有正确返回code字段值
                                 let errorModel = APIErrorModel.getErrorModel(_code: moyaResponse.statusCode, _msg: "Data not contain code", _data: nil)
                                 fail(errorModel)
                             }
-                        }
-                        else {
+                        } else { //返回结果不是一个字典(Json)
                             let errorModel = APIErrorModel.getErrorModel(_code: moyaResponse.statusCode, _msg: String(moyaResponse.description), _data: nil)
                             fail(errorModel)
                         }
                     }else if statusCode == 401 {//token过期
 //                        (UIApplication.shared.delegate as! AppDelegate).showLoginView()
-                    }else {
+                    } else { // 如果是其他返回码则处理响应的异常
                         if let mapData: [String:Any] = anyData as? [String:Any] {
                             if mapData.keys.contains("msg") {
                                 if let message = mapData["msg"] as? String {

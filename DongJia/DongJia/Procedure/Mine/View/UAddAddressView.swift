@@ -173,8 +173,6 @@ class UAddAddressView: BaseView {
             make.top.equalTo(contactNameTf.snp.bottom)
         }
         
-       
-        
     }
     
 }

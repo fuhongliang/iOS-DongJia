@@ -8,6 +8,7 @@
 
 import SnapKit
 
+//MARK:爆款热卖cell
 class UMainHotCell: UBaseTableViewCell {
     
     var heightConstraint:Constraint? = nil
@@ -25,7 +26,7 @@ class UMainHotCell: UBaseTableViewCell {
     
     let layout = UICollectionViewFlowLayout().then{
         $0.scrollDirection = .vertical //设置滚动方向
-        $0.itemSize = CGSize(width: hotCellWidth, height: 135)//设置cell的大小
+        $0.itemSize = CGSize(width: hotCellWidth, height: hotCellWidth*0.9+40)//设置cell的大小
         $0.minimumInteritemSpacing = 6
         $0.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
     }
@@ -65,7 +66,7 @@ class UMainHotCell: UBaseTableViewCell {
         
     }
     
-    var model:[String]? {
+    var model:[recommend_goods]? {
         didSet {
             guard model != nil else { return }
             
@@ -85,7 +86,7 @@ extension UMainHotCell: UICollectionViewDelegate, UICollectionViewDataSource{
     
     //MARK:section数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1//model?.pic_list.count ?? 0 == 0 ? 0 :1;
+        return 1
     }
     
     //MARK:每个section有多少Item
@@ -96,7 +97,7 @@ extension UMainHotCell: UICollectionViewDelegate, UICollectionViewDataSource{
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UHotGoodsCell.self)
-        cell.data = "¥2199"
+        cell.data = model![indexPath.item]
 
         return cell
     }
