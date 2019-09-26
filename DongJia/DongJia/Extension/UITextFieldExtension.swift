@@ -14,7 +14,16 @@ var maxNumberKey:Double = 0
 
 extension UITextField{
     
-    //MARK:设置输入框类型为数字时 最大输入数字
+    /// 设置placeholder的颜色
+    public func setPlaceholderColor(_ color: UIColor) {
+        
+        let mutableStr = NSMutableAttributedString(string: self.placeholder ?? "")
+        
+        mutableStr.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range:NSRange(location:0, length:mutableStr.length))
+        self.attributedPlaceholder = mutableStr
+    }
+    
+    /// 设置输入框类型为数字时 最大输入数字
     public var maxTextNumber: Double {
         set {
             objc_setAssociatedObject(self, &maxNumberKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
@@ -41,7 +50,7 @@ extension UITextField{
         }
     }
     
-    //MARK:设置输入框最大输入长度
+    /// 设置输入框最大输入长度
     var dl_maxLength:Int32 {
         get {
             return (objc_getAssociatedObject(self, &_dl_LimitMaxLengthKey) as AnyObject).int32Value

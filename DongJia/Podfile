@@ -26,5 +26,6 @@ target 'DongJia' do
 #  pod 'AMapSearch'
   pod 'SCLAlertView' #弹窗
   pod 'JXSegmentedView' #滑动页面
-  
+  pod 'WechatOpenSDK' #微信集成
+
 end

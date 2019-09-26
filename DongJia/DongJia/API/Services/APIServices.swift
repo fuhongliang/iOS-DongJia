@@ -48,6 +48,7 @@ let TimeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<NetApi>.Request
 enum NetApi {
     
     case getMainData(param: [String:Any]) /// 获取首页数据
+    case wxLogin(param: [String:Any]) /// 微信登录接口
     
 }
 
@@ -63,14 +64,17 @@ extension NetApi: TargetType {
         switch self {
         case .getMainData:
             return "/index.php?r=api/default/index"
+        case .wxLogin:
+            return "/index.php?r=api/passport/app-login"
         }
     }
 
     var method: Moya.Method {
         switch self {
         case .getMainData:
-          return .get
-
+            return .get
+        case .wxLogin:
+            return .post
         }
     }
 
@@ -83,15 +87,16 @@ extension NetApi: TargetType {
         switch self {
         case .getMainData(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
-        
+        case .wxLogin(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
         }
         
     }
 
     var headers: [String : String]? {
-        var dict: [String:String] = [
-            "Content-Type":"application/json"
-        ]
+//        var dict: [String:String] = [
+//            "Content-Type":"application/json"
+//        ]
         
 //        switch self {
 //        case .logout:
@@ -100,7 +105,7 @@ extension NetApi: TargetType {
 //        default:
 //            break
 //        }
-        return dict
+        return nil
     }
 }
 
@@ -140,8 +145,9 @@ class APIService {
                                 if let code = mapData["code"] as? Int { // 判断接口是否能正确解析code字段
                                     if code == 0 { // 接口正确返回
                                         success(data)
-                                    } else if code == 10000 {//---登录暂时没用到---token过期
+                                    } else if code == 10000 {//---服务器返回 异常状态---(token)
                                         (UIApplication.shared.delegate as! AppDelegate).showLoginView()
+                                        print("返回code----10000")
                                     } else { // 接口返回其他异常情况
                                         let msg: String = mapData["msg"] as? String ?? "Error message"
                                         let errorModel = APIErrorModel.getErrorModel(_code: code, _msg: msg, _data: nil)
@@ -161,6 +167,7 @@ class APIService {
                         }
                     }else if statusCode == 401 {//token过期
 //                        (UIApplication.shared.delegate as! AppDelegate).showLoginView()
+                        print("服务器返回statusCode=\(statusCode)")
                     } else { // 如果是其他返回码则处理响应的异常
                         if let mapData: [String:Any] = anyData as? [String:Any] {
                             if mapData.keys.contains("msg") {

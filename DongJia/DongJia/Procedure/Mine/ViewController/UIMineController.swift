@@ -9,21 +9,41 @@
 import UIKit
 
 class UIMineController: UBaseViewController {
-
+    
+    private var service = APIUserServices()
+    
     let mineView = UMineView()
     /// 修改状态栏颜色
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     override func configUI() {
+        //注册通知--用于接收微信登录的返回的code
+        NotificationCenter.default.addObserver(self, selector: #selector(WXLoginSuccess(_:)), name: Notification.Name.weChatLoginNotification, object: nil)
+        
         self.view.addSubview(mineView)
         mineView.delegate = self
         mineView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        // 判断当前已经登录 就把保存的登录状态赋值
+        if APIUser.shared.user != nil {
+            mineView.loginData = APIUser.shared.user
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @objc func WXLoginSuccess(_ notification: Notification){
+        let code = notification.object as! String
+        print("微信返回的Code----\(code)")
+        service.login(wxCode: code, { (APILoginResponseModel) in
+            self.mineView.loginData = APILoginResponseModel.data
+        }) { (APIErrorModel) in
+            
+        }
     }
 
 }
@@ -33,11 +53,20 @@ extension UIMineController: UMineViewDelegate {
     }
     
     func wechatLogin() {
-        showHUDInView(text: "微信登录", inView: self.view, isClick: true)
+        if WXApi.isWXAppInstalled() {
+            showHUDInView(text: "还未安装微信,请先安装", inView: self.view)
+            return
+        }
+        let req = SendAuthReq()
+        req.scope = "snsapi_userinfo"
+        req.state = "dongjia_wechat_login_request"
+        WXApi.send(req)
+        print("----微信请求信息----")
     }
     
     func logout() {
-        showHUDInView(text: "退出登录", inView: self.view, isClick: true)
+        mineView.loginData = nil
+        APIUser.shared.cleanUser()
     }
     
     func notPayOrder() {
@@ -67,7 +96,6 @@ extension UIMineController: UMineViewDelegate {
     }
     
     func obtainAddress() {
-//        showHUDInView(text: "收货地址", inView: self.view, isClick: true)
         let vc = UIMyObtainAddressViewController()
         vc.title = "我的收货地址"
         pushViewController(vc, animated: true)

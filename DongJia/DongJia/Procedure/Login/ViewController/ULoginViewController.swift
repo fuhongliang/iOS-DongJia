@@ -115,12 +115,12 @@ extension ULoginViewController: ULoginViewDelegate {
             return
         }
         
-        service.getLoginMsg(phoneNumber: phoneNumber, { (APIListModel) in
-            showHUDInView(text: "获取验证码成功", inView: self.view)
-            self.startTimer()
-        }, { (APIErrorModel) in
-            showHUDInView(text: APIErrorModel.msg ?? "获取验证码失败", inView: self.view)
-        })
+//        service.getLoginMsg(phoneNumber: phoneNumber, { (APIListModel) in
+//            showHUDInView(text: "获取验证码成功", inView: self.view)
+//            self.startTimer()
+//        }, { (APIErrorModel) in
+//            showHUDInView(text: APIErrorModel.msg ?? "获取验证码失败", inView: self.view)
+//        })
     }
 
     //MARK:申请入驻
@@ -141,12 +141,12 @@ extension ULoginViewController: ULoginViewDelegate {
             return
         }
 
-        service.login(phoneNumber: phoneNumber, password: password, jpush_registration_id: getJPushRegistrationID(), { (APILoginResponseModel) in
-            let rootVC = UIApplication.shared.delegate as! AppDelegate
-            rootVC.window?.rootViewController = UTabBarController()
-        }) { (APIErrorModel) in
-            showHUDInView(text: APIErrorModel.msg ?? "登录失败", inView: self.view)
-        }
+//        service.login(phoneNumber: phoneNumber, password: password, jpush_registration_id: getJPushRegistrationID(), { (APILoginResponseModel) in
+//            let rootVC = UIApplication.shared.delegate as! AppDelegate
+//            rootVC.window?.rootViewController = UTabBarController()
+//        }) { (APIErrorModel) in
+//            showHUDInView(text: APIErrorModel.msg ?? "登录失败", inView: self.view)
+//        }
     }
 }
 

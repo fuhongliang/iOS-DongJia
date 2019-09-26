@@ -295,6 +295,7 @@ class UMineView: BaseView {
             make.centerX.equalToSuperview()
         }
         //MARK:登录后的背景
+        haveLoginView.isHidden = true
         haveLoginView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.bottom.left.equalToSuperview()
@@ -363,10 +364,8 @@ class UMineView: BaseView {
         notObtainOrder.setImgUpTitleDown()
         completeOrder.setImgUpTitleDown()
         
-        
-        
         //MARK:未登录的背景
-        logoutBgView.isHidden = true
+        logoutBgView.isHidden = false
         logoutBgView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.bottom.left.equalToSuperview()
@@ -435,6 +434,7 @@ class UMineView: BaseView {
         }
         
         self.addSubview(logout)
+        logout.isHidden = true
         //MARK:退出登录
         logout.snp.makeConstraints { (make) in
             make.top.equalTo(operationWhiteBg.snp.bottom).offset(40)
@@ -444,6 +444,24 @@ class UMineView: BaseView {
         }
         logout.addTarget(self, action: #selector(tapLogout), for: .touchUpInside)
         
+    }
+    
+    var loginData: APILoginDataModel? {
+        didSet{
+            guard let loginData = loginData else {
+                haveLoginView.isHidden = true
+                logoutBgView.isHidden = false
+                logout.isHidden = true
+                mineName.text = "Hi~欢迎来到懂家"
+                mineIcon.image = UIImage.init(named: "default_icon")
+                return
+            }
+            haveLoginView.isHidden = false
+            logoutBgView.isHidden = true
+            mineName.text = loginData.nickname
+            mineIcon.load(loginData.avatar_url)
+            logout.isHidden = false
+        }
     }
     
     @objc func tapMyAllOrder(){
@@ -483,18 +501,12 @@ class UMineView: BaseView {
     }
     
     @objc func tapWechatLogin(){
-        haveLoginView.isHidden = false
-        logoutBgView.isHidden = true
-        mineName.text = "Muzi_Lm"
-        logout.isHidden = false
+
         delegate?.wechatLogin()
     }
     
     @objc func tapLogout(){
-        haveLoginView.isHidden = true
-        logoutBgView.isHidden = false
-        logout.isHidden = true
-        mineName.text = "Hi~欢迎来到懂家"
+        
         delegate?.logout()
     }
 

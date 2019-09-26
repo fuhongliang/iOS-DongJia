@@ -8,4 +8,8 @@
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
+
+#import "WXApi.h"
+#import "WXApiObject.h"
+
 #endif

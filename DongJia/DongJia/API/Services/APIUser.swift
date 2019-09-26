@@ -14,7 +14,7 @@ class APIUser {
 
     public static let shared: APIUser = APIUser()
 
-    public var user: MchInfo?
+    public var user: APILoginDataModel?
 
     public func saveUserToCache() {
         guard user != nil else {
@@ -33,7 +33,7 @@ class APIUser {
     public func loadUserFromCache() {
         if let data = UserDefaults.standard.object(forKey: "MYiMei_USER") as? Data {
             do {
-                user = try JSONDecoder().decode(MchInfo.self, from: data)
+                user = try JSONDecoder().decode(APILoginDataModel.self, from: data)
             }
             catch {
                 print("Error")

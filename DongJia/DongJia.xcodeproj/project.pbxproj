@@ -89,6 +89,14 @@
 		DCB065082327CDA90094727C /* ZKCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB065072327CDA90094727C /* ZKCycleScrollView.swift */; };
 		DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB065092327CE840094727C /* UBannerImageCell.swift */; };
 		DCB0650C2328F2380094727C /* UMainClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0650B2328F2380094727C /* UMainClassificationCell.swift */; };
+		DCCEC4BC233A4C2D00892D11 /* UIColor+KLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4B7233A4C2D00892D11 /* UIColor+KLExtension.swift */; };
+		DCCEC4BD233A4C2D00892D11 /* KLCityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4B8233A4C2D00892D11 /* KLCityPickerView.swift */; };
+		DCCEC4BE233A4C2D00892D11 /* ConfigureMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4B9233A4C2D00892D11 /* ConfigureMacro.swift */; };
+		DCCEC4BF233A4C2D00892D11 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCCEC4BA233A4C2D00892D11 /* city.plist */; };
+		DCCEC4C0233A4C2D00892D11 /* UIView+KLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4BB233A4C2D00892D11 /* UIView+KLExtension.swift */; };
+		DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4C1233B495800892D11 /* NotificationNameExtension.swift */; };
+		DCCEC4C4233B4B7300892D11 /* APIMineServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4C3233B4B7300892D11 /* APIMineServices.swift */; };
+		DCCEC4C6233B4D1000892D11 /* APILoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4C5233B4D1000892D11 /* APILoginResponseModel.swift */; };
 		DCF5956F2334B64600C50B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF5956E2334B64600C50B88 /* Assets.xcassets */; };
 		DCF595712334CCE200C50B88 /* UIAddAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF595702334CCE200C50B88 /* UIAddAddressController.swift */; };
 		DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF595722334CD2500C50B88 /* UAddAddressView.swift */; };
@@ -205,6 +213,14 @@
 		DCB065072327CDA90094727C /* ZKCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZKCycleScrollView.swift; sourceTree = "<group>"; };
 		DCB065092327CE840094727C /* UBannerImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UBannerImageCell.swift; sourceTree = "<group>"; };
 		DCB0650B2328F2380094727C /* UMainClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainClassificationCell.swift; sourceTree = "<group>"; };
+		DCCEC4B7233A4C2D00892D11 /* UIColor+KLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+KLExtension.swift"; sourceTree = "<group>"; };
+		DCCEC4B8233A4C2D00892D11 /* KLCityPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KLCityPickerView.swift; sourceTree = "<group>"; };
+		DCCEC4B9233A4C2D00892D11 /* ConfigureMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureMacro.swift; sourceTree = "<group>"; };
+		DCCEC4BA233A4C2D00892D11 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		DCCEC4BB233A4C2D00892D11 /* UIView+KLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+KLExtension.swift"; sourceTree = "<group>"; };
+		DCCEC4C1233B495800892D11 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
+		DCCEC4C3233B4B7300892D11 /* APIMineServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMineServices.swift; sourceTree = "<group>"; };
+		DCCEC4C5233B4D1000892D11 /* APILoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoginResponseModel.swift; sourceTree = "<group>"; };
 		DCF5956E2334B64600C50B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCF595702334CCE200C50B88 /* UIAddAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAddAddressController.swift; sourceTree = "<group>"; };
 		DCF595722334CD2500C50B88 /* UAddAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAddAddressView.swift; sourceTree = "<group>"; };
@@ -280,6 +296,18 @@
 				DC768AB52332359000595E2B /* UContactDesignerView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DC56BC91233A4B670089EE61 /* AddressView */ = {
+			isa = PBXGroup;
+			children = (
+				DCCEC4BA233A4C2D00892D11 /* city.plist */,
+				DCCEC4B9233A4C2D00892D11 /* ConfigureMacro.swift */,
+				DCCEC4B8233A4C2D00892D11 /* KLCityPickerView.swift */,
+				DCCEC4B7233A4C2D00892D11 /* UIColor+KLExtension.swift */,
+				DCCEC4BB233A4C2D00892D11 /* UIView+KLExtension.swift */,
+			);
+			path = AddressView;
 			sourceTree = "<group>";
 		};
 		DC6133A42333373600C52E9F /* Mine */ = {
@@ -385,6 +413,7 @@
 				DC768AB12332230F00595E2B /* UILabelExtension.swift */,
 				DC6133A22333205000C52E9F /* NSObjectExtension.swift */,
 				DC56BC8E2338E2B90089EE61 /* URLExtension.swift */,
+				DCCEC4C1233B495800892D11 /* NotificationNameExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -392,6 +421,7 @@
 		DCB06485232669FF0094727C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				DC56BC91233A4B670089EE61 /* AddressView */,
 				DCB065062327CDA90094727C /* ZKCycleScrollView */,
 				DCB06486232669FF0094727C /* TextView */,
 				DCB06488232669FF0094727C /* PhotoPicker */,
@@ -511,6 +541,7 @@
 			children = (
 				DCB064C223266E0D0094727C /* APIServices.swift */,
 				DC56BC8A233872770089EE61 /* APIMainService.swift */,
+				DCCEC4C3233B4B7300892D11 /* APIMineServices.swift */,
 				DCB064E123273BA90094727C /* APIUserServices.swift */,
 				DCB064BC23266DE00094727C /* APIUser.swift */,
 				DCB064C023266E040094727C /* APIToken.swift */,
@@ -524,6 +555,7 @@
 			children = (
 				DCB064D5232732720094727C /* APIResponseModels.swift */,
 				DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */,
+				DCCEC4C5233B4D1000892D11 /* APILoginResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -739,6 +771,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF5956F2334B64600C50B88 /* Assets.xcassets in Resources */,
+				DCCEC4BF233A4C2D00892D11 /* city.plist in Resources */,
 				DCB0645523263AD90094727C /* LaunchScreen.storyboard in Resources */,
 				DCB0644D23263AD50094727C /* Main.storyboard in Resources */,
 			);
@@ -824,6 +857,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCCEC4BC233A4C2D00892D11 /* UIColor+KLExtension.swift in Sources */,
 				DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */,
 				DCB064AC23266A000094727C /* FTCellConfiguration.swift in Sources */,
 				DC246E002331C4180087D84A /* UIDosController.swift in Sources */,
@@ -840,11 +874,13 @@
 				DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */,
 				DCB064D6232732720094727C /* APIResponseModels.swift in Sources */,
 				DCB064B723266A660094727C /* Utils.swift in Sources */,
+				DCCEC4BE233A4C2D00892D11 /* ConfigureMacro.swift in Sources */,
 				DCB064BF23266DF80094727C /* JPushRegistrationID.swift in Sources */,
 				DCB064D223266EE80094727C /* UBaseViewController.swift in Sources */,
 				DCB064AD23266A000094727C /* FTConstants.swift in Sources */,
 				DCB064A523266A000094727C /* URefresh.swift in Sources */,
 				DCB064A923266A000094727C /* UIScrollView+ParallaxHeader.swift in Sources */,
+				DCCEC4C6233B4D1000892D11 /* APILoginResponseModel.swift in Sources */,
 				DC2380142330E040006AE76F /* UMainFeaturedCell.swift in Sources */,
 				DCB064C123266E040094727C /* APIToken.swift in Sources */,
 				DC768AB62332359000595E2B /* UContactDesignerView.swift in Sources */,
@@ -870,6 +906,7 @@
 				DCB064AA23266A000094727C /* ParallaxHeader.swift in Sources */,
 				DCB064D023266EE80094727C /* UBaseTableViewCell.swift in Sources */,
 				DCB064A623266A000094727C /* UEmptyDataSet.swift in Sources */,
+				DCCEC4C4233B4B7300892D11 /* APIMineServices.swift in Sources */,
 				DCB064D423266EE80094727C /* UNavigationController.swift in Sources */,
 				DCB064B623266A660094727C /* Global.swift in Sources */,
 				DCB064B023266A000094727C /* FT+Extension.swift in Sources */,
@@ -878,12 +915,14 @@
 				DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */,
 				DCB06480232669510094727C /* UIColorExtension.swift in Sources */,
 				DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */,
+				DCCEC4C0233A4C2D00892D11 /* UIView+KLExtension.swift in Sources */,
 				DCB064A323266A000094727C /* PickerPresentAnimated.swift in Sources */,
 				DCB064A723266A000094727C /* RPicker.swift in Sources */,
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
 				DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
 				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
+				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
 				DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */,
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
@@ -894,6 +933,7 @@
 				DC768AB023321E0900595E2B /* UIDosDetailController.swift in Sources */,
 				DCB0650C2328F2380094727C /* UMainClassificationCell.swift in Sources */,
 				DCB0647F232669510094727C /* UIImageViewExtension.swift in Sources */,
+				DCCEC4BD233A4C2D00892D11 /* KLCityPickerView.swift in Sources */,
 				DCB064A823266A000094727C /* ParallaxHeaderMode.swift in Sources */,
 				DCB064C323266E0D0094727C /* APIServices.swift in Sources */,
 				DCB064B223266A000094727C /* UIScreen+Frame.swift in Sources */,

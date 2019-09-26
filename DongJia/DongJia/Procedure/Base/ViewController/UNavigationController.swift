@@ -36,11 +36,10 @@ class UNavigationController: UINavigationController {
             for subview in self.navigationBar.subviews {
                 if subview.className.contains("UINavigationBarContentView"){
                     for constant in subview.constraints {
-                        if (constant.constant == 16 ||
-                            constant.constant == -16 ||
-                            constant.constant == 20 ||
-                            constant.constant == -20) {
+                        if (constant.constant == 16 || constant.constant == 20 ) {
                             constant.constant = 15 //在这里更改需要的距离
+                        } else if (constant.constant == -16 || constant.constant == -20){
+                            constant.constant = -15 //在这里更改需要的距离
                         }
                     }
                 }

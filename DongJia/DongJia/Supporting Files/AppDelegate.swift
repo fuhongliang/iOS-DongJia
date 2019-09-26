@@ -13,6 +13,10 @@ import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let bugTagsAppKey = "680fb8a79fdc9d164099fd4295c9786e"
+    let jpushAppKey = "6b10a477d49cd29b167c53ca"
+    let weChatAppKey = "wx4cb54f0fb9038e2e"
 
     var window: UIWindow?
     // 后台任务标识
@@ -21,21 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         if(baseHttpsUrl.contains("test")){
-            Bugtags.start(withAppKey: "680fb8a79fdc9d164099fd4295c9786e", invocationEvent:    BTGInvocationEventBubble)
+            Bugtags.start(withAppKey: bugTagsAppKey, invocationEvent:    BTGInvocationEventBubble)
         }
         
         configBase()
+        configWeChat()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         APIUser.shared.loadUserFromCache()
         
-//        if APIUser.shared.user != nil {
-            self.window?.rootViewController = UTabBarController()
-//        } else {            //测试
-//            let vc = ULoginViewController()
-//            let nav = UINavigationController.init(rootViewController: vc)
-//            self.window?.rootViewController = nav
-//        }
+        self.window?.rootViewController = UTabBarController()
+        
         
         window?.makeKeyAndVisible()
         
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         //需要IDFA 功能，定向投放广告功能
         //let advertisingId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-        JPUSHService.setup(withOption: launchOptions, appKey: "6b10a477d49cd29b167c53ca", channel: "App Store", apsForProduction: false, advertisingIdentifier: nil)
+        JPUSHService.setup(withOption: launchOptions, appKey: jpushAppKey, channel: "App Store", apsForProduction: false, advertisingIdentifier: nil)
         
         JPUSHService.registrationIDCompletionHandler { (resCode, registrationID) in
             if resCode == 0{
@@ -147,7 +147,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -162,6 +161,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+//MARK:--微信事件代理
+extension AppDelegate: WXApiDelegate{
+    
+    func configWeChat(){
+        WXApi.registerApp(weChatAppKey)
+        print("微信注册\(weChatAppKey)")
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return WXApi.handleOpen(url, delegate: self)
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        WXApi.handleOpen(url, delegate: self)
+        return true
+    }
+    
+    func onResp(_ resp: BaseResp) { // 这里微信登录成功后
+        // 发送一个通知 通知所有观察此通知的地方 并进行处理
+        print("微信回调数据")
+        if resp.errCode == 0 && resp.type == 0 { // 授权成功
+            let response = resp as! SendAuthResp
+            
+            NotificationCenter.default.post(name: Notification.Name.weChatLoginNotification, object: response.code)
+        }
+    }
+    
+    func onReq(_ req: BaseReq) {
+        
+    }
+    
 }
 
 //MARK:--推送代理

@@ -29,11 +29,19 @@ class UIMyObtainAddressViewController: UBaseViewController {
     }
 
 }
-extension UIMyObtainAddressViewController: UMyObtainAddressViewDelegate,UITableViewDelegate, UITableViewDataSource {
+
+extension UIMyObtainAddressViewController: UMyObtainAddressViewDelegate {
     
     func addAddress() {
-        showHUDInView(text: "添加新地址", inView: self.view)
+        let vc = UIAddAddressController()
+        vc.title = "新增地址"
+        vc.isNewAddress = true
+        pushViewController(vc, animated: true)
     }
+    
+}
+
+extension UIMyObtainAddressViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return data.count
@@ -68,7 +76,10 @@ extension UIMyObtainAddressViewController: UMyObtainAddressViewDelegate,UITableV
             tableView.reloadData()
         }
         cell.editAddress = {
-            showHUDInView(text: "编辑", inView: self.view)
+            let vc = UIAddAddressController()
+            vc.title = "编辑地址"
+            vc.isNewAddress = false
+            self.pushViewController(vc, animated: true)
         }
         cell.deleteAddress = {
             showHUDInView(text: "删除", inView: self.view)
