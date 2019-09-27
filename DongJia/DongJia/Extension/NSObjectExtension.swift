@@ -10,7 +10,7 @@ import Foundation
 
 extension NSObject
 {
-    // MARK:返回className
+    /// 返回className
     var className:String{
         get{
             let name =  type(of: self).description()

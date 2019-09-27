@@ -359,10 +359,10 @@ class UMineView: BaseView {
             make.left.equalTo(notObtainOrder.snp.right)
             make.width.equalToSuperview().dividedBy(4)
         }
-        notPayOrder.setImgUpTitleDown()
-        notSendOrder.setImgUpTitleDown()
-        notObtainOrder.setImgUpTitleDown()
-        completeOrder.setImgUpTitleDown()
+        notPayOrder.setButtonShowType(.Bottom)
+        notSendOrder.setButtonShowType(.Bottom)
+        notObtainOrder.setButtonShowType(.Bottom)
+        completeOrder.setButtonShowType(.Bottom)
         
         //MARK:未登录的背景
         logoutBgView.isHidden = false

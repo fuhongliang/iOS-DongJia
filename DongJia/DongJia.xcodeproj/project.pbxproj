@@ -23,6 +23,11 @@
 		DC246E002331C4180087D84A /* UIDosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246DFF2331C4180087D84A /* UIDosController.swift */; };
 		DC246E022331C8D90087D84A /* UDosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E012331C8D90087D84A /* UDosCell.swift */; };
 		DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E03233204BC0087D84A /* UDosDetailView.swift */; };
+		DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */; };
+		DC34A64F233C7AB40042EEA8 /* UGoodsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A64E233C7AB40042EEA8 /* UGoodsDetailView.swift */; };
+		DC34A651233C95910042EEA8 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A650233C95910042EEA8 /* UIButtonExtension.swift */; };
+		DC34A653233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A652233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift */; };
+		DC34A655233CBC380042EEA8 /* UFootLoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A654233CBC380042EEA8 /* UFootLoadMoreView.swift */; };
 		DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */; };
 		DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */; };
 		DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */; };
@@ -138,6 +143,11 @@
 		DC246DFF2331C4180087D84A /* UIDosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosController.swift; sourceTree = "<group>"; };
 		DC246E012331C8D90087D84A /* UDosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosCell.swift; sourceTree = "<group>"; };
 		DC246E03233204BC0087D84A /* UDosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosDetailView.swift; sourceTree = "<group>"; };
+		DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGoodsDetailController.swift; sourceTree = "<group>"; };
+		DC34A64E233C7AB40042EEA8 /* UGoodsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsDetailView.swift; sourceTree = "<group>"; };
+		DC34A650233C95910042EEA8 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		DC34A652233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMainFeaturedDataResponsModel.swift; sourceTree = "<group>"; };
+		DC34A654233CBC380042EEA8 /* UFootLoadMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UFootLoadMoreView.swift; sourceTree = "<group>"; };
 		DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainLimitedCell.swift; sourceTree = "<group>"; };
 		DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULimitedTimeCell.swift; sourceTree = "<group>"; };
 		DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainHotCell.swift; sourceTree = "<group>"; };
@@ -298,6 +308,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DC34A649233C71B90042EEA8 /* Goods */ = {
+			isa = PBXGroup;
+			children = (
+				DC34A64B233C71DD0042EEA8 /* ViewController */,
+				DC34A64A233C71D20042EEA8 /* View */,
+			);
+			path = Goods;
+			sourceTree = "<group>";
+		};
+		DC34A64A233C71D20042EEA8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC34A64E233C7AB40042EEA8 /* UGoodsDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DC34A64B233C71DD0042EEA8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		DC56BC91233A4B670089EE61 /* AddressView */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +449,7 @@
 				DC6133A22333205000C52E9F /* NSObjectExtension.swift */,
 				DC56BC8E2338E2B90089EE61 /* URLExtension.swift */,
 				DCCEC4C1233B495800892D11 /* NotificationNameExtension.swift */,
+				DC34A650233C95910042EEA8 /* UIButtonExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -505,6 +541,7 @@
 		DCB064B323266A560094727C /* Procedure */ = {
 			isa = PBXGroup;
 			children = (
+				DC34A649233C71B90042EEA8 /* Goods */,
 				DC6133A42333373600C52E9F /* Mine */,
 				DC246DFC2331C3180087D84A /* Dos */,
 				DCB064EA23277B010094727C /* Main */,
@@ -556,6 +593,7 @@
 				DCB064D5232732720094727C /* APIResponseModels.swift */,
 				DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */,
 				DCCEC4C5233B4D1000892D11 /* APILoginResponseModel.swift */,
+				DC34A652233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -646,6 +684,7 @@
 				DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */,
 				DC2380132330E040006AE76F /* UMainFeaturedCell.swift */,
 				DC2380112330D94C006AE76F /* UFeaturedCell.swift */,
+				DC34A654233CBC380042EEA8 /* UFootLoadMoreView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -869,6 +908,7 @@
 				DCB064A223266A000094727C /* BPicker.swift in Sources */,
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
 				DCB064A123266A000094727C /* CustomPhotoPickerViewController.swift in Sources */,
+				DC34A651233C95910042EEA8 /* UIButtonExtension.swift in Sources */,
 				DCB064AB23266A000094727C /* FTConfiguration.swift in Sources */,
 				DC56BC8D2338732C0089EE61 /* APIMainDataResponsModel.swift in Sources */,
 				DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */,
@@ -898,6 +938,7 @@
 				DCB064F4232797E50094727C /* UMainSearchCell.swift in Sources */,
 				DCB06484232669510094727C /* UIBarButtonItemExtension.swift in Sources */,
 				DCB064D323266EE80094727C /* UTabBarController.swift in Sources */,
+				DC34A653233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift in Sources */,
 				DC56BC8B233872770089EE61 /* APIMainService.swift in Sources */,
 				DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */,
 				DCB064F62327A7230094727C /* UMainBannerCell.swift in Sources */,
@@ -914,6 +955,7 @@
 				DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */,
 				DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */,
 				DCB06480232669510094727C /* UIColorExtension.swift in Sources */,
+				DC34A655233CBC380042EEA8 /* UFootLoadMoreView.swift in Sources */,
 				DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */,
 				DCCEC4C0233A4C2D00892D11 /* UIView+KLExtension.swift in Sources */,
 				DCB064A323266A000094727C /* PickerPresentAnimated.swift in Sources */,
@@ -921,8 +963,10 @@
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
 				DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
+				DC34A64F233C7AB40042EEA8 /* UGoodsDetailView.swift in Sources */,
 				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
 				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,
+				DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
 				DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */,
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,

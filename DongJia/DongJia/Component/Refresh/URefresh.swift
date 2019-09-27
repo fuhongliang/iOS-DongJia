@@ -37,7 +37,17 @@ class URefreshHeader: MJRefreshGifHeader {
 
 class URefreshAutoHeader: MJRefreshHeader {}
 
-class URefreshFooter: MJRefreshBackNormalFooter {}
+class URefreshFooter: MJRefreshBackNormalFooter {
+    override func prepare() {
+        super.prepare()
+        backgroundColor = .background
+        isAutomaticallyChangeAlpha = true
+        setTitle("上拉加载更多", for: .idle)
+        setTitle("松开获取更多", for: .pulling)
+        setTitle("正在获取更多", for: .refreshing)
+        setTitle("就这么多啦,去别的地方看看吧", for: .noMoreData)
+    }
+}
 
 class URefreshAutoFooter: MJRefreshAutoFooter {}
 

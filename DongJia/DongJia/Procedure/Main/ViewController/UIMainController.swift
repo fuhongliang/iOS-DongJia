@@ -30,25 +30,27 @@ class UIMainController: UBaseViewController {
 //                             .superbrand,
 //                             .featured]
     
-    var cells: [MainItem]? {
+    var cells: [MainItem] = [] {
         didSet{
             tableView.reloadData()
         }
     }
     
-    var bannerUrl = [
-        "http://ww1.sinaimg.cn/mw690/9bbc284bgw1f9rk86nq06j20fa0a4whs.jpg",
-        "http://ww3.sinaimg.cn/mw690/9bbc284bgw1f9qg0bazmnj21hc0u0dop.jpg",
-        "http://ww2.sinaimg.cn/mw690/9bbc284bgw1f9qg0nw7zbj20rs0jntk7.jpg",
-        "http://ww2.sinaimg.cn/mw690/9bbc284bgw1f9qg0utssrj20sg0hyx0o.jpg",
-        "http://ww2.sinaimg.cn/mw690/9bbc284bgw1f9qg10w0w1j20s40jsah1.jpg"
-    ]
     var bannerList:[banner_list]! //banner图列表
     var couponList:[coupon_list]!
     var limitedList:miaosha! //限时抢购列表
     var hotGoodsList:[recommend_goods]! //爆款热卖列表
     var superBrandList:[new_mch_list]! //超级品牌列表
-    var featuredList:[miaosha_goods_list]! //精选列表
+    var featuredList:[featured_list] = [] //精选列表
+    
+    var currentPage = 1 // 当前精选的页数
+    var pageCount = 0 // 精选的总页数
+    /// 当前是否已经是精选列表的最大页数
+    var isMaxPage: Bool{
+        get {
+            return currentPage >= pageCount
+        }
+    }
     
     let tableView = UITableView(frame: .zero, style: .grouped).then {
         $0.frame = .zero
@@ -64,19 +66,21 @@ class UIMainController: UBaseViewController {
         $0.register(cellType: UMainHotCell.self)
         $0.register(cellType: UMainSuperBrandCell.self)
         $0.register(cellType: UMainFeaturedCell.self)
+        
     }
     
     override func configUI() {
-        
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        self.tableView.uFoot = URefreshFooter { [weak self] in self?.getFeaturedData() }
         getMainData()
     }
     
+    /// 获取首页数据
     func getMainData() {
         service.getMainData(district: "陆丰市", { (Model) in
             if Model.data == nil {
@@ -87,10 +91,31 @@ class UIMainController: UBaseViewController {
             self.limitedList = Model.data?.miaosha
             self.hotGoodsList = Model.data?.recommend_goods
             self.superBrandList = Model.data?.new_mch_list
-            self.featuredList = Model.data?.miaosha.goods_list
-            self.cells = [.search, .banner, .classification, .limited, .hot, .superbrand, .featured]
+            self.cells = [.search, .banner, .classification, .limited, .hot, .superbrand]
+            self.getFeaturedData()
+            
         }) { (APIErrorModel) in
             print(APIErrorModel.msg ?? "msg为空")
+        }
+    }
+    
+    /// 获取精选列表数据
+    func getFeaturedData() {
+
+        service.getMainFeaturedData(page: currentPage, { (Data) in
+            self.featuredList.append(contentsOf: Data.data?.list ?? [])
+            if (self.cells.count > 0 && self.currentPage == 1){
+                self.cells.append(.featured)
+            }
+            self.currentPage += 1
+            self.pageCount = Data.data?.page_count ?? 1
+        }) { (APIErrorModel) in
+            print(APIErrorModel.msg ?? "精选列表出错  错误信息:--")
+        }
+        if(isMaxPage) {
+            tableView.uFoot.endRefreshingWithNoMoreData()
+        } else {
+            tableView.uFoot.endRefreshing()
         }
     }
 
@@ -99,7 +124,7 @@ class UIMainController: UBaseViewController {
 extension UIMainController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return cells?.count ?? 0
+        return cells.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,7 +133,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
     
     //MARK:返回cell的标题头
     func getHeaderTitle(viewForHeaderInSection section: Int) -> String?{
-        let cellModel = cells![section]
+        let cellModel = cells[section]
         switch cellModel {
         case .limited:
             return "限时抢购"
@@ -151,11 +176,11 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        return CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = cells![indexPath.section]
+        let cellModel = cells[indexPath.section]
         switch cellModel {
         case .search:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainSearchCell.self)
@@ -194,29 +219,15 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .hot:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainHotCell.self)
-            
-            cell.frame = tableView.bounds
-            cell.layoutIfNeeded()
-            
             cell.model = hotGoodsList
-            
             return cell
         case .superbrand:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainSuperBrandCell.self)
-            
-            cell.frame = tableView.bounds
-            cell.layoutIfNeeded()
-            
             cell.model = superBrandList
             return cell
         case .featured:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainFeaturedCell.self)
-            
-            cell.frame = tableView.bounds
-            cell.layoutIfNeeded()
-            
             cell.model = featuredList
-            
             return cell
         }
         

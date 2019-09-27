@@ -46,9 +46,12 @@ let TimeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<NetApi>.Request
 
 //MARK: 接口函数
 enum NetApi {
-    
-    case getMainData(param: [String:Any]) /// 获取首页数据
-    case wxLogin(param: [String:Any]) /// 微信登录接口
+    /// 获取首页数据
+    case getMainData(param: [String:Any])
+    /// 获取首页的懂家精选数据
+    case getMainFeaturedData(param: [String:Any])
+    /// 微信登录接口
+    case wxLogin(param: [String:Any])
     
 }
 
@@ -64,6 +67,8 @@ extension NetApi: TargetType {
         switch self {
         case .getMainData:
             return "/index.php?r=api/default/index"
+        case .getMainFeaturedData:
+            return "/index.php?r=api/default/index-recommend"
         case .wxLogin:
             return "/index.php?r=api/passport/app-login"
         }
@@ -71,7 +76,7 @@ extension NetApi: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .getMainData:
+        case .getMainData,.getMainFeaturedData:
             return .get
         case .wxLogin:
             return .post
@@ -86,6 +91,8 @@ extension NetApi: TargetType {
     var task: Task {
         switch self {
         case .getMainData(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .getMainFeaturedData(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .wxLogin(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)

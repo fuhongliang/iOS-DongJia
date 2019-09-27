@@ -10,6 +10,7 @@ import UIKit
 
 extension UIImageView {
     
+    /// 加载网络图片
     func load(_ url:String?){
         let url = URL(string: url ?? "")
         self.kf.setImage(with: url)

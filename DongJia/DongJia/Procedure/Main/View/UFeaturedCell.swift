@@ -76,14 +76,14 @@ class UFeaturedCell: UBaseCollectionViewCell {
         
     }
     
-    var data: miaosha_goods_list?{
+    var data: featured_list?{
         didSet{
             guard let data = data else { return }
-            featuredPic.load(data.pic)
+            featuredPic.load(data.cover_pic)
             featuredName.text = data.name
-            buyNum.text = "\(data.start_time)人已买"
-            currentPrice.text = "¥\(data.miaosha_price)"
-            beforePrice.setUnderLine(text: "¥\(data.price)")
+            buyNum.text = "\(data.show_integral)人已买"
+            currentPrice.text = "¥\(data.price)"
+            beforePrice.setUnderLine(text: "¥\(data.original_price)")
         }
     }
     

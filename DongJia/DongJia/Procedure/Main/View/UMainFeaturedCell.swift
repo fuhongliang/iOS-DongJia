@@ -11,8 +11,10 @@ import SnapKit
 
 class UMainFeaturedCell: UBaseTableViewCell {
     
-    var heightConstraint:Constraint? = nil
+    private let service = APIMainService()
     
+    var heightConstraint:Constraint? = nil
+
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
         
         $0.showsVerticalScrollIndicator = false
@@ -32,7 +34,7 @@ class UMainFeaturedCell: UBaseTableViewCell {
     }
     
     override func configUI() {
-        
+   
         contentView.backgroundColor = .background
         
         let top = UIView()
@@ -49,7 +51,7 @@ class UMainFeaturedCell: UBaseTableViewCell {
             make.top.equalTo(top)
             make.width.equalToSuperview().inset(15)
             make.centerX.equalToSuperview()
-            self.heightConstraint = make.height.equalTo(44).constraint
+            self.heightConstraint = make.height.equalTo(0).constraint
         })
         
         let bottom = UIView()
@@ -66,10 +68,8 @@ class UMainFeaturedCell: UBaseTableViewCell {
         
     }
     
-    var model:[miaosha_goods_list]? {
+    var model:[featured_list] = [] {
         didSet {
-            guard model != nil else { return }
-            
             //collectionView重新加载数据
             self.collectionView.reloadData()
             
@@ -86,23 +86,25 @@ extension UMainFeaturedCell: UICollectionViewDelegate, UICollectionViewDataSourc
     
     //MARK:section数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1//model?.pic_list.count ?? 0 == 0 ? 0 :1;
+        return model.count == 0 ? 0 : 1;
     }
     
     //MARK:每个section有多少Item
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model?.count ?? 0
+        return model.count
     }
     
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UFeaturedCell.self)
-        cell.data = model![indexPath.item]
+        cell.data = model[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showHUDInView(text: "\(indexPath.item)", inView: topVC!.view)
+        showHUDInView(text: "\(indexPath.item)", inView: topVC!.view, isClick: true)
+        let vc = UIGoodsDetailController()
+        topVC?.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

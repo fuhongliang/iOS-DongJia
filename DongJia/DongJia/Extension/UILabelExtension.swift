@@ -10,6 +10,7 @@ import Foundation
 
 extension UILabel {
     
+    /// 设置行间距
     func setTextAndLineSpacing(text: String, space: CGFloat){
         //通过富文本来设置行间距
         let paraph = NSMutableParagraphStyle()
@@ -20,6 +21,7 @@ extension UILabel {
         self.attributedText = NSAttributedString(string: text, attributes: attributes)
     }
     
+    /// 设置中划线
     func setUnderLine(text: String){
         let priceString = NSMutableAttributedString.init(string: text)
         priceString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSNumber.init(value: 1), range: NSRange(location: 0, length: priceString.length))

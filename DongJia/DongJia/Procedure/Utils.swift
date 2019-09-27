@@ -8,6 +8,28 @@
 
 import UIKit
 
+private var loadMoreView: UIView!
+private var loadMoreViewActivity: UIActivityIndicatorView!
+
+func getLoadMoreView(frame: CGRect) -> UIView{
+    
+    loadMoreView = UIView(frame:frame)
+    loadMoreViewActivity = UIActivityIndicatorView()
+    loadMoreView.backgroundColor = .background
+    loadMoreView.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
+    //添加环形进度条
+    loadMoreViewActivity.color = UIColor.black
+    loadMoreViewActivity.startAnimating()
+    
+    loadMoreView.addSubview(loadMoreViewActivity)
+    loadMoreViewActivity.snp.makeConstraints { (ConstraintMaker) in
+        ConstraintMaker.center.equalToSuperview()
+    }
+    loadMoreViewActivity.hidesWhenStopped = true
+    
+    return loadMoreView
+}
+
 //MARK:打电话给客户
 func callTheClient(phoneNumber:String){
     showAlert(title: "温馨提示", subTitle: "是否拨打该联系电话") { (alert) in

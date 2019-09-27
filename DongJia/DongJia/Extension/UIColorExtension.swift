@@ -15,13 +15,25 @@ extension UIColor {
                   blue: CGFloat(b) / 255.0,
                   alpha: a)
     }
-
+    
+    /// 随机颜色
     class var random: UIColor {
         return UIColor(r: arc4random_uniform(256),
                        g: arc4random_uniform(256),
                        b: arc4random_uniform(256))
     }
+    
+    /// 普通灰色背景
+    class var background: UIColor {
+        return UIColor(r: 245, g: 245, b: 245)
+    }
+    
+    /// APP主颜色
+    class var theme: UIColor {
+        return UIColor(r: 14, g: 194, b: 98)
+    }
 
+    /// 转换成纯色的Image
     func image() -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)
@@ -33,6 +45,7 @@ extension UIColor {
         return image!
     }
 
+    /// 解析16进制颜色值
     class func hex(hexString: String) -> UIColor {
         var cString: String = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
         if cString.count < 6 { return UIColor.black }

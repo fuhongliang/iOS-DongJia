@@ -10,10 +10,12 @@ import Foundation
 
 protocol APIMainServiceProtocol {
     func getMainData(district: String, _ success: @escaping(((APIMainDataResponsModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    func getMainFeaturedData(page:Int, _ success: @escaping(((APIMainFeaturedDataResponsModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
 }
 
 class APIMainService: APIMainServiceProtocol {
     
+    /// 获取首页数据
     func getMainData(district: String, _ success: @escaping (((APIMainDataResponsModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
         let param:[String:Any] = [
             "store_id": 4,
@@ -37,4 +39,24 @@ class APIMainService: APIMainServiceProtocol {
         
     }
     
+    /// 获取首页精选的数据
+    func getMainFeaturedData(page: Int, _ success: @escaping (((APIMainFeaturedDataResponsModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        let param:[String:Any] = [
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1,
+            "page": page
+        ]
+        APIService.sharedBackground.request(.getMainFeaturedData(param: param), { (data) in
+            do {
+                let model = try JSONDecoder().decode(APIMainFeaturedDataResponsModel.self, from: data)
+                success(model)
+            } catch {
+                let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
+                fail(errorModel)
+            }
+        }) { (APIErrorModel) in
+            print(APIErrorModel)
+        }
+    }
 }
