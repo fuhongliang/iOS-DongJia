@@ -64,24 +64,27 @@ extension UMainLimitedCell: UICollectionViewDelegate, UICollectionViewDataSource
     
     //MARK:section数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return limitedData?.goods_list.count ?? 0 == 0 ? 0 : 1;
+        return limitedData?.goods_list?.count ?? 0 == 0 ? 0 : 1;
     }
     
     //MARK:每个section有多少Item
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return limitedData?.goods_list.count ?? 0
+        return limitedData?.goods_list?.count ?? 0
     }
     
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: ULimitedTimeCell.self)
-        cell.data = limitedData!.goods_list[indexPath.item]
+        cell.data = limitedData!.goods_list?[indexPath.item]
 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showHUDInView(text: "\(indexPath.item)", inView: topVC!.view)
+        //TODO 商品详情跳转(限时抢购)
+        let vc = UIGoodsDetailController()
+        vc.isLimited = true
+        topVC?.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

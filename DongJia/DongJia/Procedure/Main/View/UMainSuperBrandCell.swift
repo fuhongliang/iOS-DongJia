@@ -99,13 +99,19 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: USuperBrandCell.self)
         cell.goods1Action = {
-            showHUDInView(text: "\(indexPath.item)--1", inView: topVC!.view)
+            //TODO 商品详情跳转
+            let vc = UIGoodsDetailController()
+            topVC?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.goods2Action = {
-            showHUDInView(text: "\(indexPath.item)--2", inView: topVC!.view)
+            //TODO 商品详情跳转
+            let vc = UIGoodsDetailController()
+            topVC?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.goods3Action = {
-            showHUDInView(text: "\(indexPath.item)--3", inView: topVC!.view)
+            //TODO 商品详情跳转
+            let vc = UIGoodsDetailController()
+            topVC?.navigationController?.pushViewController(vc, animated: true)
         }
 
         cell.data = model![indexPath.row]

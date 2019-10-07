@@ -158,7 +158,7 @@ struct topic_list: Codable {
 struct miaosha: Codable {
     var name: String
     var rest_time: Int
-    var goods_list: [miaosha_goods_list]
+    var goods_list: [miaosha_goods_list]?
 }
 struct miaosha_goods_list: Codable {
     var id: String

@@ -11,4 +11,5 @@ import Foundation
 /// 定义通知的字段
 extension Notification.Name {
     static let weChatLoginNotification = Notification.Name(rawValue: "weChatLogin")
+    static let webViewHeightNotification = Notification.Name(rawValue: "webViewHeightCallBack")
 }

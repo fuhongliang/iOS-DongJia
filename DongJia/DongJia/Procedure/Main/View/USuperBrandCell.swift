@@ -140,9 +140,6 @@ class USuperBrandCell: UBaseCollectionViewCell {
         }
         
         
-       
-        
-        
     }
     
     func configGoods1(){

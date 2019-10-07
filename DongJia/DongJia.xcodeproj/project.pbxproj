@@ -28,9 +28,18 @@
 		DC34A651233C95910042EEA8 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A650233C95910042EEA8 /* UIButtonExtension.swift */; };
 		DC34A653233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A652233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift */; };
 		DC34A655233CBC380042EEA8 /* UFootLoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A654233CBC380042EEA8 /* UFootLoadMoreView.swift */; };
+		DC34A657233DFDAB0042EEA8 /* UGoodsPicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A656233DFDAB0042EEA8 /* UGoodsPicListCell.swift */; };
+		DC34A659233E08490042EEA8 /* UPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A658233E08490042EEA8 /* UPicCell.swift */; };
+		DC34A65B233E16040042EEA8 /* UGoodsLimitedBuyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A65A233E16040042EEA8 /* UGoodsLimitedBuyCell.swift */; };
 		DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */; };
 		DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */; };
 		DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */; };
+		DC54C59B233F03E400ECFB25 /* UGoodsOrdinaryBuyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54C59A233F03E400ECFB25 /* UGoodsOrdinaryBuyCell.swift */; };
+		DC54C59D233F084000ECFB25 /* UGoodsNameServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54C59C233F084000ECFB25 /* UGoodsNameServiceCell.swift */; };
+		DC54C59F233F33F400ECFB25 /* UGoodsChooseAttrCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54C59E233F33F400ECFB25 /* UGoodsChooseAttrCell.swift */; };
+		DC54C5A1233F386F00ECFB25 /* UGoodsStoreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54C5A0233F386F00ECFB25 /* UGoodsStoreInfoCell.swift */; };
+		DC54C5A3233F41CF00ECFB25 /* UGoodsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54C5A2233F41CF00ECFB25 /* UGoodsInfoView.swift */; };
+		DC54C5A5233F53A500ECFB25 /* UGoodsDetailWKWebViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54C5A4233F53A500ECFB25 /* UGoodsDetailWKWebViewCell.swift */; };
 		DC56BC8B233872770089EE61 /* APIMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8A233872770089EE61 /* APIMainService.swift */; };
 		DC56BC8D2338732C0089EE61 /* APIMainDataResponsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */; };
 		DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8E2338E2B90089EE61 /* URLExtension.swift */; };
@@ -148,9 +157,18 @@
 		DC34A650233C95910042EEA8 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		DC34A652233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMainFeaturedDataResponsModel.swift; sourceTree = "<group>"; };
 		DC34A654233CBC380042EEA8 /* UFootLoadMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UFootLoadMoreView.swift; sourceTree = "<group>"; };
+		DC34A656233DFDAB0042EEA8 /* UGoodsPicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsPicListCell.swift; sourceTree = "<group>"; };
+		DC34A658233E08490042EEA8 /* UPicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicCell.swift; sourceTree = "<group>"; };
+		DC34A65A233E16040042EEA8 /* UGoodsLimitedBuyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsLimitedBuyCell.swift; sourceTree = "<group>"; };
 		DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainLimitedCell.swift; sourceTree = "<group>"; };
 		DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULimitedTimeCell.swift; sourceTree = "<group>"; };
 		DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainHotCell.swift; sourceTree = "<group>"; };
+		DC54C59A233F03E400ECFB25 /* UGoodsOrdinaryBuyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsOrdinaryBuyCell.swift; sourceTree = "<group>"; };
+		DC54C59C233F084000ECFB25 /* UGoodsNameServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsNameServiceCell.swift; sourceTree = "<group>"; };
+		DC54C59E233F33F400ECFB25 /* UGoodsChooseAttrCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsChooseAttrCell.swift; sourceTree = "<group>"; };
+		DC54C5A0233F386F00ECFB25 /* UGoodsStoreInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsStoreInfoCell.swift; sourceTree = "<group>"; };
+		DC54C5A2233F41CF00ECFB25 /* UGoodsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsInfoView.swift; sourceTree = "<group>"; };
+		DC54C5A4233F53A500ECFB25 /* UGoodsDetailWKWebViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsDetailWKWebViewCell.swift; sourceTree = "<group>"; };
 		DC56BC8A233872770089EE61 /* APIMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMainService.swift; sourceTree = "<group>"; };
 		DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMainDataResponsModel.swift; sourceTree = "<group>"; };
 		DC56BC8E2338E2B90089EE61 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
@@ -321,6 +339,15 @@
 			isa = PBXGroup;
 			children = (
 				DC34A64E233C7AB40042EEA8 /* UGoodsDetailView.swift */,
+				DC34A656233DFDAB0042EEA8 /* UGoodsPicListCell.swift */,
+				DC34A658233E08490042EEA8 /* UPicCell.swift */,
+				DC34A65A233E16040042EEA8 /* UGoodsLimitedBuyCell.swift */,
+				DC54C59A233F03E400ECFB25 /* UGoodsOrdinaryBuyCell.swift */,
+				DC54C59C233F084000ECFB25 /* UGoodsNameServiceCell.swift */,
+				DC54C59E233F33F400ECFB25 /* UGoodsChooseAttrCell.swift */,
+				DC54C5A0233F386F00ECFB25 /* UGoodsStoreInfoCell.swift */,
+				DC54C5A4233F53A500ECFB25 /* UGoodsDetailWKWebViewCell.swift */,
+				DC54C5A2233F41CF00ECFB25 /* UGoodsInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -927,6 +954,7 @@
 				DCB064A423266A000094727C /* ScreenHelper.swift in Sources */,
 				DC19F7A72334692200BDFE7D /* UAboutUsView.swift in Sources */,
 				DCB065082327CDA90094727C /* ZKCycleScrollView.swift in Sources */,
+				DC34A657233DFDAB0042EEA8 /* UGoodsPicListCell.swift in Sources */,
 				DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */,
 				DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */,
 				DC19F7A9233478F500BDFE7D /* UIMyCollectionController.swift in Sources */,
@@ -938,6 +966,7 @@
 				DCB064F4232797E50094727C /* UMainSearchCell.swift in Sources */,
 				DCB06484232669510094727C /* UIBarButtonItemExtension.swift in Sources */,
 				DCB064D323266EE80094727C /* UTabBarController.swift in Sources */,
+				DC54C59B233F03E400ECFB25 /* UGoodsOrdinaryBuyCell.swift in Sources */,
 				DC34A653233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift in Sources */,
 				DC56BC8B233872770089EE61 /* APIMainService.swift in Sources */,
 				DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */,
@@ -963,24 +992,31 @@
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
 				DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
+				DC54C5A5233F53A500ECFB25 /* UGoodsDetailWKWebViewCell.swift in Sources */,
+				DC34A65B233E16040042EEA8 /* UGoodsLimitedBuyCell.swift in Sources */,
 				DC34A64F233C7AB40042EEA8 /* UGoodsDetailView.swift in Sources */,
 				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
+				DC34A659233E08490042EEA8 /* UPicCell.swift in Sources */,
 				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,
 				DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
 				DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */,
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
 				DC19F7AF2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift in Sources */,
+				DC54C5A3233F41CF00ECFB25 /* UGoodsInfoView.swift in Sources */,
 				DC2380122330D94C006AE76F /* UFeaturedCell.swift in Sources */,
 				DC246E022331C8D90087D84A /* UDosCell.swift in Sources */,
 				DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */,
 				DC768AB023321E0900595E2B /* UIDosDetailController.swift in Sources */,
 				DCB0650C2328F2380094727C /* UMainClassificationCell.swift in Sources */,
+				DC54C59F233F33F400ECFB25 /* UGoodsChooseAttrCell.swift in Sources */,
 				DCB0647F232669510094727C /* UIImageViewExtension.swift in Sources */,
 				DCCEC4BD233A4C2D00892D11 /* KLCityPickerView.swift in Sources */,
 				DCB064A823266A000094727C /* ParallaxHeaderMode.swift in Sources */,
+				DC54C5A1233F386F00ECFB25 /* UGoodsStoreInfoCell.swift in Sources */,
 				DCB064C323266E0D0094727C /* APIServices.swift in Sources */,
 				DCB064B223266A000094727C /* UIScreen+Frame.swift in Sources */,
+				DC54C59D233F084000ECFB25 /* UGoodsNameServiceCell.swift in Sources */,
 				DC19F7AD23347BCF00BDFE7D /* UMyCollectionCell.swift in Sources */,
 				DCB064AE23266A000094727C /* UIControl+Point.swift in Sources */,
 				DCB06483232669510094727C /* UIViewExtension.swift in Sources */,

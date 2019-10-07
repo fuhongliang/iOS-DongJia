@@ -103,7 +103,9 @@ extension UMainHotCell: UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showHUDInView(text: "\(indexPath.item)", inView: topVC!.view)
+        //TODO 商品详情跳转
+        let vc = UIGoodsDetailController()
+        topVC?.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

@@ -17,13 +17,13 @@ class UGoodsDetailView: BaseView {
         $0.separatorStyle = UITableViewCell.SeparatorStyle.none
         $0.showsVerticalScrollIndicator = false
         $0.rowHeight = UITableView.automaticDimension
-        $0.register(cellType: UMainSearchCell.self)
-        $0.register(cellType: UMainBannerCell.self)
-        $0.register(cellType: UMainClassificationCell.self)
-        $0.register(cellType: UMainLimitedCell.self)
-        $0.register(cellType: UMainHotCell.self)
-        $0.register(cellType: UMainSuperBrandCell.self)
-        $0.register(cellType: UMainFeaturedCell.self)
+        $0.register(cellType: UGoodsPicListCell.self)
+        $0.register(cellType: UGoodsLimitedBuyCell.self)
+        $0.register(cellType: UGoodsOrdinaryBuyCell.self)
+        $0.register(cellType: UGoodsNameServiceCell.self)
+        $0.register(cellType: UGoodsChooseAttrCell.self)
+        $0.register(cellType: UGoodsStoreInfoCell.self)
+        $0.register(cellType: UGoodsDetailWKWebViewCell.self)
     }
     /// 底部的白色背景
     let whiteBg = UIView().then{
