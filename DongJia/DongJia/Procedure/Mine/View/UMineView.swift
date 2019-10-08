@@ -327,13 +327,14 @@ class UMineView: BaseView {
             make.top.equalTo(mineOrderBtn.snp.bottom)
             make.height.equalTo(0.5)
         }
+        
         //MARK:待付款
         notPayOrder.snp.makeConstraints { (make) in
             make.top.equalTo(myOrderLine.snp.bottom)
             make.height.equalTo(68)
             make.bottom.equalToSuperview()
             make.left.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(4)
+            make.width.equalTo((screenWidth-30)/4)
         }
         //MARK:待发货
         notSendOrder.snp.makeConstraints { (make) in
@@ -341,7 +342,7 @@ class UMineView: BaseView {
             make.height.equalTo(68)
             make.bottom.equalToSuperview()
             make.left.equalTo(notPayOrder.snp.right)
-            make.width.equalToSuperview().dividedBy(4)
+            make.width.equalTo((screenWidth-30)/4)
         }
         //MARK:待收货
         notObtainOrder.snp.makeConstraints { (make) in
@@ -349,7 +350,7 @@ class UMineView: BaseView {
             make.height.equalTo(68)
             make.bottom.equalToSuperview()
             make.left.equalTo(notSendOrder.snp.right)
-            make.width.equalToSuperview().dividedBy(4)
+            make.width.equalTo((screenWidth-30)/4)
         }
         //MARK:已完成
         completeOrder.snp.makeConstraints { (make) in
@@ -357,12 +358,9 @@ class UMineView: BaseView {
             make.height.equalTo(68)
             make.bottom.equalToSuperview()
             make.left.equalTo(notObtainOrder.snp.right)
-            make.width.equalToSuperview().dividedBy(4)
+            make.width.equalTo((screenWidth-30)/4)
         }
-        notPayOrder.setButtonShowType(.Bottom)
-        notSendOrder.setButtonShowType(.Bottom)
-        notObtainOrder.setButtonShowType(.Bottom)
-        completeOrder.setButtonShowType(.Bottom)
+        
         
         //MARK:未登录的背景
         logoutBgView.isHidden = false
@@ -432,6 +430,11 @@ class UMineView: BaseView {
             make.height.equalTo(44)
             make.top.equalTo(myObtainAddress.snp.bottom)
         }
+        
+        notPayOrder.setButtonShowType(.Bottom)
+        notSendOrder.setButtonShowType(.Bottom)
+        notObtainOrder.setButtonShowType(.Bottom)
+        completeOrder.setButtonShowType(.Bottom)
         
         self.addSubview(logout)
         logout.isHidden = true

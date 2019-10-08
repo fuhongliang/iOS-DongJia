@@ -11,14 +11,9 @@ import UIKit
 /// (商品详情)限时抢购的cell
 class UGoodsLimitedBuyCell: UBaseTableViewCell {
     
-    /// 右边黄色背景
-    let yellowBg = UIView().then{
-        $0.backgroundColor = .hex(hexString: "#FFD657")
-        
-    }
-    /// 左边绿色背景
-    let greenBg = UIView().then{
-        $0.backgroundColor = .hex(hexString: "#0EC262")
+    /// 背景图片
+    let limitedBuyBg = UIImageView().then{
+        $0.image = UIImage.init(named: "time_buy_bg")
     }
     /// ¥符号
     let rmbSign = UILabel().then{
@@ -114,31 +109,24 @@ class UGoodsLimitedBuyCell: UBaseTableViewCell {
     }
 
     override func configUI() {
-        contentView.addSubview(greenBg)
-        contentView.addSubview(yellowBg)
-        greenBg.addSubview(rmbSign)
-        greenBg.addSubview(rmbLabel)
-        greenBg.addSubview(originalPrice)
-        greenBg.addSubview(buyPeopleNumber)
-        yellowBg.addSubview(overTimeTip)
-        yellowBg.addSubview(day)
-        yellowBg.addSubview(split1)
-        yellowBg.addSubview(hour)
-        yellowBg.addSubview(split2)
-        yellowBg.addSubview(minite)
-        yellowBg.addSubview(split3)
-        yellowBg.addSubview(second)
+        contentView.addSubview(limitedBuyBg)
+        limitedBuyBg.addSubview(rmbSign)
+        limitedBuyBg.addSubview(rmbLabel)
+        limitedBuyBg.addSubview(originalPrice)
+        limitedBuyBg.addSubview(buyPeopleNumber)
+        limitedBuyBg.addSubview(overTimeTip)
+        limitedBuyBg.addSubview(day)
+        limitedBuyBg.addSubview(split1)
+        limitedBuyBg.addSubview(hour)
+        limitedBuyBg.addSubview(split2)
+        limitedBuyBg.addSubview(minite)
+        limitedBuyBg.addSubview(split3)
+        limitedBuyBg.addSubview(second)
         
         //MARK:绿色背景
-        greenBg.snp.makeConstraints { (make) in
-            make.width.equalTo(screenWidth-125)
+        limitedBuyBg.snp.makeConstraints { (make) in
+            make.width.equalTo(screenWidth)
             make.top.left.bottom.equalToSuperview()
-            make.height.equalTo(40)
-        }
-        //MARK:黄色背景
-        yellowBg.snp.makeConstraints { (make) in
-            make.top.right.bottom.equalToSuperview()
-            make.width.equalTo(125)
             make.height.equalTo(40)
         }
         //MARK:当前的价格

@@ -119,7 +119,9 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showHUDInView(text: "\(indexPath.item)", inView: topVC!.view)
+        let vc = UIStoreController()
+        vc.title = "商品详情"
+        topVC?.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

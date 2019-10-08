@@ -23,6 +23,9 @@
 		DC246E002331C4180087D84A /* UIDosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246DFF2331C4180087D84A /* UIDosController.swift */; };
 		DC246E022331C8D90087D84A /* UDosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E012331C8D90087D84A /* UDosCell.swift */; };
 		DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E03233204BC0087D84A /* UDosDetailView.swift */; };
+		DC308222234C345700271840 /* UIStoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308221234C345700271840 /* UIStoreController.swift */; };
+		DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308225234C34CB00271840 /* UBaseTableViewController.swift */; };
+		DC308228234C38C500271840 /* UStoreMainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308227234C38C500271840 /* UStoreMainInfoCell.swift */; };
 		DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */; };
 		DC34A64F233C7AB40042EEA8 /* UGoodsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A64E233C7AB40042EEA8 /* UGoodsDetailView.swift */; };
 		DC34A651233C95910042EEA8 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A650233C95910042EEA8 /* UIButtonExtension.swift */; };
@@ -152,6 +155,9 @@
 		DC246DFF2331C4180087D84A /* UIDosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosController.swift; sourceTree = "<group>"; };
 		DC246E012331C8D90087D84A /* UDosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosCell.swift; sourceTree = "<group>"; };
 		DC246E03233204BC0087D84A /* UDosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosDetailView.swift; sourceTree = "<group>"; };
+		DC308221234C345700271840 /* UIStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreController.swift; sourceTree = "<group>"; };
+		DC308225234C34CB00271840 /* UBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBaseTableViewController.swift; sourceTree = "<group>"; };
+		DC308227234C38C500271840 /* UStoreMainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreMainInfoCell.swift; sourceTree = "<group>"; };
 		DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGoodsDetailController.swift; sourceTree = "<group>"; };
 		DC34A64E233C7AB40042EEA8 /* UGoodsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsDetailView.swift; sourceTree = "<group>"; };
 		DC34A650233C95910042EEA8 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
@@ -324,6 +330,31 @@
 				DC768AB52332359000595E2B /* UContactDesignerView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DC30821E234C33E500271840 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				DC308220234C33FE00271840 /* ViewController */,
+				DC30821F234C33F700271840 /* View */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		DC30821F234C33F700271840 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC308227234C38C500271840 /* UStoreMainInfoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DC308220234C33FE00271840 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DC308221234C345700271840 /* UIStoreController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		DC34A649233C71B90042EEA8 /* Goods */ = {
@@ -568,6 +599,7 @@
 		DCB064B323266A560094727C /* Procedure */ = {
 			isa = PBXGroup;
 			children = (
+				DC30821E234C33E500271840 /* Store */,
 				DC34A649233C71B90042EEA8 /* Goods */,
 				DC6133A42333373600C52E9F /* Mine */,
 				DC246DFC2331C3180087D84A /* Dos */,
@@ -650,6 +682,7 @@
 				DCB064CC23266EE80094727C /* UBaseViewController.swift */,
 				DCB064CD23266EE80094727C /* UTabBarController.swift */,
 				DCB064CE23266EE80094727C /* UNavigationController.swift */,
+				DC308225234C34CB00271840 /* UBaseTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -925,6 +958,7 @@
 			files = (
 				DCCEC4BC233A4C2D00892D11 /* UIColor+KLExtension.swift in Sources */,
 				DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */,
+				DC308222234C345700271840 /* UIStoreController.swift in Sources */,
 				DCB064AC23266A000094727C /* FTCellConfiguration.swift in Sources */,
 				DC246E002331C4180087D84A /* UIDosController.swift in Sources */,
 				DCB064F023277EF30094727C /* UIMainController.swift in Sources */,
@@ -942,6 +976,7 @@
 				DCB064D6232732720094727C /* APIResponseModels.swift in Sources */,
 				DCB064B723266A660094727C /* Utils.swift in Sources */,
 				DCCEC4BE233A4C2D00892D11 /* ConfigureMacro.swift in Sources */,
+				DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */,
 				DCB064BF23266DF80094727C /* JPushRegistrationID.swift in Sources */,
 				DCB064D223266EE80094727C /* UBaseViewController.swift in Sources */,
 				DCB064AD23266A000094727C /* FTConstants.swift in Sources */,
@@ -980,6 +1015,7 @@
 				DCB064D423266EE80094727C /* UNavigationController.swift in Sources */,
 				DCB064B623266A660094727C /* Global.swift in Sources */,
 				DCB064B023266A000094727C /* FT+Extension.swift in Sources */,
+				DC308228234C38C500271840 /* UStoreMainInfoCell.swift in Sources */,
 				DCB064B123266A000094727C /* FTPopOverMenuCell.swift in Sources */,
 				DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */,
 				DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */,

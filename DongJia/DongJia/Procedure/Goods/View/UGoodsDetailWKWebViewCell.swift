@@ -51,8 +51,6 @@ class UGoodsDetailWKWebViewCell: UBaseTableViewCell {
         //MARK:WebView
         wkWebView.snp.makeConstraints { (make) in
             make.top.equalTo(goodsDetailLabel.snp.bottom).offset(15)
-            //TODO 保存一个高度约束  动态返回时  在改变
-//            make.height.equalTo(500)
             make.width.left.equalToSuperview()
             make.bottom.equalToSuperview()
         }
@@ -90,7 +88,7 @@ extension UGoodsDetailWKWebViewCell: WKNavigationDelegate{
         self.wkWebView.evaluateJavaScript("document.readyState") { (obj, complete) in
             if obj as? String == "complete" && !self.wkWebView.isLoading{
                 if !self.isWebReload {
-//                    print("刷新一次高度height:\(high)")
+                    // 第一次计算高度完成通知后  后续则不再刷新高度
                     self.heightDelegate?.wkWebViewHeightCallBack(height: CGFloat(high ?? 0))
                      self.isWebReload = true
                 }

@@ -34,8 +34,8 @@ class UGoodsDetailView: BaseView {
         $0.backgroundColor = .white
         $0.setTitle("收藏", for: .normal)
         $0.setTitleColor(.hex(hexString: "#333333"), for: .normal)
-        $0.setImage(UIImage.init(named: "collection"), for: .normal)
-        $0.setImage(UIImage.init(named: "todo_img"), for: .selected)
+        $0.setImage(UIImage.init(named: "hollow_star"), for: .normal)
+        $0.setImage(UIImage.init(named: "green_star"), for: .selected)
         $0.titleLabel?.font = .systemFont(ofSize: 11)
     }
     /// 购物车按钮
@@ -43,8 +43,8 @@ class UGoodsDetailView: BaseView {
         $0.backgroundColor = .white
         $0.setTitle("购物车", for: .normal)
         $0.setTitleColor(.hex(hexString: "#333333"), for: .normal)
-        $0.setImage(UIImage.init(named: "tab_shop_cart"), for: .normal)
-        $0.setImage(UIImage.init(named: "todo_img"), for: .selected)
+        $0.setImage(UIImage.init(named: "detail_shop_cart"), for: .normal)
+//        $0.setImage(UIImage.init(named: "todo_img"), for: .selected)
         $0.titleLabel?.font = .systemFont(ofSize: 11)
     }
     /// 加入购物车按钮

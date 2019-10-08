@@ -53,7 +53,7 @@ extension UIMineController: UMineViewDelegate {
     }
     
     func wechatLogin() {
-        if WXApi.isWXAppInstalled() {
+        if !WXApi.isWXAppInstalled() {
             showHUDInView(text: "还未安装微信,请先安装", inView: self.view)
             return
         }

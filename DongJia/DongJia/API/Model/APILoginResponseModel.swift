@@ -20,9 +20,9 @@ struct APILoginDataModel:Codable {
     var is_distributor: Int
     var parent: String
     var id: Int
-    var is_clerk: Int
-    var integral: Int
-    var money: String
+    var is_clerk: Int?
+    var integral: Int?
+    var money: String?
     var res: ResInfo
 }
 struct ResInfo: Codable {

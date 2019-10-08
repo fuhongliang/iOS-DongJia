@@ -10,15 +10,19 @@ import Foundation
 
 //MARK: -定义button相对label的位置
 enum YWButtonEdgeInsetsStyle {
+    /// 文字在上 图片在下
     case Top
+    /// 文字在左 图片在右
     case Left
+    /// 文字在右 图片在左
     case Right
+    /// 文字在下 图片在上
     case Bottom
 }
 
 extension UIButton {
     
-    /// 设置图片在上面 文字在下面 (延展性待测试)
+    /// 设置图片文字位置 (需要指定宽度-如果使用divideby平分会计算错误)
     func setButtonShowType(_ type:YWButtonEdgeInsetsStyle) {
         self.layoutIfNeeded()
         let titleFrame = self.titleLabel!.frame
