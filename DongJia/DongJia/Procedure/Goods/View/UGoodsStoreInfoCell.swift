@@ -76,9 +76,7 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
         storeInfoBg.addSubview(enterShop)
         storeInfoBg.addSubview(line)
         contentView.addSubview(hotLabel)
-        contentView.addSubview(goods1)
-        contentView.addSubview(goods2)
-        contentView.addSubview(goods3)
+        
         
         //MARK:店铺信息背景
         storeInfoBg.snp.makeConstraints { (make) in
@@ -118,42 +116,79 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
             make.left.equalToSuperview().offset(15)
             make.top.equalTo(line.snp.bottom).offset(19)
         }
-        //MARK:商品1
-        goods1.snp.makeConstraints { (make) in
-            make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
-            make.left.equalToSuperview().offset(15)
-            make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
-            make.bottom.equalToSuperview()
-        }
-        //MARK:商品2
-        goods2.snp.makeConstraints { (make) in
-            make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
-            make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
-            make.centerX.bottom.equalToSuperview()
-        }
-        //MARK:商品3
-        goods3.snp.makeConstraints { (make) in
-            make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
-            make.right.equalToSuperview().offset(-15)
-            make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
-            make.bottom.equalToSuperview()
-        }
         
         goods1.click = {
             showHUDInView(text: "商品1", inView: topVC!.view, isClick: true)
         }
-        goods2.click = { showHUDInView(text: "商品2", inView: topVC!.view, isClick: true) }
-        goods3.click = { showHUDInView(text: "商品3", inView: topVC!.view, isClick: true) }
+        goods2.click = {
+            showHUDInView(text: "商品2", inView: topVC!.view, isClick: true)
+        }
+        goods3.click = {
+            showHUDInView(text: "商品3", inView: topVC!.view, isClick: true)
+        }
     }
     
-    var data: String? {
+    func configGoods(index: Int, data: goods_recommend_list){
+        switch index {
+        case 0:
+            contentView.addSubview(goods1)
+            //MARK:商品1
+            goods1.snp.makeConstraints { (make) in
+                make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
+                make.left.equalToSuperview().offset(15)
+                make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
+                make.bottom.equalToSuperview()
+            }
+            goods1.picUrl = data.pic_url
+            goods1.goodsName = data.name
+            goods1.goodsPrice = data.price
+            goods1.goodsOriginPrice = data.original_price
+        case 1:
+            contentView.addSubview(goods2)
+            //MARK:商品2
+            goods2.snp.makeConstraints { (make) in
+                make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
+                make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
+                make.centerX.bottom.equalToSuperview()
+            }
+            goods2.picUrl = data.pic_url
+            goods2.goodsName = data.name
+            goods2.goodsPrice = data.price
+            goods2.goodsOriginPrice = data.original_price
+        case 2:
+            contentView.addSubview(goods3)
+            //MARK:商品3
+            goods3.snp.makeConstraints { (make) in
+                make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
+                make.right.equalToSuperview().offset(-15)
+                make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
+                make.bottom.equalToSuperview()
+            }
+            goods3.picUrl = data.pic_url
+            goods3.goodsName = data.name
+            goods3.goodsPrice = data.price
+            goods3.goodsOriginPrice = data.original_price
+        default:
+            break
+        }
+    }
+    
+    /// 店铺数据
+    var mchData: goods_detail_mch? {
         didSet {
-            guard let data = data else { return }
-            storeIcon.image = UIImage.init(named: "default_icon")
-            storeName.text = "网易严选"
-            goods1.data = "1"
-            goods2.data = "2"
-            goods3.data = "3"
+            guard let data = mchData else { return }
+            storeIcon.load(data.logo)
+            storeName.text = data.name
+            
+        }
+    }
+    /// 精选推荐数据
+    var recommendData: [goods_recommend_list]? {
+        didSet{
+            guard let data = recommendData else { return }
+            for (index, data) in data.enumerated() {
+                configGoods(index: index, data: data)
+            }
         }
     }
     

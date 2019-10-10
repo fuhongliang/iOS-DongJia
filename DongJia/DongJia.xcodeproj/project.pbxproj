@@ -15,6 +15,8 @@
 		DC19F7AF2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */; };
 		DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */; };
 		DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */; };
+		DC1E77F5234EC670005765F0 /* UStoreHotRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */; };
+		DC1E77F7234ED912005765F0 /* APIGoodsRecommendResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */; };
 		DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800B232F9E79006AE76F /* UHotGoodsCell.swift */; };
 		DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800D2330763F006AE76F /* UMainSuperBrandCell.swift */; };
 		DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */; };
@@ -23,6 +25,8 @@
 		DC246E002331C4180087D84A /* UIDosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246DFF2331C4180087D84A /* UIDosController.swift */; };
 		DC246E022331C8D90087D84A /* UDosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E012331C8D90087D84A /* UDosCell.swift */; };
 		DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E03233204BC0087D84A /* UDosDetailView.swift */; };
+		DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3567234D79D80064EB75 /* APIGoodsService.swift */; };
+		DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */; };
 		DC308222234C345700271840 /* UIStoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308221234C345700271840 /* UIStoreController.swift */; };
 		DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308225234C34CB00271840 /* UBaseTableViewController.swift */; };
 		DC308228234C38C500271840 /* UStoreMainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308227234C38C500271840 /* UStoreMainInfoCell.swift */; };
@@ -147,6 +151,8 @@
 		DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMyObtainAddressViewController.swift; sourceTree = "<group>"; };
 		DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMyObtainAddressView.swift; sourceTree = "<group>"; };
 		DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UObtainAddressCell.swift; sourceTree = "<group>"; };
+		DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreHotRecommendCell.swift; sourceTree = "<group>"; };
+		DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsRecommendResponseModel.swift; sourceTree = "<group>"; };
 		DC23800B232F9E79006AE76F /* UHotGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHotGoodsCell.swift; sourceTree = "<group>"; };
 		DC23800D2330763F006AE76F /* UMainSuperBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainSuperBrandCell.swift; sourceTree = "<group>"; };
 		DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USuperBrandCell.swift; sourceTree = "<group>"; };
@@ -155,6 +161,8 @@
 		DC246DFF2331C4180087D84A /* UIDosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosController.swift; sourceTree = "<group>"; };
 		DC246E012331C8D90087D84A /* UDosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosCell.swift; sourceTree = "<group>"; };
 		DC246E03233204BC0087D84A /* UDosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosDetailView.swift; sourceTree = "<group>"; };
+		DC2E3567234D79D80064EB75 /* APIGoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsService.swift; sourceTree = "<group>"; };
+		DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsDetailResponseModel.swift; sourceTree = "<group>"; };
 		DC308221234C345700271840 /* UIStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreController.swift; sourceTree = "<group>"; };
 		DC308225234C34CB00271840 /* UBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBaseTableViewController.swift; sourceTree = "<group>"; };
 		DC308227234C38C500271840 /* UStoreMainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreMainInfoCell.swift; sourceTree = "<group>"; };
@@ -345,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				DC308227234C38C500271840 /* UStoreMainInfoCell.swift */,
+				DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -638,6 +647,7 @@
 				DCB064C223266E0D0094727C /* APIServices.swift */,
 				DC56BC8A233872770089EE61 /* APIMainService.swift */,
 				DCCEC4C3233B4B7300892D11 /* APIMineServices.swift */,
+				DC2E3567234D79D80064EB75 /* APIGoodsService.swift */,
 				DCB064E123273BA90094727C /* APIUserServices.swift */,
 				DCB064BC23266DE00094727C /* APIUser.swift */,
 				DCB064C023266E040094727C /* APIToken.swift */,
@@ -653,6 +663,8 @@
 				DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */,
 				DCCEC4C5233B4D1000892D11 /* APILoginResponseModel.swift */,
 				DC34A652233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift */,
+				DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */,
+				DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -979,6 +991,7 @@
 				DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */,
 				DCB064BF23266DF80094727C /* JPushRegistrationID.swift in Sources */,
 				DCB064D223266EE80094727C /* UBaseViewController.swift in Sources */,
+				DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */,
 				DCB064AD23266A000094727C /* FTConstants.swift in Sources */,
 				DCB064A523266A000094727C /* URefresh.swift in Sources */,
 				DCB064A923266A000094727C /* UIScrollView+ParallaxHeader.swift in Sources */,
@@ -993,8 +1006,10 @@
 				DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */,
 				DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */,
 				DC19F7A9233478F500BDFE7D /* UIMyCollectionController.swift in Sources */,
+				DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */,
 				DCB0645023263AD50094727C /* DongJia.xcdatamodeld in Sources */,
 				DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */,
+				DC1E77F7234ED912005765F0 /* APIGoodsRecommendResponseModel.swift in Sources */,
 				DCB064D123266EE80094727C /* BaseView.swift in Sources */,
 				DCB064CF23266EE80094727C /* UBaseCollectionViewCell.swift in Sources */,
 				DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */,
@@ -1032,6 +1047,7 @@
 				DC34A65B233E16040042EEA8 /* UGoodsLimitedBuyCell.swift in Sources */,
 				DC34A64F233C7AB40042EEA8 /* UGoodsDetailView.swift in Sources */,
 				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
+				DC1E77F5234EC670005765F0 /* UStoreHotRecommendCell.swift in Sources */,
 				DC34A659233E08490042EEA8 /* UPicCell.swift in Sources */,
 				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,
 				DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */,

@@ -11,15 +11,16 @@ import Foundation
 extension UILabel {
     
     /// 设置行间距
-    func setTextAndLineSpacing(text: String? = nil, space: CGFloat){
+    func setTextAndLineSpacing(text: String? = nil, fontSize:CGFloat = UIFont.systemFontSize, space: CGFloat){
         
         //通过富文本来设置行间距
         let paraph = NSMutableParagraphStyle()
         //设置行间距
         paraph.lineSpacing = space
         //样式属性集合
-        let attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 15), NSAttributedString.Key.paragraphStyle: paraph]
+        let attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: fontSize), NSAttributedString.Key.paragraphStyle: paraph]
         self.attributedText = NSAttributedString(string: text ?? self.text!, attributes: attributes)
+        self.lineBreakMode = NSLineBreakMode.byTruncatingTail
     }
     
     /// 设置中划线

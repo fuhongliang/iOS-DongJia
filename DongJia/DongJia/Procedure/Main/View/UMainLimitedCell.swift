@@ -84,6 +84,7 @@ extension UMainLimitedCell: UICollectionViewDelegate, UICollectionViewDataSource
         //TODO 商品详情跳转(限时抢购)
         let vc = UIGoodsDetailController()
         vc.isLimited = true
+        vc.goodsId = limitedData!.goods_list![indexPath.item].id
         topVC?.navigationController?.pushViewController(vc, animated: true)
     }
     

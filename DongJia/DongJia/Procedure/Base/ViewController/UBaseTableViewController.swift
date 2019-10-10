@@ -18,5 +18,14 @@ class UBaseTableViewController: UITableViewController {
     open func configTableView(){
         
     }
+    
+    // 默认没有footer
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
 
 }

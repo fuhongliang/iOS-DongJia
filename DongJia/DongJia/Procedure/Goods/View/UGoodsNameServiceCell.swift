@@ -84,7 +84,15 @@ class UGoodsNameServiceCell: UBaseTableViewCell {
         return bg
     }
     
-    var serviceData:[String]? {
+    /// 商品名称
+    var name: String? {
+        didSet {
+            guard let name = name else { return }
+            goodsName.text = name
+        }
+    }
+    /// 服务标签
+    var serviceData: [String]? {
         didSet{
             guard let serviceData = serviceData else { return }
             var label:[UIView] = []

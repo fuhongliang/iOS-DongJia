@@ -101,16 +101,19 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
         cell.goods1Action = {
             //TODO 商品详情跳转
             let vc = UIGoodsDetailController()
+            vc.goodsId = self.model![indexPath.row].goods_list[0].id
             topVC?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.goods2Action = {
             //TODO 商品详情跳转
             let vc = UIGoodsDetailController()
+            vc.goodsId = self.model![indexPath.row].goods_list[1].id
             topVC?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.goods3Action = {
             //TODO 商品详情跳转
             let vc = UIGoodsDetailController()
+            vc.goodsId = self.model![indexPath.row].goods_list[2].id
             topVC?.navigationController?.pushViewController(vc, animated: true)
         }
 
@@ -119,8 +122,9 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UIStoreController()
+        let vc = UIStoreController(style: UITableView.Style.grouped)
         vc.title = "商品详情"
+        vc.storeId = self.model![indexPath.row].id
         topVC?.navigationController?.pushViewController(vc, animated: true)
     }
     

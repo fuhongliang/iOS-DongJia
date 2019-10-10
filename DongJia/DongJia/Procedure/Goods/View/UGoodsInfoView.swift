@@ -87,5 +87,33 @@ class UGoodsInfoView: BaseView {
             originalPriceLabel.setUnderLine(text: "¥3300")
         }
     }
+    /// 商品图片链接
+    var picUrl: String? {
+        didSet {
+            guard let url = picUrl else { return }
+            picture.load(url)
+        }
+    }
+    /// 商品名称
+    var goodsName: String? {
+        didSet {
+            guard let name = goodsName else { return }
+            goodsNameLabel.text = name
+        }
+    }
+    /// 商品现价
+    var goodsPrice: String? {
+        didSet {
+            guard let price = goodsPrice else { return }
+            rmbLabel.text = "¥\(price)"
+        }
+    }
+    /// 商品原价
+    var goodsOriginPrice: String? {
+        didSet {
+            guard let price = goodsOriginPrice else { return }
+            originalPriceLabel.setUnderLine(text: "¥\(price)")
+        }
+    }
 
 }

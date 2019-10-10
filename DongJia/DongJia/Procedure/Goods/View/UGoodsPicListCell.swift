@@ -29,10 +29,9 @@ class UGoodsPicListCell: UBaseTableViewCell {
             make.height.equalTo(270)
         }
         goodsPhotoView.adjustWhenViewWillAppear()
-        
     }
     
-    var urlArray : [String]? {
+    var urlArray : [goods_detail_pic_list]? {
         didSet {
             guard urlArray != nil else { return }
             goodsPhotoView.reloadData()
@@ -52,7 +51,7 @@ extension UGoodsPicListCell: ZKCycleScrollViewDataSource {
     
     func cycleScrollView(_ cycleScrollView: ZKCycleScrollView, cellForItemAt indexPath: IndexPath) -> ZKCycleScrollViewCell {
         let cell = cycleScrollView.dequeueReusableCell(for: indexPath) as! UPicCell
-        cell.imageUrl = urlArray![indexPath.item]//.pic_url
+        cell.imageUrl = urlArray![indexPath.item].pic_url
         return cell
     }
 }

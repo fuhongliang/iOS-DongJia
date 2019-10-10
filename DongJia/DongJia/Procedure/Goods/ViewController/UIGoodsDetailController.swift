@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 enum GoodsDetailItem {
     /// 图片列表
@@ -26,19 +27,35 @@ enum GoodsDetailItem {
 }
 
 class UIGoodsDetailController: UBaseViewController {
+    
+    private let service = APIGoodsService()
 
     let goodsDetailView = UGoodsDetailView()
+    /// 请求的商品数据
+    var goodsData: APIGoodsDetailModel!
+    /// 请求的商品推荐数据
+    var goodsRecommendData: goods_recommend_model?
     
-    var cells: [GoodsDetailItem] = [] {
+    /// 当前页面是否是限时抢购的商品
+    var isLimited:Bool = false
+    /// 店铺ID
+    var storeId = "4"
+    /// 商品ID
+    var goodsId = "-1"
+    
+    var cells: [GoodsDetailItem] = []
+//    {
+//        didSet{ goodsDetailView.tableView.reloadData() }
+//    }
+    
+    /// 当前所有请求是否都已完成
+    var requestComplete: Int = 0 {
         didSet{
-            goodsDetailView.tableView.reloadData()
+            if(requestComplete == 2){
+                goodsDetailView.tableView.reloadData()
+            }
         }
     }
-    /// 当前WKWebView的高度
-    var webHeight:CGFloat = 0
-    var isLimited:Bool = false
-    
-    var isWebReload: Bool = false
     
     override func configUI() {
         goodsDetailView.tableView.delegate = self
@@ -47,15 +64,43 @@ class UIGoodsDetailController: UBaseViewController {
         goodsDetailView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        if isLimited {
-            cells = [.picList,.limitedBuy,.nameService,.selectAttr,.storeInfo,.goodsDetail]
-        } else {
-            cells = [.picList,.ordinaryBuy,.nameService,.selectAttr,.storeInfo,.goodsDetail]
-        }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        getGoodsDetailData()
+        getGoodsRecommend()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    /// 请求商品详情数据
+    func getGoodsDetailData() {
+        service.getGoodsDetail(storeId: storeId, goodsId: goodsId, { (GoodsDetailModel) in
+            guard let goodsData = GoodsDetailModel.data else { return }
+            self.goodsData = goodsData
+            if self.isLimited {
+                self.cells = [.picList,.limitedBuy,.nameService,.selectAttr,.storeInfo,.goodsDetail]
+            } else {
+                self.cells = [.picList,.ordinaryBuy,.nameService,.selectAttr,.storeInfo,.goodsDetail]
+            }
+            self.requestComplete += 1
+        }) { (APIErrorModel) in
+            showHUDInView(text: APIErrorModel.msg ?? "", inView: self.view)
+        }
+    }
+    
+    /// 请求该商品下的商品爆款推荐
+    func getGoodsRecommend(){
+        service.getGoodsRecommend(goodsId: goodsId, { (GoodsRecommendModel) in
+            guard let goodsRecommendData = GoodsRecommendModel.data else { return }
+            self.goodsRecommendData = goodsRecommendData
+            self.requestComplete += 1
+        }) { (APIErrorModel) in
+            self.requestComplete += 1
+            print(APIErrorModel.msg ?? "")
+        }
+    }
+    
 }
 
 extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
@@ -105,7 +150,7 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
         switch cellModel {
         case .picList:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsPicListCell.self)
-            cell.urlArray = [   "https://img10.360buyimg.com/babel/s1920x740_jfs/t1/41822/8/13956/141777/5d6dd412Eec49b050/0e76b5b4d984aa7a.jpg!cc_1920x740","https://img11.360buyimg.com/babel/s1920x740_jfs/t1/73049/14/8448/169664/5d673c4aE9c16467b/b6396b8314441e40.jpg!cc_1920x740","https://img12.360buyimg.com/babel/s1920x740_jfs/t1/45114/34/9119/125585/5d677e6fEb8c11d63/483c4df3ed453ea9.jpg!cc_1920x740","https://img13.360buyimg.com/babel/s1920x740_jfs/t1/53649/7/9460/173490/5d6dd404E9570219f/881570b962515f64.jpg!cc_1920x740","https://img14.360buyimg.com/babel/s1920x740_jfs/t1/46938/36/2882/54537/5d0a034dEf784851c/aa71610ec016159d.jpg!cc_1920x740","https://img20.360buyimg.com/babel/s1920x740_jfs/t1/67307/9/8957/301188/5d6dd429E8dd1478d/b8094c4aae7cb2b7.jpg!cc_1920x740"]
+            cell.urlArray = goodsData?.pic_list
             return cell
         case .limitedBuy:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsLimitedBuyCell.self)
@@ -115,21 +160,21 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .nameService:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsNameServiceCell.self)
-            cell.serviceData = ["送货上门","免快递费"]
+            cell.name = goodsData.name
+            cell.serviceData = goodsData.service_list
             return cell
         case .selectAttr:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsChooseAttrCell.self)
             return cell
         case .storeInfo:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsStoreInfoCell.self)
-            cell.data = "00000"
+            cell.mchData = goodsData.mch
+            cell.recommendData = goodsRecommendData?.list
             return cell
         case .goodsDetail:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsDetailWKWebViewCell.self)
-//            self.currentIndex = indexPath
             cell.heightDelegate = self
-            cell.html = "<p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/92/92a686cf756bedfc99a8c23bd71bd7c7484c49c8.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/3f/3f158c5f26a60f8338f9bb9c554c590af579c258.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/61/61404092294b85485d5e7a0557f3284778a8f5c7.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/5b/5b1d996a72eec10fd6420b4de9860348e45c9ece.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/63/636ccfa898b0f21699e4f9a0ab362f91299cb8e0.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/8c/8cf7fe3aebee06aaedc955e92bc3e9b1f9d2cd63.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/c8/c8f9fd73cc1251013372d6036d5ac617c060fce0.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/8e/8ec721c5582c2a129971ecbd5f5e8bd007437e51.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/5c/5c7db2c0f8446f1f7f876c185d40229a6b343deb.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/09/09a263f19838d8bafa509962633458ddd5e37062.jpg\"/></p><p><img src=\"http://yiwuyimei.oss-cn-beijing.aliyuncs.com/web/uploads/image/ac/ac95af64ed55485d7d077a2a04ee74af7d3ce6b2.jpg\"/></p><p><br/></p>"
-//            cell.
+            cell.html = goodsData.detail
             return cell
         }
     }
@@ -139,14 +184,11 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
 extension UIGoodsDetailController: UGoodsDetailWKWebViewHeightCallBack{
     
     func wkWebViewHeightCallBack(height: CGFloat) {
-//        if !isWebReload {
-//            self.goodsDetailView.tableView.reloadRows(at: [currentIndex], with: UITableView.RowAnimation.none)
-//            isWebReload = true
-//        } else {
-            self.goodsDetailView.tableView.beginUpdates()
-            self.goodsDetailView.tableView.endUpdates()
-//        self.webHeight = height
-//        }
+        // 刷新tableView的frame
+        self.goodsDetailView.tableView.beginUpdates()
+        self.goodsDetailView.tableView.endUpdates()
+        // 取消loading显示
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     

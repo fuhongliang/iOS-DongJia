@@ -46,12 +46,16 @@ let TimeoutClosure = {(endpoint: Endpoint, closure: MoyaProvider<NetApi>.Request
 
 //MARK: 接口函数
 enum NetApi {
-    /// 获取首页数据
+    /// 首页数据
     case getMainData(param: [String:Any])
-    /// 获取首页的懂家精选数据
+    /// 首页的懂家精选数据
     case getMainFeaturedData(param: [String:Any])
     /// 微信登录接口
     case wxLogin(param: [String:Any])
+    /// 商品详情数据
+    case goodsDetail(param: [String:Any])
+    /// 商品详情页的爆款推荐数据
+    case goodsHotRecommend(param: [String:Any])
     
 }
 
@@ -71,12 +75,16 @@ extension NetApi: TargetType {
             return "/index.php?r=api/default/index-recommend"
         case .wxLogin:
             return "/index.php?r=api/passport/app-login"
+        case .goodsDetail:
+            return "/index.php?r=api/default/goods"
+        case .goodsHotRecommend:
+            return "/index.php?r=api/default/goods-recommend"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData:
+        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend:
             return .get
         case .wxLogin:
             return .post
@@ -96,6 +104,10 @@ extension NetApi: TargetType {
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .wxLogin(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
+        case .goodsDetail(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .goodsHotRecommend(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
         }
         
     }

@@ -104,6 +104,7 @@ extension UMainFeaturedCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //TODO 商品详情跳转
         let vc = UIGoodsDetailController()
+        vc.goodsId = model[indexPath.item].id
         topVC?.navigationController?.pushViewController(vc, animated: true)
     }
     
