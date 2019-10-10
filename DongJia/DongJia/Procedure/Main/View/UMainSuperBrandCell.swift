@@ -57,8 +57,7 @@ class UMainSuperBrandCell: UBaseTableViewCell {
         contentView.addSubview(bottom)
         bottom.snp.makeConstraints { (make) in
             make.top.equalTo(collectionView.snp.bottom)
-            make.bottom.equalToSuperview()
-            make.centerX.equalToSuperview()
+            make.bottom.centerX.equalToSuperview()
             make.size.equalTo(1)
         }
         

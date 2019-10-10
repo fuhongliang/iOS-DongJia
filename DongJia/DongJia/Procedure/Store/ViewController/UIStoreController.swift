@@ -23,7 +23,7 @@ enum storeItem {
 
 class UIStoreController: UBaseTableViewController {
     
-    var cells: [storeItem] = [.storeInfo,.hotRecommend]
+    var cells: [storeItem] = [.storeInfo,.hotRecommend,.classicCase]
     
     /// 店铺ID
     var storeId: String?
@@ -42,6 +42,7 @@ class UIStoreController: UBaseTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(cellType: UStoreMainInfoCell.self)
         tableView.register(cellType: UStoreHotRecommendCell.self)
+        tableView.register(cellType: UStoreClassicCaseCell.self)
     }
     
     func getHeaderTitle(viewForHeaderInSection section: Int) -> String?{
@@ -136,12 +137,14 @@ class UIStoreController: UBaseTableViewController {
         case .storeInfo:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UStoreMainInfoCell.self)
             cell.moreInfoBtnAction = { (isOpen) in
-                UIView.animate(withDuration: 0.5) {
-                    tableView.beginUpdates()
-                    cell.brandInfo.numberOfLines = isOpen ? 0 : 3
-                    tableView.endUpdates()
-                    // 重新修改约束以达到动画效果
-                }
+                cell.brandInfo.numberOfLines = isOpen ? 0 : 3
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                // 开启修正偏移
+                let currentOffset = tableView.contentOffset
+                UIView.setAnimationsEnabled(false)
+                tableView.setContentOffset(currentOffset, animated: false)
+                UIView.setAnimationsEnabled(true)
             }
             return cell
         case .hotRecommend:
@@ -149,7 +152,8 @@ class UIStoreController: UBaseTableViewController {
             
             return cell
         case .classicCase:
-            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UStoreMainInfoCell.self)
+            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UStoreClassicCaseCell.self)
+            cell.data = ""
             return cell
         case .designTeam:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UStoreMainInfoCell.self)
@@ -160,6 +164,13 @@ class UIStoreController: UBaseTableViewController {
         }
         
     }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        /// 这里给出估算高度(接近店铺信息cell的高度) 防止列表跳动问题
+        return 280
+    }
+    
+    
     
 
     /*

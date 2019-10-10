@@ -10,7 +10,7 @@ import UIKit
 
 class UStoreHotRecommendCell: UBaseTableViewCell {
     let whiteBg = UIView().then{
-        $0.backgroundColor = .random
+        $0.backgroundColor = .white
         $0.layer.cornerRadius = 3
         $0.layer.masksToBounds = true
         
@@ -28,7 +28,7 @@ class UStoreHotRecommendCell: UBaseTableViewCell {
         $0.isUserInteractionEnabled = true
     }
     override func configUI() {
-        
+        contentView.backgroundColor = .background
         contentView.addSubview(whiteBg)
         
         whiteBg.addSubview(goods1)
@@ -38,7 +38,7 @@ class UStoreHotRecommendCell: UBaseTableViewCell {
         //MARK:白色背景
         whiteBg.snp.makeConstraints { (make) in
             make.width.equalToSuperview().inset(15)
-            make.top.centerX.equalToSuperview()
+            make.top.bottom.centerX.equalToSuperview()
         }
         
         //MARK:商品1
