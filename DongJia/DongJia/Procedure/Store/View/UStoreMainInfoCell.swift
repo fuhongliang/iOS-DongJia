@@ -151,13 +151,18 @@ class UStoreMainInfoCell: UBaseTableViewCell {
     
     @objc func moreInfo(){
         moreInfoBtnAction?(isOpen)
+        moreInfoBtn.isSelected = isOpen
         isOpen = !isOpen
     }
     
-    var desc: String? {
+    var storeInfo: store_info? {
         didSet{
-            guard let desc = desc else { return }
-            brandInfo.setTextAndLineSpacing(text: desc, fontSize: 11, space: 5)
+            guard let storeInfo = storeInfo else { return }
+            brandInfo.setTextAndLineSpacing(text: storeInfo.mch_desc, fontSize: 11, space: 5)
+            bgColorImage.backgroundColor = .hex(hexString: storeInfo.mch_color)
+            storeBg.load(storeInfo.header_bg)
+            storeIcon.load(storeInfo.logo)
+            storeName.text = storeInfo.name
         }
     }
     

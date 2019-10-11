@@ -14,6 +14,8 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
     var goods2Action:(() -> ())?
     var goods3Action:(() -> ())?
     
+    var enterStoreAction:(() -> ())?
+    
     /// 店铺信息的bg
     let storeInfoBg = UIView().then{
         $0.backgroundColor = .white
@@ -75,7 +77,6 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
         storeInfoBg.addSubview(feel)
         storeInfoBg.addSubview(enterShop)
         storeInfoBg.addSubview(line)
-        contentView.addSubview(hotLabel)
         
         
         //MARK:店铺信息背景
@@ -106,37 +107,50 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
             make.height.equalTo(24)
             make.right.equalToSuperview().offset(-15)
         }
+        enterShop.addTarget(self, action: #selector(enterShopAction), for: .touchUpInside)
         //MARK:分割线
         line.snp.makeConstraints { (make) in
             make.width.bottom.equalToSuperview()
             make.height.equalTo(1)
         }
-        //MARK:爆款推荐
-        hotLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(15)
-            make.top.equalTo(line.snp.bottom).offset(19)
-        }
+        
         
         goods1.click = {
-            showHUDInView(text: "商品1", inView: topVC!.view, isClick: true)
+            let vc = UIGoodsDetailController()
+            vc.goodsId = self.recommendData![0].id
+            topVC?.navigationController?.pushViewController(vc, animated: true)
         }
         goods2.click = {
-            showHUDInView(text: "商品2", inView: topVC!.view, isClick: true)
+            let vc = UIGoodsDetailController()
+            vc.goodsId = self.recommendData![1].id
+            topVC?.navigationController?.pushViewController(vc, animated: true)
         }
         goods3.click = {
-            showHUDInView(text: "商品3", inView: topVC!.view, isClick: true)
+            let vc = UIGoodsDetailController()
+            vc.goodsId = self.recommendData![2].id
+            topVC?.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    @objc func enterShopAction(){
+        enterStoreAction?()
     }
     
     func configGoods(index: Int, data: goods_recommend_list){
         switch index {
         case 0:
+            contentView.addSubview(hotLabel)
+            //MARK:爆款推荐
+            hotLabel.snp.makeConstraints { (make) in
+                make.left.equalToSuperview().offset(15)
+                make.top.equalTo(line.snp.bottom).offset(19)
+            }
             contentView.addSubview(goods1)
             //MARK:商品1
             goods1.snp.makeConstraints { (make) in
                 make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
                 make.left.equalToSuperview().offset(15)
-                make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
+                make.width.equalTo((screenWidth-50)/3)
                 make.bottom.equalToSuperview()
             }
             goods1.picUrl = data.pic_url
@@ -148,7 +162,7 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
             //MARK:商品2
             goods2.snp.makeConstraints { (make) in
                 make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
-                make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
+                make.width.equalTo((screenWidth-50)/3)
                 make.centerX.bottom.equalToSuperview()
             }
             goods2.picUrl = data.pic_url
@@ -161,7 +175,7 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
             goods3.snp.makeConstraints { (make) in
                 make.top.equalTo(hotLabel.snp.bottom).offset(10.5)
                 make.right.equalToSuperview().offset(-15)
-                make.width.equalTo((screenWidth-50)/3)//.dividedBy(3)
+                make.width.equalTo((screenWidth-50)/3)
                 make.bottom.equalToSuperview()
             }
             goods3.picUrl = data.pic_url
@@ -186,6 +200,13 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
     var recommendData: [goods_recommend_list]? {
         didSet{
             guard let data = recommendData else { return }
+            if data.count == 0{
+                storeInfoBg.snp.makeConstraints { (make) in
+                    make.width.left.top.equalToSuperview()
+                    make.height.equalTo(64)
+                    make.bottom.equalToSuperview()
+                }
+            }
             for (index, data) in data.enumerated() {
                 configGoods(index: index, data: data)
             }

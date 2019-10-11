@@ -35,16 +35,22 @@ class UClassicCaseCell: UBaseCollectionViewCell {
         caseTitle.snp.makeConstraints { (make) in
             make.top.equalTo(picture.snp.bottom).offset(9)
             make.left.right.equalToSuperview().offset(7)
-            make.bottom.equalToSuperview().offset(-9)
+            
+        }
+        let view = UIView()
+        contentView.addSubview(view)
+        view.snp.makeConstraints { (make) in
+            make.top.equalTo(caseTitle.snp.bottom).offset(9)
+            make.bottom.equalToSuperview()
         }
         
     }
     
-    var title:String?{
+    var data:store_classic_case_model?{
         didSet{
-            guard let title = title else { return }
-            caseTitle.text = title
-            picture.load("https://weiliicimg9.pstatp.com/weili/l/540711875583672388.webp")
+            guard let data = data else { return }
+            caseTitle.text = data.title
+            picture.load(data.cover_pic)
         }
     }
     

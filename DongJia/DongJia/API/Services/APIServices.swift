@@ -56,6 +56,10 @@ enum NetApi {
     case goodsDetail(param: [String:Any])
     /// 商品详情页的爆款推荐数据
     case goodsHotRecommend(param: [String:Any])
+    /// 店铺主页数据
+    case storeInfo(param: [String:Any])
+    /// 店铺精品案例
+    case storeClassicCase(param: [String:Any])
     
 }
 
@@ -79,12 +83,16 @@ extension NetApi: TargetType {
             return "/index.php?r=api/default/goods"
         case .goodsHotRecommend:
             return "/index.php?r=api/default/goods-recommend"
+        case .storeInfo:
+            return "/index.php?r=api/mch/index/shop"
+        case .storeClassicCase:
+            return "/index.php?r=api/default/mch-article"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend:
+        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.storeClassicCase:
             return .get
         case .wxLogin:
             return .post
@@ -107,6 +115,10 @@ extension NetApi: TargetType {
         case .goodsDetail(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .goodsHotRecommend(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .storeInfo(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .storeClassicCase(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         }
         

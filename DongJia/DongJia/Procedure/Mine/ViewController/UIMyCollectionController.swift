@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 我的收藏页面
 class UIMyCollectionController: UBaseViewController {
     
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
@@ -54,7 +55,7 @@ extension UIMyCollectionController: UICollectionViewDelegate, UICollectionViewDa
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UMyCollectionCell.self)
-        cell.data = ["999","北欧简约设计自如布...","199"]
+        cell.data = ["":""]
         
         return cell
     }

@@ -121,7 +121,7 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UIStoreController(style: UITableView.Style.grouped)
+        let vc = UIStoreController()
         vc.title = "商品详情"
         vc.storeId = self.model![indexPath.row].id
         topVC?.navigationController?.pushViewController(vc, animated: true)

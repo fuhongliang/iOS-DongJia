@@ -1,51 +1,53 @@
 //
-//  UStoreClassicCaseCell.swift
+//  UStoreWillBuyCell.swift
 //  DongJia
 //
-//  Created by 于亿鑫 on 2019/10/10.
+//  Created by 于亿鑫 on 2019/10/11.
 //  Copyright © 2019 hongshuzhi. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 
-class UStoreClassicCaseCell: UBaseTableViewCell {
-    
-    var heightConstraint: Constraint? = nil
+class UStoreWillBuyCell: UBaseTableViewCell {
 
-    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
+    var heightConstraint: Constraint? = nil
+    
+    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
         $0.showsVerticalScrollIndicator = false
+        $0.layer.cornerRadius = 4
+        $0.layer.masksToBounds = true
         $0.backgroundColor = .background
-        
-        $0.register(cellType: UClassicCaseCell.self)
+        $0.register(cellType: UMyCollectionCell.self)
     }
     
     let layout = UICollectionViewFlowLayout().then{
         $0.scrollDirection = .vertical //设置滚动方向
-        $0.itemSize = CGSize(width: collectionCellWidth, height: 160)//设置cell的大小
+        $0.itemSize = CGSize(width: collectionCellWidth, height: 220)//设置cell的大小
         $0.minimumInteritemSpacing = 5
         $0.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     override func configUI() {
-        contentView.backgroundColor = .background
         
         let top = UIView()
         top.backgroundColor = .random
         contentView.addSubview(top)
         top.snp.makeConstraints { (make) in
             make.top.centerX.equalToSuperview()
-            make.size.equalTo(5)
+            make.size.equalTo(0)
         }
         
-        contentView.addSubview(collectionView)
         collectionView.collectionViewLayout = layout
-        collectionView.snp.makeConstraints({ (make) in
-            make.top.equalTo(top.snp.bottom)
+        contentView.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
             make.width.equalToSuperview().inset(15)
             make.centerX.equalToSuperview()
-            self.heightConstraint = make.height.equalTo(200).constraint
-        })
+            make.top.equalTo(top.snp.bottom)
+            self.heightConstraint = make.height.equalTo(screenHeight).constraint
+        }
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         let bottom = UIView()
         bottom.backgroundColor = .random
@@ -53,17 +55,13 @@ class UStoreClassicCaseCell: UBaseTableViewCell {
         bottom.snp.makeConstraints { (make) in
             make.top.equalTo(collectionView.snp.bottom)
             make.bottom.centerX.equalToSuperview()
-            make.size.equalTo(5)
+            make.size.equalTo(0)
         }
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
     }
     
-    var data: [store_classic_case_model]?{
+    var data: [store_goods_list]?{
         didSet{
-//            guard let data = data else { return }
+            //            guard let data = data else { return }
             guard data != nil else { return }
             self.collectionView.reloadData()
             //更新collectionView的高度约束
@@ -74,7 +72,7 @@ class UStoreClassicCaseCell: UBaseTableViewCell {
     }
 
 }
-extension UStoreClassicCaseCell: UICollectionViewDelegate, UICollectionViewDataSource{
+extension UStoreWillBuyCell: UICollectionViewDelegate, UICollectionViewDataSource{
     
     //MARK:section数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -88,8 +86,9 @@ extension UStoreClassicCaseCell: UICollectionViewDelegate, UICollectionViewDataS
     
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UClassicCaseCell.self)
-        cell.data = self.data?[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UMyCollectionCell.self)
+        let goods = self.data![indexPath.item]
+        cell.data = ["pic_url": goods.cover_pic,"name":goods.name,"price":goods.price,"origin_price":goods.original_price,"buy_num":goods.virtual_sales]
         
         return cell
     }

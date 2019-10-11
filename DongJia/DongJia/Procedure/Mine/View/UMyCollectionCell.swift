@@ -15,9 +15,6 @@ class UMyCollectionCell: UBaseCollectionViewCell {
     var picture = UIImageView().then{
         $0.image = UIImage.init(named: "default_icon")
     }
-    var timerBg = UIView().then{
-        $0.backgroundColor = UIColor.hex(hexString: "#F8F3E6")
-    }
     var goodsNameLabel = UILabel().then{
         $0.textColor = UIColor.hex(hexString: "#333333")
         $0.font = UIFont.systemFont(ofSize: 13)
@@ -82,21 +79,19 @@ class UMyCollectionCell: UBaseCollectionViewCell {
         contentView.addSubview(view)
         view.snp.makeConstraints { (make) in
             make.top.equalTo(picture.snp.bottom)
-            make.height.greaterThanOrEqualTo(50)
             make.bottom.equalToSuperview()
         }
         
     }
     
-    var data:[String]? {
+    var data:[String:String]? {
         didSet {
             guard let data = data else { return }
-            let priceString = NSMutableAttributedString.init(string: "¥\(data[0])")
-            priceString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSNumber.init(value: 1), range: NSRange(location: 0, length: priceString.length))
-            originalPriceLabel.attributedText = priceString
-            
-            goodsNameLabel.text = data[1]
-            buyPeopleOfNum.text = "\(data[2])人已买"
+            picture.load(data["pic_url"])
+            rmbLabel.text = "¥\(data["price"] ?? "-")"
+            originalPriceLabel.setUnderLine(text: "¥\(data["origin_price"] ?? "-")")
+            goodsNameLabel.text = data["name"]
+            buyPeopleOfNum.text = "\(data["buy_num"] ?? "")人已买"
         }
     }
 }

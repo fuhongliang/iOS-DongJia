@@ -170,6 +170,12 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsStoreInfoCell.self)
             cell.mchData = goodsData.mch
             cell.recommendData = goodsRecommendData?.list
+            cell.enterStoreAction = {
+                let vc = UIStoreController()
+                vc.title = "店铺详情"
+                vc.storeId = "\(self.goodsData.mch.id)"
+                self.pushViewController(vc, animated: true)
+            }
             return cell
         case .goodsDetail:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsDetailWKWebViewCell.self)
@@ -178,7 +184,6 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-    
 }
 
 extension UIGoodsDetailController: UGoodsDetailWKWebViewHeightCallBack{
@@ -190,6 +195,5 @@ extension UIGoodsDetailController: UGoodsDetailWKWebViewHeightCallBack{
         // 取消loading显示
         MBProgressHUD.hide(for: self.view, animated: true)
     }
-    
     
 }

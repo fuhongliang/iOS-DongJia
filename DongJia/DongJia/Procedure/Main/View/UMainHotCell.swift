@@ -38,8 +38,7 @@ class UMainHotCell: UBaseTableViewCell {
         let top = UIView()
         contentView.addSubview(top)
         top.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.centerX.equalToSuperview()
+            make.top.centerX.equalToSuperview()
             make.size.equalTo(1)
         }
         
