@@ -14,6 +14,7 @@ class BaseView: UIView {
     
     init() {
         super.init(frame: CGRect.init())
+        self.isUserInteractionEnabled = true
         self.configUI()
     }
     

@@ -14,7 +14,7 @@ class UMainSuperBrandCell: UBaseTableViewCell {
     
     var heightConstraint:Constraint? = nil
     
-    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
+    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
         
         $0.showsVerticalScrollIndicator = false
         $0.layer.cornerRadius = 4
@@ -71,13 +71,13 @@ class UMainSuperBrandCell: UBaseTableViewCell {
             guard model != nil else { return }
             
             //collectionView重新加载数据
-            self.collectionView.reloadData()
+//            self.collectionView.reloadData()
             
             //更新collectionView的高度约束
             let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
             heightConstraint?.update(offset: contentSize.height)
             
-            self.collectionView.collectionViewLayout.invalidateLayout()
+//            self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
     
@@ -121,8 +121,9 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let vc = UIStoreController()
         let vc = UIStoreController()
-        vc.title = "商品详情"
+        vc.title = "店铺详情"
         vc.storeId = self.model![indexPath.row].id
         topVC?.navigationController?.pushViewController(vc, animated: true)
     }

@@ -1,21 +1,27 @@
 //
-//  UStoreWillBuyCell.swift
+//  UStoreWillBuyView.swift
 //  DongJia
 //
-//  Created by 于亿鑫 on 2019/10/11.
+//  Created by 于亿鑫 on 2019/10/12.
 //  Copyright © 2019 hongshuzhi. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 
-class UStoreWillBuyCell: UBaseTableViewCell {
+class UStoreWillBuyView: BaseView {
 
+    let view = UIView(frame:CGRect(x: 0, y: 0, width: screenWidth, height: 45))
+    let titleLabel = UILabel().then{
+        $0.text = "精选必买"
+        $0.font = UIFont.boldSystemFont(ofSize: 17)
+        $0.textColor = UIColor.black
+    }
     var heightConstraint: Constraint? = nil
     
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
         $0.showsVerticalScrollIndicator = false
-
+        
         $0.backgroundColor = .background
         $0.register(cellType: UMyCollectionCell.self)
     }
@@ -28,28 +34,27 @@ class UStoreWillBuyCell: UBaseTableViewCell {
     }
     
     override func configUI() {
-        contentView.backgroundColor = .background
-        
-        let top = UIView()
-        contentView.addSubview(top)
-        top.snp.makeConstraints { (make) in
-            make.top.centerX.equalToSuperview()
-            make.size.equalTo(1)
+        self.backgroundColor = .background
+        self.addSubview(view)
+        view.addSubview(titleLabel)
+        //MARK:标题
+        titleLabel.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(15)
+            make.top.equalToSuperview().offset(20)
         }
-        
         collectionView.collectionViewLayout = layout
-        contentView.addSubview(collectionView)
+        self.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().inset(15)
+            make.width.equalTo(screenWidth-30)
             make.centerX.equalToSuperview()
-            make.top.equalTo(top.snp.bottom)
+            make.top.equalTo(view.snp.bottom)
             self.heightConstraint = make.height.equalTo(screenHeight).constraint
         }
         collectionView.delegate = self
         collectionView.dataSource = self
         
         let bottom = UIView()
-        contentView.addSubview(bottom)
+        self.addSubview(bottom)
         bottom.snp.makeConstraints { (make) in
             make.top.equalTo(collectionView.snp.bottom)
             make.bottom.centerX.equalToSuperview()
@@ -60,9 +65,10 @@ class UStoreWillBuyCell: UBaseTableViewCell {
     var data: [store_goods_list]?{
         didSet{
             guard data != nil else { return }
+            self.collectionView.reloadData()
             //更新collectionView的高度约束
-//            let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
-//            heightConstraint?.update(offset: contentSize.height)
+            let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
+            heightConstraint?.update(offset: contentSize.height)
         }
     }
     
@@ -72,9 +78,9 @@ class UStoreWillBuyCell: UBaseTableViewCell {
         let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
         heightConstraint?.update(offset: contentSize.height)
     }
-
+    
 }
-extension UStoreWillBuyCell: UICollectionViewDelegate, UICollectionViewDataSource{
+extension UStoreWillBuyView: UICollectionViewDelegate, UICollectionViewDataSource{
     
     //MARK:section数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -96,7 +102,10 @@ extension UStoreWillBuyCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showHUDInView(text: "\(indexPath.item)", inView: topVC!.view)
+        let vc = UIGoodsDetailController()
+        vc.goodsId = data![indexPath.item].id
+        topVC?.navigationController?.pushViewController(vc, animated: true)
     }
     
+
 }

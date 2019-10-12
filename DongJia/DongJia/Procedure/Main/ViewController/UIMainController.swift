@@ -22,14 +22,6 @@ class UIMainController: UBaseViewController {
     
     private let service = APIMainService()
     
-//    var cells: [MainItem] = [.search,
-//                             .banner,
-//                             .classification,
-//                             .limited,
-//                             .hot,
-//                             .superbrand,
-//                             .featured]
-    
     var cells: [MainItem] = [] {
         didSet{
             tableView.reloadData()
@@ -53,12 +45,12 @@ class UIMainController: UBaseViewController {
     }
     
     let tableView = UITableView(frame: .zero, style: .grouped).then {
-        $0.frame = .zero
         $0.backgroundColor = UIColor.background
         $0.separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         $0.separatorStyle = UITableViewCell.SeparatorStyle.none
         $0.showsVerticalScrollIndicator = false
         $0.rowHeight = UITableView.automaticDimension
+        $0.sectionFooterHeight = .leastNormalMagnitude
         $0.register(cellType: UMainSearchCell.self)
         $0.register(cellType: UMainBannerCell.self)
         $0.register(cellType: UMainClassificationCell.self)
@@ -169,14 +161,6 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard getHeaderTitle(viewForHeaderInSection: section) != nil else { return CGFloat.leastNormalMagnitude }
         return 50
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

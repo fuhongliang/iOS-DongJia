@@ -71,13 +71,13 @@ class UMainFeaturedCell: UBaseTableViewCell {
     var model:[featured_list] = [] {
         didSet {
             //collectionView重新加载数据
-            self.collectionView.reloadData()
+//            self.collectionView.reloadData()
             
             //更新collectionView的高度约束
             let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
             heightConstraint?.update(offset: contentSize.height)
             
-            self.collectionView.collectionViewLayout.invalidateLayout()
+//            self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
     

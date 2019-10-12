@@ -29,7 +29,7 @@
 		DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E03233204BC0087D84A /* UDosDetailView.swift */; };
 		DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3567234D79D80064EB75 /* APIGoodsService.swift */; };
 		DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */; };
-		DC308222234C345700271840 /* UIStoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308221234C345700271840 /* UIStoreController.swift */; };
+		DC308222234C345700271840 /* UIStoreControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308221234C345700271840 /* UIStoreControlle.swift */; };
 		DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308225234C34CB00271840 /* UBaseTableViewController.swift */; };
 		DC308228234C38C500271840 /* UStoreMainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308227234C38C500271840 /* UStoreMainInfoCell.swift */; };
 		DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */; };
@@ -65,6 +65,10 @@
 		DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB12332230F00595E2B /* UILabelExtension.swift */; };
 		DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */; };
 		DC768AB62332359000595E2B /* UContactDesignerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB52332359000595E2B /* UContactDesignerView.swift */; };
+		DC8516FC2351D5BB00E0759A /* UStoreMainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8516FB2351D5BB00E0759A /* UStoreMainInfoView.swift */; };
+		DC8516FE2351D67100E0759A /* UStoreHotRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */; };
+		DC8517002351D6CB00E0759A /* UStoreClassicCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */; };
+		DC8517022351D6F200E0759A /* UStoreWillBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8517012351D6F200E0759A /* UStoreWillBuyView.swift */; };
 		DCB0644823263AD40094727C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0644723263AD40094727C /* AppDelegate.swift */; };
 		DCB0644A23263AD40094727C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0644923263AD40094727C /* ViewController.swift */; };
 		DCB0644D23263AD50094727C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB0644B23263AD50094727C /* Main.storyboard */; };
@@ -126,6 +130,8 @@
 		DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4C1233B495800892D11 /* NotificationNameExtension.swift */; };
 		DCCEC4C4233B4B7300892D11 /* APIMineServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4C3233B4B7300892D11 /* APIMineServices.swift */; };
 		DCCEC4C6233B4D1000892D11 /* APILoginResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEC4C5233B4D1000892D11 /* APILoginResponseModel.swift */; };
+		DCEA78B92351D445002F2F1E /* UIStoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA78B82351D445002F2F1E /* UIStoreController.swift */; };
+		DCEA78BB2351D52E002F2F1E /* UStoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA78BA2351D52E002F2F1E /* UStoreInfoView.swift */; };
 		DCF5956F2334B64600C50B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF5956E2334B64600C50B88 /* Assets.xcassets */; };
 		DCF595712334CCE200C50B88 /* UIAddAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF595702334CCE200C50B88 /* UIAddAddressController.swift */; };
 		DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF595722334CD2500C50B88 /* UAddAddressView.swift */; };
@@ -173,7 +179,7 @@
 		DC246E03233204BC0087D84A /* UDosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosDetailView.swift; sourceTree = "<group>"; };
 		DC2E3567234D79D80064EB75 /* APIGoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsService.swift; sourceTree = "<group>"; };
 		DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsDetailResponseModel.swift; sourceTree = "<group>"; };
-		DC308221234C345700271840 /* UIStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreController.swift; sourceTree = "<group>"; };
+		DC308221234C345700271840 /* UIStoreControlle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreControlle.swift; sourceTree = "<group>"; };
 		DC308225234C34CB00271840 /* UBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBaseTableViewController.swift; sourceTree = "<group>"; };
 		DC308227234C38C500271840 /* UStoreMainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreMainInfoCell.swift; sourceTree = "<group>"; };
 		DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGoodsDetailController.swift; sourceTree = "<group>"; };
@@ -209,6 +215,10 @@
 		DC768AB12332230F00595E2B /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIContactDesignerController.swift; sourceTree = "<group>"; };
 		DC768AB52332359000595E2B /* UContactDesignerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UContactDesignerView.swift; sourceTree = "<group>"; };
+		DC8516FB2351D5BB00E0759A /* UStoreMainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreMainInfoView.swift; sourceTree = "<group>"; };
+		DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreHotRecommendView.swift; sourceTree = "<group>"; };
+		DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreClassicCaseView.swift; sourceTree = "<group>"; };
+		DC8517012351D6F200E0759A /* UStoreWillBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreWillBuyView.swift; sourceTree = "<group>"; };
 		DCB0644423263AD40094727C /* DongJia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DongJia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB0644723263AD40094727C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCB0644923263AD40094727C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +289,8 @@
 		DCCEC4C1233B495800892D11 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		DCCEC4C3233B4B7300892D11 /* APIMineServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMineServices.swift; sourceTree = "<group>"; };
 		DCCEC4C5233B4D1000892D11 /* APILoginResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoginResponseModel.swift; sourceTree = "<group>"; };
+		DCEA78B82351D445002F2F1E /* UIStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreController.swift; sourceTree = "<group>"; };
+		DCEA78BA2351D52E002F2F1E /* UStoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreInfoView.swift; sourceTree = "<group>"; };
 		DCF5956E2334B64600C50B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCF595702334CCE200C50B88 /* UIAddAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAddAddressController.swift; sourceTree = "<group>"; };
 		DCF595722334CD2500C50B88 /* UAddAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAddAddressView.swift; sourceTree = "<group>"; };
@@ -368,6 +380,7 @@
 		DC30821F234C33F700271840 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DCEA78BC2351D571002F2F1E /* view */,
 				DC308227234C38C500271840 /* UStoreMainInfoCell.swift */,
 				DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */,
 				DC1E77F8234F22AE005765F0 /* UStoreClassicCaseCell.swift */,
@@ -382,7 +395,8 @@
 		DC308220234C33FE00271840 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DC308221234C345700271840 /* UIStoreController.swift */,
+				DC308221234C345700271840 /* UIStoreControlle.swift */,
+				DCEA78B82351D445002F2F1E /* UIStoreController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -793,6 +807,18 @@
 			path = ZKCycleScrollView;
 			sourceTree = "<group>";
 		};
+		DCEA78BC2351D571002F2F1E /* view */ = {
+			isa = PBXGroup;
+			children = (
+				DCEA78BA2351D52E002F2F1E /* UStoreInfoView.swift */,
+				DC8516FB2351D5BB00E0759A /* UStoreMainInfoView.swift */,
+				DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */,
+				DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */,
+				DC8517012351D6F200E0759A /* UStoreWillBuyView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -994,11 +1020,13 @@
 			files = (
 				DCCEC4BC233A4C2D00892D11 /* UIColor+KLExtension.swift in Sources */,
 				DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */,
-				DC308222234C345700271840 /* UIStoreController.swift in Sources */,
+				DC8517022351D6F200E0759A /* UStoreWillBuyView.swift in Sources */,
+				DC308222234C345700271840 /* UIStoreControlle.swift in Sources */,
 				DCB064AC23266A000094727C /* FTCellConfiguration.swift in Sources */,
 				DC246E002331C4180087D84A /* UIDosController.swift in Sources */,
 				DCB064F023277EF30094727C /* UIMainController.swift in Sources */,
 				DC6133A82333377F00C52E9F /* UMineView.swift in Sources */,
+				DCEA78BB2351D52E002F2F1E /* UStoreInfoView.swift in Sources */,
 				DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */,
 				DCF595712334CCE200C50B88 /* UIAddAddressController.swift in Sources */,
 				DCB064E223273BA90094727C /* APIUserServices.swift in Sources */,
@@ -1032,6 +1060,7 @@
 				DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */,
 				DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */,
 				DC19F7A9233478F500BDFE7D /* UIMyCollectionController.swift in Sources */,
+				DC8516FE2351D67100E0759A /* UStoreHotRecommendView.swift in Sources */,
 				DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */,
 				DC3FAA2323505A1800B310EC /* APIStoreService.swift in Sources */,
 				DCB0645023263AD50094727C /* DongJia.xcdatamodeld in Sources */,
@@ -1063,6 +1092,7 @@
 				DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */,
 				DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */,
 				DCB06480232669510094727C /* UIColorExtension.swift in Sources */,
+				DC8517002351D6CB00E0759A /* UStoreClassicCaseView.swift in Sources */,
 				DC34A655233CBC380042EEA8 /* UFootLoadMoreView.swift in Sources */,
 				DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */,
 				DCCEC4C0233A4C2D00892D11 /* UIView+KLExtension.swift in Sources */,
@@ -1076,6 +1106,7 @@
 				DC34A65B233E16040042EEA8 /* UGoodsLimitedBuyCell.swift in Sources */,
 				DC34A64F233C7AB40042EEA8 /* UGoodsDetailView.swift in Sources */,
 				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
+				DC8516FC2351D5BB00E0759A /* UStoreMainInfoView.swift in Sources */,
 				DC1E77F5234EC670005765F0 /* UStoreHotRecommendCell.swift in Sources */,
 				DC34A659233E08490042EEA8 /* UPicCell.swift in Sources */,
 				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,
@@ -1102,6 +1133,7 @@
 				DCB064B223266A000094727C /* UIScreen+Frame.swift in Sources */,
 				DC54C59D233F084000ECFB25 /* UGoodsNameServiceCell.swift in Sources */,
 				DC19F7AD23347BCF00BDFE7D /* UMyCollectionCell.swift in Sources */,
+				DCEA78B92351D445002F2F1E /* UIStoreController.swift in Sources */,
 				DCB064AE23266A000094727C /* UIControl+Point.swift in Sources */,
 				DCB06483232669510094727C /* UIViewExtension.swift in Sources */,
 				DCB0644823263AD40094727C /* AppDelegate.swift in Sources */,

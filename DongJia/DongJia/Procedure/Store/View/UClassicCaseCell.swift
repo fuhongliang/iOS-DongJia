@@ -33,8 +33,9 @@ class UClassicCaseCell: UBaseCollectionViewCell {
         
         //MARK:案例名称
         caseTitle.snp.makeConstraints { (make) in
-            make.top.equalTo(picture.snp.bottom).offset(9)
-            make.left.right.equalToSuperview().offset(7)
+            make.left.equalTo(picture).offset(5)
+            make.right.equalTo(picture).offset(-5)
+            make.top.equalTo(picture.snp.bottom).offset(5)
             
         }
         let view = UIView()
