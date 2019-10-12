@@ -231,13 +231,16 @@ extension UIStoreController: UITableViewDelegate, UITableViewDataSource{
 //            if (cellsHeightCache[.willBuy] == nil){
 //                cellsHeightCache[.willBuy] = CGFloat(storeInfoData!.goods_list.count * 230 / 2)
 //            }
-//            return cellsHeightCache[.willBuy]!
+////            return cellsHeightCache[.willBuy]!
 //        }
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         /// 这里给出估算高度(接近店铺信息cell的高度) 防止列表跳动问题
+//        if (cellsHeightCache[.willBuy] != nil){
+//            return cellsHeightCache[.willBuy]!// = CGFloat(storeInfoData!.goods_list.count * 230 / 2)
+//        }
         return 280
     }
     

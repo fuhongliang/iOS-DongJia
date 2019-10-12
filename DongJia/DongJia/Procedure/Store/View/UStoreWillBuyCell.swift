@@ -61,13 +61,10 @@ class UStoreWillBuyCell: UBaseTableViewCell {
     
     var data: [store_goods_list]?{
         didSet{
-            //            guard let data = data else { return }
             guard data != nil else { return }
-            self.collectionView.reloadData()
             //更新collectionView的高度约束
             let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
             heightConstraint?.update(offset: contentSize.height)
-            self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
 
