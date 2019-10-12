@@ -133,6 +133,10 @@ class UGoodsStoreInfoCell: UBaseTableViewCell {
     }
     
     @objc func enterShopAction(){
+        if APIUser.shared.user?.access_token == nil {
+            showHUDInView(text: "请先登录", inView: topVC!.view, isClick: true)
+            return
+        }
         enterStoreAction?()
     }
     

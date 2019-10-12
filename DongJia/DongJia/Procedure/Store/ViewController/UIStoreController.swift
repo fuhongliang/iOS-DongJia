@@ -27,10 +27,7 @@ class UIStoreController: UBaseViewController {
     }
     /// 获取商家主页数据
     func getStoreInfo(){
-        if APIUser.shared.user?.access_token == nil {
-            showHUDInView(text: "请先登录", inView: self.view)
-            return
-        }
+        
         service.getStoreInfo(mchId: storeId, page: "1", { (StoreInfoData) in
             self.storeInfoData = StoreInfoData.data
 //            self.cells = [.storeInfo,.hotRecommend,.willBuy]

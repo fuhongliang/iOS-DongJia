@@ -122,6 +122,10 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let vc = UIStoreController()
+        if APIUser.shared.user?.access_token == nil {
+            showHUDInView(text: "请先登录", inView: topVC!.view, isClick: true)
+            return
+        }
         let vc = UIStoreController()
         vc.title = "店铺详情"
         vc.storeId = self.model![indexPath.row].id
