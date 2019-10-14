@@ -169,10 +169,14 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
         case .search:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainSearchCell.self)
             cell.chooseCityAction = {
-                showHUDInView(text: "选择城市", inView: self.view)
+                let vc = UIChooseCityController()
+                vc.title = "选择城市"
+                self.pushViewController(vc, animated: true)
             }
             cell.searchAction = {
-                showHUDInView(text: "搜索", inView: self.view)
+                let vc = UISearchController()
+                vc.title = "搜索"
+                self.pushViewController(vc, animated: true)
             }
             return cell
         case .banner:

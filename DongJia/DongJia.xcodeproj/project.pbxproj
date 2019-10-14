@@ -40,6 +40,7 @@
 		DC34A657233DFDAB0042EEA8 /* UGoodsPicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A656233DFDAB0042EEA8 /* UGoodsPicListCell.swift */; };
 		DC34A659233E08490042EEA8 /* UPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A658233E08490042EEA8 /* UPicCell.swift */; };
 		DC34A65B233E16040042EEA8 /* UGoodsLimitedBuyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A65A233E16040042EEA8 /* UGoodsLimitedBuyCell.swift */; };
+		DC392AE823544C37005E292D /* APIMineResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC392AE723544C37005E292D /* APIMineResponseModel.swift */; };
 		DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */; };
 		DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */; };
 		DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */; };
@@ -65,6 +66,14 @@
 		DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB12332230F00595E2B /* UILabelExtension.swift */; };
 		DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */; };
 		DC768AB62332359000595E2B /* UContactDesignerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB52332359000595E2B /* UContactDesignerView.swift */; };
+		DC785A4F23545C540076A5C9 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC785A4E23545C540076A5C9 /* ArcView.swift */; };
+		DC785A54235464970076A5C9 /* UShopCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC785A53235464970076A5C9 /* UShopCartViewController.swift */; };
+		DC785A56235464D80076A5C9 /* UShopCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC785A55235464D80076A5C9 /* UShopCartView.swift */; };
+		DC785A5823547A150076A5C9 /* UIChooseCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC785A5723547A150076A5C9 /* UIChooseCityController.swift */; };
+		DC785A5A23547A400076A5C9 /* UChooseCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC785A5923547A400076A5C9 /* UChooseCityView.swift */; };
+		DC785A5C23547DB10076A5C9 /* UChooseCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC785A5B23547DB10076A5C9 /* UChooseCityCell.swift */; };
+		DC785A5E235499840076A5C9 /* UISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC785A5D235499840076A5C9 /* UISearchController.swift */; };
+		DC785A60235499B70076A5C9 /* USearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC785A5F235499B70076A5C9 /* USearchView.swift */; };
 		DC8516FC2351D5BB00E0759A /* UStoreMainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8516FB2351D5BB00E0759A /* UStoreMainInfoView.swift */; };
 		DC8516FE2351D67100E0759A /* UStoreHotRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */; };
 		DC8517002351D6CB00E0759A /* UStoreClassicCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */; };
@@ -190,6 +199,7 @@
 		DC34A656233DFDAB0042EEA8 /* UGoodsPicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsPicListCell.swift; sourceTree = "<group>"; };
 		DC34A658233E08490042EEA8 /* UPicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicCell.swift; sourceTree = "<group>"; };
 		DC34A65A233E16040042EEA8 /* UGoodsLimitedBuyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsLimitedBuyCell.swift; sourceTree = "<group>"; };
+		DC392AE723544C37005E292D /* APIMineResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMineResponseModel.swift; sourceTree = "<group>"; };
 		DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainLimitedCell.swift; sourceTree = "<group>"; };
 		DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULimitedTimeCell.swift; sourceTree = "<group>"; };
 		DC39CF97232A3C1300E61C3A /* UMainHotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainHotCell.swift; sourceTree = "<group>"; };
@@ -215,6 +225,14 @@
 		DC768AB12332230F00595E2B /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIContactDesignerController.swift; sourceTree = "<group>"; };
 		DC768AB52332359000595E2B /* UContactDesignerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UContactDesignerView.swift; sourceTree = "<group>"; };
+		DC785A4E23545C540076A5C9 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
+		DC785A53235464970076A5C9 /* UShopCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UShopCartViewController.swift; sourceTree = "<group>"; };
+		DC785A55235464D80076A5C9 /* UShopCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UShopCartView.swift; sourceTree = "<group>"; };
+		DC785A5723547A150076A5C9 /* UIChooseCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChooseCityController.swift; sourceTree = "<group>"; };
+		DC785A5923547A400076A5C9 /* UChooseCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UChooseCityView.swift; sourceTree = "<group>"; };
+		DC785A5B23547DB10076A5C9 /* UChooseCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UChooseCityCell.swift; sourceTree = "<group>"; };
+		DC785A5D235499840076A5C9 /* UISearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchController.swift; sourceTree = "<group>"; };
+		DC785A5F235499B70076A5C9 /* USearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USearchView.swift; sourceTree = "<group>"; };
 		DC8516FB2351D5BB00E0759A /* UStoreMainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreMainInfoView.swift; sourceTree = "<group>"; };
 		DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreHotRecommendView.swift; sourceTree = "<group>"; };
 		DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreClassicCaseView.swift; sourceTree = "<group>"; };
@@ -380,14 +398,12 @@
 		DC30821F234C33F700271840 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DCEA78BC2351D571002F2F1E /* view */,
-				DC308227234C38C500271840 /* UStoreMainInfoCell.swift */,
-				DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */,
-				DC1E77F8234F22AE005765F0 /* UStoreClassicCaseCell.swift */,
-				DC1E77FA234F2348005765F0 /* UClassicCaseCell.swift */,
-				DC3FAA1E23501A3100B310EC /* UStoreDesignTeamCell.swift */,
-				DC3FAA2023501CF600B310EC /* UDesignTeamCell.swift */,
-				DC3FAA28235078C900B310EC /* UStoreWillBuyCell.swift */,
+				DCEA78BA2351D52E002F2F1E /* UStoreInfoView.swift */,
+				DC8516FB2351D5BB00E0759A /* UStoreMainInfoView.swift */,
+				DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */,
+				DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */,
+				DC8517012351D6F200E0759A /* UStoreWillBuyView.swift */,
+				DC392AE52354128C005E292D /* ViewBackup */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,7 +411,7 @@
 		DC308220234C33FE00271840 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DC308221234C345700271840 /* UIStoreControlle.swift */,
+				DC392AE6235412E6005E292D /* ControllerBackup */,
 				DCEA78B82351D445002F2F1E /* UIStoreController.swift */,
 			);
 			path = ViewController;
@@ -433,6 +449,28 @@
 				DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DC392AE52354128C005E292D /* ViewBackup */ = {
+			isa = PBXGroup;
+			children = (
+				DC308227234C38C500271840 /* UStoreMainInfoCell.swift */,
+				DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */,
+				DC1E77F8234F22AE005765F0 /* UStoreClassicCaseCell.swift */,
+				DC1E77FA234F2348005765F0 /* UClassicCaseCell.swift */,
+				DC3FAA1E23501A3100B310EC /* UStoreDesignTeamCell.swift */,
+				DC3FAA2023501CF600B310EC /* UDesignTeamCell.swift */,
+				DC3FAA28235078C900B310EC /* UStoreWillBuyCell.swift */,
+			);
+			path = ViewBackup;
+			sourceTree = "<group>";
+		};
+		DC392AE6235412E6005E292D /* ControllerBackup */ = {
+			isa = PBXGroup;
+			children = (
+				DC308221234C345700271840 /* UIStoreControlle.swift */,
+			);
+			path = ControllerBackup;
 			sourceTree = "<group>";
 		};
 		DC56BC91233A4B670089EE61 /* AddressView */ = {
@@ -477,6 +515,39 @@
 				DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */,
 				DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */,
 				DCF595722334CD2500C50B88 /* UAddAddressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DC785A4D23545C1E0076A5C9 /* ArcView */ = {
+			isa = PBXGroup;
+			children = (
+				DC785A4E23545C540076A5C9 /* ArcView.swift */,
+			);
+			path = ArcView;
+			sourceTree = "<group>";
+		};
+		DC785A50235464570076A5C9 /* ShopCart */ = {
+			isa = PBXGroup;
+			children = (
+				DC785A52235464740076A5C9 /* View */,
+				DC785A512354646C0076A5C9 /* ViewController */,
+			);
+			path = ShopCart;
+			sourceTree = "<group>";
+		};
+		DC785A512354646C0076A5C9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DC785A53235464970076A5C9 /* UShopCartViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DC785A52235464740076A5C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DC785A55235464D80076A5C9 /* UShopCartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -559,6 +630,7 @@
 		DCB06485232669FF0094727C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				DC785A4D23545C1E0076A5C9 /* ArcView */,
 				DC56BC91233A4B670089EE61 /* AddressView */,
 				DCB065062327CDA90094727C /* ZKCycleScrollView */,
 				DCB06486232669FF0094727C /* TextView */,
@@ -643,6 +715,7 @@
 		DCB064B323266A560094727C /* Procedure */ = {
 			isa = PBXGroup;
 			children = (
+				DC785A50235464570076A5C9 /* ShopCart */,
 				DC30821E234C33E500271840 /* Store */,
 				DC34A649233C71B90042EEA8 /* Goods */,
 				DC6133A42333373600C52E9F /* Mine */,
@@ -698,6 +771,7 @@
 				DCB064D5232732720094727C /* APIResponseModels.swift */,
 				DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */,
 				DCCEC4C5233B4D1000892D11 /* APILoginResponseModel.swift */,
+				DC392AE723544C37005E292D /* APIMineResponseModel.swift */,
 				DC34A652233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift */,
 				DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */,
 				DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */,
@@ -775,6 +849,8 @@
 			isa = PBXGroup;
 			children = (
 				DCB064EF23277EF30094727C /* UIMainController.swift */,
+				DC785A5723547A150076A5C9 /* UIChooseCityController.swift */,
+				DC785A5D235499840076A5C9 /* UISearchController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -795,6 +871,9 @@
 				DC2380132330E040006AE76F /* UMainFeaturedCell.swift */,
 				DC2380112330D94C006AE76F /* UFeaturedCell.swift */,
 				DC34A654233CBC380042EEA8 /* UFootLoadMoreView.swift */,
+				DC785A5923547A400076A5C9 /* UChooseCityView.swift */,
+				DC785A5B23547DB10076A5C9 /* UChooseCityCell.swift */,
+				DC785A5F235499B70076A5C9 /* USearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -805,18 +884,6 @@
 				DCB065072327CDA90094727C /* ZKCycleScrollView.swift */,
 			);
 			path = ZKCycleScrollView;
-			sourceTree = "<group>";
-		};
-		DCEA78BC2351D571002F2F1E /* view */ = {
-			isa = PBXGroup;
-			children = (
-				DCEA78BA2351D52E002F2F1E /* UStoreInfoView.swift */,
-				DC8516FB2351D5BB00E0759A /* UStoreMainInfoView.swift */,
-				DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */,
-				DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */,
-				DC8517012351D6F200E0759A /* UStoreWillBuyView.swift */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1024,6 +1091,7 @@
 				DC308222234C345700271840 /* UIStoreControlle.swift in Sources */,
 				DCB064AC23266A000094727C /* FTCellConfiguration.swift in Sources */,
 				DC246E002331C4180087D84A /* UIDosController.swift in Sources */,
+				DC785A60235499B70076A5C9 /* USearchView.swift in Sources */,
 				DCB064F023277EF30094727C /* UIMainController.swift in Sources */,
 				DC6133A82333377F00C52E9F /* UMineView.swift in Sources */,
 				DCEA78BB2351D52E002F2F1E /* UStoreInfoView.swift in Sources */,
@@ -1048,6 +1116,7 @@
 				DCB064A523266A000094727C /* URefresh.swift in Sources */,
 				DCB064A923266A000094727C /* UIScrollView+ParallaxHeader.swift in Sources */,
 				DCCEC4C6233B4D1000892D11 /* APILoginResponseModel.swift in Sources */,
+				DC785A4F23545C540076A5C9 /* ArcView.swift in Sources */,
 				DC3FAA2123501CF600B310EC /* UDesignTeamCell.swift in Sources */,
 				DC2380142330E040006AE76F /* UMainFeaturedCell.swift in Sources */,
 				DCB064C123266E040094727C /* APIToken.swift in Sources */,
@@ -1067,6 +1136,7 @@
 				DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */,
 				DC1E77F7234ED912005765F0 /* APIGoodsRecommendResponseModel.swift in Sources */,
 				DCB064D123266EE80094727C /* BaseView.swift in Sources */,
+				DC785A5E235499840076A5C9 /* UISearchController.swift in Sources */,
 				DCB064CF23266EE80094727C /* UBaseCollectionViewCell.swift in Sources */,
 				DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */,
 				DCB064F4232797E50094727C /* UMainSearchCell.swift in Sources */,
@@ -1080,6 +1150,7 @@
 				DCB06482232669510094727C /* UITextFieldExtension.swift in Sources */,
 				DCB064AF23266A000094727C /* FTPopOverMenu.swift in Sources */,
 				DCB064AA23266A000094727C /* ParallaxHeader.swift in Sources */,
+				DC785A5C23547DB10076A5C9 /* UChooseCityCell.swift in Sources */,
 				DC3FAA1F23501A3100B310EC /* UStoreDesignTeamCell.swift in Sources */,
 				DCB064D023266EE80094727C /* UBaseTableViewCell.swift in Sources */,
 				DCB064A623266A000094727C /* UEmptyDataSet.swift in Sources */,
@@ -1090,9 +1161,12 @@
 				DC308228234C38C500271840 /* UStoreMainInfoCell.swift in Sources */,
 				DCB064B123266A000094727C /* FTPopOverMenuCell.swift in Sources */,
 				DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */,
+				DC785A5823547A150076A5C9 /* UIChooseCityController.swift in Sources */,
 				DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */,
 				DCB06480232669510094727C /* UIColorExtension.swift in Sources */,
 				DC8517002351D6CB00E0759A /* UStoreClassicCaseView.swift in Sources */,
+				DC785A54235464970076A5C9 /* UShopCartViewController.swift in Sources */,
+				DC785A56235464D80076A5C9 /* UShopCartView.swift in Sources */,
 				DC34A655233CBC380042EEA8 /* UFootLoadMoreView.swift in Sources */,
 				DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */,
 				DCCEC4C0233A4C2D00892D11 /* UIView+KLExtension.swift in Sources */,
@@ -1101,9 +1175,11 @@
 				DC3FAA29235078C900B310EC /* UStoreWillBuyCell.swift in Sources */,
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
 				DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */,
+				DC785A5A23547A400076A5C9 /* UChooseCityView.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
 				DC54C5A5233F53A500ECFB25 /* UGoodsDetailWKWebViewCell.swift in Sources */,
 				DC34A65B233E16040042EEA8 /* UGoodsLimitedBuyCell.swift in Sources */,
+				DC392AE823544C37005E292D /* APIMineResponseModel.swift in Sources */,
 				DC34A64F233C7AB40042EEA8 /* UGoodsDetailView.swift in Sources */,
 				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
 				DC8516FC2351D5BB00E0759A /* UStoreMainInfoView.swift in Sources */,

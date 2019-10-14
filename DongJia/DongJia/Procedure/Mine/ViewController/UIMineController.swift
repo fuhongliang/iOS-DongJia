@@ -10,7 +10,10 @@ import UIKit
 
 class UIMineController: UBaseViewController {
     
-    private var service = APIUserServices()
+    private var loginService = APIUserServices()
+    private var mineService = APIMineServices()
+    
+    var mineData: mine_model?
     
     let mineView = UMineView()
     /// 修改状态栏颜色
@@ -29,6 +32,11 @@ class UIMineController: UBaseViewController {
         // 判断当前已经登录 就把保存的登录状态赋值
         if APIUser.shared.user != nil {
             mineView.loginData = APIUser.shared.user
+            mineService.getMineData({ (MineData) in
+                self.mineData = MineData.data
+            }) { (APIErrorModel) in
+                
+            }
         }
     }
     
@@ -39,7 +47,7 @@ class UIMineController: UBaseViewController {
     @objc func WXLoginSuccess(_ notification: Notification){
         let code = notification.object as! String
         print("微信返回的Code----\(code)")
-        service.login(wxCode: code, { (APILoginResponseModel) in
+        loginService.login(wxCode: code, { (APILoginResponseModel) in
             self.mineView.loginData = APILoginResponseModel.data
         }) { (APIErrorModel) in
             
@@ -83,6 +91,10 @@ extension UIMineController: UMineViewDelegate {
     
     func completeOrder() {
         showHUDInView(text: "已完成订单", inView: self.view, isClick: true)
+    }
+    
+    func myCoupon(){
+        showHUDInView(text: "我的优惠券", inView: self.view, isClick: true)
     }
     
     func myAfterSales() {

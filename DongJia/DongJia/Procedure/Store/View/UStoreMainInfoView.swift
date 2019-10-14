@@ -16,9 +16,10 @@ class UStoreMainInfoView: BaseView {
     /// 当前信息是否是展开 true->展开 false->关闭
     var isOpen:Bool = false
     
-    /// 头部的背景颜色图片
-    let bgColorImage = UIImageView().then{
-        $0.backgroundColor = .random
+    /// 头部的圆弧背景颜色图片
+    let arcColorBg = ArcView().then{
+        $0.backgroundColor = .background
+        $0.arcHeight = 90
     }
     /// 白色背景
     let whiteBg = UIView().then{
@@ -28,9 +29,7 @@ class UStoreMainInfoView: BaseView {
     }
     /// 店铺主背景图
     let storeBg = UIImageView()
-//        .then{
-//        $0.backgroundColor = .random
-//    }
+
     /// 半透明白色背景(店铺名字)
     let storeInfoBg = UIView().then{
         $0.backgroundColor = .init(r: 255, g: 255, b: 255, a: 0.5)//.hex(hexString: "#4BFFFFFF")
@@ -71,7 +70,7 @@ class UStoreMainInfoView: BaseView {
     }
     override func configUI() {
         self.backgroundColor = .background
-        self.addSubview(bgColorImage)
+        self.addSubview(arcColorBg)
         self.addSubview(whiteBg)
         whiteBg.addSubview(storeBg)
         whiteBg.addSubview(storeInfoBg)
@@ -89,7 +88,7 @@ class UStoreMainInfoView: BaseView {
         brandInfo.setTextAndLineSpacing(text: "南洋胡氏在家居鉴赏家眼中无与伦比的声誉和地位，不仅源于我鉴赏家眼中无与伦比的声誉和地位以及丰富的制艺历史与技术。我们无可争议的领军地位同样来自公司始终秉承 1993年创立以来的卓越制造理来的卓越制造理鉴赏家眼中无与伦比的声誉和地位鉴赏家眼中无与伦比的声誉和地位我们无可争议的领军地位同样来自公司始终秉承 1993年创立以来的卓越制造理来的卓越制造理鉴赏家眼中无与伦比的声誉和地位鉴赏家眼中无与伦比的声誉和地位", fontSize: 11, space: 5)
         
         //MARK:背景主颜色
-        bgColorImage.snp.makeConstraints { (make) in
+        arcColorBg.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview()
             make.width.equalTo(screenWidth)
             make.height.equalTo(115)
@@ -155,7 +154,6 @@ class UStoreMainInfoView: BaseView {
     @objc func moreInfo(){
         moreInfoBtnAction?(isOpen)
         
-        
         moreInfoBtn.isSelected = isOpen
         isOpen = !isOpen
     }
@@ -164,7 +162,7 @@ class UStoreMainInfoView: BaseView {
         didSet{
             guard let storeInfo = storeInfo else { return }
             brandInfo.setTextAndLineSpacing(text: storeInfo.mch_desc, fontSize: 11, space: 5)
-            bgColorImage.backgroundColor = .hex(hexString: storeInfo.mch_color)
+            arcColorBg.setFillColor(.hex(hexString: storeInfo.mch_color))
             storeBg.load(storeInfo.header_bg)
             storeIcon.load(storeInfo.logo)
             storeName.text = storeInfo.name

@@ -30,7 +30,6 @@ class UIStoreController: UBaseViewController {
         
         service.getStoreInfo(mchId: storeId, page: "1", { (StoreInfoData) in
             self.storeInfoData = StoreInfoData.data
-//            self.cells = [.storeInfo,.hotRecommend,.willBuy]
             self.v.setData(storeInfoData: self.storeInfoData)
             //请求精品案例数据
             self.getStoreClassicCase()
