@@ -184,6 +184,15 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (cells[indexPath.section] == .selectAttr){
+            let vc = UIChooseAttrViewController()
+            self.definesPresentationContext = true
+            vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+            self.present(vc, animated: true)
+            
+        }
+    }
 }
 
 extension UIGoodsDetailController: UGoodsDetailWKWebViewHeightCallBack{

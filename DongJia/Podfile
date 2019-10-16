@@ -27,5 +27,6 @@ target 'DongJia' do
   pod 'SCLAlertView' #弹窗
   pod 'JXSegmentedView' #滑动页面
   pod 'WechatOpenSDK' #微信集成
+  pod 'ZLCollectionViewFlowLayout' #CollectionView多布局
 
 end
