@@ -8,7 +8,16 @@
 
 import UIKit
 
+protocol UGoodsDetailViewProtocol {
+    func buyNowAction()
+    func addCartAction()
+    func viewToCartAction()
+    func collectionList()
+}
+
 class UGoodsDetailView: BaseView {
+    
+    var delegate: UGoodsDetailViewProtocol?
 
     let tableView = UITableView(frame: .zero, style: .grouped).then {
         $0.frame = .zero
@@ -69,6 +78,7 @@ class UGoodsDetailView: BaseView {
         whiteBg.addSubview(cartBtn)
         whiteBg.addSubview(addCartBtn)
         whiteBg.addSubview(buyNowBtn)
+        buyNowBtn.addTarget(self, action: #selector(buyNowAction), for: .touchUpInside)
         
         //MARK:商品详情TableView
         tableView.snp.makeConstraints { (make) in
@@ -110,6 +120,9 @@ class UGoodsDetailView: BaseView {
         collectionBtn.setButtonShowType(.Bottom)
         cartBtn.setButtonShowType(.Bottom)
         
+    }
+    @objc func buyNowAction(){
+        delegate?.buyNowAction()
     }
     
 }

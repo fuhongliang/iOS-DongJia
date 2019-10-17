@@ -20,15 +20,5 @@ extension UIView {
         self.layer.mask = shape
     }
     
-    /// 设置四角的平切(未完成)
-    private func makeStraightCutCorners(){
-        var size = self.frame.size
-        var shapeLayer = CAShapeLayer.init()
-        shapeLayer.fillColor = UIColor.white.cgColor
-        
-        var path = CGMutablePath()
-        
-    }
-    
 }
 

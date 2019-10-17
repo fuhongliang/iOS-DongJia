@@ -31,7 +31,7 @@ class UHeaderView: UICollectionReusableView,Reusable {
         self.addSubview(attrGroupName)
         //MARK:规格组名
         attrGroupName.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
+            make.left.equalToSuperview()
             make.top.equalToSuperview().offset(10)
         }
     }

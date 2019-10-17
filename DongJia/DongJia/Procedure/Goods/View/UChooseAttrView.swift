@@ -11,17 +11,38 @@ import ZLCollectionViewFlowLayout
 
 protocol UChooseAttrViewProtocol {
     func dismissAction()
+    func buyNowAction()
 }
 
 class UChooseAttrView: BaseView {
     
     var delegate: UChooseAttrViewProtocol?
     
+    private var service = APIGoodsService()
+    
     let 猪刚鬣 = "http://pics0.baidu.com/feed/c8177f3e6709c93d0abb3b1a22d37fd9d3005481.jpeg?token=343555ad077cf67cf7a9a49e9c2436eb&s=984BB14C43B2B3701A5A15170300E0C8"
     
-    let arrayAttrs = [["超轻体力活动(程序员)超轻体力活动(程序员)超轻体力活动(程序员)超轻体力活动(程序员)超轻体力活动(程序员)超轻体力活动(程序员)","轻体力活动(学生,白领)","中体力活动(业务员,普通工人)","重体力活动(运动员,装卸工)","超重体力活","中体力活动(业务员,普通工人)","重体力活动(运动员,装卸工)","超重体力活"],["职业公司","非职业公司","半职业半非职业公司","没有公司","非职业公司","半职业半非职业公司"],["我喜欢看电影","我喜欢看书","我喜欢看电影又喜欢看书","你喜欢看电影个屁","我喜欢看书","我喜欢看电影又喜欢看书"]]
+    /// 规格组数据
+    var attrData:[goods_detail_attr_group_list]! {
+        didSet{
+            for (index,item) in attrData.enumerated() {
+                chooseArrayAttrs.append([Bool]())
+                for _ in item.attr_list {
+                    chooseArrayAttrs[index].append(false)
+                }
+            }
+        }
+    }
+    
+    /// 记录当前选择的状态
     var chooseArrayAttrs = [[Bool]]()
     
+    /// 存储已经选择了规格组中的对应的属性
+    var alreadyChooseAttrGroupId = [Int:Int]()
+    
+    /// 当前商品ID
+    var currentGoodsId: String = ""
+    /// 当前是否选择全部的商品属性
     
     /// 白色背景
     let whiteBg = UIView().then{
@@ -62,12 +83,6 @@ class UChooseAttrView: BaseView {
         $0.register(cellType: UChooseAttrCell.self)
         $0.register(cellType: UAddNumberCell.self)
     }
-//    let layout = UICollectionViewFlowLayout().then{
-//        $0.scrollDirection = .vertical //设置滚动方向
-//        $0.estimatedItemSize = CGSize(width: (screenWidth)/4, height: 30)
-//        $0.minimumInteritemSpacing = 7.5
-//        $0.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
-//    }
     // 创建一个有多布局的layout
     let flowLayout = ZLCollectionViewVerticalLayout().then{
         $0.canDrag = true
@@ -96,12 +111,7 @@ class UChooseAttrView: BaseView {
 
     override func configUI() {
         
-        for (index,item) in arrayAttrs.enumerated() {
-            chooseArrayAttrs.append([Bool]())
-            for _ in item {
-                chooseArrayAttrs[index].append(false)
-            }
-        }
+        
         goodsPic.load(猪刚鬣)
         priceLabel.text = "￥3398-5999"
         stockLabel.text = "库存充足"
@@ -122,7 +132,7 @@ class UChooseAttrView: BaseView {
         whiteBg.addSubview(attrCollection)
         whiteBg.addSubview(addCart)
         whiteBg.addSubview(buyNow)
-        
+        buyNow.addTarget(self, action: #selector(buyNowAction), for: .touchUpInside)
         //MARK:白色背景
         whiteBg.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -178,11 +188,46 @@ class UChooseAttrView: BaseView {
             make.centerX.equalToSuperview()
         }
         
-        
     }
     
     @objc func closeAction(){
         delegate?.dismissAction()
+    }
+    @objc func buyNowAction(){
+        guard alreadyChooseAttrGroupId.count == attrData.count else {
+            for (index, item) in attrData.enumerated(){
+                if alreadyChooseAttrGroupId[index] == nil {
+                    showHUDInView(text: "请选择\(item.attr_group_name)", inView: self)
+                    attrCollection.scrollToItem(at: IndexPath(item: 0, section: index), at: .top, animated: true)
+                }
+            }
+            return
+        }
+        delegate?.buyNowAction()
+    }
+    
+    /// 获取该属性的商品的信息(库存,价格,图片)
+    func getAttrInfo(indexPath: IndexPath){
+        // 判断当前选择的属性 是否全部选择完成
+        // 存储选择的商品属性ID
+        var chooseId:[Int] = [Int]()
+        for (index, item) in chooseArrayAttrs.enumerated(){
+            for (i, isChoose) in item.enumerated(){
+                if (isChoose) {
+                    chooseId.append(attrData[index].attr_list[i].attr_id)
+                    alreadyChooseAttrGroupId[index] = attrData[index].attr_group_id
+                    break
+                }
+            }
+        }
+        guard chooseId.count == attrData.count else { return }
+        service.getGoodsAttrData(goodsId: currentGoodsId, attr_list: chooseId, { (AttrData) in
+            self.goodsPic.load(AttrData.data?.pic)
+            self.priceLabel.text = "¥\(AttrData.data?.price ?? "-")"
+            self.stockLabel.text = "库存\(AttrData.data?.num ?? 0)"
+        }) { (APIErrorModel) in
+            
+        }
     }
 
 }
@@ -190,7 +235,7 @@ class UChooseAttrView: BaseView {
 extension UChooseAttrView: ZLCollectionViewBaseFlowLayoutDelegate{
     // 返回当前的布局类型
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewFlowLayout, typeOfLayout section: Int) -> ZLLayoutType {
-        if section == arrayAttrs.count {
+        if section == attrData.count {
             return ClosedLayout
         }
         return LabelLayout
@@ -201,24 +246,24 @@ extension UChooseAttrView: ZLCollectionViewBaseFlowLayoutDelegate{
 extension UChooseAttrView: UICollectionViewDelegate, UICollectionViewDataSource{
     // 返回section的数量
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return arrayAttrs.count+1
+        return attrData.count+1
     }
     
     // 返回section中item的数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == arrayAttrs.count {
+        if section == attrData.count {
             return 1
         }
-        return arrayAttrs[section].count
+        return attrData[section].attr_list.count
     }
     
     // 返回头部View
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: UHeaderView.self)
-        if indexPath.section == arrayAttrs.count{
+        if indexPath.section == attrData.count{
             headerView.attrGroupName.text = "数量"
         } else {
-            headerView.attrGroupName.text = "Kotlin开发"
+            headerView.attrGroupName.text = self.attrData?[indexPath.section].attr_group_name
         }
         return headerView
     }
@@ -231,7 +276,7 @@ extension UChooseAttrView: UICollectionViewDelegate, UICollectionViewDataSource{
     // 创建cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // 数量cell
-        if indexPath.section == arrayAttrs.count{
+        if indexPath.section == attrData.count{
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UAddNumberCell.self)
             return cell
         }
@@ -239,13 +284,13 @@ extension UChooseAttrView: UICollectionViewDelegate, UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UChooseAttrCell.self)
         // 返回cell
         cell.isChoose = chooseArrayAttrs[indexPath.section][indexPath.item]
-        cell.name = arrayAttrs[indexPath.section][indexPath.row]
+        cell.name = attrData?[indexPath.section].attr_list[indexPath.item].attr_name ?? ""
         return cell
     }
     
     // 点击事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == arrayAttrs.count{
+        if indexPath.section == attrData.count{
             // 如果是数量加减 则没有点击事件
             return
         }
@@ -257,16 +302,17 @@ extension UChooseAttrView: UICollectionViewDelegate, UICollectionViewDataSource{
                 chooseArrayAttrs[indexPath.section][index] = false
             }
         }
+        self.getAttrInfo(indexPath: indexPath)
         collectionView.reloadData()
     }
     
     // 返回cell的size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == arrayAttrs.count{
+        if indexPath.section == attrData.count{
             return CGSize(width: screenWidth-30, height: 30)
         }
         // 返回文本的宽度
-        let label: NSString = arrayAttrs[indexPath.section][indexPath.row] as NSString
+        let label: NSString = attrData[indexPath.section].attr_list[indexPath.row].attr_name as NSString
         return CGSize(width: label.boundingRect(with: CGSize(width: 1000000, height: 20), options: NSStringDrawingOptions(rawValue: NSStringDrawingOptions.usesLineFragmentOrigin.rawValue | NSStringDrawingOptions.usesFontLeading.rawValue), attributes: [.font: UIFont.systemFont(ofSize: 14)], context: nil).width+14, height: 30)
     }
     

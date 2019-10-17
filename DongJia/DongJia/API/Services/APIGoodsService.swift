@@ -12,9 +12,33 @@ protocol APIGoodsServiceProtocol {
     func getGoodsDetail(storeId: String, goodsId: String, _ success: @escaping(((APIGoodsDetailResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
     func getGoodsRecommend(goodsId: String, _ success: @escaping(((APIGoodsRecommendResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    
+    func getGoodsAttrData(goodsId: String, attr_list:[Int], _ success: @escaping(((APIGoodsAttrDataResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
 }
 
 class APIGoodsService: APIGoodsServiceProtocol {
+    func getGoodsAttrData(goodsId: String, attr_list: [Int], _ success: @escaping (((APIGoodsAttrDataResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        let param:[String:Any] = [
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1,
+            "goods_id": goodsId,
+            "attr_list":attr_list
+        ]
+        APIService.sharedBackground.request(.getGoodsAttrData(param: param), { (data) in
+            do {
+                let model = try JSONDecoder().decode(APIGoodsAttrDataResponseModel.self, from: data)
+                success(model)
+            } catch {
+                let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
+                print(errorModel.msg!)
+                fail(errorModel)
+            }
+        }) { (APIErrorModel) in
+            print(APIErrorModel.msg ?? "----")
+        }
+    }
+    
     /// 获取商品详情中的爆款推荐数据
     func getGoodsRecommend(goodsId: String, _ success: @escaping (((APIGoodsRecommendResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
         let param:[String:Any] = [

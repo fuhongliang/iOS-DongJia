@@ -99,7 +99,7 @@ extension UINavigationController {
     func barStyle(_ style: UNavigationBarStyle) {
         switch style {
         case .theme:
-            navigationBar.barStyle = .default
+            navigationBar.barStyle = .black
             navigationBar.setBackgroundImage(UIColor.theme.image(), for: .default)
             navigationBar.shadowImage = UIImage()
         case .clear:

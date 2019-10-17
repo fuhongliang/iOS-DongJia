@@ -32,17 +32,17 @@ class ULoginViewController: UBaseViewController {
         super.viewDidLoad()
     }
     //MARK:重写顶部导航栏
-    override func configNavigationBar() {
-        guard let navi = navigationController else { return }
-        if navi.visibleViewController == self {
-            navi.barStyle(.clear)
-            let btnItem = UIBarButtonItem.init(title: loginStyle, style: .plain, target: self, action: #selector(tapChangeLoginStyleAction))
-            btnItem.tintColor = UIColor.black
-            btnItem.setBackgroundImage(UIColor.white.image(), for: .normal, barMetrics: .default)
-            btnItem.width = 80
-            navigationItem.rightBarButtonItem = btnItem
-        }
-    }
+//    override func configNavigationBar() {
+//        guard let navi = navigationController else { return }
+//        if navi.visibleViewController == self {
+//            navi.barStyle(.clear)
+//            let btnItem = UIBarButtonItem.init(title: loginStyle, style: .plain, target: self, action: #selector(tapChangeLoginStyleAction))
+//            btnItem.tintColor = UIColor.black
+//            btnItem.setBackgroundImage(UIColor.white.image(), for: .normal, barMetrics: .default)
+//            btnItem.width = 80
+//            navigationItem.rightBarButtonItem = btnItem
+//        }
+//    }
     //MARK:初始化视图
     override func configUI() {
         
@@ -64,7 +64,7 @@ class ULoginViewController: UBaseViewController {
         }else{
             loginStyle = "密码登录"
         }
-        configNavigationBar()
+//        configNavigationBar()
         configUI()
     }
 

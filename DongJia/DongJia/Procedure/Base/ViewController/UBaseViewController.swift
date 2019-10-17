@@ -28,7 +28,7 @@ class UBaseViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configNavigationBar()
+        configNavigationBar(barStyle: .white)
     }
 
     func configUI() {}
@@ -37,14 +37,14 @@ class UBaseViewController: UIViewController {
         super.viewDidLayoutSubviews()
     }
 
-    func configNavigationBar() {
+    func configNavigationBar(barStyle:UNavigationBarStyle) {
         guard let navi = navigationController else { return }
         if navi.visibleViewController == self {
-            navi.barStyle(.white)
+            navi.barStyle(barStyle)
             navi.disablePopGesture = false
             navi.setNavigationBarHidden(false, animated: true)
             if navi.viewControllers.count > 1 {
-                addNavigationBarBackView()
+                addNavigationBarBackView(barStyle)
             }
         }
     }
@@ -64,8 +64,9 @@ class UBaseViewController: UIViewController {
 
 extension UBaseViewController {
     
-    func addNavigationBarBackView(){
-        let leftItem = UIBarButtonItem(image: UIImage(named: "black_back"), target: self, action: #selector(pressBack))
+    func addNavigationBarBackView(_ barStyle: UNavigationBarStyle){
+        let backImg = UIImage.init(named: barStyle == .theme ? "white_back" : "black_back")
+        let leftItem = UIBarButtonItem(image: backImg, target: self, action: #selector(pressBack))
         if #available(iOS 11, *) {
             self.navigationItem.leftBarButtonItems = [leftItem]
         } else {

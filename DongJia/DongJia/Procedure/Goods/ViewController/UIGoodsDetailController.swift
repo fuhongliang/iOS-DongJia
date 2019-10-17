@@ -26,6 +26,10 @@ enum GoodsDetailItem {
     case goodsDetail
 }
 
+protocol UIGoodsDetailControllerDelegate {
+    func chooseAttrCallBack(attr: Any?, addCartOrBuyOrDismiss: String)
+}
+
 class UIGoodsDetailController: UBaseViewController {
     
     private let service = APIGoodsService()
@@ -44,9 +48,6 @@ class UIGoodsDetailController: UBaseViewController {
     var goodsId = "-1"
     
     var cells: [GoodsDetailItem] = []
-//    {
-//        didSet{ goodsDetailView.tableView.reloadData() }
-//    }
     
     /// 当前所有请求是否都已完成
     var requestComplete: Int = 0 {
@@ -100,6 +101,29 @@ class UIGoodsDetailController: UBaseViewController {
             print(APIErrorModel.msg ?? "")
         }
     }
+    
+}
+
+extension UIGoodsDetailController: UGoodsDetailViewProtocol{
+    func buyNowAction() {
+        //TODO 判断登录状态 是否选择了规格
+        let vc = UIConfirmOrderController()
+        vc.title = "确认订单"
+        self.pushViewController(vc, animated: true)
+    }
+    
+    func addCartAction() {
+        
+    }
+    
+    func viewToCartAction() {
+        
+    }
+    
+    func collectionList() {
+        
+    }
+    
     
 }
 
@@ -187,12 +211,32 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (cells[indexPath.section] == .selectAttr){
             let vc = UIChooseAttrViewController()
+            vc.delegate = self
+            vc.attrData = goodsData.attr_group_list
+            vc.goodsId = goodsId
             self.definesPresentationContext = true
             vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
             self.present(vc, animated: true)
             
         }
     }
+}
+
+// 选择商品属性回调
+extension UIGoodsDetailController: UIGoodsDetailControllerDelegate{
+    func chooseAttrCallBack(attr: Any?, addCartOrBuyOrDismiss: String) {
+        switch addCartOrBuyOrDismiss {
+        case "buyNow":
+            let vc = UIConfirmOrderController()
+            vc.title = "确认订单"
+            self.pushViewController(vc, animated: true)
+        case "addCart":
+            break
+        default:
+            break
+        }
+    }
+    
 }
 
 extension UIGoodsDetailController: UGoodsDetailWKWebViewHeightCallBack{

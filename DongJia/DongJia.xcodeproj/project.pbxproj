@@ -83,6 +83,9 @@
 		DC8516FE2351D67100E0759A /* UStoreHotRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */; };
 		DC8517002351D6CB00E0759A /* UStoreClassicCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */; };
 		DC8517022351D6F200E0759A /* UStoreWillBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8517012351D6F200E0759A /* UStoreWillBuyView.swift */; };
+		DC8AA9062358233C00108476 /* UIConfirmOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8AA9052358233C00108476 /* UIConfirmOrderController.swift */; };
+		DC8AA90823583E9200108476 /* UConfirmOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8AA90723583E9200108476 /* UConfirmOrderView.swift */; };
+		DC8AA90A235863A300108476 /* APIGoodsAttrDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8AA909235863A300108476 /* APIGoodsAttrDataResponseModel.swift */; };
 		DCB0644823263AD40094727C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0644723263AD40094727C /* AppDelegate.swift */; };
 		DCB0644A23263AD40094727C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0644923263AD40094727C /* ViewController.swift */; };
 		DCB0644D23263AD50094727C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB0644B23263AD50094727C /* Main.storyboard */; };
@@ -248,6 +251,9 @@
 		DC8516FD2351D67100E0759A /* UStoreHotRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreHotRecommendView.swift; sourceTree = "<group>"; };
 		DC8516FF2351D6CB00E0759A /* UStoreClassicCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreClassicCaseView.swift; sourceTree = "<group>"; };
 		DC8517012351D6F200E0759A /* UStoreWillBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreWillBuyView.swift; sourceTree = "<group>"; };
+		DC8AA9052358233C00108476 /* UIConfirmOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfirmOrderController.swift; sourceTree = "<group>"; };
+		DC8AA90723583E9200108476 /* UConfirmOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UConfirmOrderView.swift; sourceTree = "<group>"; };
+		DC8AA909235863A300108476 /* APIGoodsAttrDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsAttrDataResponseModel.swift; sourceTree = "<group>"; };
 		DCB0644423263AD40094727C /* DongJia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DongJia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB0644723263AD40094727C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCB0644923263AD40094727C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -432,7 +438,7 @@
 		DC34A649233C71B90042EEA8 /* Goods */ = {
 			isa = PBXGroup;
 			children = (
-				DCE6BD142355BCF300821EC9 /* New Group */,
+				DCE6BD142355BCF300821EC9 /* Animated */,
 				DC34A64B233C71DD0042EEA8 /* ViewController */,
 				DC34A64A233C71D20042EEA8 /* View */,
 			);
@@ -456,6 +462,7 @@
 				DC19F0C72356C35900148B8F /* UHeaderView.swift */,
 				DC19F0C92356F5DA00148B8F /* UChooseAttrCell.swift */,
 				DC4F094C23572A3F009F4F91 /* UAddNumberCell.swift */,
+				DC8AA90723583E9200108476 /* UConfirmOrderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -465,6 +472,7 @@
 			children = (
 				DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */,
 				DC47AE6C235568F100D01AD6 /* UIChooseAttrViewController.swift */,
+				DC8AA9052358233C00108476 /* UIConfirmOrderController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -795,6 +803,7 @@
 				DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */,
 				DC3FAA2423505F8100B310EC /* APIStoreInfoResponseModel.swift */,
 				DC3FAA262350626E00B310EC /* APIStoreClassicCaseResponseModel.swift */,
+				DC8AA909235863A300108476 /* APIGoodsAttrDataResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -904,12 +913,12 @@
 			path = ZKCycleScrollView;
 			sourceTree = "<group>";
 		};
-		DCE6BD142355BCF300821EC9 /* New Group */ = {
+		DCE6BD142355BCF300821EC9 /* Animated */ = {
 			isa = PBXGroup;
 			children = (
 				DCE6BD172355BD3500821EC9 /* ChooseAttrViewAnimated.swift */,
 			);
-			path = "New Group";
+			path = Animated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1123,6 +1132,7 @@
 				DCE6BD182355BD3500821EC9 /* ChooseAttrViewAnimated.swift in Sources */,
 				DC6133A82333377F00C52E9F /* UMineView.swift in Sources */,
 				DCEA78BB2351D52E002F2F1E /* UStoreInfoView.swift in Sources */,
+				DC8AA9062358233C00108476 /* UIConfirmOrderController.swift in Sources */,
 				DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */,
 				DCF595712334CCE200C50B88 /* UIAddAddressController.swift in Sources */,
 				DCB064E223273BA90094727C /* APIUserServices.swift in Sources */,
@@ -1142,6 +1152,7 @@
 				DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */,
 				DCB064AD23266A000094727C /* FTConstants.swift in Sources */,
 				DCB064A523266A000094727C /* URefresh.swift in Sources */,
+				DC8AA90A235863A300108476 /* APIGoodsAttrDataResponseModel.swift in Sources */,
 				DCB064A923266A000094727C /* UIScrollView+ParallaxHeader.swift in Sources */,
 				DCCEC4C6233B4D1000892D11 /* APILoginResponseModel.swift in Sources */,
 				DC785A4F23545C540076A5C9 /* ArcView.swift in Sources */,
@@ -1236,6 +1247,7 @@
 				DCB0647F232669510094727C /* UIImageViewExtension.swift in Sources */,
 				DCCEC4BD233A4C2D00892D11 /* KLCityPickerView.swift in Sources */,
 				DCB064A823266A000094727C /* ParallaxHeaderMode.swift in Sources */,
+				DC8AA90823583E9200108476 /* UConfirmOrderView.swift in Sources */,
 				DC54C5A1233F386F00ECFB25 /* UGoodsStoreInfoCell.swift in Sources */,
 				DCB064C323266E0D0094727C /* APIServices.swift in Sources */,
 				DCB064B223266A000094727C /* UIScreen+Frame.swift in Sources */,

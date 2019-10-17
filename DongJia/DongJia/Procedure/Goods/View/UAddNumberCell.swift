@@ -18,6 +18,7 @@ class UAddNumberCell: UBaseCollectionViewCell {
     }
     /// 减－
     let reduceBtn = UIButton().then{
+        $0.layer.cornerRadius = 2
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.hex(hexString: "#CCCCCC").cgColor
         $0.setTitle("－", for: .normal)
@@ -35,6 +36,7 @@ class UAddNumberCell: UBaseCollectionViewCell {
     }
     /// 加＋
     let addBtn = UIButton().then{
+        $0.layer.cornerRadius = 2
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.hex(hexString: "#CCCCCC").cgColor
         $0.setTitle("＋", for: .normal)
@@ -61,7 +63,7 @@ class UAddNumberCell: UBaseCollectionViewCell {
         //MARK:数量
         number.snp.makeConstraints { (make) in
             make.left.equalTo(reduceBtn.snp.right)
-            make.size.equalTo(18)
+            make.size.equalTo(CGSize(width: 36, height: 18))
             make.centerY.equalTo(reduceBtn)
         }
         //MARK:加
@@ -75,18 +77,18 @@ class UAddNumberCell: UBaseCollectionViewCell {
     
     @objc func reduceAction(){
         currentNumber -= 1
-        number.text = "\(currentNumber)"
     }
     
     @objc func addAction(){
         currentNumber += 1
-        number.text = "\(currentNumber)"
     }
     var currentNumber: Int = 1 {
         didSet{
             number.text = "\(currentNumber)"
             //设置等于1时不能再减
-            reduceBtn.isEnabled = currentNumber >= 1
+            reduceBtn.isEnabled = currentNumber > 1
+            //设置大于99时不能再加
+            addBtn.isEnabled = currentNumber < 99
         }
     }
     
