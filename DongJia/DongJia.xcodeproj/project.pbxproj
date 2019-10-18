@@ -67,6 +67,9 @@
 		DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A22333205000C52E9F /* NSObjectExtension.swift */; };
 		DC6133A82333377F00C52E9F /* UMineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A72333377F00C52E9F /* UMineView.swift */; };
 		DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A923335B6000C52E9F /* UIMineController.swift */; };
+		DC6F054523597350007EB039 /* UConfirmOrderAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F054423597350007EB039 /* UConfirmOrderAddressCell.swift */; };
+		DC6F05472359BD0E007EB039 /* UOrderGoodsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F05462359BD0E007EB039 /* UOrderGoodsInfoCell.swift */; };
+		DC6F05492359C727007EB039 /* UOrderStoreInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F05482359C727007EB039 /* UOrderStoreInfoHeaderView.swift */; };
 		DC768AB023321E0900595E2B /* UIDosDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AAF23321E0900595E2B /* UIDosDetailController.swift */; };
 		DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB12332230F00595E2B /* UILabelExtension.swift */; };
 		DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */; };
@@ -235,6 +238,9 @@
 		DC6133A22333205000C52E9F /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		DC6133A72333377F00C52E9F /* UMineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMineView.swift; sourceTree = "<group>"; };
 		DC6133A923335B6000C52E9F /* UIMineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMineController.swift; sourceTree = "<group>"; };
+		DC6F054423597350007EB039 /* UConfirmOrderAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UConfirmOrderAddressCell.swift; sourceTree = "<group>"; };
+		DC6F05462359BD0E007EB039 /* UOrderGoodsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderGoodsInfoCell.swift; sourceTree = "<group>"; };
+		DC6F05482359C727007EB039 /* UOrderStoreInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderStoreInfoHeaderView.swift; sourceTree = "<group>"; };
 		DC768AAF23321E0900595E2B /* UIDosDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosDetailController.swift; sourceTree = "<group>"; };
 		DC768AB12332230F00595E2B /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		DC768AB3233232FF00595E2B /* UIContactDesignerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIContactDesignerController.swift; sourceTree = "<group>"; };
@@ -463,6 +469,9 @@
 				DC19F0C92356F5DA00148B8F /* UChooseAttrCell.swift */,
 				DC4F094C23572A3F009F4F91 /* UAddNumberCell.swift */,
 				DC8AA90723583E9200108476 /* UConfirmOrderView.swift */,
+				DC6F054423597350007EB039 /* UConfirmOrderAddressCell.swift */,
+				DC6F05462359BD0E007EB039 /* UOrderGoodsInfoCell.swift */,
+				DC6F05482359C727007EB039 /* UOrderStoreInfoHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1137,6 +1146,7 @@
 				DCF595712334CCE200C50B88 /* UIAddAddressController.swift in Sources */,
 				DCB064E223273BA90094727C /* APIUserServices.swift in Sources */,
 				DCB064A223266A000094727C /* BPicker.swift in Sources */,
+				DC6F05472359BD0E007EB039 /* UOrderGoodsInfoCell.swift in Sources */,
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
 				DCB064A123266A000094727C /* CustomPhotoPickerViewController.swift in Sources */,
 				DC34A651233C95910042EEA8 /* UIButtonExtension.swift in Sources */,
@@ -1145,6 +1155,7 @@
 				DCB0650A2327CE840094727C /* UBannerImageCell.swift in Sources */,
 				DCB064D6232732720094727C /* APIResponseModels.swift in Sources */,
 				DCB064B723266A660094727C /* Utils.swift in Sources */,
+				DC6F05492359C727007EB039 /* UOrderStoreInfoHeaderView.swift in Sources */,
 				DCCEC4BE233A4C2D00892D11 /* ConfigureMacro.swift in Sources */,
 				DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */,
 				DCB064BF23266DF80094727C /* JPushRegistrationID.swift in Sources */,
@@ -1246,6 +1257,7 @@
 				DC54C59F233F33F400ECFB25 /* UGoodsChooseAttrCell.swift in Sources */,
 				DCB0647F232669510094727C /* UIImageViewExtension.swift in Sources */,
 				DCCEC4BD233A4C2D00892D11 /* KLCityPickerView.swift in Sources */,
+				DC6F054523597350007EB039 /* UConfirmOrderAddressCell.swift in Sources */,
 				DCB064A823266A000094727C /* ParallaxHeaderMode.swift in Sources */,
 				DC8AA90823583E9200108476 /* UConfirmOrderView.swift in Sources */,
 				DC54C5A1233F386F00ECFB25 /* UGoodsStoreInfoCell.swift in Sources */,
