@@ -14,7 +14,7 @@ class APIGoodsAttrDataResponseModel: Codable {
     var data: goods_attr_data?
 }
 struct goods_attr_data: Codable {
-    var attr_list: goods_attr_info
+    var attr_list: [goods_attr_info]
     var num: Int
     var price: String
     var no: String

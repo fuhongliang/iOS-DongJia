@@ -52,4 +52,15 @@ class UGoodsChooseAttrCell: UBaseTableViewCell {
         }
     }
     
+    var chooseAttr: goods_attr_data?{
+        didSet{
+            guard let chooseAttr = chooseAttr else { return }
+            var string = ""
+            for item in chooseAttr.attr_list{
+                string += "   \"\(item.attr_name)\""
+            }
+            attrNameLabel.text = "已选\(string)"
+        }
+    }
+    
 }

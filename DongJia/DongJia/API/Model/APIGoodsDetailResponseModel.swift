@@ -25,7 +25,7 @@ struct APIGoodsDetailModel: Codable {
     var attr: String
     var name: String
     var cat_id: Int
-    var price: Double
+    var price: String
     var detail: String
     var sales_volume: Int
     /// 商品属性列表

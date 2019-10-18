@@ -12,7 +12,22 @@ class UConfirmOrderView: BaseView {
 
     override func configUI() {
         
-        
+        let tableView = UITableView(frame: .zero, style: .grouped).then {
+            $0.backgroundColor = UIColor.background
+            $0.separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+            $0.separatorStyle = UITableViewCell.SeparatorStyle.none
+            $0.showsVerticalScrollIndicator = false
+            $0.rowHeight = UITableView.automaticDimension
+            $0.sectionFooterHeight = .leastNormalMagnitude
+            $0.register(cellType: UMainSearchCell.self)
+            $0.register(cellType: UMainBannerCell.self)
+            $0.register(cellType: UMainClassificationCell.self)
+            $0.register(cellType: UMainLimitedCell.self)
+            $0.register(cellType: UMainHotCell.self)
+            $0.register(cellType: UMainSuperBrandCell.self)
+            $0.register(cellType: UMainFeaturedCell.self)
+            
+        }
         
         let line = UIView().then{
             $0.backgroundColor = .hex(hexString: "#E6E6E6")

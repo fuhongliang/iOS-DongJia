@@ -34,6 +34,9 @@ class UChooseAttrView: BaseView {
         }
     }
     
+    /// 当前选择并请求回来的的规格数据
+    var currentChooseAttr: goods_attr_data?
+    
     /// 记录当前选择的状态
     var chooseArrayAttrs = [[Bool]]()
     
@@ -225,6 +228,13 @@ class UChooseAttrView: BaseView {
             self.goodsPic.load(AttrData.data?.pic)
             self.priceLabel.text = "¥\(AttrData.data?.price ?? "-")"
             self.stockLabel.text = "库存\(AttrData.data?.num ?? 0)"
+            // 当前选择的所有规格名称
+            var string = ""
+            for item in AttrData.data?.attr_list ?? [] {
+                string += "  \"\(item.attr_name)\""
+            }
+            self.chooseAttr.text = "已选\(string)"
+            self.currentChooseAttr = AttrData.data
         }) { (APIErrorModel) in
             
         }

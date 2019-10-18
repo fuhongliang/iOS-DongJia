@@ -23,7 +23,7 @@ class APIGoodsService: APIGoodsServiceProtocol {
             "_uniacid": -1,
             "_acid": -1,
             "goods_id": goodsId,
-            "attr_list":attr_list
+            "attr_list":"\(attr_list)"
         ]
         APIService.sharedBackground.request(.getGoodsAttrData(param: param), { (data) in
             do {

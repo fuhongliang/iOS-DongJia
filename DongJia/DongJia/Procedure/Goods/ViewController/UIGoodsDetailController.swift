@@ -27,7 +27,7 @@ enum GoodsDetailItem {
 }
 
 protocol UIGoodsDetailControllerDelegate {
-    func chooseAttrCallBack(attr: Any?, addCartOrBuyOrDismiss: String)
+    func chooseAttrCallBack(attr: goods_attr_data?, addCartOrBuyOrDismiss: String)
 }
 
 class UIGoodsDetailController: UBaseViewController {
@@ -39,6 +39,9 @@ class UIGoodsDetailController: UBaseViewController {
     var goodsData: APIGoodsDetailModel!
     /// 请求的商品推荐数据
     var goodsRecommendData: goods_recommend_model?
+    
+    /// 当前已经选择的商品属性
+    var attr: goods_attr_data?
     
     /// 当前页面是否是限时抢购的商品
     var isLimited:Bool = false
@@ -189,6 +192,7 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .selectAttr:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsChooseAttrCell.self)
+            cell.chooseAttr = self.attr
             return cell
         case .storeInfo:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsStoreInfoCell.self)
@@ -224,7 +228,7 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
 
 // 选择商品属性回调
 extension UIGoodsDetailController: UIGoodsDetailControllerDelegate{
-    func chooseAttrCallBack(attr: Any?, addCartOrBuyOrDismiss: String) {
+    func chooseAttrCallBack(attr: goods_attr_data?, addCartOrBuyOrDismiss: String) {
         switch addCartOrBuyOrDismiss {
         case "buyNow":
             let vc = UIConfirmOrderController()
@@ -233,6 +237,8 @@ extension UIGoodsDetailController: UIGoodsDetailControllerDelegate{
         case "addCart":
             break
         default:
+            self.attr = attr
+            self.goodsDetailView.tableView.reloadRows(at: [IndexPath(row: 0, section: cells.firstIndex(of: .selectAttr)!)], with: .none)
             break
         }
     }

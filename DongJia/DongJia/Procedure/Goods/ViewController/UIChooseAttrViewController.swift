@@ -36,7 +36,7 @@ class UIChooseAttrViewController: UBaseViewController {
         let currentPoint = touches.first?.location(in: self.view)
         if !self.chooseView.frame.contains(currentPoint ?? CGPoint()) {
             self.dismiss(animated: true, completion: nil)
-            self.delegate?.chooseAttrCallBack(attr: nil,addCartOrBuyOrDismiss: "dismiss")
+            self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr,addCartOrBuyOrDismiss: "dismiss")
         }
     }
 
@@ -45,11 +45,11 @@ class UIChooseAttrViewController: UBaseViewController {
 extension UIChooseAttrViewController: UChooseAttrViewProtocol,UIViewControllerTransitioningDelegate{
     func dismissAction() {
         self.dismiss(animated: true)
-        self.delegate?.chooseAttrCallBack(attr: nil,addCartOrBuyOrDismiss: "dismiss")
+        self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr,addCartOrBuyOrDismiss: "dismiss")
     }
     func buyNowAction() {
         self.dismiss(animated: true)
-        self.delegate?.chooseAttrCallBack(attr: nil,addCartOrBuyOrDismiss: "buyNow")
+        self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr,addCartOrBuyOrDismiss: "buyNow")
         
     }
     // MARK: - 转场动画delegate
