@@ -12,11 +12,13 @@ import ZLCollectionViewFlowLayout
 protocol UChooseAttrViewProtocol {
     func dismissAction()
     func buyNowAction()
+    func addToCart()
 }
 
 class UChooseAttrView: BaseView {
     
     var delegate: UChooseAttrViewProtocol?
+    var picGoodsNumber: BuyGoodsNumberDelegate?
     
     private var service = APIGoodsService()
     
@@ -135,6 +137,7 @@ class UChooseAttrView: BaseView {
         whiteBg.addSubview(attrCollection)
         whiteBg.addSubview(addCart)
         whiteBg.addSubview(buyNow)
+        addCart.addTarget(self, action: #selector(addCartAction), for: .touchUpInside)
         buyNow.addTarget(self, action: #selector(buyNowAction), for: .touchUpInside)
         //MARK:白色背景
         whiteBg.snp.makeConstraints { (make) in
@@ -207,6 +210,18 @@ class UChooseAttrView: BaseView {
             return
         }
         delegate?.buyNowAction()
+    }
+    @objc func addCartAction(){
+        guard alreadyChooseAttrGroupId.count == attrData.count else {
+            for (index, item) in attrData.enumerated(){
+                if alreadyChooseAttrGroupId[index] == nil {
+                    showHUDInView(text: "请选择\(item.attr_group_name)", inView: self)
+                    attrCollection.scrollToItem(at: IndexPath(item: 0, section: index), at: .top, animated: true)
+                }
+            }
+            return
+        }
+        delegate?.addToCart()
     }
     
     /// 获取该属性的商品的信息(库存,价格,图片)
@@ -288,6 +303,7 @@ extension UChooseAttrView: UICollectionViewDelegate, UICollectionViewDataSource{
         // 数量cell
         if indexPath.section == attrData.count{
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UAddNumberCell.self)
+            cell.delegate = self.picGoodsNumber
             return cell
         }
         // 普通cell

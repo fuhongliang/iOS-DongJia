@@ -9,14 +9,53 @@
 import Foundation
 
 protocol APIGoodsServiceProtocol {
+    /// 获取商品详情
     func getGoodsDetail(storeId: String, goodsId: String, _ success: @escaping(((APIGoodsDetailResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
-    
+    /// 获取精选数据
     func getGoodsRecommend(goodsId: String, _ success: @escaping(((APIGoodsRecommendResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
-    
+    /// 获取商品属性 attr_list -> 选择的商品属性ID
     func getGoodsAttrData(goodsId: String, attr_list:[Int], _ success: @escaping(((APIGoodsAttrDataResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    /// 添加到购物车 attr -> 商品属性json
+    func addToCart(goods_id: String, num: Int, attr: String, _ success: @escaping(((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    /// 获取购物车中的商品列表
+    func getCartGoodsList(_ success: @escaping(((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
 }
 
 class APIGoodsService: APIGoodsServiceProtocol {
+    func getCartGoodsList(_ success: @escaping (((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        let param:[String:Any] = [
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1,
+            "access_token": APIUser.shared.user!.access_token
+        ]
+        
+    }
+    
+    func addToCart(goods_id: String, num: Int, attr: String, _ success: @escaping (((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        let param:[String:Any] = [
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1,
+            "access_token": APIUser.shared.user!.access_token,
+            "goods_id": goods_id,
+            "num": num,
+            "attr":"\(attr)"
+        ]
+        APIService.sharedBackground.request(.addToCart(param: param), { (data) in
+            do {
+                let model = try JSONDecoder().decode(APIObjectModel.self, from: data)
+                success(model)
+            } catch {
+                let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
+                print(errorModel.msg!)
+                fail(errorModel)
+            }
+        }) { (APIErrorModel) in
+            print(APIErrorModel.msg ?? "----")
+        }
+    }
+    
     func getGoodsAttrData(goodsId: String, attr_list: [Int], _ success: @escaping (((APIGoodsAttrDataResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
         let param:[String:Any] = [
             "store_id": 4,

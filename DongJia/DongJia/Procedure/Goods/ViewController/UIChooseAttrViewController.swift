@@ -8,6 +8,11 @@
 
 import UIKit
 
+/// 返回当前选择的商品数量回调
+protocol BuyGoodsNumberDelegate {
+    func numberCallBack(currentNumber:Int)
+}
+
 class UIChooseAttrViewController: UBaseViewController {
     
     var delegate: UIGoodsDetailControllerDelegate?
@@ -16,6 +21,9 @@ class UIChooseAttrViewController: UBaseViewController {
     var attrData: [goods_detail_attr_group_list]!
     /// 商品ID
     var goodsId: String = "-1"
+    
+    /// 当前已经选择的数量
+    var currentNum: Int = 1
     
     let chooseView = UChooseAttrView()
     override func configUI() {
@@ -27,6 +35,7 @@ class UIChooseAttrViewController: UBaseViewController {
         self.modalPresentationStyle = .custom
         self.view.addSubview(chooseView)
         chooseView.delegate = self
+        chooseView.picGoodsNumber = self
         
         self.transitioningDelegate = self as UIViewControllerTransitioningDelegate//自定义转场动画
     }
@@ -36,22 +45,46 @@ class UIChooseAttrViewController: UBaseViewController {
         let currentPoint = touches.first?.location(in: self.view)
         if !self.chooseView.frame.contains(currentPoint ?? CGPoint()) {
             self.dismiss(animated: true, completion: nil)
-            self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr,addCartOrBuyOrDismiss: "dismiss")
+            self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr, addCartOrBuyOrDismiss: "dismiss")
         }
     }
 
 }
+extension UIChooseAttrViewController: BuyGoodsNumberDelegate{
+    func numberCallBack(currentNumber: Int) {
+        self.currentNum = currentNumber
+    }
+}
 
 extension UIChooseAttrViewController: UChooseAttrViewProtocol,UIViewControllerTransitioningDelegate{
+    func addToCart() {
+        var array = [Dictionary<String, String>]()
+        
+        for (index,item) in attrData.enumerated(){
+            let attr_id = chooseView.currentChooseAttr?.attr_list[index].attr_id ?? 0
+            let attr_name = chooseView.currentChooseAttr?.attr_list[index].attr_name ?? ""
+            let dic = ["attr_group_id": String(item.attr_group_id),
+                       "attr_group_name": item.attr_group_name,
+                       "attr_id": String(attr_id),
+                       "attr_name": attr_name]
+            array.append(dic)
+        }
+        let json = dicArrayToJson(array)
+
+        self.dismiss(animated: true)
+        self.delegate?.addToCart(num: self.currentNum, toCartJson: json)
+    }
+    
     func dismissAction() {
         self.dismiss(animated: true)
         self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr,addCartOrBuyOrDismiss: "dismiss")
     }
     func buyNowAction() {
         self.dismiss(animated: true)
-        self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr,addCartOrBuyOrDismiss: "buyNow")
+        self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr, addCartOrBuyOrDismiss: "buyNow")
         
     }
+    
     // MARK: - 转场动画delegate
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animated = ChooseAttrViewAnimated(type: .present)

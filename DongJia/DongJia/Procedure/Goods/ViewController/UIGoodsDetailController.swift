@@ -28,6 +28,7 @@ enum GoodsDetailItem {
 
 protocol UIGoodsDetailControllerDelegate {
     func chooseAttrCallBack(attr: goods_attr_data?, addCartOrBuyOrDismiss: String)
+    func addToCart(num: Int, toCartJson: String)
 }
 
 class UIGoodsDetailController: UBaseViewController {
@@ -234,12 +235,23 @@ extension UIGoodsDetailController: UIGoodsDetailControllerDelegate{
             let vc = UIConfirmOrderController()
             vc.title = "确认订单"
             self.pushViewController(vc, animated: true)
-        case "addCart":
-            break
         default:
             self.attr = attr
             self.goodsDetailView.tableView.reloadRows(at: [IndexPath(row: 0, section: cells.firstIndex(of: .selectAttr)!)], with: .none)
             break
+        }
+    }
+    
+    func addToCart(num: Int, toCartJson: String) {
+//        checkLoginState()
+        if isLogin {
+            service.addToCart(goods_id: goodsId, num: num, attr: toCartJson, { (APIObjectModel) in
+                showHUDInView(text: APIObjectModel.msg ?? "", inView: self.view, isClick: true)
+            }) { (APIErrorModel) in
+                
+            }
+        } else {
+            showHUDInView(text: "请先登录", inView: self.view, isClick: true)
         }
     }
     

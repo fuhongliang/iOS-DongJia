@@ -10,6 +10,8 @@ import UIKit
 
 class UAddNumberCell: UBaseCollectionViewCell {
     
+    var delegate: BuyGoodsNumberDelegate?
+    
     /// 购买数量Label
     let buyNumber = UILabel().then{
         $0.text = "购买数量"
@@ -84,6 +86,7 @@ class UAddNumberCell: UBaseCollectionViewCell {
     }
     var currentNumber: Int = 1 {
         didSet{
+            delegate?.numberCallBack(currentNumber: currentNumber)
             number.text = "\(currentNumber)"
             //设置等于1时不能再减
             reduceBtn.isEnabled = currentNumber > 1

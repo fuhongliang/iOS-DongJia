@@ -44,11 +44,16 @@ extension UIConfirmOrderController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section != 0 {
+            let storeFooterView = UOrderStoreInfoFooterView()
+            storeFooterView.frame = tableView.bounds
+            return storeFooterView
+        }
         return nil
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        return section == 0 ? 0 : 59
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

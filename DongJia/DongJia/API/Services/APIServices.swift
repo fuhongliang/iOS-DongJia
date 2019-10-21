@@ -64,6 +64,10 @@ enum NetApi {
     case storeInfo(param: [String:Any])
     /// 店铺精品案例
     case storeClassicCase(param: [String:Any])
+    /// 添加购物车
+    case addToCart(param: [String:Any])
+    /// 获取购物车列表
+    case getCartGoodsList(param: [String:Any])
     
 }
 
@@ -95,14 +99,18 @@ extension NetApi: TargetType {
             return "/index.php?r=api/mch/index/shop"
         case .storeClassicCase:
             return "/index.php?r=api/default/mch-article"
+        case .addToCart:
+            return "/index.php?r=api/cart/add-cart"
+        case .getCartGoodsList:
+            return "/index.php?r=api/cart/list"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData:
+        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList:
             return .get
-        case .wxLogin:
+        case .wxLogin,.addToCart:
             return .post
         }
     }
@@ -131,6 +139,10 @@ extension NetApi: TargetType {
         case .storeInfo(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .storeClassicCase(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .addToCart(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
+        case .getCartGoodsList(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         }
         
