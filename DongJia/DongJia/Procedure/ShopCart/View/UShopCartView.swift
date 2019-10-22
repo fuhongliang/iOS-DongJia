@@ -9,6 +9,8 @@
 import UIKit
 
 protocol ShopCartDelegate {
+    func refreshShopCartList()
+    func loadMoreShopCartList()
     func deleteGoods()
     func buy()
     func itemNumberCallBack(section: Int,row: Int, number: Int)
@@ -28,6 +30,7 @@ class UShopCartView: BaseView {
         $0.showsVerticalScrollIndicator = false
         $0.rowHeight = UITableView.automaticDimension
         $0.sectionFooterHeight = .leastNormalMagnitude
+        
         $0.register(cellType: UShopCartGoodsCell.self)
     }
     /// 白色背景
@@ -73,6 +76,10 @@ class UShopCartView: BaseView {
     }
     
     override func configUI() {
+        // 设置列表的刷新和加载
+        tableView.uempty = UEmptyView { [weak self] in self?.refreshShopCart() }
+        tableView.uHead = URefreshHeader { [weak self] in self?.refreshShopCart() }
+        tableView.uFoot = URefreshFooter { [weak self] in self?.loadMoreShopCart() }
 
         self.addSubview(tableView)
         self.addSubview(whiteBg)
@@ -85,10 +92,9 @@ class UShopCartView: BaseView {
         selectAllBtn.addTarget(self, action: #selector(selectAllAction), for: .touchUpInside)
         editOrDelete.addTarget(self, action: #selector(editOrDeleteAction), for: .touchUpInside)
         buyOrCompelete.addTarget(self, action: #selector(buyOrCompeleteAction), for: .touchUpInside)
-        
+
         tableView.snp.makeConstraints { (make) in
             make.top.width.equalToSuperview()
-//            make.height.equalTo(screenHeight-54)
             make.bottom.equalToSuperview().offset(-54)
         }
         //MARK:白色背景
@@ -128,6 +134,14 @@ class UShopCartView: BaseView {
         tableView.reloadData()
     }
     
+    func refreshShopCart(){
+        delegate?.refreshShopCartList()
+    }
+    
+    func loadMoreShopCart(){
+        delegate?.loadMoreShopCartList()
+    }
+    
     @objc func selectAllAction(){
         selectAllBtn.isSelected = !selectAllBtn.isSelected
         delegate?.selectAll(check: selectAllBtn.isSelected)
@@ -156,7 +170,8 @@ class UShopCartView: BaseView {
             delegate?.buy()
         }
     }
-    func setPrice(_ price: Int){
+    /// 设置当前选中的需要支付的价格
+    func setPrice(_ price: Double){
         priceLabel.text = "¥\(String(price))"
     }
 }

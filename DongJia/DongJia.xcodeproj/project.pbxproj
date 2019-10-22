@@ -17,6 +17,7 @@
 		DC19F7AF2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */; };
 		DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */; };
 		DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */; };
+		DC1BAE3E235E9FD40093D45A /* APIShopCartListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1BAE3D235E9FD40093D45A /* APIShopCartListResponseModel.swift */; };
 		DC1E77F5234EC670005765F0 /* UStoreHotRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */; };
 		DC1E77F7234ED912005765F0 /* APIGoodsRecommendResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */; };
 		DC1E77F9234F22AE005765F0 /* UStoreClassicCaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E77F8234F22AE005765F0 /* UStoreClassicCaseCell.swift */; };
@@ -35,7 +36,6 @@
 		DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308225234C34CB00271840 /* UBaseTableViewController.swift */; };
 		DC308228234C38C500271840 /* UStoreMainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308227234C38C500271840 /* UStoreMainInfoCell.swift */; };
 		DC32D540235D48DD00B3D2BD /* UOrderStoreInfoFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32D53F235D48DD00B3D2BD /* UOrderStoreInfoFooterView.swift */; };
-		DC32D542235D522F00B3D2BD /* AddToCartPostAttrModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32D541235D522F00B3D2BD /* AddToCartPostAttrModel.swift */; };
 		DC32D544235D911B00B3D2BD /* UShopCartGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32D543235D911B00B3D2BD /* UShopCartGoodsCell.swift */; };
 		DC32D546235D957F00B3D2BD /* UShopCartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32D545235D957F00B3D2BD /* UShopCartHeaderView.swift */; };
 		DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */; };
@@ -192,6 +192,7 @@
 		DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMyObtainAddressViewController.swift; sourceTree = "<group>"; };
 		DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMyObtainAddressView.swift; sourceTree = "<group>"; };
 		DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UObtainAddressCell.swift; sourceTree = "<group>"; };
+		DC1BAE3D235E9FD40093D45A /* APIShopCartListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIShopCartListResponseModel.swift; sourceTree = "<group>"; };
 		DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreHotRecommendCell.swift; sourceTree = "<group>"; };
 		DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsRecommendResponseModel.swift; sourceTree = "<group>"; };
 		DC1E77F8234F22AE005765F0 /* UStoreClassicCaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreClassicCaseCell.swift; sourceTree = "<group>"; };
@@ -210,7 +211,6 @@
 		DC308225234C34CB00271840 /* UBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBaseTableViewController.swift; sourceTree = "<group>"; };
 		DC308227234C38C500271840 /* UStoreMainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreMainInfoCell.swift; sourceTree = "<group>"; };
 		DC32D53F235D48DD00B3D2BD /* UOrderStoreInfoFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderStoreInfoFooterView.swift; sourceTree = "<group>"; };
-		DC32D541235D522F00B3D2BD /* AddToCartPostAttrModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartPostAttrModel.swift; sourceTree = "<group>"; };
 		DC32D543235D911B00B3D2BD /* UShopCartGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UShopCartGoodsCell.swift; sourceTree = "<group>"; };
 		DC32D545235D957F00B3D2BD /* UShopCartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UShopCartHeaderView.swift; sourceTree = "<group>"; };
 		DC34A64C233C72320042EEA8 /* UIGoodsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGoodsDetailController.swift; sourceTree = "<group>"; };
@@ -824,7 +824,7 @@
 				DC3FAA2423505F8100B310EC /* APIStoreInfoResponseModel.swift */,
 				DC3FAA262350626E00B310EC /* APIStoreClassicCaseResponseModel.swift */,
 				DC8AA909235863A300108476 /* APIGoodsAttrDataResponseModel.swift */,
-				DC32D541235D522F00B3D2BD /* AddToCartPostAttrModel.swift */,
+				DC1BAE3D235E9FD40093D45A /* APIShopCartListResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1189,7 +1189,6 @@
 				DC19F7A72334692200BDFE7D /* UAboutUsView.swift in Sources */,
 				DCB065082327CDA90094727C /* ZKCycleScrollView.swift in Sources */,
 				DC34A657233DFDAB0042EEA8 /* UGoodsPicListCell.swift in Sources */,
-				DC32D542235D522F00B3D2BD /* AddToCartPostAttrModel.swift in Sources */,
 				DC3FAA272350626E00B310EC /* APIStoreClassicCaseResponseModel.swift in Sources */,
 				DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */,
 				DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */,
@@ -1263,6 +1262,7 @@
 				DC1E77F9234F22AE005765F0 /* UStoreClassicCaseCell.swift in Sources */,
 				DC3FAA2523505F8100B310EC /* APIStoreInfoResponseModel.swift in Sources */,
 				DC19F7AF2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift in Sources */,
+				DC1BAE3E235E9FD40093D45A /* APIShopCartListResponseModel.swift in Sources */,
 				DC54C5A3233F41CF00ECFB25 /* UGoodsInfoView.swift in Sources */,
 				DC2380122330D94C006AE76F /* UFeaturedCell.swift in Sources */,
 				DC246E022331C8D90087D84A /* UDosCell.swift in Sources */,

@@ -21,17 +21,19 @@ extension UIScrollView {
     }
 }
 
-class URefreshHeader: MJRefreshGifHeader {
+class URefreshHeader: MJRefreshNormalHeader {
     override func prepare() {
         super.prepare()
-        setImages([UIImage(named: "refresh_normal")!], for: .idle)
-        setImages([UIImage(named: "refresh_will_refresh")!], for: .pulling)
-        setImages([UIImage(named: "refresh_loading_1")!,
-                   UIImage(named: "refresh_loading_2")!,
-                   UIImage(named: "refresh_loading_3")!], for: .refreshing)
-
+//        setImages([UIImage(named: "refresh_normal")!], for: .idle)
+//        setImages([UIImage(named: "refresh_will_refresh")!], for: .pulling)
+//        setImages([UIImage(named: "refresh_loading_1")!,
+//                   UIImage(named: "refresh_loading_2")!,
+//                   UIImage(named: "refresh_loading_3")!], for: .refreshing)
+        setTitle("你拉我干啥", for: .idle)
+        setTitle("别拉了,快松手", for: .pulling)
+        setTitle("你是不是欠收拾,又让我刷新", for: .refreshing)
         lastUpdatedTimeLabel.isHidden = true
-        stateLabel.isHidden = true
+//        stateLabel.isHidden = true
     }
 }
 

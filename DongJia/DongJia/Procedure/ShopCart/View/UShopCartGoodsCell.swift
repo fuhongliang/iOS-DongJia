@@ -149,6 +149,17 @@ class UShopCartGoodsCell: UBaseTableViewCell {
         }
     }
     
+    /// 设置数据
+    var data: [String:String]? {
+        didSet{
+            guard let data = data else { return }
+            goodsPic.load(data["picUrl"])
+            goodsName.text = data["goodsName"]
+            goodsAttrLabel.text = data["attr"]
+            goodsPrice.text = "¥\(data["price"] ?? "-")"
+        }
+    }
+    
     @objc func reduceAction(){
         currentNumber -= 1
     }

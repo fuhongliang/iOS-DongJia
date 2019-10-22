@@ -92,7 +92,19 @@ class UShopCartHeaderView: BaseView {
         selectBtn.isSelected = !selectBtn.isSelected
         delegate?.selectSection(section: section, check: selectBtn.isSelected)
     }
-
+    
+    /// 商家头像
+    var iconUrl: String? {
+        didSet{
+            storeIcon.load(iconUrl)
+        }
+    }
+    /// 商家名称
+    var mchName: String? {
+        didSet{
+            storeName.text = mchName
+        }
+    }
     var isCheck: Bool = false {
         didSet{
             selectBtn.isSelected = isCheck

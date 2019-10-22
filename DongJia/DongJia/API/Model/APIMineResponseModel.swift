@@ -57,7 +57,7 @@ struct mine_share_setting: Codable {
     var pic_url_1: String?
     var pic_url_2: String?
     var price_type: String
-    var bank: String
+    var bank: String?
     var remaining_sum: String
     var rebate: String
     var is_rebate: String
