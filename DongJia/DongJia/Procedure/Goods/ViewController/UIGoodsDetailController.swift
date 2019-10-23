@@ -243,15 +243,13 @@ extension UIGoodsDetailController: UIGoodsDetailControllerDelegate{
     }
     
     func addToCart(num: Int, toCartJson: String) {
-//        checkLoginState()
-        if isLogin {
+        // 检查登录状态
+        checkLoginState {
             service.addToCart(goods_id: goodsId, num: num, attr: toCartJson, { (APIObjectModel) in
                 showHUDInView(text: APIObjectModel.msg ?? "", inView: self.view, isClick: true)
             }) { (APIErrorModel) in
                 
             }
-        } else {
-            showHUDInView(text: "请先登录", inView: self.view, isClick: true)
         }
     }
     

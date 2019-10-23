@@ -33,9 +33,16 @@ var isLogin: Bool {
     }
 }
 
-func checkLoginState(){
+/// 检查当前登录状态 并弹窗提示
+func checkLoginState(_ login:() -> ()){
     if !isLogin {
-        showHUDInView(text: "请先登录", inView: topVC!.view, isClick: true)
+        showAlert(title: "微信登录", subTitle: "Hi~我们目前只支持微信授权登录哦~"){ (alert) in
+            alert.addButton("微信一键登录", backgroundColor: .theme, textColor: .white){
+                showHUDInView(text: "测试", inView: topVC!.view, isClick: true)
+            }
+        }
+    } else {
+        login()
     }
 }
 
@@ -75,7 +82,7 @@ func dicArrayToJson(_ dicArray:[Dictionary<String,String>])->String{
     return str! as String
 }
 
-/// 显示一个弹窗
+/// 显示一个提示弹窗
 func showAlert(title:String = "提示", subTitle:String = "", block:((_ alertView:SCLAlertView) -> ())?) {
     let style = SCLAlertView.SCLAppearance(
         kWindowWidth: 300, kTitleFont: UIFont(name: "HelveticaNeue-Bold", size: 20)!,

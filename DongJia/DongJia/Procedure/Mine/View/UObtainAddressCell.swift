@@ -130,13 +130,13 @@ class UObtainAddressCell: UBaseTableViewCell {
         deleteAddress?()
     }
     
-    var model: [String:String]? {
+    var model: address_model? {
         didSet{
             guard let model = model else { return }
-            setDefaultBtn.isSelected = model["is_default"] == "1"
-            obtainPeopleName.text = model["name"]
-            obtainPeoplePhone.text = model["phone"]
-            obtainAddress.text = model["address"]
+            setDefaultBtn.isSelected = model.is_default == "1"
+            obtainPeopleName.text = model.name
+            obtainPeoplePhone.text = model.mobile
+            obtainAddress.text = "\(model.address+model.detail)"
         }
     }
     

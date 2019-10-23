@@ -35,6 +35,10 @@
 		DC308222234C345700271840 /* UIStoreControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308221234C345700271840 /* UIStoreControlle.swift */; };
 		DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308225234C34CB00271840 /* UBaseTableViewController.swift */; };
 		DC308228234C38C500271840 /* UStoreMainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308227234C38C500271840 /* UStoreMainInfoCell.swift */; };
+		DC30ADDF2360352600B21725 /* WeXinLoginAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30ADDE2360352600B21725 /* WeXinLoginAlertView.swift */; };
+		DC30ADE12360456800B21725 /* APIAddressServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30ADE02360456800B21725 /* APIAddressServices.swift */; };
+		DC30ADE3236045F800B21725 /* APIAddressListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30ADE2236045F800B21725 /* APIAddressListResponseModel.swift */; };
+		DC30ADE5236047D900B21725 /* APIDistrictListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30ADE4236047D900B21725 /* APIDistrictListResponseModel.swift */; };
 		DC32D540235D48DD00B3D2BD /* UOrderStoreInfoFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32D53F235D48DD00B3D2BD /* UOrderStoreInfoFooterView.swift */; };
 		DC32D544235D911B00B3D2BD /* UShopCartGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32D543235D911B00B3D2BD /* UShopCartGoodsCell.swift */; };
 		DC32D546235D957F00B3D2BD /* UShopCartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32D545235D957F00B3D2BD /* UShopCartHeaderView.swift */; };
@@ -210,6 +214,10 @@
 		DC308221234C345700271840 /* UIStoreControlle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreControlle.swift; sourceTree = "<group>"; };
 		DC308225234C34CB00271840 /* UBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBaseTableViewController.swift; sourceTree = "<group>"; };
 		DC308227234C38C500271840 /* UStoreMainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreMainInfoCell.swift; sourceTree = "<group>"; };
+		DC30ADDE2360352600B21725 /* WeXinLoginAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeXinLoginAlertView.swift; sourceTree = "<group>"; };
+		DC30ADE02360456800B21725 /* APIAddressServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAddressServices.swift; sourceTree = "<group>"; };
+		DC30ADE2236045F800B21725 /* APIAddressListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAddressListResponseModel.swift; sourceTree = "<group>"; };
+		DC30ADE4236047D900B21725 /* APIDistrictListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDistrictListResponseModel.swift; sourceTree = "<group>"; };
 		DC32D53F235D48DD00B3D2BD /* UOrderStoreInfoFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderStoreInfoFooterView.swift; sourceTree = "<group>"; };
 		DC32D543235D911B00B3D2BD /* UShopCartGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UShopCartGoodsCell.swift; sourceTree = "<group>"; };
 		DC32D545235D957F00B3D2BD /* UShopCartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UShopCartHeaderView.swift; sourceTree = "<group>"; };
@@ -559,6 +567,7 @@
 				DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */,
 				DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */,
 				DCF595722334CD2500C50B88 /* UAddAddressView.swift */,
+				DC30ADDE2360352600B21725 /* WeXinLoginAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -803,6 +812,7 @@
 				DCCEC4C3233B4B7300892D11 /* APIMineServices.swift */,
 				DC2E3567234D79D80064EB75 /* APIGoodsService.swift */,
 				DC3FAA2223505A1800B310EC /* APIStoreService.swift */,
+				DC30ADE02360456800B21725 /* APIAddressServices.swift */,
 				DCB064E123273BA90094727C /* APIUserServices.swift */,
 				DCB064BC23266DE00094727C /* APIUser.swift */,
 				DCB064C023266E040094727C /* APIToken.swift */,
@@ -825,6 +835,8 @@
 				DC3FAA262350626E00B310EC /* APIStoreClassicCaseResponseModel.swift */,
 				DC8AA909235863A300108476 /* APIGoodsAttrDataResponseModel.swift */,
 				DC1BAE3D235E9FD40093D45A /* APIShopCartListResponseModel.swift */,
+				DC30ADE2236045F800B21725 /* APIAddressListResponseModel.swift */,
+				DC30ADE4236047D900B21725 /* APIDistrictListResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1175,6 +1187,7 @@
 				DCB064D223266EE80094727C /* UBaseViewController.swift in Sources */,
 				DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */,
 				DCB064AD23266A000094727C /* FTConstants.swift in Sources */,
+				DC30ADE3236045F800B21725 /* APIAddressListResponseModel.swift in Sources */,
 				DCB064A523266A000094727C /* URefresh.swift in Sources */,
 				DC8AA90A235863A300108476 /* APIGoodsAttrDataResponseModel.swift in Sources */,
 				DCB064A923266A000094727C /* UIScrollView+ParallaxHeader.swift in Sources */,
@@ -1196,6 +1209,7 @@
 				DC19F7A9233478F500BDFE7D /* UIMyCollectionController.swift in Sources */,
 				DC8516FE2351D67100E0759A /* UStoreHotRecommendView.swift in Sources */,
 				DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */,
+				DC30ADDF2360352600B21725 /* WeXinLoginAlertView.swift in Sources */,
 				DC3FAA2323505A1800B310EC /* APIStoreService.swift in Sources */,
 				DC32D540235D48DD00B3D2BD /* UOrderStoreInfoFooterView.swift in Sources */,
 				DCB0645023263AD50094727C /* DongJia.xcdatamodeld in Sources */,
@@ -1220,6 +1234,7 @@
 				DCB064AA23266A000094727C /* ParallaxHeader.swift in Sources */,
 				DC785A5C23547DB10076A5C9 /* UChooseCityCell.swift in Sources */,
 				DC3FAA1F23501A3100B310EC /* UStoreDesignTeamCell.swift in Sources */,
+				DC30ADE5236047D900B21725 /* APIDistrictListResponseModel.swift in Sources */,
 				DCB064D023266EE80094727C /* UBaseTableViewCell.swift in Sources */,
 				DCB064A623266A000094727C /* UEmptyDataSet.swift in Sources */,
 				DCCEC4C4233B4B7300892D11 /* APIMineServices.swift in Sources */,
@@ -1251,6 +1266,7 @@
 				DC34A64F233C7AB40042EEA8 /* UGoodsDetailView.swift in Sources */,
 				DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */,
 				DC8516FC2351D5BB00E0759A /* UStoreMainInfoView.swift in Sources */,
+				DC30ADE12360456800B21725 /* APIAddressServices.swift in Sources */,
 				DC1E77F5234EC670005765F0 /* UStoreHotRecommendCell.swift in Sources */,
 				DC34A659233E08490042EEA8 /* UPicCell.swift in Sources */,
 				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,

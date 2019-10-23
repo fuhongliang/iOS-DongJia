@@ -72,7 +72,12 @@ enum NetApi {
     case editCartGoods(param: [String:Any])
     /// 删除购物车商品
     case deleteCartGoods(param: [String:Any])
-    
+    /// 地址列表
+    case addressList(param: [String:Any])
+    /// 地区列表
+    case districtList(param: [String:Any])
+    /// 新增/更新地址
+    case addOrEditAddress(param: [String:Any])
 }
 
 //MARK: 请求对象的封装
@@ -111,14 +116,20 @@ extension NetApi: TargetType {
             return "/index.php?r=api/cart/edit-cart"
         case .deleteCartGoods:
             return "/index.php?r=api/cart/delete"
+        case .addressList:
+            return "/index.php?r=api/user/address-list"
+        case .districtList:
+            return "/index.php?r=api/default/district"
+        case .addOrEditAddress:
+            return "/index.php?=api/user/address-save"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods:
+        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList:
             return .get
-        case .wxLogin,.addToCart,.editCartGoods:
+        case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress:
             return .post
         }
     }
@@ -156,23 +167,26 @@ extension NetApi: TargetType {
             return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
         case .deleteCartGoods(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .addOrEditAddress(let param):
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+        case .districtList(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .addressList(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
         }
         
     }
 
     var headers: [String : String]? {
-//        var dict: [String:String] = [
-//            "Content-Type":"application/json"
-//        ]
-        
-//        switch self {
-//        case .logout:
-//            let token: String = getToken() // 本地token
-//            dict["Authorization"] = token
-//        default:
-//            break
-//        }
-        return nil
+        let dict: [String:String] = [
+            "Content-Type":"application/json"
+        ]
+        switch self {
+        case .addOrEditAddress:
+            return dict
+        default:
+            return nil
+        }
     }
 }
 

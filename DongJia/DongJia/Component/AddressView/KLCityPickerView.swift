@@ -77,6 +77,7 @@ public class KLCityPickerView: UIView {
     //MARK: -内部参数
     // 接收参数的数据
      var dataSource = [Dictionary<String, Dictionary<String, Dictionary<String,[String]>>>]() // Array<Any>()
+    var netDataSource = [district_province_list]()
     // 一共显示多少列
      var columnCount: Int?
     // 省
@@ -93,6 +94,10 @@ public class KLCityPickerView: UIView {
      var selectedArea: String?
     // 记录省份选中的位置
      var selectedProvinceIndex: Int = 0
+    // 记录城市选中的位置
+     var selectedCityIndex: Int = 0
+    // 记录区域选中的位置
+     var selectedAreaIndex: Int = 0
     
     //设置选中的类型
      var showType: KLAddressPickerType = .area {
@@ -104,10 +109,13 @@ public class KLCityPickerView: UIView {
     // 回调函数
     // 区域block
      var selectedAreaBlock:((_ province:String, _ city:String, _ area:String)->())?
+     var selectedAreaIdBlock:((_ provinceId:Int, _ cityId:Int, _ areaId:Int)->())?
     // 省份block
      var selectedProvinceBlock:((_ province:String)->())?
+     var selectedProvinceIdBlock:((_ province:Int)->())?
     // 城市block
      var selectedCityBlock:((_ province:String, _ city:String)->())?
+     var selectedCityIdBlock:((_ provinceId:Int, _ cityId:Int)->())?
     
     //MARK: -懒加载
     /// 创建城市选择器
@@ -184,9 +192,76 @@ public class KLCityPickerView: UIView {
         titleToolBar.addSubview(cancleButton)
     }
     
+    //MARK: -获取网络城市数据
+    func kl_getNetData(_ data: [district_province_list]){
+        self.netDataSource = data
+        //获取省份
+        var tempProvinceArray = [String]()
+        for tempArray in data {
+            tempProvinceArray.append(tempArray.name)
+        }
+        // 设置省份
+        provinceArray = tempProvinceArray
+        // 设置市
+        cityArray = getNetCityNameFromProvinceIndex(provinceIndex: 0)
+        // 设置区
+        self.areaArray = getNetAreanamesFromProvinceIndex(provinceIndex: 0, cityIndex: 0)
+        // 如果没有传入默认值默认选中第一个
+        if selectedProvince == nil {
+            selectedProvince = provinceArray.first
+        }
+        if selectedCity == nil {
+            selectedCity = cityArray.first
+        }
+        if selectedArea == nil {
+            selectedArea = areaArray.first
+        }
+        
+        //根据省市县赋值
+        var currentProvinceIndex: Int = 0
+        var currentCityIndex: Int = 0
+        var currentAreaIndex: Int = 0
+        for i in (0 ... provinceArray.count - 1) {
+            let province = provinceArray[i]
+            if province == selectedProvince {
+                currentProvinceIndex = i
+                //获取当前城市
+                cityArray = getNetCityNameFromProvinceIndex(provinceIndex: currentProvinceIndex)
+                for j in (0 ... cityArray.count - 1){
+                    let city = cityArray[j]
+                    
+                    if city == selectedCity {
+                        currentCityIndex = j;
+                        areaArray = getNetAreanamesFromProvinceIndex(provinceIndex: currentProvinceIndex, cityIndex: currentCityIndex)
+                        for k in (0 ... areaArray.count - 1){
+                            let area = areaArray[k]
+                            if area == selectedArea {
+                                currentAreaIndex = k
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 保存选中的省市区索引
+        selectedProvinceIndex = currentProvinceIndex
+        selectedCityIndex = currentCityIndex
+        selectedAreaIndex = currentAreaIndex
+        //滚动到固定的行
+        if showType == .province {
+            pickerView.selectRow(currentProvinceIndex, inComponent: 0, animated: true)
+        } else if showType == .city {
+            pickerView.selectRow(currentProvinceIndex, inComponent: 0, animated: true)
+            pickerView.selectRow(currentCityIndex, inComponent: 1, animated: true)
+        } else if showType == .area {
+            pickerView.selectRow(currentProvinceIndex, inComponent: 0, animated: true)
+            pickerView.selectRow(currentCityIndex, inComponent: 1, animated: true)
+            pickerView.selectRow(currentAreaIndex, inComponent: 2, animated: true)
+        }
+    }
 
-    //MARK: -获取数据
-     func kl_getData(){
+    //MARK: -获取本地城市数据
+    func kl_getData(){
         print(Bundle.main)
 //        let path = Bundle.main.path(forResource: "city", ofType: "plist")
         let path = Bundle(for: self.classForCoder).path(forResource: "city", ofType: "plist")
@@ -200,10 +275,8 @@ public class KLCityPickerView: UIView {
         }
         // 设置省份
         provinceArray = tempProvinceArray
-        
         // 设置市
         cityArray = getCityNameFromProvinceIndex(provinceIndex: 0)
-    
         // 设置区
         self.areaArray = getAreanamesFromProvinceIndex(provinceIndex: 0, cityIndex: 0)
         
@@ -229,7 +302,6 @@ public class KLCityPickerView: UIView {
         for i in (0 ... provinceArray.count - 1) {
             let province = provinceArray[i]
             if province == selectedProvince {
-                selectedProvinceIndex = i
                 currentProvinceIndex = i
                 //获取当前城市
                 cityArray = getCityNameFromProvinceIndex(provinceIndex: currentProvinceIndex)
@@ -237,19 +309,22 @@ public class KLCityPickerView: UIView {
                     let city = cityArray[j]
                     
                     if city == selectedCity {
-                        currentCityIndex = j;
+                        currentCityIndex = j
                         areaArray = getAreanamesFromProvinceIndex(provinceIndex: currentProvinceIndex, cityIndex: currentCityIndex)
                         for k in (0 ... areaArray.count - 1){
                             let area = areaArray[k]
                             if area == selectedArea {
-                            currentAreaIndex = k
+                                currentAreaIndex = k
                             }
                         }
                     }
                 }
             }
         }
-        
+        // 保存选中的省市区索引
+        selectedProvinceIndex = currentProvinceIndex
+        selectedCityIndex = currentCityIndex
+        selectedAreaIndex = currentAreaIndex
         //滚动到固定的行
         if showType == .province {
             pickerView.selectRow(currentProvinceIndex, inComponent: 0, animated: true)
@@ -278,6 +353,10 @@ public class KLCityPickerView: UIView {
             if (selectedAreaBlock != nil){
                 selectedAreaBlock?(selectedProvince!,selectedCity!,selectedArea!)
             }
+            if (selectedAreaIdBlock != nil){
+                // 回调区域id
+                selectedAreaIdBlock?(selectedProvinceIndex,selectedCityIndex,selectedAreaIndex)
+            }
             if dataDelegate != nil {
 //
 //                dataDelegate?.addressPickerViewProvince!(province:selectedProvince , city:selectedCity, area: selectedArea)
@@ -287,7 +366,21 @@ public class KLCityPickerView: UIView {
             }
         }
     }
-    /// 获取市
+    /// 获取网络数据中的市
+    /// - Parameter provinceIndex: 省份的id
+    /// - Returns: 返回某个省份对应的市
+    func getNetCityNameFromProvinceIndex(provinceIndex: Int)->([String]){
+        let tempCityArray = self.netDataSource[provinceIndex].list//[provinceIndex][self.provinceArray[provinceIndex]]
+        
+        var tempArray = [String]()
+        for city in tempCityArray {
+            tempArray.append(city.name)
+        }
+        print(tempArray)
+        return tempArray
+    }
+    
+    /// 获取本地数据中的市
     /// - Parameter provinceIndex: 省份的id
     /// - Returns: 返回某个省份对应的市
      func getCityNameFromProvinceIndex(provinceIndex: Int)->([String]){
@@ -303,7 +396,24 @@ public class KLCityPickerView: UIView {
         return tempArray
     }
     
-    ///  获取区
+    ///  获取网络数据中的区
+    /// - Parameters:
+    ///   - provinceIndex: 省份的id
+    ///   - cityIndex: 市的id
+    /// - Returns: 返回某个省份对应的市对应的区
+    func getNetAreanamesFromProvinceIndex(provinceIndex: Int, cityIndex: Int)->[String]{
+        let tempCityArray = self.netDataSource[provinceIndex].list[cityIndex].list
+        
+        var areaArray = [String]()
+        
+        for areaDic in tempCityArray {
+            areaArray.append(areaDic.name)
+        }
+        
+        return areaArray
+    }
+    
+    ///  获取本地数据中的区
     /// - Parameters:
     ///   - provinceIndex: 省份的id
     ///   - cityIndex: 市的id
@@ -388,22 +498,28 @@ public class KLCityPickerView: UIView {
     ///   - province: 选中的省份
     ///   - city: 选中的城市
     ///   - area: 选中的区域
-    ///   - addressBlock: 回调省市区域
-    func areaPickerViewWithProvince(province: String?, city: String?, area: String?, addressBlock:((String, String, String)->())?){
-        addressPickerViewWithProvince(province: province, city: city, area: area, provinceBlock: nil, cityBlock: nil, areaBlock: addressBlock, showType: .area)
+    ///   - addressBlock: 回调省市区域Id
+    func areaPickerViewWithProvince(data: [district_province_list] = [], province: String?, city: String?, area: String?, addressBlock:((Int, Int, Int)->())?){
+        addressPickerViewWithProvince(data: data, province: province, city: city, area: area, provinceBlock: nil, cityBlock: nil, areaBlock: nil,areaIdBlock: addressBlock, showType: .area)
     }
     
     //MARK: - 基本方法
-     func addressPickerViewWithProvince(province: String?, city: String?, area: String?, provinceBlock:((String)->())?, cityBlock:((String, String)->())?, areaBlock:((String, String, String)->())?, showType: KLAddressPickerType){
+    func addressPickerViewWithProvince(data: [district_province_list] = [],province: String?, city: String?, area: String?, provinceBlock:((String)->())?, cityBlock:((String, String)->())?, areaBlock:((String, String, String)->())?, areaIdBlock:((Int, Int, Int)->())? = nil, showType: KLAddressPickerType){
         selectedProvince = province
         selectedCity = city
         selectedArea = area
         selectedProvinceBlock = provinceBlock
         selectedCityBlock = cityBlock
         selectedAreaBlock = areaBlock
+        // 设置区域ID的回调
+        selectedAreaIdBlock = areaIdBlock
         self.showType = showType
         // 设置数据
-        kl_getData()
+        if data.isEmpty {
+            kl_getData()
+        } else {
+            kl_getNetData(data)
+        }
         showView()
     }
 }
@@ -452,39 +568,48 @@ extension KLCityPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
             switch showType {
             case .province:
                 selectedProvince = provinceArray[row]
+                selectedProvinceIndex = row
                 selectedCity = ""
                 selectedArea = ""
             case .city:
-                cityArray = getCityNameFromProvinceIndex(provinceIndex: row)
+                cityArray = getNetCityNameFromProvinceIndex(provinceIndex: row)
                 pickerView.selectRow(0, inComponent: 1, animated: true)
                 pickerView.reloadComponent(1)
                 selectedProvince = provinceArray[row]
+                selectedProvinceIndex = row
                 selectedCity = cityArray[0]
+                selectedCityIndex = 0
                 selectedArea = ""
             case .area:
-                cityArray = getCityNameFromProvinceIndex(provinceIndex: row)
-                areaArray = getAreanamesFromProvinceIndex(provinceIndex: row, cityIndex: 0)
+                cityArray = getNetCityNameFromProvinceIndex(provinceIndex: row)
+                areaArray = getNetAreanamesFromProvinceIndex(provinceIndex: row, cityIndex: 0)
                 pickerView.reloadComponent(1)
                 selectedProvince = provinceArray[row]
+                selectedProvinceIndex = row
                 pickerView.selectRow(0, inComponent: 1, animated: true)
                 pickerView.reloadComponent(2)
                 pickerView.selectRow(0, inComponent: 2, animated: true)
                 selectedCity = cityArray[0]
+                selectedCityIndex = 0
                 selectedArea = areaArray[0]
+                selectedAreaIndex = 0
             }
            
         } else if component == 1 {
             switch showType {
             case .city:
                 selectedCity = cityArray[row]
+                selectedCityIndex = row
                 selectedArea = ""
             case .area:
-                areaArray = getAreanamesFromProvinceIndex(provinceIndex: selectedProvinceIndex, cityIndex: row)
+                areaArray = getNetAreanamesFromProvinceIndex(provinceIndex: selectedProvinceIndex, cityIndex: row)
                 pickerView.reloadComponent(2)
                 pickerView.selectRow(0, inComponent: 2, animated: true)
                 
                 selectedCity = cityArray[row]
+                selectedCityIndex = row
                 selectedArea = areaArray[0]
+                selectedAreaIndex = 0
             case .province:
                 break
             }
@@ -494,7 +619,8 @@ extension KLCityPickerView: UIPickerViewDataSource, UIPickerViewDelegate {
             case .province,.city:
                 break
             case .area:
-                 selectedArea = areaArray[row]
+                selectedArea = areaArray[row]
+                selectedAreaIndex = row
             }
            
         }

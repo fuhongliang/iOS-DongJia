@@ -10,12 +10,21 @@ import UIKit
 
 class UIMyObtainAddressViewController: UBaseViewController {
     
+    private let service = APIAddressServices()
+    
     let obtainAddressView = UMyObtainAddressView()
     var data:[[String:String]] = [["name":"符宏梁","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"1"],
                                   ["name":"于亿鑫","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"0"],
                                   ["name":"詹庆谭","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"0"],
                                   ["name":"刘燕家","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"0"],
                                   ["name":"朱伟超","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"0"]]
+    /// 地址列表
+    var addressList: [address_model]? {
+        didSet{
+            guard addressList != nil else { return }
+            obtainAddressView.tableView.reloadData()
+        }
+    }
     
     override func configUI() {
         
@@ -26,6 +35,22 @@ class UIMyObtainAddressViewController: UBaseViewController {
         obtainAddressView.delegate = self
         obtainAddressView.tableView.delegate = self
         obtainAddressView.tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getMyAddressList()
+    }
+    
+    func getMyAddressList(){
+        checkLoginState {
+            service.getMyAddressList({ (AddressList) in
+                self.addressList = AddressList.data?.list
+            }) { (APIErrorModel) in
+                
+            }
+        }
+        
     }
 
 }
@@ -44,7 +69,7 @@ extension UIMyObtainAddressViewController: UMyObtainAddressViewDelegate {
 extension UIMyObtainAddressViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+        return addressList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,7 +109,7 @@ extension UIMyObtainAddressViewController: UITableViewDelegate, UITableViewDataS
         cell.deleteAddress = {
             showHUDInView(text: "删除", inView: self.view)
         }
-        cell.model = data[indexPath.section]
+        cell.model = addressList?[indexPath.section]
         return cell
     }
     

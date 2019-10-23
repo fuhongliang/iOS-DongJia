@@ -287,12 +287,32 @@ class UAddAddressView: BaseView {
         let phone = phoneTf.text ?? ""
         let chooseAddress = (city.text! == "点击选择地址" ? "" : city.text!)
         let houseNumber = houseNumberTf.text ?? ""
+        
+        guard name != "" else {
+            showHUDInView(text: "收货人不能为空", inView: topVC!.view, isClick: true)
+            return
+        }
+        guard phone != "" else {
+            showHUDInView(text: "手机号不能为空", inView: topVC!.view, isClick: true)
+            return
+        }
+        guard chooseAddress != "" else {
+            showHUDInView(text: "请先选择城市地区", inView: topVC!.view, isClick: true)
+            return
+        }
+        guard houseNumber != "" else {
+            showHUDInView(text: "详细地址不能为空", inView: topVC!.view, isClick: true)
+            return
+        }
+        
+        
         delegate?.saveAddress(name: name, phone: phone, chooseAddress: chooseAddress, houseNumber: houseNumber, isDefalut: switchDefaultBtn.isOn)
     }
     
     var addressInfo: String?{
         didSet{
             guard let addressInfo = addressInfo else { return }
+            city.textColor = .black
             city.text = addressInfo
         }
     }
