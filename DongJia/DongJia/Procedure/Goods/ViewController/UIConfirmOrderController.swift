@@ -10,7 +10,7 @@ import UIKit
 
 class UIConfirmOrderController: UBaseViewController {
     
-    /// 修改状态栏颜色
+    /// 修改状态栏文字颜色
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     let confirmOrderView = UConfirmOrderView()
@@ -30,6 +30,16 @@ class UIConfirmOrderController: UBaseViewController {
 }
 extension UIConfirmOrderController: UITableViewDelegate, UITableViewDataSource{
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (section == 0){
+            return 1
+        }
+        return 3
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section != 0 {
             let storeHeaderView = UOrderStoreInfoHeaderView()
@@ -54,17 +64,6 @@ extension UIConfirmOrderController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return section == 0 ? 0 : 59
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0){
-            return 1
-        }
-        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

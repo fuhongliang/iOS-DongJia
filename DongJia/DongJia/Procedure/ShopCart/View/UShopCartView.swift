@@ -79,7 +79,6 @@ class UShopCartView: BaseView {
         // 设置列表的刷新和加载
         tableView.uempty = UEmptyView { [weak self] in self?.refreshShopCart() }
         tableView.uHead = URefreshHeader { [weak self] in self?.refreshShopCart() }
-        tableView.uFoot = URefreshFooter { [weak self] in self?.loadMoreShopCart() }
 
         self.addSubview(tableView)
         self.addSubview(whiteBg)

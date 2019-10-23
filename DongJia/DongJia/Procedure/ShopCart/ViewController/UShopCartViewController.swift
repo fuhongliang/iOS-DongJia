@@ -84,6 +84,7 @@ class UShopCartViewController: UBaseViewController {
             return
         }
         service.getCartGoodsList({ (Data) in
+            self.isCheckArray.removeAll()
             self.cartListData = Data.data
             if !(self.cartListData?.list ?? []).isEmpty {
                 // 拼接平台自营商品列表
@@ -110,45 +111,84 @@ class UShopCartViewController: UBaseViewController {
     func editCartGoods(id: String, number: String){
         let cartIdList = [["cart_id": id, "num": number]]
         service.editCartGoods(cart_id_list: dicArrayToJson(cartIdList), { (APIObjectModel) in
-            showHUDInView(text: APIObjectModel.msg ?? "", inView: self.view, isClick: true)
+            print("商品数量 修改成功---\(APIObjectModel.msg!)")
         }) { (APIErrorModel) in
             
         }
+    }
+    /// 删除购物车商品
+    func deleteCartGoods(idArray:[Int]){
+        service.deleteCartGoods(cart_id_list: "\(idArray)", { (APIObjectModel) in
+            showHUDInView(text: APIObjectModel.msg ?? "", inView: self.view, isClick: true)
+            // 删除成功后重新请求列表数据
+            self.getCartListData()
+        }) { (APIErrorModel) in
+            
+        }
+    }
+    
+    /// 获取选中的商品ID或购物车ID  isNeedCartId true->购物车ID false->商品ID
+    func getSelectGoodsId(isNeedCartId: Bool) -> [Int] {
+        var selectGoods = [Int]()
+        for (section, item) in isCheckArray.enumerated() {
+            for (row, choose) in item.enumerated(){
+                if (choose) {
+                    var id = 0
+                    if (section==0 && !(cartListData?.list ?? []).isEmpty){
+                        id = isNeedCartId ? cartListData!.list[row].cart_id : cartListData!.list[row].goods_id
+                    } else if(!(cartListData?.list ?? []).isEmpty){
+                       id = isNeedCartId ? cartListData!.mch_list[section-1].list[row].cart_id : cartListData!.mch_list[section-1].list[row].goods_id
+                    } else {
+                       id = isNeedCartId ? cartListData!.mch_list[section].list[row].cart_id : cartListData!.mch_list[section].list[row].goods_id
+                    }
+                    selectGoods.append(id)
+                }
+            }
+        }
+        return selectGoods
     }
 }
 
 extension UShopCartViewController: ShopCartDelegate{
     func refreshShopCartList() {
         getCartListData()
-        showHUDInView(text: "刷新", inView: self.view, isClick: true)
     }
     
     func loadMoreShopCartList() {
-        showHUDInView(text: "load more", inView: self.view, isClick: true)
+        // 暂时不考虑购物车分页 后台会一次性返回所有购物车商品
     }
     
     // 删除商品
     func deleteGoods() {
-        
+        deleteCartGoods(idArray: getSelectGoodsId(isNeedCartId: true))
     }
     // 结算
     func buy() {
+        if (getSelectGoodsId(isNeedCartId: true).isEmpty) {
+            showHUDInView(text: "请先选择商品", inView: self.view, isClick: true)
+            return
+        }
         
     }
     // 商品加减操作
     func itemNumberCallBack(section: Int,row: Int, number: Int){
         if (!cartListData!.list.isEmpty && section == 0){
             cartListData?.list[row].num = number
+            // 调接口修改数量
+            editCartGoods(id: String(cartListData?.list[row].cart_id ?? 0), number: String(number))
         } else if (!cartListData!.list.isEmpty){
             cartListData?.mch_list[section-1].list[row].num = number
+            // 调接口修改数量
+            editCartGoods(id: String(cartListData?.mch_list[section-1].list[row].cart_id ?? 0), number: String(number))
         } else {
             cartListData?.mch_list[section].list[row].num = number
+            // 调接口修改数量
+            editCartGoods(id: String(cartListData?.mch_list[section].list[row].cart_id ?? 0), number: String(number))
         }
         // 这里触发更新价格
         let p = isCheckArray[0][0]
         isCheckArray[0][0] = p
-//        editCartGoods(id: cartListData, number: <#T##String#>)
-//        showHUDInView(text: "\(number)", inView: self.view, isClick: true)
+        
     }
     // 选择全部
     func selectAll(check: Bool) {
@@ -238,6 +278,7 @@ extension UShopCartViewController: UITableViewDelegate, UITableViewDataSource{
             cell.data = data
         }
         // 数量
+        cell.maxNumber = cartListData!.mch_list[indexPath.section].list[indexPath.row].max_num
         cell.currentNumber = cartListData!.mch_list[indexPath.section].list[indexPath.row].num
         cell.isCheck = isCheckArray[indexPath.section][indexPath.row]
         cell.section = indexPath.section

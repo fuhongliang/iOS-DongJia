@@ -162,19 +162,23 @@ class UShopCartGoodsCell: UBaseTableViewCell {
     
     @objc func reduceAction(){
         currentNumber -= 1
+        delegate?.itemNumberCallBack(section: section, row: row, number: currentNumber)
     }
     
     @objc func addAction(){
         currentNumber += 1
+        delegate?.itemNumberCallBack(section: section, row: row, number: currentNumber)
     }
+    
+    var maxNumber: Int = 1
+    
     var currentNumber: Int = 1 {
         didSet{
-            delegate?.itemNumberCallBack(section: section, row: row, number: currentNumber)
             number.text = "\(currentNumber)"
             //设置等于1时不能再减
             reduceBtn.isEnabled = currentNumber > 1
             //设置大于99时不能再加
-            addBtn.isEnabled = currentNumber < 99
+            addBtn.isEnabled = currentNumber < maxNumber
         }
     }
 
