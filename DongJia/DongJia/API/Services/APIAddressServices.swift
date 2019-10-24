@@ -14,10 +14,35 @@ protocol APIAddressServicesProtocol {
     
     func getDistrictList(_ success: @escaping(((APIDistrictListResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
-    func addOrEditAddress(address_id: String, name: String, mobile: String, province_id: Int, city_id: Int, district_id: Int, detail: String, is_default: Int, _ success: @escaping(((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    func addOrEditAddress(address_id: String, name: String, mobile: String, province_id: Int, city_id: Int, district_id: Int, detail: String, is_default: String, _ success: @escaping(((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    
+    func deleteAddress(address_id: String, _ success: @escaping(((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
 }
 
 class APIAddressServices: APIAddressServicesProtocol {
+    /// 删除地址
+    func deleteAddress(address_id: String, _ success: @escaping (((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        let param:[String:Any] = [
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1,
+            "access_token": APIUser.shared.user!.access_token,
+            "address_id":address_id
+        ]
+        APIService.shared.request(.deleteAddress(param: param), { (data) in
+            do {
+                let model = try JSONDecoder().decode(APIObjectModel.self, from: data)
+                success(model)
+            } catch {
+                let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
+                print(errorModel.msg!)
+                fail(errorModel)
+            }
+        }) { (APIErrorModel) in
+            
+        }
+    }
+    
     /// 新增/更新地址
     /// - Parameters:
     ///     - address_id: 编辑地址的id
@@ -27,7 +52,7 @@ class APIAddressServices: APIAddressServicesProtocol {
     ///     - city_id: 城市id
     ///     - district_id: 地区id
     ///     - detail: 详细地址
-    func addOrEditAddress(address_id: String = "", name: String, mobile: String, province_id: Int, city_id: Int, district_id: Int, detail: String, is_default: Int, _ success: @escaping (((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+    func addOrEditAddress(address_id: String = "", name: String, mobile: String, province_id: Int, city_id: Int, district_id: Int, detail: String, is_default: String, _ success: @escaping (((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
         let param:[String:Any] = [
             "store_id": 4,
             "_uniacid": -1,

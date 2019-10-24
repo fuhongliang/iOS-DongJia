@@ -13,7 +13,13 @@ class UIConfirmOrderController: UBaseViewController {
     /// 修改状态栏文字颜色
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
-    let confirmOrderView = UConfirmOrderView()
+    private let service = APIOrderService()
+    
+    private let confirmOrderView = UConfirmOrderView()
+    
+    /// 商品页直接购买的需要传商品信息
+    var goodsInfo: String?
+    
     override func configUI() {
         self.view.addSubview(confirmOrderView)
         confirmOrderView.snp.makeConstraints { (make) in
@@ -21,10 +27,22 @@ class UIConfirmOrderController: UBaseViewController {
         }
         confirmOrderView.tableView.delegate = self
         confirmOrderView.tableView.dataSource = self
+        
+        requestSubmitPreviewData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         configNavigationBar(barStyle: .theme)
+    }
+    
+    /// 请求确认订单的数据
+    func requestSubmitPreviewData(){
+        service.submitPreView(cart_id_list: "", mch_list: "", goods_info: goodsInfo ?? "", { (SubmitPreviewData) in
+            print("\(SubmitPreviewData.msg ?? "----////----")")
+        }) { (APIErrorModel) in
+            
+        }
     }
 
 }

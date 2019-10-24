@@ -30,25 +30,35 @@ class UIAddAddressController: UBaseViewController {
 
     let addAddressView = UAddAddressView()
     
-    var isNewAddress: Bool = false
-    
-    var editAddressId: String = "0"
+    /// 被编辑的地址  如果此值为空则是新建地址
+    var editAddress: address_model?
     
     override func configUI() {
         self.view.addSubview(addAddressView)
         addAddressView.delegate = self
-        addAddressView.setHaveDefault(isHiddenDefault: isNewAddress)
-        
+        addAddressView.setHaveDefault(isHiddenDefault: editAddress == nil)
         addAddressView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        getDistrictList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (!isNewAddress) {
+        if (editAddress != nil) {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "删除",titleColor: .black, target: self, action: #selector(deleteAddress))
-//            addAddressView.addressInfo = "广东省 广州市 海珠区"
+            currentProvinceId = Int(editAddress!.province_id)
+            currentCityId = Int(editAddress!.city_id)
+            currentAreaId = Int(editAddress!.district_id)
+            
+            currentProvince = editAddress!.province
+            currentCity = editAddress!.city
+            currentArea = editAddress!.district
+            
+            addAddressView.addressInfo = "\(currentProvince!) \(currentCity!) \(currentArea!)"
+            addAddressView.contactNameTf.text = editAddress!.name
+            addAddressView.phoneTf.text = editAddress!.mobile
+            addAddressView.houseNumberTf.text = editAddress!.detail
         }
     }
     
@@ -56,14 +66,24 @@ class UIAddAddressController: UBaseViewController {
     func getDistrictList(){
         service.getDistrictList({ (DistrictList) in
             self.districtList = DistrictList.data
-            self.showKLCityPickerView()
-        }) { (APIErrorModel) in
             
+        }) { (APIErrorModel) in
+            print(APIErrorModel.msg ?? "获取省市区数据异常")
         }
     }
     
     @objc func deleteAddress(){
-        showHUDInView(text: "删除", inView: self.view, isClick: true)
+        showAlert(subTitle: "是否删除此地址") { (alert) in
+            alert.addButton("取消",backgroundColor:.white, textColor: .hex(hexString: "#666666")){}
+            alert.addButton("确认",backgroundColor:.theme, textColor: .white){
+                self.service.deleteAddress(address_id: self.editAddress!.id, { (APIObjectModel) in
+                    print(APIObjectModel.msg ?? "-----")
+                    self.pressBack()
+                }, { (APIErrorModel) in
+                    
+                })
+            }
+        }
     }
     
     /// 显示省市区弹窗
@@ -86,12 +106,12 @@ class UIAddAddressController: UBaseViewController {
 
 extension UIAddAddressController: UAddAddressViewDelegate {
     func chooseAddress() {
-        getDistrictList()
+        showKLCityPickerView()
     }
     
     func saveAddress(name: String, phone: String, chooseAddress: String, houseNumber: String, isDefalut: Bool) {
         
-        service.addOrEditAddress(address_id: isNewAddress ? "" : editAddressId, name: name, mobile: phone, province_id: currentProvinceId ?? 0, city_id: currentCityId ?? 0, district_id: currentAreaId ?? 0, detail: houseNumber, is_default: isDefalut ? 1 : 0, { (APIObjectModel) in
+        service.addOrEditAddress(address_id: editAddress?.id ?? "", name: name, mobile: phone, province_id: currentProvinceId ?? 0, city_id: currentCityId ?? 0, district_id: currentAreaId ?? 0, detail: houseNumber, is_default: isDefalut ? "1" : "0", { (APIObjectModel) in
             self.pressBack()
         }) { (APIErrorModel) in
             showHUDInView(text: APIErrorModel.msg ?? "", inView: self.view, isClick: true)

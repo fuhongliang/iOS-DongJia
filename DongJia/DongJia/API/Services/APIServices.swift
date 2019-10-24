@@ -78,6 +78,10 @@ enum NetApi {
     case districtList(param: [String:Any])
     /// 新增/更新地址
     case addOrEditAddress(param: [String:Any])
+    /// 删除地址
+    case deleteAddress(param: [String:Any])
+    /// 下单预览
+    case submitPreView(param: [String:Any])
 }
 
 //MARK: 请求对象的封装
@@ -121,13 +125,17 @@ extension NetApi: TargetType {
         case .districtList:
             return "/index.php?r=api/default/district"
         case .addOrEditAddress:
-            return "/index.php?=api/user/address-save"
+            return "/index.php?r=api/user/address-save"
+        case .deleteAddress:
+            return "/index.php?r=api/user/address-delete"
+        case .submitPreView:
+            return "/index.php?r=api/order/submit-preview"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList:
+        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView:
             return .get
         case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress:
             return .post
@@ -168,21 +176,26 @@ extension NetApi: TargetType {
         case .deleteCartGoods(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .addOrEditAddress(let param):
-            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+            return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
         case .districtList(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .addressList(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .deleteAddress(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .submitPreView(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         }
         
     }
 
     var headers: [String : String]? {
-        let dict: [String:String] = [
+        var dict: [String:String] = [
             "Content-Type":"application/json"
         ]
         switch self {
         case .addOrEditAddress:
+            dict["Content-Type"] = "application/x-www-form-urlencoded"
             return dict
         default:
             return nil

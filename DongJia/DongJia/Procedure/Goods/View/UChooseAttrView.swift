@@ -36,7 +36,7 @@ class UChooseAttrView: BaseView {
         }
     }
     
-    /// 当前选择并请求回来的的规格数据
+    /// 当前已选择并请求回来的的规格数据
     var currentChooseAttr: goods_attr_data?
     
     /// 记录当前选择的状态

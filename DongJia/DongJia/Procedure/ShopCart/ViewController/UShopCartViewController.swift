@@ -58,7 +58,8 @@ class UShopCartViewController: UBaseViewController {
                 }
             }
             // 计算完毕后显示总价格
-            allPrice = price
+            print(price.roundTo(places: 2))
+            allPrice = price.roundTo(places: 2)
             // 全选状态
             shopCartView.selectAllBtn.isSelected = isCheckAll
         }
@@ -110,7 +111,7 @@ class UShopCartViewController: UBaseViewController {
     /// 编辑购物车商品
     func editCartGoods(id: String, number: String){
         let cartIdList = [["cart_id": id, "num": number]]
-        service.editCartGoods(cart_id_list: dicArrayToJson(cartIdList), { (APIObjectModel) in
+        service.editCartGoods(cart_id_list: toJson(cartIdList), { (APIObjectModel) in
             print("商品数量 修改成功---\(APIObjectModel.msg!)")
         }) { (APIErrorModel) in
             

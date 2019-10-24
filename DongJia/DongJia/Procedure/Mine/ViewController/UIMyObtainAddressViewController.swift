@@ -13,11 +13,7 @@ class UIMyObtainAddressViewController: UBaseViewController {
     private let service = APIAddressServices()
     
     let obtainAddressView = UMyObtainAddressView()
-    var data:[[String:String]] = [["name":"符宏梁","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"1"],
-                                  ["name":"于亿鑫","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"0"],
-                                  ["name":"詹庆谭","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"0"],
-                                  ["name":"刘燕家","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"0"],
-                                  ["name":"朱伟超","phone":"13265345992","address":"广东省深圳市宝安区新安街道新安三路28号","is_default":"0"]]
+    
     /// 地址列表
     var addressList: [address_model]? {
         didSet{
@@ -41,7 +37,7 @@ class UIMyObtainAddressViewController: UBaseViewController {
         super.viewWillAppear(animated)
         getMyAddressList()
     }
-    
+    /// 获取地址列表
     func getMyAddressList(){
         checkLoginState {
             service.getMyAddressList({ (AddressList) in
@@ -52,6 +48,28 @@ class UIMyObtainAddressViewController: UBaseViewController {
         }
         
     }
+    /// 编辑默认地址
+    func editIsDefaultAddress(index: Int){
+        checkLoginState {
+            service.addOrEditAddress(address_id: addressList![index].id, name: addressList![index].name, mobile: addressList![index].mobile, province_id: Int(addressList![index].province_id)!, city_id: Int(addressList![index].city_id)!, district_id: Int(addressList![index].district_id)!, detail: addressList![index].detail, is_default: "1", { (APIObjectModel) in
+                self.getMyAddressList()
+                print(APIObjectModel.msg ?? "=====")
+            }, { (APIErrorModel) in
+                
+            })
+        }
+    }
+    /// 删除地址
+    func deleteAddress(index: Int){
+        checkLoginState {
+            service.deleteAddress(address_id: addressList![index].id, { (APIObjectModel) in
+                self.getMyAddressList()
+                print(APIObjectModel.msg ?? "=====")
+            }, { (APIErrorModel) in
+                
+            })
+        }
+    }
 
 }
 
@@ -60,7 +78,6 @@ extension UIMyObtainAddressViewController: UMyObtainAddressViewDelegate {
     func addAddress() {
         let vc = UIAddAddressController()
         vc.title = "新增地址"
-        vc.isNewAddress = true
         pushViewController(vc, animated: true)
     }
     
@@ -95,19 +112,16 @@ extension UIMyObtainAddressViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UObtainAddressCell.self)
         cell.setDefaultAddress = {
-            for (index,_) in self.data.enumerated() {
-                self.data[index]["is_default"] = index == indexPath.section ? "1" : "0"
-            }
-            tableView.reloadData()
+            self.editIsDefaultAddress(index: indexPath.section)
         }
         cell.editAddress = {
             let vc = UIAddAddressController()
             vc.title = "编辑地址"
-            vc.isNewAddress = false
+            vc.editAddress = self.addressList?[indexPath.section]
             self.pushViewController(vc, animated: true)
         }
         cell.deleteAddress = {
-            showHUDInView(text: "删除", inView: self.view)
+            self.deleteAddress(index: indexPath.section)
         }
         cell.model = addressList?[indexPath.section]
         return cell

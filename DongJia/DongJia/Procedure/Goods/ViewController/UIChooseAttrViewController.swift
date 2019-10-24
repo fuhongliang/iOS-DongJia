@@ -45,7 +45,7 @@ class UIChooseAttrViewController: UBaseViewController {
         let currentPoint = touches.first?.location(in: self.view)
         if !self.chooseView.frame.contains(currentPoint ?? CGPoint()) {
             self.dismiss(animated: true, completion: nil)
-            self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr, addCartOrBuyOrDismiss: "dismiss")
+            self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr, num: self.currentNum, addCartOrBuyOrDismiss: "dismiss")
         }
     }
 
@@ -69,7 +69,7 @@ extension UIChooseAttrViewController: UChooseAttrViewProtocol,UIViewControllerTr
                        "attr_name": attr_name]
             array.append(dic)
         }
-        let json = dicArrayToJson(array)
+        let json = toJson(array)
 
         self.dismiss(animated: true)
         self.delegate?.addToCart(num: self.currentNum, toCartJson: json)
@@ -77,11 +77,11 @@ extension UIChooseAttrViewController: UChooseAttrViewProtocol,UIViewControllerTr
     
     func dismissAction() {
         self.dismiss(animated: true)
-        self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr,addCartOrBuyOrDismiss: "dismiss")
+        self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr, num: self.currentNum,addCartOrBuyOrDismiss: "dismiss")
     }
     func buyNowAction() {
         self.dismiss(animated: true)
-        self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr, addCartOrBuyOrDismiss: "buyNow")
+        self.delegate?.chooseAttrCallBack(attr: chooseView.currentChooseAttr, num: self.currentNum, addCartOrBuyOrDismiss: "buyNow")
         
     }
     

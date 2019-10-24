@@ -50,6 +50,9 @@
 		DC34A657233DFDAB0042EEA8 /* UGoodsPicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A656233DFDAB0042EEA8 /* UGoodsPicListCell.swift */; };
 		DC34A659233E08490042EEA8 /* UPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A658233E08490042EEA8 /* UPicCell.swift */; };
 		DC34A65B233E16040042EEA8 /* UGoodsLimitedBuyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34A65A233E16040042EEA8 /* UGoodsLimitedBuyCell.swift */; };
+		DC35D5FB23617AC600D68D1B /* APIOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC35D5FA23617AC600D68D1B /* APIOrderService.swift */; };
+		DC35D5FD23617C2100D68D1B /* APIOrderSubmitViewResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC35D5FC23617C2100D68D1B /* APIOrderSubmitViewResponseModel.swift */; };
+		DC35D5FF236198D100D68D1B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC35D5FE236198D100D68D1B /* DoubleExtension.swift */; };
 		DC392AE823544C37005E292D /* APIMineResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC392AE723544C37005E292D /* APIMineResponseModel.swift */; };
 		DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */; };
 		DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */; };
@@ -229,6 +232,9 @@
 		DC34A656233DFDAB0042EEA8 /* UGoodsPicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsPicListCell.swift; sourceTree = "<group>"; };
 		DC34A658233E08490042EEA8 /* UPicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicCell.swift; sourceTree = "<group>"; };
 		DC34A65A233E16040042EEA8 /* UGoodsLimitedBuyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UGoodsLimitedBuyCell.swift; sourceTree = "<group>"; };
+		DC35D5FA23617AC600D68D1B /* APIOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOrderService.swift; sourceTree = "<group>"; };
+		DC35D5FC23617C2100D68D1B /* APIOrderSubmitViewResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOrderSubmitViewResponseModel.swift; sourceTree = "<group>"; };
+		DC35D5FE236198D100D68D1B /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		DC392AE723544C37005E292D /* APIMineResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMineResponseModel.swift; sourceTree = "<group>"; };
 		DC39CF912329E77A00E61C3A /* UMainLimitedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainLimitedCell.swift; sourceTree = "<group>"; };
 		DC39CF932329EAA100E61C3A /* ULimitedTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ULimitedTimeCell.swift; sourceTree = "<group>"; };
@@ -678,6 +684,7 @@
 				DC56BC8E2338E2B90089EE61 /* URLExtension.swift */,
 				DCCEC4C1233B495800892D11 /* NotificationNameExtension.swift */,
 				DC34A650233C95910042EEA8 /* UIButtonExtension.swift */,
+				DC35D5FE236198D100D68D1B /* DoubleExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -813,6 +820,7 @@
 				DC2E3567234D79D80064EB75 /* APIGoodsService.swift */,
 				DC3FAA2223505A1800B310EC /* APIStoreService.swift */,
 				DC30ADE02360456800B21725 /* APIAddressServices.swift */,
+				DC35D5FA23617AC600D68D1B /* APIOrderService.swift */,
 				DCB064E123273BA90094727C /* APIUserServices.swift */,
 				DCB064BC23266DE00094727C /* APIUser.swift */,
 				DCB064C023266E040094727C /* APIToken.swift */,
@@ -837,6 +845,7 @@
 				DC1BAE3D235E9FD40093D45A /* APIShopCartListResponseModel.swift */,
 				DC30ADE2236045F800B21725 /* APIAddressListResponseModel.swift */,
 				DC30ADE4236047D900B21725 /* APIDistrictListResponseModel.swift */,
+				DC35D5FC23617C2100D68D1B /* APIOrderSubmitViewResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1230,6 +1239,7 @@
 				DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */,
 				DCB064F62327A7230094727C /* UMainBannerCell.swift in Sources */,
 				DCB06482232669510094727C /* UITextFieldExtension.swift in Sources */,
+				DC35D5FD23617C2100D68D1B /* APIOrderSubmitViewResponseModel.swift in Sources */,
 				DCB064AF23266A000094727C /* FTPopOverMenu.swift in Sources */,
 				DCB064AA23266A000094727C /* ParallaxHeader.swift in Sources */,
 				DC785A5C23547DB10076A5C9 /* UChooseCityCell.swift in Sources */,
@@ -1272,6 +1282,7 @@
 				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,
 				DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
+				DC35D5FF236198D100D68D1B /* DoubleExtension.swift in Sources */,
 				DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */,
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
 				DC1E77FB234F2348005765F0 /* UClassicCaseCell.swift in Sources */,
@@ -1298,6 +1309,7 @@
 				DC19F7AD23347BCF00BDFE7D /* UMyCollectionCell.swift in Sources */,
 				DC32D544235D911B00B3D2BD /* UShopCartGoodsCell.swift in Sources */,
 				DCEA78B92351D445002F2F1E /* UIStoreController.swift in Sources */,
+				DC35D5FB23617AC600D68D1B /* APIOrderService.swift in Sources */,
 				DCB064AE23266A000094727C /* UIControl+Point.swift in Sources */,
 				DCB06483232669510094727C /* UIViewExtension.swift in Sources */,
 				DCB0644823263AD40094727C /* AppDelegate.swift in Sources */,

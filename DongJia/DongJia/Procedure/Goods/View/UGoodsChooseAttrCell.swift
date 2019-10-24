@@ -59,7 +59,7 @@ class UGoodsChooseAttrCell: UBaseTableViewCell {
             for item in chooseAttr.attr_list{
                 string += "   \"\(item.attr_name)\""
             }
-            attrNameLabel.text = "已选\(string)"
+            attrNameLabel.text = "已选\(string) x\(chooseAttr.num)"
         }
     }
     

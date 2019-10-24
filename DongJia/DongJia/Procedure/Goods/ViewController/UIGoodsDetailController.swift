@@ -27,7 +27,7 @@ enum GoodsDetailItem {
 }
 
 protocol UIGoodsDetailControllerDelegate {
-    func chooseAttrCallBack(attr: goods_attr_data?, addCartOrBuyOrDismiss: String)
+    func chooseAttrCallBack(attr: goods_attr_data?, num: Int, addCartOrBuyOrDismiss: String)
     func addToCart(num: Int, toCartJson: String)
 }
 
@@ -106,14 +106,30 @@ class UIGoodsDetailController: UBaseViewController {
         }
     }
     
+    /// 生成该商品的选择信息
+    func generateGoodsInfo(num: Int) -> String{
+        
+        var postAttrList = [String]()
+        for (index, item) in (self.attr?.attr_list ?? []).enumerated(){
+            let attrInfo = ["attr_group_id": String(self.goodsData.attr_group_list[index].attr_group_id),"attr_group_name":self.goodsData.attr_group_list[index].attr_group_name, "attr_id": String(item.attr_id), "attr_name": item.attr_name]
+            print("attr{}"+toJson(attrInfo))
+            postAttrList.append(toJson(attrInfo))
+        }
+        print("attr[]"+toJson(postAttrList))
+        let postGoodsInfo:[String:Any] = ["goods_id": goodsId, "attr": toJson(postAttrList), "num":num]
+        return toJson(postGoodsInfo)
+    }
+    
 }
 
 extension UIGoodsDetailController: UGoodsDetailViewProtocol{
     func buyNowAction() {
-        //TODO 判断登录状态 是否选择了规格
-        let vc = UIConfirmOrderController()
-        vc.title = "确认订单"
-        self.pushViewController(vc, animated: true)
+        // TODO 逻辑处理待检查
+        checkLoginState {
+            let vc = UIConfirmOrderController()
+            vc.title = "确认订单"
+            self.pushViewController(vc, animated: true)
+        }
     }
     
     func addCartAction() {
@@ -229,11 +245,12 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
 
 // 选择商品属性回调
 extension UIGoodsDetailController: UIGoodsDetailControllerDelegate{
-    func chooseAttrCallBack(attr: goods_attr_data?, addCartOrBuyOrDismiss: String) {
+    func chooseAttrCallBack(attr: goods_attr_data?, num: Int, addCartOrBuyOrDismiss: String) {
         switch addCartOrBuyOrDismiss {
         case "buyNow":
             let vc = UIConfirmOrderController()
             vc.title = "确认订单"
+            vc.goodsInfo = generateGoodsInfo(num: num)
             self.pushViewController(vc, animated: true)
         default:
             self.attr = attr

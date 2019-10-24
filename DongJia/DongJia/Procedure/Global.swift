@@ -65,17 +65,17 @@ func stringArrayConvertDoubleArray(stringArray:[String]) -> [Double]{
 }
 
 /// 数组(里面类型为字典)转字符串
-func dicArrayToJson(_ dicArray:[Dictionary<String,String>])->String{
+func toJson(_ obj: Any/*[Dictionary<String,String>]*/)->String{
     
     //首先判断能不能转换
-    if (!JSONSerialization.isValidJSONObject(dicArray)) {
+    if (!JSONSerialization.isValidJSONObject(obj)) {
         //print("is not a valid json object")
         return ""
     }
     
     //利用OC的json库转换成OC的NSData，
     //如果设置options为NSJSONWritingOptions.PrettyPrinted，则打印格式更好阅读
-    let data : Data! = try? JSONSerialization.data(withJSONObject: dicArray, options: [JSONSerialization.WritingOptions.prettyPrinted])
+    let data : Data! = try? JSONSerialization.data(withJSONObject: obj, options: [JSONSerialization.WritingOptions.prettyPrinted])
     //NSData转换成NSString打印输出
     let str = NSString(data:data, encoding: String.Encoding.utf8.rawValue)
     //输出json字符串
