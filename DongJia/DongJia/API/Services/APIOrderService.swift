@@ -27,7 +27,7 @@ class APIOrderService: APIOrderServiceProtocol {
             "goods_info":goods_info,
             "access_token": APIUser.shared.user!.access_token
         ]
-        APIService.shared.request(.storeInfo(param: param), { (data) in
+        APIService.shared.request(.submitPreView(param: param), { (data) in
             do {
                 let model = try JSONDecoder().decode(APIOrderSubmitViewResponseModel.self, from: data)
                 success(model)

@@ -9,37 +9,36 @@
 import UIKit
 
 class UOrderGoodsInfoCell: UBaseTableViewCell {
-
+    /// 商品图片
+    let goodsImg = UIImageView().then{
+        $0.backgroundColor = .random
+    }
+    /// 商品名称
+    let goodsName = UILabel().then{
+        $0.text = "红木家具一套"
+        $0.textColor = .hex(hexString: "#333333")
+        $0.font = .systemFont(ofSize: 15)
+        $0.numberOfLines = 2
+    }
+    /// 商品规格信息
+    let goodsAttrInfo = UILabel().then{
+        $0.text = "赠送广州市中心环境超棒的大别墅一套"
+        $0.textColor = .hex(hexString: "#999999")
+        $0.font = .systemFont(ofSize: 13)
+    }
+    /// 商品价格
+    let goodsPrice = UILabel().then{
+        $0.text = "¥10"
+        $0.textColor = .hex(hexString: "#FD5757")
+        $0.font = .systemFont(ofSize: 16)
+    }
+    /// 当前商品的购买数量
+    let goodsBuyNumber = UILabel().then{
+        $0.text = "x10"
+        $0.textColor = .hex(hexString: "#999999")
+        $0.font = .systemFont(ofSize: 15)
+    }
     override func configUI() {
-        /// 商品图片
-        let goodsImg = UIImageView().then{
-            $0.backgroundColor = .random
-        }
-        /// 商品名称
-        let goodsName = UILabel().then{
-            $0.text = "红木家具一套"
-            $0.textColor = .hex(hexString: "#333333")
-            $0.font = .systemFont(ofSize: 15)
-            $0.numberOfLines = 2
-        }
-        /// 商品规格信息
-        let goodsAttrInfo = UILabel().then{
-            $0.text = "赠送广州市中心环境超棒的大别墅一套"
-            $0.textColor = .hex(hexString: "#999999")
-            $0.font = .systemFont(ofSize: 13)
-        }
-        /// 商品价格
-        let goodsPrice = UILabel().then{
-            $0.text = "¥10"
-            $0.textColor = .hex(hexString: "#FD5757")
-            $0.font = .systemFont(ofSize: 16)
-        }
-        /// 当前商品的购买数量
-        let goodsBuyNumber = UILabel().then{
-            $0.text = "x10"
-            $0.textColor = .hex(hexString: "#999999")
-            $0.font = .systemFont(ofSize: 15)
-        }
         
         contentView.addSubview(goodsImg)
         contentView.addSubview(goodsName)
@@ -77,4 +76,20 @@ class UOrderGoodsInfoCell: UBaseTableViewCell {
         }
     }
 
+    /// 商品数据
+    var goodsData: submit_view_mch_list_list_model?{
+        didSet{
+            guard let goods = goodsData else { return }
+            goodsImg.load(goods.goods_pic)
+            goodsName.text = goods.goods_name
+            var attr = ""
+            for item in goods.attr_list{
+                attr += "\"\(item.attr_name)\"  "
+            }
+            goodsAttrInfo.text = attr
+            goodsPrice.text = "¥\(goods.price)"
+            goodsBuyNumber.text = "x\(goods.num)"
+        }
+    }
+    
 }

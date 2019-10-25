@@ -98,5 +98,14 @@ class UConfirmOrderAddressCell: UBaseTableViewCell {
             make.size.equalTo(CGSize(width: 8, height: 12.5))
         }
     }
+    
+    var addressData: submit_view_address_model? {
+        didSet{
+            guard let address = addressData else { return }
+            consigneeName.text = address.name
+            consigneePhone.text = address.mobile
+            consigneeAddress.text = "\(address.province)\(address.city)\(address.district)\(address.detail)"
+        }
+    }
 
 }

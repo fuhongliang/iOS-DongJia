@@ -24,7 +24,6 @@ class UConfirmOrderView: BaseView {
         $0.register(cellType: UMainHotCell.self)
         $0.register(cellType: UMainSuperBrandCell.self)
         $0.register(cellType: UMainFeaturedCell.self)
-        
     }
     
     let line = UIView().then{
@@ -98,6 +97,12 @@ class UConfirmOrderView: BaseView {
             make.right.equalToSuperview().offset(-15)
             make.size.equalTo(CGSize(width: 110, height: 40))
             make.centerY.equalToSuperview()
+        }
+    }
+    
+    var allPayPrice: String = "¥-"{
+        didSet{
+            priceLabel.text = "¥\(allPayPrice)"
         }
     }
 

@@ -9,28 +9,30 @@
 import UIKit
 
 class UOrderStoreInfoHeaderView: BaseView{
-
+    
+    let whiteBg = UIView().then{
+        $0.backgroundColor = .white
+    }
+    /// 商家头像👤
+    let storeIcon = UIImageView().then{
+        $0.image = UIImage.init(named: "default_icon_2")
+        $0.layer.cornerRadius = 10
+        $0.layer.masksToBounds = true
+    }
+    /// 商家名称
+    let storeName = UILabel().then{
+        $0.text = "送福利"
+        $0.textColor = .black
+        $0.font = .systemFont(ofSize: 15)
+    }
+    /// 分割线
+    let line = UIView().then{
+        $0.backgroundColor = .hex(hexString: "#F2F2F2")
+    }
+    
     override func configUI() {
         
-        let whiteBg = UIView().then{
-            $0.backgroundColor = .white
-        }
-        /// 商家头像👤
-        let storeIcon = UIImageView().then{
-            $0.image = UIImage.init(named: "default_icon_2")
-            $0.layer.cornerRadius = 10
-            $0.layer.masksToBounds = true
-        }
-        /// 商家名称
-        let storeName = UILabel().then{
-            $0.text = "送福利"
-            $0.textColor = .black
-            $0.font = .systemFont(ofSize: 15)
-        }
-        /// 分割线
-        let line = UIView().then{
-            $0.backgroundColor = .hex(hexString: "#F2F2F2")
-        }
+       
         self.addSubview(whiteBg)
         whiteBg.addSubview(storeIcon)
         whiteBg.addSubview(storeName)
@@ -59,6 +61,14 @@ class UOrderStoreInfoHeaderView: BaseView{
             make.size.equalTo(CGSize(width: screenHeight-15, height: 1))
             make.left.equalToSuperview().offset(15)
             make.bottom.equalToSuperview()
+        }
+    }
+    
+    var mchData: submit_view_mch_list_model?{
+        didSet{
+            guard let mch = mchData else { return }
+            storeIcon.load(mch.logo)
+            storeName.text = mch.name
         }
     }
 

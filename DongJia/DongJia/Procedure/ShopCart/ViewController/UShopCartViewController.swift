@@ -148,6 +148,32 @@ class UShopCartViewController: UBaseViewController {
         }
         return selectGoods
     }
+    
+    /// 生成到结算页的需要的Json数据
+    func generateMchListJson() -> String{
+        
+        var mch_list = [Dictionary<String,Any>]()
+        for (section, item) in isCheckArray.enumerated(){
+            var mch:[String:Any] = [:]
+            // 当前商家的商品是否有选中
+            var isHaveSection = false
+            var cart_id_list = [Int]()
+            for (row, choose) in item.enumerated(){
+                if choose {
+                    isHaveSection = true
+                    cart_id_list.append(self.cartListData!.mch_list[section].list[row].cart_id)
+                }
+            }
+            if (isHaveSection){
+                mch["id"] = self.cartListData!.mch_list[section].id
+                mch["cart_id_list"] = cart_id_list
+                mch_list.append(mch)
+            }
+        }
+        return toJson(mch_list)
+        
+    }
+    
 }
 
 extension UShopCartViewController: ShopCartDelegate{
@@ -169,7 +195,12 @@ extension UShopCartViewController: ShopCartDelegate{
             showHUDInView(text: "请先选择商品", inView: self.view, isClick: true)
             return
         }
+        let vc = UIConfirmOrderController()
+        vc.title = "确认订单"
         
+        vc.mch_list = generateMchListJson()
+        vc.cart_id_list = getSelectGoodsId(isNeedCartId: true)
+        self.pushViewController(vc, animated: true)
     }
     // 商品加减操作
     func itemNumberCallBack(section: Int,row: Int, number: Int){
@@ -228,6 +259,7 @@ extension UShopCartViewController: UITableViewDelegate, UITableViewDataSource{
         for item in isCheckArray[section]{
             if (!item){
                 header.isCheck = false
+                break
             }
         }
         header.section = section

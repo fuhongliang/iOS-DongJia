@@ -9,24 +9,27 @@
 import UIKit
 
 class UOrderStoreInfoFooterView: BaseView {
-
+    
+    var editMessage: ((_ leaveMessage: String)->())?
+    
+    let line = UIView().then{
+        $0.backgroundColor = .hex(hexString: "#F2F2F2")
+    }
+    
+    let leaveMessageLabel = UILabel().then{
+        $0.text = "留言:"
+        $0.textColor = .hex(hexString: "#333333")
+        $0.font = .systemFont(ofSize: 16)
+    }
+    
+    let leaveMessageTf = UITextField().then{
+        $0.placeholder = "点击填写留言"
+        $0.font = .systemFont(ofSize: 16)
+    }
+    
     override func configUI() {
         
         backgroundColor = .white
-        let line = UIView().then{
-            $0.backgroundColor = .hex(hexString: "#F2F2F2")
-        }
-        
-        let leaveMessageLabel = UILabel().then{
-            $0.text = "留言:"
-            $0.textColor = .hex(hexString: "#333333")
-            $0.font = .systemFont(ofSize: 16)
-        }
-        
-        let leaveMessageTf = UITextField().then{
-            $0.placeholder = "点击填写留言"
-            $0.font = .systemFont(ofSize: 16)
-        }
         
         self.addSubview(line)
         self.addSubview(leaveMessageLabel)
@@ -50,7 +53,20 @@ class UOrderStoreInfoFooterView: BaseView {
             make.top.equalTo(line.snp.bottom)
             make.bottom.equalToSuperview()
         }
+        leaveMessageTf.delegate = self
         
     }
 
+    var message: String = ""{
+        didSet{
+            leaveMessageTf.text = message
+        }
+    }
+    
+}
+extension UOrderStoreInfoFooterView: UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let leveMessage = textField.text ?? ""
+        editMessage?(leveMessage)
+    }
 }

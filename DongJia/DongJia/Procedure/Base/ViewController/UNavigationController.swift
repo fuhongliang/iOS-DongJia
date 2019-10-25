@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import QMUIKit
 
-class UNavigationController: UINavigationController {
+class UNavigationController: QMUINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +54,9 @@ class UNavigationController: UINavigationController {
     }
 }
 
-extension UNavigationController: UIGestureRecognizerDelegate {
+extension UNavigationController{//}: UIGestureRecognizerDelegate {
 
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let isLeftToRight = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight
         guard let ges = gestureRecognizer as? UIPanGestureRecognizer else { return true }
         if ges.translation(in: gestureRecognizer.view).x * (isLeftToRight ? 1 : -1) <= 0

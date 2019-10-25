@@ -14,12 +14,12 @@ class APIOrderSubmitViewResponseModel: Codable {
     var data: submit_view_model?
 }
 struct submit_view_model: Codable{
-    var total_price: Int
-    var cart_id_list: [Int]
+    var total_price: Double
+//    var goods_info: submit_view_goods_info_model
     var list: [submit_view_list_model]
     var address: submit_view_address_model
-    var express_price: Int
-    var integral: submit_view_integral_model
+    var express_price: Double
+//    var integral: Int
     var goods_card_list: [String]
     var mch_list: [submit_view_mch_list_model]
     var offer_rule: submit_view_offer_rule_model
@@ -33,6 +33,17 @@ struct submit_view_model: Codable{
     var pay_type_list: [submit_view_pay_type_list_model]
     var is_area: Int
 }
+struct submit_view_goods_info_model: Codable {
+    var goods_id: String
+    var attr: [submit_view_attr_model]
+    var num: Int
+}
+struct submit_view_attr_model: Codable{
+    var attr_group_id: String
+    var attr_group_name: String
+    var attr_id: String
+    var attr_name: String
+}
 struct submit_view_list_model: Codable {
     var cart_id: Int
     var goods_id: Int
@@ -40,16 +51,17 @@ struct submit_view_list_model: Codable {
     var goods_pic: String
     var num: Int
     var price: String
-    var single_price: Int
-    var attr_list: shop_cart_attr_list
+    var single_price: Double
+    var attr_list: [shop_cart_attr_list]
     var give: Int
     var freight: Int
-    var integral: String
+    var integral: String?
     var weight: Int
     var full_cut: String
     var cat_id: Int
     var mch_id: Int
 }
+
 struct submit_view_address_model: Codable {
     var id: String
     var name: String
@@ -63,30 +75,35 @@ struct submit_view_address_model: Codable {
     var detail: String
     var is_default: String
 }
-struct submit_view_integral_model: Codable {
-    var forehead: Int
-    var forehead_integral: Int
-    var integration: String
-}
+
 struct submit_view_mch_list_model: Codable {
-    var total_price: Int
-    var cart_id_list: [Int]
-    var list: [submit_view_list_model]
-    var address: submit_view_address_model
-    var express_price: Int
-    var integral: submit_view_mch_list_integral_model
-    var goods_card_list: [String]
+    var total_price: Double
+    var list: [submit_view_mch_list_list_model]
+    var express_price: Double
     var id: Int
     var name: String
-    var mch_logo: String
+    var logo: String
 }
-struct submit_view_mch_list_integral_model: Codable {
-    var forehead: Int
-    var forehead_integral: Int
+struct submit_view_mch_list_list_model: Codable {
+    var goods_id: Int
+    var goods_name: String
+    var goods_pic: String
+    var num: Int
+    var price: String
+    var single_price: Double
+    var attr_list: [shop_cart_attr_list]
+    var give: Int
+    var freight: Int
+    var integral: String?
+    var weight: Int
+    var full_cut: String
+    var cat_id: Int
+    var mch_id: Int
 }
+
 struct submit_view_offer_rule_model: Codable {
     var is_allowed: Int
-    var total_price: Int
+    var total_price: Double
     var msg: String
 }
 struct submit_view_shop_list_model: Codable {

@@ -148,13 +148,11 @@ class UShopCartView: BaseView {
     @objc func editOrDeleteAction(){
         if (editOrDelete.isSelected){
             // 删除
-            showHUDInView(text: "删除", inView: self, isClick: true)
             delegate?.deleteGoods()
         } else {
             // 编辑
             editOrDelete.isSelected = true
             buyOrCompelete.isSelected = true
-            showHUDInView(text: "编辑", inView: self, isClick: true)
         }
     }
     @objc func buyOrCompeleteAction(){
@@ -162,10 +160,8 @@ class UShopCartView: BaseView {
             // 完成
             editOrDelete.isSelected = false
             buyOrCompelete.isSelected = false
-            showHUDInView(text: "完成", inView: self, isClick: true)
         } else {
             // 结算
-            showHUDInView(text: "结算", inView: self, isClick: true)
             delegate?.buy()
         }
     }

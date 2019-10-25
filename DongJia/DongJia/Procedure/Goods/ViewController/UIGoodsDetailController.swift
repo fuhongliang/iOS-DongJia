@@ -78,6 +78,17 @@ class UIGoodsDetailController: UBaseViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    /// 显示选择规格的浮窗
+    func showChooseAttrController(){
+        let vc = UIChooseAttrViewController()
+        vc.delegate = self
+        vc.attrData = goodsData.attr_group_list
+        vc.goodsId = goodsId
+        self.definesPresentationContext = true
+        vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        self.present(vc, animated: true)
+    }
+    
     /// 请求商品详情数据
     func getGoodsDetailData() {
         service.getGoodsDetail(storeId: storeId, goodsId: goodsId, { (GoodsDetailModel) in
@@ -106,17 +117,15 @@ class UIGoodsDetailController: UBaseViewController {
         }
     }
     
-    /// 生成该商品的选择信息
+    /// 生成该商品的选择信息(Json字符串)
     func generateGoodsInfo(num: Int) -> String{
         
-        var postAttrList = [String]()
+        var postAttrList = [[String:String]]()
         for (index, item) in (self.attr?.attr_list ?? []).enumerated(){
             let attrInfo = ["attr_group_id": String(self.goodsData.attr_group_list[index].attr_group_id),"attr_group_name":self.goodsData.attr_group_list[index].attr_group_name, "attr_id": String(item.attr_id), "attr_name": item.attr_name]
-            print("attr{}"+toJson(attrInfo))
-            postAttrList.append(toJson(attrInfo))
+            postAttrList.append(attrInfo)
         }
-        print("attr[]"+toJson(postAttrList))
-        let postGoodsInfo:[String:Any] = ["goods_id": goodsId, "attr": toJson(postAttrList), "num":num]
+        let postGoodsInfo:[String:Any] = ["goods_id": goodsId, "attr": postAttrList, "num": num]
         return toJson(postGoodsInfo)
     }
     
@@ -133,7 +142,7 @@ extension UIGoodsDetailController: UGoodsDetailViewProtocol{
     }
     
     func addCartAction() {
-        
+        showChooseAttrController()
     }
     
     func viewToCartAction() {
@@ -143,7 +152,6 @@ extension UIGoodsDetailController: UGoodsDetailViewProtocol{
     func collectionList() {
         
     }
-    
     
 }
 
@@ -241,19 +249,22 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
             
         }
     }
+    
+    
 }
 
 // 选择商品属性回调
 extension UIGoodsDetailController: UIGoodsDetailControllerDelegate{
     func chooseAttrCallBack(attr: goods_attr_data?, num: Int, addCartOrBuyOrDismiss: String) {
+        self.attr = attr
         switch addCartOrBuyOrDismiss {
         case "buyNow":
             let vc = UIConfirmOrderController()
             vc.title = "确认订单"
             vc.goodsInfo = generateGoodsInfo(num: num)
+            vc.mch_list = toJson([["id":self.goodsData.mch.id]])
             self.pushViewController(vc, animated: true)
         default:
-            self.attr = attr
             self.goodsDetailView.tableView.reloadRows(at: [IndexPath(row: 0, section: cells.firstIndex(of: .selectAttr)!)], with: .none)
             break
         }
