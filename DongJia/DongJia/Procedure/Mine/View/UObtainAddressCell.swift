@@ -136,7 +136,7 @@ class UObtainAddressCell: UBaseTableViewCell {
             setDefaultBtn.isSelected = model.is_default == "1"
             obtainPeopleName.text = model.name
             obtainPeoplePhone.text = model.mobile
-            obtainAddress.text = "\(model.address+model.detail)"
+            obtainAddress.text = "\(model.address!)"
         }
     }
     

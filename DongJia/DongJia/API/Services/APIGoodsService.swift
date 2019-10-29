@@ -77,7 +77,7 @@ class APIGoodsService: APIGoodsServiceProtocol {
             "_acid": -1,
             "access_token": APIUser.shared.user!.access_token
         ]
-        APIService.shared.request(.getCartGoodsList(param: param), { (data) in
+        APIService.sharedBackground.request(.getCartGoodsList(param: param), { (data) in
             do {
                 let model = try JSONDecoder().decode(APIShopCartListResponseModel.self, from: data)
                 success(model)

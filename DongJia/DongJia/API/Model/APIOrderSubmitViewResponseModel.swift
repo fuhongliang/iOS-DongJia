@@ -17,7 +17,7 @@ struct submit_view_model: Codable{
     var total_price: Double
 //    var goods_info: submit_view_goods_info_model
     var list: [submit_view_list_model]
-    var address: submit_view_address_model
+    var address: address_model
     var express_price: Double
 //    var integral: Int
     var goods_card_list: [String]

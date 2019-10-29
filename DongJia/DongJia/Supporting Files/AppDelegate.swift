@@ -183,7 +183,10 @@ extension AppDelegate: WXApiDelegate{
     func onResp(_ resp: BaseResp) { // 这里微信登录成功后
         // 发送一个通知 通知所有观察此通知的地方 并进行处理
         print("微信回调数据")
-        if resp.errCode == 0 && resp.type == 0 { // 授权成功
+        
+        if let payResp = resp as? PayResp{
+            NotificationCenter.default.post(name: Notification.Name.weChatPayNotification, object: payResp)
+        } else if resp.errCode == 0 && resp.type == 0 { // 登录授权成功
             let response = resp as! SendAuthResp
             
             NotificationCenter.default.post(name: Notification.Name.weChatLoginNotification, object: response.code)

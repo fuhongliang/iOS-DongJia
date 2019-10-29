@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import QMUIKit
 class UOrderStoreInfoFooterView: BaseView {
     
     var editMessage: ((_ leaveMessage: String)->())?
@@ -22,7 +22,7 @@ class UOrderStoreInfoFooterView: BaseView {
         $0.font = .systemFont(ofSize: 16)
     }
     
-    let leaveMessageTf = UITextField().then{
+    let leaveMessageTf = QMUITextField().then{
         $0.placeholder = "点击填写留言"
         $0.font = .systemFont(ofSize: 16)
     }
@@ -48,8 +48,8 @@ class UOrderStoreInfoFooterView: BaseView {
         }
         //MARK:留言输入框
         leaveMessageTf.snp.makeConstraints { (make) in
-            make.left.equalTo(leaveMessageLabel.snp.right).offset(25)
-            make.height.equalTo(44)
+            make.left.equalTo(leaveMessageLabel.snp.right).offset(20)
+            make.size.equalTo(CGSize(width: screenWidth-95, height: 44))
             make.top.equalTo(line.snp.bottom)
             make.bottom.equalToSuperview()
         }
@@ -64,7 +64,7 @@ class UOrderStoreInfoFooterView: BaseView {
     }
     
 }
-extension UOrderStoreInfoFooterView: UITextFieldDelegate{
+extension UOrderStoreInfoFooterView: QMUITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         let leveMessage = textField.text ?? ""
         editMessage?(leveMessage)

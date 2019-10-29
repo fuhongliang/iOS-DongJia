@@ -9,6 +9,8 @@
 import UIKit
 
 class UConfirmOrderAddressCell: UBaseTableViewCell {
+    
+    var changeReceiptAddress: (() -> ())?
 
     let view = ArcView().then{
         $0.fillColor = .theme
@@ -17,7 +19,7 @@ class UConfirmOrderAddressCell: UBaseTableViewCell {
     }
     
     /// 白色背景
-    let whiteBg = UIView().then{
+    let whiteBg = UIButton().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
         $0.layer.masksToBounds = true
@@ -47,9 +49,8 @@ class UConfirmOrderAddressCell: UBaseTableViewCell {
     }
     
     override func configUI() {
-        consigneeName.text = "于亿鑫"
-        consigneePhone.text = "13265345992"
-        consigneeAddress.text = "广东省深圳市宝安区新安三路28号16楼1610"
+        contentView.backgroundColor = .background
+        
         contentView.addSubview(view)
         contentView.addSubview(whiteBg)
         whiteBg.addSubview(gpsIcon)
@@ -57,6 +58,7 @@ class UConfirmOrderAddressCell: UBaseTableViewCell {
         whiteBg.addSubview(consigneePhone)
         whiteBg.addSubview(consigneeAddress)
         whiteBg.addSubview(rightArrow)
+        whiteBg.addTarget(self, action: #selector(changeReceiptAddressAction), for: .touchUpInside)
         
         view.snp.makeConstraints { (make) in
             make.top.left.width.equalToSuperview()
@@ -99,13 +101,17 @@ class UConfirmOrderAddressCell: UBaseTableViewCell {
         }
     }
     
-    var addressData: submit_view_address_model? {
+    var addressData: address_model? {
         didSet{
             guard let address = addressData else { return }
             consigneeName.text = address.name
             consigneePhone.text = address.mobile
             consigneeAddress.text = "\(address.province)\(address.city)\(address.district)\(address.detail)"
         }
+    }
+    
+    @objc func changeReceiptAddressAction(){
+        changeReceiptAddress?()
     }
 
 }

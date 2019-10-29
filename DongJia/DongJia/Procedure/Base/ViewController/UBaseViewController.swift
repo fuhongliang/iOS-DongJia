@@ -6,7 +6,7 @@
 //  Copyright © 2019 符宏梁. All rights reserved.
 //
 
-import UIKit
+import QMUIKit
 import SnapKit
 import Then
 import Reusable

@@ -22,8 +22,6 @@ class UChooseAttrView: BaseView {
     
     private var service = APIGoodsService()
     
-    let 猪刚鬣 = "http://pics0.baidu.com/feed/c8177f3e6709c93d0abb3b1a22d37fd9d3005481.jpeg?token=343555ad077cf67cf7a9a49e9c2436eb&s=984BB14C43B2B3701A5A15170300E0C8"
-    
     /// 规格组数据
     var attrData:[goods_detail_attr_group_list]! {
         didSet{
@@ -61,7 +59,7 @@ class UChooseAttrView: BaseView {
     }
     /// 关闭按钮
     let close = UIButton().then{
-        $0.setImage(UIImage.init(named: "delete_address"), for: .normal)
+        $0.setImage(UIImage.init(named: "close"), for: .normal)
     }
     /// 价格
     let priceLabel = UILabel().then{
@@ -116,11 +114,7 @@ class UChooseAttrView: BaseView {
 
     override func configUI() {
         
-        
-        goodsPic.load(猪刚鬣)
-        priceLabel.text = "￥3398-5999"
-        stockLabel.text = "库存充足"
-        chooseAttr.text = "选择 颜色 尺码"
+        chooseAttr.text = "选择 商品属性"
         attrCollection.delegate = self
         attrCollection.dataSource = self
         close.addTarget(self, action: #selector(closeAction), for: .touchUpInside)

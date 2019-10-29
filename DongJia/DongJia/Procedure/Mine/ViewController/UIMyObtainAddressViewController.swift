@@ -10,6 +10,8 @@ import UIKit
 
 class UIMyObtainAddressViewController: UBaseViewController {
     
+    var delegate: UIConfirmOrderControllerDelegate?
+    
     private let service = APIAddressServices()
     
     let obtainAddressView = UMyObtainAddressView()
@@ -125,6 +127,14 @@ extension UIMyObtainAddressViewController: UITableViewDelegate, UITableViewDataS
         }
         cell.model = addressList?[indexPath.section]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (delegate != nil){
+            delegate!.setAddress(address: addressList![indexPath.section])
+            self.pressBack()
+            delegate = nil
+        }
     }
     
 }

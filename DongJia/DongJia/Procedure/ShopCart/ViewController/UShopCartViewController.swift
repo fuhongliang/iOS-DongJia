@@ -75,6 +75,10 @@ class UShopCartViewController: UBaseViewController {
         shopCartView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getCartListData()
     }
     

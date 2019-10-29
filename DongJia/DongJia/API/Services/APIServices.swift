@@ -82,6 +82,10 @@ enum NetApi {
     case deleteAddress(param: [String:Any])
     /// 下单预览
     case submitPreView(param: [String:Any])
+    /// 提交订单
+    case submitOrder(param: [String:Any])
+    /// 获取订单支付签名
+    case obtainOrderPaySign(param: [String:Any])
 }
 
 //MARK: 请求对象的封装
@@ -130,14 +134,18 @@ extension NetApi: TargetType {
             return "/index.php?r=api/user/address-delete"
         case .submitPreView:
             return "/index.php?r=api/order/submit-preview"
+        case .submitOrder:
+            return "/index.php?r=api/order/submit"
+        case .obtainOrderPaySign:
+            return "/index.php?r=api/order/pay-data"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView:
+        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign:
             return .get
-        case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress:
+        case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress,.submitOrder:
             return .post
         }
     }
@@ -185,6 +193,11 @@ extension NetApi: TargetType {
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .submitPreView(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .submitOrder(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
+        case .obtainOrderPaySign(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+            
         }
         
     }
@@ -194,7 +207,7 @@ extension NetApi: TargetType {
             "Content-Type":"application/json"
         ]
         switch self {
-        case .addOrEditAddress:
+        case .addOrEditAddress,.submitOrder:
             dict["Content-Type"] = "application/x-www-form-urlencoded"
             return dict
         default:

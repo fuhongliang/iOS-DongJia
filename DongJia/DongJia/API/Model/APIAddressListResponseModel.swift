@@ -28,5 +28,5 @@ struct address_model: Codable {
     var district: String
     var detail: String
     var is_default: String
-    var address: String
+    var address: String? = ""
 }

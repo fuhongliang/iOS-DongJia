@@ -56,7 +56,7 @@ extension UIChooseAttrViewController: BuyGoodsNumberDelegate{
     }
 }
 
-extension UIChooseAttrViewController: UChooseAttrViewProtocol,UIViewControllerTransitioningDelegate{
+extension UIChooseAttrViewController: UChooseAttrViewProtocol, UIViewControllerTransitioningDelegate{
     func addToCart() {
         var array = [Dictionary<String, String>]()
         

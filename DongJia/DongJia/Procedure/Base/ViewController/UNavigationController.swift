@@ -110,7 +110,7 @@ extension UINavigationController {
         case .white:
             navigationBar.barStyle = .default
             navigationBar.setBackgroundImage(UIColor.white.image(), for: .default)
-            navigationBar.shadowImage = UIImage()
+            navigationBar.shadowImage = UIColor.hex(hexString: "#E5E5E5").image()//UIImage()
         }
 
 

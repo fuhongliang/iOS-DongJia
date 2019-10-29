@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ZLCollectionViewFlowLayout
 
 class USearchView: BaseView {
     
@@ -27,7 +28,7 @@ class USearchView: BaseView {
     }
     
     let clearBtn = UIButton().then {
-        $0.setImage(UIImage.init(named: "delete_address"), for: .normal)
+        $0.setImage(UIImage.init(named: "clear"), for: .normal)
     }
     
     let searchBtn = UIButton().then{
@@ -37,11 +38,26 @@ class USearchView: BaseView {
     }
 
     override func configUI() {
-//        let searchBtn = UIButton().then{
-//            $0.setTitle("搜索", for: .normal)
-//            $0.setTitleColor(.theme, for: .normal)
-//            $0.titleLabel?.font = .systemFont(ofSize: 13)
-//        }
+        
+        /// 规格列表
+        let searchHistoryView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
+            $0.showsVerticalScrollIndicator = false
+            $0.backgroundColor = .white
+            $0.bounces = true
+            $0.allowsMultipleSelection = true
+            $0.register(supplementaryViewType: UHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
+            $0.register(cellType: UChooseAttrCell.self)
+            $0.register(cellType: UAddNumberCell.self)
+        }
+        
+        // 创建一个有多布局的layout
+        let flowLayout = ZLCollectionViewVerticalLayout().then{
+            $0.canDrag = true
+            $0.header_suspension = false
+        }
+        
+        flowLayout.delegate = self
+        
         self.backgroundColor = .white
         self.addSubview(searchBg)
         searchBg.addSubview(searchImg)
@@ -89,4 +105,10 @@ class USearchView: BaseView {
         showHUDInView(text: searchTf.text ?? "", inView: self, isClick: true)
     }
 
+}
+
+extension USearchView: ZLCollectionViewBaseFlowLayoutDelegate{
+    
+    
+    
 }

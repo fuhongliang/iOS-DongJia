@@ -18,5 +18,10 @@ class UISearchController: UBaseViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    /// 获取搜索历史
+    func getSearchHistory(){
+        
+    }
 
 }

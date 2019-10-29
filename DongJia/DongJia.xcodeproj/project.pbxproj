@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4F101B28AF60D2F28070F541 /* Pods_DongJia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BA66E763ECE734FA65A063 /* Pods_DongJia.framework */; };
+		DC1368BD2366C63F0085D841 /* APISubmitOrderResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1368BC2366C63F0085D841 /* APISubmitOrderResponseModel.swift */; };
+		DC1368BF2366CF920085D841 /* APIOrderPayDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1368BE2366CF920085D841 /* APIOrderPayDataResponseModel.swift */; };
 		DC19F0C82356C35900148B8F /* UHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F0C72356C35900148B8F /* UHeaderView.swift */; };
 		DC19F0CA2356F5DA00148B8F /* UChooseAttrCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F0C92356F5DA00148B8F /* UChooseAttrCell.swift */; };
 		DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7A4233468EB00BDFE7D /* UIAboutUsController.swift */; };
@@ -190,6 +192,8 @@
 		5A81F6F96F7EEEB3294D7982 /* Pods-DongJia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DongJia.debug.xcconfig"; path = "Target Support Files/Pods-DongJia/Pods-DongJia.debug.xcconfig"; sourceTree = "<group>"; };
 		ABE933D163923E0ABD191878 /* Pods-DongJia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DongJia.release.xcconfig"; path = "Target Support Files/Pods-DongJia/Pods-DongJia.release.xcconfig"; sourceTree = "<group>"; };
 		B5BA66E763ECE734FA65A063 /* Pods_DongJia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DongJia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC1368BC2366C63F0085D841 /* APISubmitOrderResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubmitOrderResponseModel.swift; sourceTree = "<group>"; };
+		DC1368BE2366CF920085D841 /* APIOrderPayDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOrderPayDataResponseModel.swift; sourceTree = "<group>"; };
 		DC19F0C72356C35900148B8F /* UHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHeaderView.swift; sourceTree = "<group>"; };
 		DC19F0C92356F5DA00148B8F /* UChooseAttrCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UChooseAttrCell.swift; sourceTree = "<group>"; };
 		DC19F7A4233468EB00BDFE7D /* UIAboutUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAboutUsController.swift; sourceTree = "<group>"; };
@@ -846,6 +850,8 @@
 				DC30ADE2236045F800B21725 /* APIAddressListResponseModel.swift */,
 				DC30ADE4236047D900B21725 /* APIDistrictListResponseModel.swift */,
 				DC35D5FC23617C2100D68D1B /* APIOrderSubmitViewResponseModel.swift */,
+				DC1368BC2366C63F0085D841 /* APISubmitOrderResponseModel.swift */,
+				DC1368BE2366CF920085D841 /* APIOrderPayDataResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1183,6 +1189,7 @@
 				DC6F05472359BD0E007EB039 /* UOrderGoodsInfoCell.swift in Sources */,
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
 				DCB064A123266A000094727C /* CustomPhotoPickerViewController.swift in Sources */,
+				DC1368BF2366CF920085D841 /* APIOrderPayDataResponseModel.swift in Sources */,
 				DC34A651233C95910042EEA8 /* UIButtonExtension.swift in Sources */,
 				DCB064AB23266A000094727C /* FTConfiguration.swift in Sources */,
 				DC56BC8D2338732C0089EE61 /* APIMainDataResponsModel.swift in Sources */,
@@ -1310,6 +1317,7 @@
 				DC32D544235D911B00B3D2BD /* UShopCartGoodsCell.swift in Sources */,
 				DCEA78B92351D445002F2F1E /* UIStoreController.swift in Sources */,
 				DC35D5FB23617AC600D68D1B /* APIOrderService.swift in Sources */,
+				DC1368BD2366C63F0085D841 /* APISubmitOrderResponseModel.swift in Sources */,
 				DCB064AE23266A000094727C /* UIControl+Point.swift in Sources */,
 				DCB06483232669510094727C /* UIViewExtension.swift in Sources */,
 				DCB0644823263AD40094727C /* AppDelegate.swift in Sources */,

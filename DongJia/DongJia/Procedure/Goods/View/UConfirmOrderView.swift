@@ -6,9 +6,15 @@
 //  Copyright © 2019 hongshuzhi. All rights reserved.
 //
 
-import UIKit
+import QMUIKit
+
+protocol UConfirmOrderViewProtocol {
+    func postOrderAction()
+}
 
 class UConfirmOrderView: BaseView {
+    
+    var delegate: UConfirmOrderViewProtocol?
 
     let tableView = UITableView(frame: .zero, style: .grouped).then {
         $0.backgroundColor = UIColor.background
@@ -19,11 +25,6 @@ class UConfirmOrderView: BaseView {
         $0.sectionFooterHeight = .leastNormalMagnitude
         $0.register(cellType: UConfirmOrderAddressCell.self)
         $0.register(cellType: UOrderGoodsInfoCell.self)
-        $0.register(cellType: UMainClassificationCell.self)
-        $0.register(cellType: UMainLimitedCell.self)
-        $0.register(cellType: UMainHotCell.self)
-        $0.register(cellType: UMainSuperBrandCell.self)
-        $0.register(cellType: UMainFeaturedCell.self)
     }
     
     let line = UIView().then{
@@ -45,15 +46,16 @@ class UConfirmOrderView: BaseView {
         $0.font = .systemFont(ofSize: 17)
     }
     /// 提交订单
-    let postOrder = UIButton().then{
+    let postOrder = QMUIButton().then{
         $0.layer.cornerRadius = 20
         $0.layer.masksToBounds = true
         $0.setTitle("提交订单", for: .normal)
         $0.setTitleColor(.white, for: .normal)
+        $0.setTitle("订单已提交", for: .disabled)
+        $0.setTitleColor(.white, for: .disabled)
         $0.backgroundColor = .hex(hexString: "#0EC262")
         $0.titleLabel?.font = .systemFont(ofSize: 15)
     }
-    
     
     override func configUI() {
         
@@ -64,6 +66,7 @@ class UConfirmOrderView: BaseView {
         bottomView.addSubview(allLabel)
         bottomView.addSubview(priceLabel)
         bottomView.addSubview(postOrder)
+        postOrder.addTarget(self, action: #selector(postOrderAction), for: .touchUpInside)
         
         //MARK:列表
         tableView.snp.makeConstraints { (make) in
@@ -98,6 +101,10 @@ class UConfirmOrderView: BaseView {
             make.size.equalTo(CGSize(width: 110, height: 40))
             make.centerY.equalToSuperview()
         }
+    }
+    
+    @objc func postOrderAction(){
+        delegate?.postOrderAction()
     }
     
     var allPayPrice: String = "¥-"{
