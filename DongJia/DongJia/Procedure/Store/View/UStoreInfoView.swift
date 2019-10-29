@@ -67,5 +67,12 @@ class UStoreInfoView: BaseView {
     }
     func setCData(storeClassicCaseData: [store_classic_case_model]){
         storeClassicCaseView.data = storeClassicCaseData
+        if storeClassicCaseData.isEmpty {
+            storeClassicCaseView.removeFromSuperview()
+            storeWillBuyView.snp.makeConstraints { (make) in
+                make.top.equalTo(storeHotRecommendView.snp.bottom)
+                make.width.bottom.equalToSuperview()
+            }
+        }
     }
 }

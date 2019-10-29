@@ -50,9 +50,13 @@ enum NetApi {
     case getMainData(param: [String:Any])
     /// 首页的懂家精选数据
     case getMainFeaturedData(param: [String:Any])
+    /// 支持运营城市列表
+    case supportCiytList(param: [String:Any])
+    /// 搜索商品
+    case searchGoods(param: [String:Any])
     /// 微信登录接口
     case wxLogin(param: [String:Any])
-    /// 获取我的页面数据
+    /// 我的页面数据
     case mineData(param: [String:Any])
     /// 商品详情数据
     case goodsDetail(param: [String:Any])
@@ -102,6 +106,10 @@ extension NetApi: TargetType {
             return "/index.php?r=api/default/index"
         case .getMainFeaturedData:
             return "/index.php?r=api/default/index-recommend"
+        case .supportCiytList:
+            return "/index.php?r=api/map/district-list"
+        case .searchGoods:
+            return "/index.php?r=api/default/search"
         case .wxLogin:
             return "/index.php?r=api/passport/app-login"
         case .mineData:
@@ -143,7 +151,7 @@ extension NetApi: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign:
+        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign:
             return .get
         case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress,.submitOrder:
             return .post
@@ -160,6 +168,10 @@ extension NetApi: TargetType {
         case .getMainData(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .getMainFeaturedData(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .supportCiytList(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .searchGoods(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .wxLogin(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)

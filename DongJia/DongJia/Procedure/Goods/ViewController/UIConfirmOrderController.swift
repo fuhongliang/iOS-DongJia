@@ -48,7 +48,7 @@ class UIConfirmOrderController: UBaseViewController {
     /// 购物车需要传 商家id和购物车id数组 Json
     var mch_list: String?
     
-    /// 自营商品 购物车id 如果不传此参数 返回数据会没有data下cart_id_list和list数据
+    /// 自营商品 购物车id
     var cart_id_list: [Int]?
     
     /// 地址ID
@@ -74,7 +74,7 @@ class UIConfirmOrderController: UBaseViewController {
     
     /// 请求确认订单的数据
     func requestSubmitPreviewData(){
-        service.submitPreView(cart_id_list: toJson(cart_id_list ?? []), mch_list: mch_list ?? "", goods_info: goodsInfo ?? "", { (SubmitPreviewData) in
+        service.submitPreView(cart_id_list: cart_id_list ?? [], mch_list: mch_list ?? "", goods_info: goodsInfo ?? "", { (SubmitPreviewData) in
             self.previewData = SubmitPreviewData.data
             self.addressId = SubmitPreviewData.data?.address.id ?? ""
             for _ in self.previewData?.mch_list ?? [] {

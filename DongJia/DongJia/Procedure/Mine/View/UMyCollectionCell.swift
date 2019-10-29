@@ -89,9 +89,14 @@ class UMyCollectionCell: UBaseCollectionViewCell {
             guard let data = data else { return }
             picture.load(data["pic_url"])
             rmbLabel.text = "¥\(data["price"] ?? "-")"
-            originalPriceLabel.setUnderLine(text: "¥\(data["origin_price"] ?? "-")")
+            
             goodsNameLabel.text = data["name"]
+            
+            buyPeopleOfNum.isHidden = data["buy_num"] == nil
             buyPeopleOfNum.text = "\(data["buy_num"] ?? "")人已买"
+            
+            originalPriceLabel.isHidden = data["origin_price"] == nil
+            originalPriceLabel.setUnderLine(text: "¥\(data["origin_price"] ?? "-")")
         }
     }
 }

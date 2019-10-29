@@ -9,14 +9,55 @@
 import UIKit
 
 class UIChooseCityController: UBaseViewController {
+    private let service = APIMainService()
 
     let chooseCityView = UChooseCityView()
     
+    var supportCityList: [support_city_model]? {
+        didSet{
+            chooseCityView.collectionView.reloadData()
+        }
+    }
+    
     override func configUI() {
         view.addSubview(chooseCityView)
+        chooseCityView.currentCity.text = UserDefaults.standard.string(forKey: "Main_City") ?? "陆丰市"
         chooseCityView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        chooseCityView.collectionView.delegate = self
+        chooseCityView.collectionView.dataSource = self
+        getSupportCity()
+    }
+    
+    func getSupportCity(){
+        service.getSupportCityList({ (SupportCity) in
+            self.supportCityList = SupportCity.data
+        }) { (APIErrorModel) in
+            
+        }
     }
 
+}
+
+extension UIChooseCityController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return supportCityList?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UChooseCityCell.self)
+        cell.city = supportCityList![indexPath.item].name
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.chooseCityView.currentCity.text = supportCityList![indexPath.item].name
+        UserDefaults.standard.set(supportCityList![indexPath.item].name, forKey: "Main_City")
+        self.pressBack()
+    }
+    
+    
+    
 }

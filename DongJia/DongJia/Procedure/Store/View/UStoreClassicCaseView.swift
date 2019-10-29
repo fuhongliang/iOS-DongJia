@@ -89,8 +89,7 @@ class UStoreClassicCaseView: BaseView {
     var data: [store_classic_case_model] = [] {
         didSet{
             self.collectionView.reloadData()
-            //更新collectionView的高度约束
-//            let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
+
             btn.setTitle("共\(data.count)个", for: .normal)
             btn.setButtonShowType(.Left)
             heightConstraint?.update(offset: self.collectionView.contentSize.height)

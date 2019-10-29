@@ -122,6 +122,7 @@ extension UBaseViewController {
         return vc
     }
     
+    /// 获取view对应的控制器
     private func viewForController(view:UIView)->UIViewController?{
         var next:UIView? = view
         repeat{

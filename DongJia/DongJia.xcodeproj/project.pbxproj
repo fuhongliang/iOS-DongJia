@@ -20,6 +20,10 @@
 		DC19F7B12334AA9900BDFE7D /* UMyObtainAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */; };
 		DC19F7B32334B30C00BDFE7D /* UObtainAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */; };
 		DC1BAE3E235E9FD40093D45A /* APIShopCartListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1BAE3D235E9FD40093D45A /* APIShopCartListResponseModel.swift */; };
+		DC1CD75B23680E8A008E6A51 /* APISupportCityListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1CD75A23680E8A008E6A51 /* APISupportCityListResponseModel.swift */; };
+		DC1CD75D23680FC0008E6A51 /* APISearchGoodsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1CD75C23680FC0008E6A51 /* APISearchGoodsResponseModel.swift */; };
+		DC1CD76123687791008E6A51 /* UIImagePreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1CD76023687791008E6A51 /* UIImagePreviewController.swift */; };
+		DC1CD763236877BF008E6A51 /* ImagePreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1CD762236877BF008E6A51 /* ImagePreviewCell.swift */; };
 		DC1E77F5234EC670005765F0 /* UStoreHotRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */; };
 		DC1E77F7234ED912005765F0 /* APIGoodsRecommendResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */; };
 		DC1E77F9234F22AE005765F0 /* UStoreClassicCaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E77F8234F22AE005765F0 /* UStoreClassicCaseCell.swift */; };
@@ -204,6 +208,10 @@
 		DC19F7B02334AA9900BDFE7D /* UMyObtainAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMyObtainAddressView.swift; sourceTree = "<group>"; };
 		DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UObtainAddressCell.swift; sourceTree = "<group>"; };
 		DC1BAE3D235E9FD40093D45A /* APIShopCartListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIShopCartListResponseModel.swift; sourceTree = "<group>"; };
+		DC1CD75A23680E8A008E6A51 /* APISupportCityListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISupportCityListResponseModel.swift; sourceTree = "<group>"; };
+		DC1CD75C23680FC0008E6A51 /* APISearchGoodsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchGoodsResponseModel.swift; sourceTree = "<group>"; };
+		DC1CD76023687791008E6A51 /* UIImagePreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePreviewController.swift; sourceTree = "<group>"; };
+		DC1CD762236877BF008E6A51 /* ImagePreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewCell.swift; sourceTree = "<group>"; };
 		DC1E77F4234EC670005765F0 /* UStoreHotRecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreHotRecommendCell.swift; sourceTree = "<group>"; };
 		DC1E77F6234ED912005765F0 /* APIGoodsRecommendResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsRecommendResponseModel.swift; sourceTree = "<group>"; };
 		DC1E77F8234F22AE005765F0 /* UStoreClassicCaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreClassicCaseCell.swift; sourceTree = "<group>"; };
@@ -405,6 +413,15 @@
 				ABE933D163923E0ABD191878 /* Pods-DongJia.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DC1CD75F23687778008E6A51 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				DC1CD76023687791008E6A51 /* UIImagePreviewController.swift */,
+				DC1CD762236877BF008E6A51 /* ImagePreviewCell.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		DC246DFC2331C3180087D84A /* Dos */ = {
@@ -696,6 +713,7 @@
 		DCB06485232669FF0094727C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				DC1CD75F23687778008E6A51 /* New Group */,
 				DC785A4D23545C1E0076A5C9 /* ArcView */,
 				DC56BC91233A4B670089EE61 /* AddressView */,
 				DCB065062327CDA90094727C /* ZKCycleScrollView */,
@@ -852,6 +870,8 @@
 				DC35D5FC23617C2100D68D1B /* APIOrderSubmitViewResponseModel.swift */,
 				DC1368BC2366C63F0085D841 /* APISubmitOrderResponseModel.swift */,
 				DC1368BE2366CF920085D841 /* APIOrderPayDataResponseModel.swift */,
+				DC1CD75A23680E8A008E6A51 /* APISupportCityListResponseModel.swift */,
+				DC1CD75C23680FC0008E6A51 /* APISearchGoodsResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1168,6 +1188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC1CD75D23680FC0008E6A51 /* APISearchGoodsResponseModel.swift in Sources */,
 				DCCEC4BC233A4C2D00892D11 /* UIColor+KLExtension.swift in Sources */,
 				DC47AE6D235568F100D01AD6 /* UIChooseAttrViewController.swift in Sources */,
 				DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */,
@@ -1185,6 +1206,7 @@
 				DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */,
 				DCF595712334CCE200C50B88 /* UIAddAddressController.swift in Sources */,
 				DCB064E223273BA90094727C /* APIUserServices.swift in Sources */,
+				DC1CD763236877BF008E6A51 /* ImagePreviewCell.swift in Sources */,
 				DCB064A223266A000094727C /* BPicker.swift in Sources */,
 				DC6F05472359BD0E007EB039 /* UOrderGoodsInfoCell.swift in Sources */,
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
@@ -1316,10 +1338,12 @@
 				DC19F7AD23347BCF00BDFE7D /* UMyCollectionCell.swift in Sources */,
 				DC32D544235D911B00B3D2BD /* UShopCartGoodsCell.swift in Sources */,
 				DCEA78B92351D445002F2F1E /* UIStoreController.swift in Sources */,
+				DC1CD75B23680E8A008E6A51 /* APISupportCityListResponseModel.swift in Sources */,
 				DC35D5FB23617AC600D68D1B /* APIOrderService.swift in Sources */,
 				DC1368BD2366C63F0085D841 /* APISubmitOrderResponseModel.swift in Sources */,
 				DCB064AE23266A000094727C /* UIControl+Point.swift in Sources */,
 				DCB06483232669510094727C /* UIViewExtension.swift in Sources */,
+				DC1CD76123687791008E6A51 /* UIImagePreviewController.swift in Sources */,
 				DCB0644823263AD40094727C /* AppDelegate.swift in Sources */,
 				DCB064A023266A000094727C /* PlaceholderTextView.swift in Sources */,
 				DCB064DE232733BC0094727C /* ULoginView.swift in Sources */,

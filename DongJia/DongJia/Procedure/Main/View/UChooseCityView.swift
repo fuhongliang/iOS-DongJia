@@ -14,7 +14,7 @@ class UChooseCityView: BaseView {
     }
     
     let currentLabel = UILabel().then{
-        $0.text = "当前定位城市"
+        $0.text = "当前选择城市"
         $0.textColor = .hex(hexString: "#333333")
         $0.font = .systemFont(ofSize: 14)
     }
@@ -48,8 +48,7 @@ class UChooseCityView: BaseView {
         $0.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
     }
     override func configUI() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        
         collectionView.collectionViewLayout = layout
         backgroundColor = .white
         self.addSubview(currentCityLine)
@@ -98,22 +97,4 @@ class UChooseCityView: BaseView {
 
 }
 
-extension UChooseCityView: UICollectionViewDelegate, UICollectionViewDataSource{
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UChooseCityCell.self)
-        cell.city = "广州市"
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showHUDInView(text: "广州市\(indexPath.item)", inView: topVC!.view, isClick: true)
-    }
-    
-    
-    
-}
+

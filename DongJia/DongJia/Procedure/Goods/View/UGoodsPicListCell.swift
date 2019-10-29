@@ -6,7 +6,7 @@
 //  Copyright © 2019 hongshuzhi. All rights reserved.
 //
 
-import UIKit
+import QMUIKit
 
 class UGoodsPicListCell: UBaseTableViewCell {
     
@@ -41,9 +41,19 @@ class UGoodsPicListCell: UBaseTableViewCell {
 }
 extension UGoodsPicListCell: ZKCycleScrollViewDelegate {
     func cycleScrollView(_ cycleScrollView: ZKCycleScrollView, didSelectItemAt indexPath: IndexPath) {
-        showHUDInView(text: "第\(indexPath.item)张图", inView: topVC!.view, isClick: true)
+        
+        var images = [String]()
+        for item in urlArray ?? [] {
+            images.append(item.pic_url)
+        }
+        let previewVC = UImagePreviewController(images: images, isUrlImg: true, index: indexPath.row)
+        previewVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        previewVC.view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+        topVC?.present(previewVC, animated: true)
+        
     }
 }
+
 extension UGoodsPicListCell: ZKCycleScrollViewDataSource {
     func numberOfItems(in cycleScrollView: ZKCycleScrollView) -> Int {
         return urlArray?.count ?? 0

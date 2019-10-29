@@ -132,19 +132,28 @@ class UShopCartViewController: UBaseViewController {
         }
     }
     
-    /// 获取选中的商品ID或购物车ID  isNeedCartId true->购物车ID false->商品ID
-    func getSelectGoodsId(isNeedCartId: Bool) -> [Int] {
+    /// 获取选中的商品ID或购物车ID
+    /// - Parameters:
+    ///     - isNeedCartId: true->购物车ID false->商品ID
+    ///     - operatedOrMch:  所有 0, 自营 1, 商家 2
+    func getSelectGoodsId(isNeedCartId: Bool,operatedOrMch: Int = 0) -> [Int] {
         var selectGoods = [Int]()
         for (section, item) in isCheckArray.enumerated() {
             for (row, choose) in item.enumerated(){
                 if (choose) {
                     var id = 0
-                    if (section==0 && !(cartListData?.list ?? []).isEmpty){
+                    if (section == 0 && !(cartListData?.list ?? []).isEmpty){
+                        // 当前自营购物车列表非空 & section等于0(遍历的是自营商品)
+                        if (operatedOrMch == 2){ continue }
                         id = isNeedCartId ? cartListData!.list[row].cart_id : cartListData!.list[row].goods_id
                     } else if(!(cartListData?.list ?? []).isEmpty){
-                       id = isNeedCartId ? cartListData!.mch_list[section-1].list[row].cart_id : cartListData!.mch_list[section-1].list[row].goods_id
+                        // 当前自营购物车列表非空 & section不等于0(遍历的是非自营商品)
+                        if (operatedOrMch == 1){ continue }
+                        id = isNeedCartId ? cartListData!.mch_list[section-1].list[row].cart_id : cartListData!.mch_list[section-1].list[row].goods_id
                     } else {
-                       id = isNeedCartId ? cartListData!.mch_list[section].list[row].cart_id : cartListData!.mch_list[section].list[row].goods_id
+                        // 当前自营购物车列表为空(遍历的是非自营商品)
+                        if (operatedOrMch == 1){ continue }
+                        id = isNeedCartId ? cartListData!.mch_list[section].list[row].cart_id : cartListData!.mch_list[section].list[row].goods_id
                     }
                     selectGoods.append(id)
                 }
@@ -158,12 +167,14 @@ class UShopCartViewController: UBaseViewController {
         
         var mch_list = [Dictionary<String,Any>]()
         for (section, item) in isCheckArray.enumerated(){
+            // 不遍历自营商品
+            if (section == 0 && !(cartListData?.list ?? []).isEmpty){ continue }
             var mch:[String:Any] = [:]
             // 当前商家的商品是否有选中
             var isHaveSection = false
             var cart_id_list = [Int]()
             for (row, choose) in item.enumerated(){
-                if choose {
+                if (choose) {
                     isHaveSection = true
                     cart_id_list.append(self.cartListData!.mch_list[section].list[row].cart_id)
                 }
@@ -177,7 +188,6 @@ class UShopCartViewController: UBaseViewController {
         return toJson(mch_list)
         
     }
-    
 }
 
 extension UShopCartViewController: ShopCartDelegate{
@@ -203,7 +213,7 @@ extension UShopCartViewController: ShopCartDelegate{
         vc.title = "确认订单"
         
         vc.mch_list = generateMchListJson()
-        vc.cart_id_list = getSelectGoodsId(isNeedCartId: true)
+        vc.cart_id_list = getSelectGoodsId(isNeedCartId: true, operatedOrMch: 1)
         self.pushViewController(vc, animated: true)
     }
     // 商品加减操作

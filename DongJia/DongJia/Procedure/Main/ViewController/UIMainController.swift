@@ -28,6 +28,9 @@ class UIMainController: UBaseViewController {
         }
     }
     
+    /// 当前选择的城市
+    var city: String!
+    
     var bannerList:[banner_list]! //banner图列表
     var couponList:[coupon_list]!
     var limitedList:miaosha! //限时抢购列表
@@ -58,7 +61,6 @@ class UIMainController: UBaseViewController {
         $0.register(cellType: UMainHotCell.self)
         $0.register(cellType: UMainSuperBrandCell.self)
         $0.register(cellType: UMainFeaturedCell.self)
-        
     }
     
     override func configUI() {
@@ -69,16 +71,23 @@ class UIMainController: UBaseViewController {
             make.edges.equalToSuperview()
         }
         self.tableView.uFoot = URefreshFooter { [weak self] in self?.getFeaturedData() }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        city = UserDefaults.standard.string(forKey: "Main_City") ?? "陆丰市"
         getMainData()
     }
     
     /// 获取首页数据
     func getMainData() {
-        service.getMainData(district: "陆丰市", { (Model) in
+        
+        service.getMainData(district: city, { (Model) in
             if Model.data == nil {
                 showHUDInView(text: "没有数据", inView: self.view)
                 return
             }
+            self.currentPage = 1
             self.bannerList = Model.data?.banner_list
             self.limitedList = Model.data?.miaosha
             self.hotGoodsList = Model.data?.recommend_goods
@@ -168,6 +177,7 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
         switch cellModel {
         case .search:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainSearchCell.self)
+            cell.city = self.city
             cell.chooseCityAction = {
                 let vc = UIChooseCityController()
                 vc.title = "选择城市"

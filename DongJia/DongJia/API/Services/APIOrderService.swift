@@ -10,7 +10,7 @@ import Foundation
 
 protocol APIOrderServiceProtocol {
     
-    func submitPreView(cart_id_list: String, mch_list: String, goods_info: String, _ success: @escaping(((APIOrderSubmitViewResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    func submitPreView(cart_id_list: [Int], mch_list: String, goods_info: String, _ success: @escaping(((APIOrderSubmitViewResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
     func submitOrder(address_id: String, cart_id_list: String, mch_list: String, payment: Int, _ success: @escaping(((APISubmitOrderResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
@@ -82,16 +82,22 @@ class APIOrderService: APIOrderServiceProtocol{
     
     
     /// 下单预览接口
-    func submitPreView(cart_id_list: String, mch_list: String, goods_info: String, _ success: @escaping (((APIOrderSubmitViewResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
-        let param: [String:Any] = [
+    func submitPreView(cart_id_list: [Int], mch_list: String, goods_info: String, _ success: @escaping (((APIOrderSubmitViewResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        var param: [String:Any] = [
             "store_id": 4,
             "_uniacid": -1,
             "_acid": -1,
-            "cart_id_list": cart_id_list,
-            "mch_list": mch_list,
-            "goods_info":goods_info,
             "access_token": APIUser.shared.user!.access_token
         ]
+        if (!cart_id_list.isEmpty){
+            param["cart_id_list"] = cart_id_list
+        }
+        if (!mch_list.isEmpty){
+            param["mch_list"] = mch_list
+        }
+        if (!goods_info.isEmpty){
+            param["goods_info"] = goods_info
+        }
         APIService.shared.request(.submitPreView(param: param), { (data) in
             do {
                 let model = try JSONDecoder().decode(APIOrderSubmitViewResponseModel.self, from: data)
