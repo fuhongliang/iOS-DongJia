@@ -71,7 +71,7 @@ class UMainSuperBrandCell: UBaseTableViewCell {
             guard model != nil else { return }
             
             //collectionView重新加载数据
-//            self.collectionView.reloadData()
+            self.collectionView.reloadData()
             
             //更新collectionView的高度约束
             let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize

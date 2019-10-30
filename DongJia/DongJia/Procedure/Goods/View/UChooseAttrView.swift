@@ -328,7 +328,7 @@ extension UChooseAttrView: UICollectionViewDelegate, UICollectionViewDataSource{
     
     // 返回cell的size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == attrData.count{
+        if (indexPath.section == attrData.count){
             return CGSize(width: screenWidth-30, height: 30)
         }
         // 返回文本的宽度

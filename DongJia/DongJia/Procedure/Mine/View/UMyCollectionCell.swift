@@ -14,6 +14,8 @@ class UMyCollectionCell: UBaseCollectionViewCell {
     
     var picture = UIImageView().then{
         $0.image = UIImage.init(named: "default_icon")
+        $0.layer.cornerRadius = 4
+        $0.layer.masksToBounds = true
     }
     var goodsNameLabel = UILabel().then{
         $0.textColor = UIColor.hex(hexString: "#333333")
@@ -45,10 +47,11 @@ class UMyCollectionCell: UBaseCollectionViewCell {
         contentView.addSubview(rmbLabel)
         contentView.addSubview(originalPriceLabel)
         contentView.addSubview(buyPeopleOfNum)
+        
         //MARK:商品图片
         picture.snp.makeConstraints { (make) in
-            make.width.equalTo(collectionCellWidth)
-            make.height.equalTo(collectionCellWidth-10)
+            make.width.equalTo(collectionCellWidth-5)
+            make.height.equalTo(collectionCellWidth-15)
             make.top.left.equalToSuperview()
         }
         //MARK:商品名称
@@ -59,7 +62,7 @@ class UMyCollectionCell: UBaseCollectionViewCell {
         }
         //MARK:当前价格
         rmbLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(goodsNameLabel.snp.bottom).offset(5)
+            make.top.equalTo(goodsNameLabel.snp.bottom).offset(5)
             make.bottom.equalToSuperview().offset(-5)
             make.left.equalTo(goodsNameLabel)
         }

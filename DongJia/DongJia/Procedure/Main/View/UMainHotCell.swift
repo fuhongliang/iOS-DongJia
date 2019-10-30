@@ -70,7 +70,7 @@ class UMainHotCell: UBaseTableViewCell {
             guard model != nil else { return }
             
             //collectionView重新加载数据
-//            self.horizontalView.reloadData()
+            self.horizontalView.reloadData()
             
             //更新collectionView的高度约束
             let contentSize = self.horizontalView.collectionViewLayout.collectionViewContentSize

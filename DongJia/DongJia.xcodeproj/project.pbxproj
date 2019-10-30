@@ -36,6 +36,7 @@
 		DC246E002331C4180087D84A /* UIDosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246DFF2331C4180087D84A /* UIDosController.swift */; };
 		DC246E022331C8D90087D84A /* UDosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E012331C8D90087D84A /* UDosCell.swift */; };
 		DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E03233204BC0087D84A /* UDosDetailView.swift */; };
+		DC29156423697F3600F58FF6 /* UIAllCategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC29156323697F3600F58FF6 /* UIAllCategoriesController.swift */; };
 		DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3567234D79D80064EB75 /* APIGoodsService.swift */; };
 		DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */; };
 		DC308222234C345700271840 /* UIStoreControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308221234C345700271840 /* UIStoreControlle.swift */; };
@@ -106,6 +107,9 @@
 		DC8AA9062358233C00108476 /* UIConfirmOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8AA9052358233C00108476 /* UIConfirmOrderController.swift */; };
 		DC8AA90823583E9200108476 /* UConfirmOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8AA90723583E9200108476 /* UConfirmOrderView.swift */; };
 		DC8AA90A235863A300108476 /* APIGoodsAttrDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8AA909235863A300108476 /* APIGoodsAttrDataResponseModel.swift */; };
+		DCA946C82369814A00F2E712 /* UAllCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA946C72369814A00F2E712 /* UAllCategoriesView.swift */; };
+		DCA946CA2369889300F2E712 /* UPrimaryClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA946C92369889300F2E712 /* UPrimaryClassificationCell.swift */; };
+		DCA946CC2369917900F2E712 /* USecondartClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA946CB2369917900F2E712 /* USecondartClassificationCell.swift */; };
 		DCB0644823263AD40094727C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0644723263AD40094727C /* AppDelegate.swift */; };
 		DCB0644A23263AD40094727C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB0644923263AD40094727C /* ViewController.swift */; };
 		DCB0644D23263AD50094727C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB0644B23263AD50094727C /* Main.storyboard */; };
@@ -224,6 +228,7 @@
 		DC246DFF2331C4180087D84A /* UIDosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosController.swift; sourceTree = "<group>"; };
 		DC246E012331C8D90087D84A /* UDosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosCell.swift; sourceTree = "<group>"; };
 		DC246E03233204BC0087D84A /* UDosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosDetailView.swift; sourceTree = "<group>"; };
+		DC29156323697F3600F58FF6 /* UIAllCategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAllCategoriesController.swift; sourceTree = "<group>"; };
 		DC2E3567234D79D80064EB75 /* APIGoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsService.swift; sourceTree = "<group>"; };
 		DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsDetailResponseModel.swift; sourceTree = "<group>"; };
 		DC308221234C345700271840 /* UIStoreControlle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreControlle.swift; sourceTree = "<group>"; };
@@ -294,6 +299,9 @@
 		DC8AA9052358233C00108476 /* UIConfirmOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfirmOrderController.swift; sourceTree = "<group>"; };
 		DC8AA90723583E9200108476 /* UConfirmOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UConfirmOrderView.swift; sourceTree = "<group>"; };
 		DC8AA909235863A300108476 /* APIGoodsAttrDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsAttrDataResponseModel.swift; sourceTree = "<group>"; };
+		DCA946C72369814A00F2E712 /* UAllCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAllCategoriesView.swift; sourceTree = "<group>"; };
+		DCA946C92369889300F2E712 /* UPrimaryClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPrimaryClassificationCell.swift; sourceTree = "<group>"; };
+		DCA946CB2369917900F2E712 /* USecondartClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USecondartClassificationCell.swift; sourceTree = "<group>"; };
 		DCB0644423263AD40094727C /* DongJia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DongJia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB0644723263AD40094727C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCB0644923263AD40094727C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -415,13 +423,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		DC1CD75F23687778008E6A51 /* New Group */ = {
+		DC1CD75F23687778008E6A51 /* ImagePreview */ = {
 			isa = PBXGroup;
 			children = (
 				DC1CD76023687791008E6A51 /* UIImagePreviewController.swift */,
 				DC1CD762236877BF008E6A51 /* ImagePreviewCell.swift */,
 			);
-			path = "New Group";
+			path = ImagePreview;
 			sourceTree = "<group>";
 		};
 		DC246DFC2331C3180087D84A /* Dos */ = {
@@ -713,7 +721,7 @@
 		DCB06485232669FF0094727C /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				DC1CD75F23687778008E6A51 /* New Group */,
+				DC1CD75F23687778008E6A51 /* ImagePreview */,
 				DC785A4D23545C1E0076A5C9 /* ArcView */,
 				DC56BC91233A4B670089EE61 /* AddressView */,
 				DCB065062327CDA90094727C /* ZKCycleScrollView */,
@@ -946,6 +954,7 @@
 				DCB064EF23277EF30094727C /* UIMainController.swift */,
 				DC785A5723547A150076A5C9 /* UIChooseCityController.swift */,
 				DC785A5D235499840076A5C9 /* UISearchController.swift */,
+				DC29156323697F3600F58FF6 /* UIAllCategoriesController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -969,6 +978,9 @@
 				DC785A5923547A400076A5C9 /* UChooseCityView.swift */,
 				DC785A5B23547DB10076A5C9 /* UChooseCityCell.swift */,
 				DC785A5F235499B70076A5C9 /* USearchView.swift */,
+				DCA946C72369814A00F2E712 /* UAllCategoriesView.swift */,
+				DCA946C92369889300F2E712 /* UPrimaryClassificationCell.swift */,
+				DCA946CB2369917900F2E712 /* USecondartClassificationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1316,14 +1328,17 @@
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
 				DC1E77FB234F2348005765F0 /* UClassicCaseCell.swift in Sources */,
 				DC1E77F9234F22AE005765F0 /* UStoreClassicCaseCell.swift in Sources */,
+				DCA946C82369814A00F2E712 /* UAllCategoriesView.swift in Sources */,
 				DC3FAA2523505F8100B310EC /* APIStoreInfoResponseModel.swift in Sources */,
 				DC19F7AF2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift in Sources */,
 				DC1BAE3E235E9FD40093D45A /* APIShopCartListResponseModel.swift in Sources */,
 				DC54C5A3233F41CF00ECFB25 /* UGoodsInfoView.swift in Sources */,
 				DC2380122330D94C006AE76F /* UFeaturedCell.swift in Sources */,
+				DCA946CA2369889300F2E712 /* UPrimaryClassificationCell.swift in Sources */,
 				DC246E022331C8D90087D84A /* UDosCell.swift in Sources */,
 				DC39CF942329EAA100E61C3A /* ULimitedTimeCell.swift in Sources */,
 				DC768AB023321E0900595E2B /* UIDosDetailController.swift in Sources */,
+				DC29156423697F3600F58FF6 /* UIAllCategoriesController.swift in Sources */,
 				DCB0650C2328F2380094727C /* UMainClassificationCell.swift in Sources */,
 				DC54C59F233F33F400ECFB25 /* UGoodsChooseAttrCell.swift in Sources */,
 				DCB0647F232669510094727C /* UIImageViewExtension.swift in Sources */,
@@ -1335,6 +1350,7 @@
 				DCB064C323266E0D0094727C /* APIServices.swift in Sources */,
 				DCB064B223266A000094727C /* UIScreen+Frame.swift in Sources */,
 				DC54C59D233F084000ECFB25 /* UGoodsNameServiceCell.swift in Sources */,
+				DCA946CC2369917900F2E712 /* USecondartClassificationCell.swift in Sources */,
 				DC19F7AD23347BCF00BDFE7D /* UMyCollectionCell.swift in Sources */,
 				DC32D544235D911B00B3D2BD /* UShopCartGoodsCell.swift in Sources */,
 				DCEA78B92351D445002F2F1E /* UIStoreController.swift in Sources */,

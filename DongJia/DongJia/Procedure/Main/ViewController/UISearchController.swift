@@ -25,7 +25,7 @@ class UISearchController: UBaseViewController {
         }
     }
     
-    var searchData: search_goods_list_model? {
+    var searchData: [search_goods_model]? {
         didSet{
             guard searchData != nil else { return }
             searchView.searchHistoryView.isHidden = false
@@ -52,7 +52,12 @@ class UISearchController: UBaseViewController {
     /// 获取搜索历史
     func getSearchHistory(keyword: String){
         service.searchGoodsList(keyWord: keyword, page: currentPage, { (SearchGoods) in
-            self.searchData = SearchGoods.data
+            if self.currentPage == 1 {
+                self.searchData = SearchGoods.data.list
+            } else {
+                self.searchData?.append(contentsOf: SearchGoods.data.list)
+            }
+            
             self.currentPage += 1
             self.pageCount = SearchGoods.data.page_count
             if (self.isMaxPage) {
@@ -69,28 +74,28 @@ class UISearchController: UBaseViewController {
 extension UISearchController: UICollectionViewDelegate, UICollectionViewDataSource{
     //MARK:section数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return searchData == nil ? 0 : 1//model?.pic_list.count ?? 0 == 0 ? 0 :1;
+        return searchData == nil ? 0 : 1
     }
     
     //MARK:每个section有多少Item
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchData?.list.count ?? 0
+        return searchData?.count ?? 0
     }
     
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: UMyCollectionCell.self)
-        cell.data = ["pic_url": searchData!.list[indexPath.item].pic_url,
-                     "price": searchData!.list[indexPath.item].price,
-                     "name": searchData!.list[indexPath.item].name]
+        cell.data = ["pic_url": searchData![indexPath.item].pic_url,
+                     "price": searchData![indexPath.item].price,
+                     "name": searchData![indexPath.item].name]
 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = UIGoodsDetailController()
-        vc.goodsId = (self.searchData?.list[indexPath.item].id)!
-        vc.storeId = (self.searchData?.list[indexPath.item].store_id)!
+        vc.goodsId = (self.searchData?[indexPath.item].id)!
+        vc.storeId = (self.searchData?[indexPath.item].store_id)!
         self.pushViewController(vc, animated: true)
     }
     

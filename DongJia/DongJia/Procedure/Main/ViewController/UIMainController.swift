@@ -25,6 +25,7 @@ class UIMainController: UBaseViewController {
     var cells: [MainItem] = [] {
         didSet{
             tableView.reloadData()
+            tableView.layoutIfNeeded()
         }
     }
     
@@ -64,13 +65,13 @@ class UIMainController: UBaseViewController {
     }
     
     override func configUI() {
+        self.tableView.uFoot = URefreshFooter { [weak self] in self?.getFeaturedData() }
+        view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        self.tableView.uFoot = URefreshFooter { [weak self] in self?.getFeaturedData() }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +94,7 @@ class UIMainController: UBaseViewController {
             self.hotGoodsList = Model.data?.recommend_goods
             self.superBrandList = Model.data?.new_mch_list
             self.cells = [.search, .banner, .classification, .limited, .hot, .superbrand]
-            self.getFeaturedData()
+            self.getFeaturedData(true)
             
         }) { (APIErrorModel) in
             print(APIErrorModel.msg ?? "msg为空")
@@ -101,10 +102,14 @@ class UIMainController: UBaseViewController {
     }
     
     /// 获取精选列表数据
-    func getFeaturedData() {
+    func getFeaturedData(_ isRefresh: Bool = false) {
 
         service.getMainFeaturedData(page: currentPage, { (Data) in
-            self.featuredList.append(contentsOf: Data.data?.list ?? [])
+            if (isRefresh){
+                self.featuredList = Data.data?.list ?? []
+            } else {
+                self.featuredList.append(contentsOf: Data.data?.list ?? [])
+            }
             if (self.cells.count > 0 && self.currentPage == 1){
                 self.cells.append(.featured)
             }
@@ -208,7 +213,9 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
                 showHUDInView(text: "家用电器", inView: self.view)
             }
             cell.toViewMoreAction = {
-                showHUDInView(text: "查看更多", inView: self.view)
+                let vc = UIAllCategoriesController()
+                vc.title = "全部分类"
+                self.pushViewController(vc, animated: true)
             }
             return cell
         case .limited:

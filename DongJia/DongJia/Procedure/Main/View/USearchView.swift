@@ -7,6 +7,7 @@
 //
 
 import QMUIKit
+import ZLCollectionViewFlowLayout
 
 protocol USearchViewDelegate {
     func searchGoods(keyWord: String?)
@@ -57,11 +58,14 @@ class USearchView: BaseView {
         $0.register(cellType: UMyCollectionCell.self)
     }
     
-    let layout = UICollectionViewFlowLayout().then{
+    let layout = ZLCollectionViewVerticalLayout().then{
         $0.scrollDirection = .vertical //设置滚动方向
-        $0.estimatedItemSize = CGSize(width: collectionCellWidth, height: 225)//设置cell的大小
-        $0.minimumInteritemSpacing = 5
+        $0.estimatedItemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
+        $0.itemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
         $0.sectionInset = UIEdgeInsets.init(top: 15, left: 0, bottom: 15, right: 0)
+        
+        $0.canDrag = true
+        $0.header_suspension = false
     }
     
     let historyLabel = UILabel().then{
@@ -81,7 +85,7 @@ class USearchView: BaseView {
     override func configUI() {
         
         self.backgroundColor = .white
-        
+        layout.delegate = self
         searchHistoryView.collectionViewLayout = layout
         
         self.addSubview(historyLabel)
@@ -174,7 +178,7 @@ class USearchView: BaseView {
     @objc func clearHistoryAction(){
         showAlert(title: "提示", subTitle: "是否删除所有记录") { (alert) in
             alert.addButton("取消",backgroundColor: .white,textColor: .hex(hexString: "#333333")) { }
-            alert.addButton("确定",backgroundColor: .theme,textColor: .hex(hexString: "#333333")) {
+            alert.addButton("确定",backgroundColor: .white,textColor: .theme) {
                 self.delegate?.clearHistory(index: -1)
             }
         }
@@ -215,7 +219,7 @@ class USearchView: BaseView {
             }
             /// 长按动作
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(historyLongPressAction))
-            longPress.minimumPressDuration = 0.5
+            longPress.minimumPressDuration = 0.8
             btn.addTarget(self, action: #selector(historyAction(btn:)), for: .touchUpInside)
             btn.addGestureRecognizer(longPress)
             flowView.addSubview(btn)
@@ -227,6 +231,19 @@ class USearchView: BaseView {
             guard let history = history else { return }
             generateHistoryBtn(historyList: history)
         }
+    }
+    
+}
+
+
+extension USearchView: ZLCollectionViewBaseFlowLayoutDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewFlowLayout, typeOfLayout section: Int) -> ZLLayoutType {
+        return ClosedLayout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewFlowLayout, columnCountOfSection section: Int) -> Int {
+        return 2
     }
     
 }
