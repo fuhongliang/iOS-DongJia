@@ -202,6 +202,9 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainClassificationCell.self)
             cell.buildingMaterialsAction = {
                 showHUDInView(text: "建材", inView: self.view)
+                let vc = UIStoreAndGoodsCategoriesControllerViewController()
+                vc.title = "建材"
+                self.pushViewController(vc, animated: true)
             }
             cell.residentialFurnitureAction = {
                 showHUDInView(text: "住宅家具", inView: self.view)
