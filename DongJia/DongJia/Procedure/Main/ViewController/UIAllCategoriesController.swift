@@ -9,6 +9,15 @@
 import UIKit
 
 class UIAllCategoriesController: UBaseViewController {
+    
+    var catList: [primary_list_model]?{
+        didSet{
+            guard catList != nil else { return }
+            categoriesView.primaryList = catList
+        }
+    }
+    
+    private let service = APIMainService()
 
     let categoriesView = UAllCategoriesView()
     override func configUI() {
@@ -17,17 +26,25 @@ class UIAllCategoriesController: UBaseViewController {
         categoriesView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
+        getCatList()
+    }
+    
+    func getCatList(){
+        service.catList({ (CatList) in
+            self.catList = CatList.data.list
+        }) { (APIErrorModel) in
+            
+        }
     }
     
 }
 extension UIAllCategoriesController: UAllCategoriesViewDelegate{
-    func primaryClassificationClick() {
-        showHUDInView(text: "点击一级菜单", inView: view, isClick: true)
+    func primaryClassificationClick(_ index: Int) {
+        categoriesView.secondartList = catList![index].list
     }
     
     func secondaryClassificationClick() {
-        showHUDInView(text: "点击二级菜单", inView: view, isClick: true)
+        
     }
     
     

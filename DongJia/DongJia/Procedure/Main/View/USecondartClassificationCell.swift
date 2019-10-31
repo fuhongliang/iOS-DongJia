@@ -38,10 +38,11 @@ class USecondartClassificationCell: UBaseCollectionViewCell {
         
     }
     
-    var classificationData: String?{
+    var classificationData: secondart_list_model?{
         didSet{
             guard let data = classificationData else { return }
-            classificationName.text = data
+            classificationName.text = data.name
+            classificationImg.load(data.pic_url)
         }
     }
     

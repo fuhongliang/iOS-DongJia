@@ -11,7 +11,7 @@ import ZLCollectionViewFlowLayout
 
 protocol UAllCategoriesViewDelegate {
     /// 一级分类点击
-    func primaryClassificationClick()
+    func primaryClassificationClick(_ index: Int)
     /// 二级分类点击
     func secondaryClassificationClick()
 }
@@ -41,8 +41,7 @@ class UAllCategoriesView: BaseView {
     
     // 创建一个有多布局的layout
     let flowLayout = ZLCollectionViewVerticalLayout().then{
-        $0.itemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
-        $0.sectionInset = UIEdgeInsets.init(top: 15, left: 0, bottom: 15, right: 0)
+        $0.itemSize = CGSize(width: collectionCellWidth, height: 100)//设置cell的大小
         
         $0.canDrag = true
         $0.header_suspension = false
@@ -51,7 +50,9 @@ class UAllCategoriesView: BaseView {
     override func configUI() {
         primaryTableView.delegate = self
         primaryTableView.dataSource = self
-        primaryList = ["123","dsa","eqr","vcxz","ddss","aadd","bbff"]
+        
+        secondartCollectionView.delegate = self
+        secondartCollectionView.dataSource = self
         self.addSubview(primaryTableView)
         self.addSubview(secondartCollectionView)
         flowLayout.delegate = self
@@ -70,32 +71,39 @@ class UAllCategoriesView: BaseView {
         }
     }
     
-    var primaryList: [String]?{
+    var primaryList: [primary_list_model]?{
         didSet{
             guard primaryList != nil else { return }
             primaryTableView.reloadData()
+            primaryTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+            secondartList = primaryList?[0].list
         }
     }
     
-    var secondartList: [String]?{
+    var secondartList: [secondart_list_model]?{
         didSet{
             guard secondartList != nil else { return }
             secondartCollectionView.reloadData()
         }
     }
     
+    /// 当前选择的一级分类
     var selectPrimary: Int = 0
 
 }
 
 extension UAllCategoriesView: UICollectionViewDelegate, UICollectionViewDataSource{
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return secondartList?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: USecondartClassificationCell.self)
-        cell.classificationData = "瓷砖"
+        cell.classificationData = secondartList![indexPath.item]
         return cell
     }
     
@@ -121,7 +129,7 @@ extension UAllCategoriesView: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UPrimaryClassificationCell.self)
-        cell.name = primaryList![indexPath.row]
+        cell.name = primaryList![indexPath.row].name
         
         return cell
     }
@@ -132,7 +140,7 @@ extension UAllCategoriesView: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.cellForRow(at: IndexPath(row: item, section: 0))
             cell!.setSelected(item == selectPrimary, animated: true)
         }
-        delegate?.primaryClassificationClick()
+        delegate?.primaryClassificationClick(indexPath.row)
     }
     
 }

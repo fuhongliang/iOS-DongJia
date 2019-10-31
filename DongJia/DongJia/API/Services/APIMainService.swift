@@ -17,9 +17,32 @@ protocol APIMainServiceProtocol {
     func getSupportCityList(_ success: @escaping(((APISupportCityListResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
     func searchGoodsList(keyWord: String, page: Int, _ success: @escaping(((APISearchGoodsResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    
+    func catList(_ success: @escaping(((APICatListResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
 }
 
 class APIMainService: APIMainServiceProtocol {
+    /// 获取分类列表
+    func catList(_ success: @escaping (((APICatListResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        let param: [String: Any] = [
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1,
+            "cid":0
+        ]
+        APIService.shared.request(.catList(param: param), { (data) in
+            do {
+                let model = try JSONDecoder().decode(APICatListResponseModel.self, from: data)
+                success(model)
+            } catch {
+                let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
+                fail(errorModel)
+            }
+        }) { (APIErrorModel) in
+            print(APIErrorModel)
+        }
+    }
+    
     /// 获取搜索商品的接口
     func searchGoodsList(keyWord: String, page: Int, _ success: @escaping (((APISearchGoodsResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
         let param:[String:Any] = [

@@ -39,6 +39,7 @@
 		DC29156423697F3600F58FF6 /* UIAllCategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC29156323697F3600F58FF6 /* UIAllCategoriesController.swift */; };
 		DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3567234D79D80064EB75 /* APIGoodsService.swift */; };
 		DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */; };
+		DC2E4A85236A7F6900649EDE /* APICatListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */; };
 		DC308222234C345700271840 /* UIStoreControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308221234C345700271840 /* UIStoreControlle.swift */; };
 		DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308225234C34CB00271840 /* UBaseTableViewController.swift */; };
 		DC308228234C38C500271840 /* UStoreMainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC308227234C38C500271840 /* UStoreMainInfoCell.swift */; };
@@ -231,6 +232,7 @@
 		DC29156323697F3600F58FF6 /* UIAllCategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAllCategoriesController.swift; sourceTree = "<group>"; };
 		DC2E3567234D79D80064EB75 /* APIGoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsService.swift; sourceTree = "<group>"; };
 		DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsDetailResponseModel.swift; sourceTree = "<group>"; };
+		DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICatListResponseModel.swift; sourceTree = "<group>"; };
 		DC308221234C345700271840 /* UIStoreControlle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoreControlle.swift; sourceTree = "<group>"; };
 		DC308225234C34CB00271840 /* UBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBaseTableViewController.swift; sourceTree = "<group>"; };
 		DC308227234C38C500271840 /* UStoreMainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UStoreMainInfoCell.swift; sourceTree = "<group>"; };
@@ -880,6 +882,7 @@
 				DC1368BE2366CF920085D841 /* APIOrderPayDataResponseModel.swift */,
 				DC1CD75A23680E8A008E6A51 /* APISupportCityListResponseModel.swift */,
 				DC1CD75C23680FC0008E6A51 /* APISearchGoodsResponseModel.swift */,
+				DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1274,6 +1277,7 @@
 				DCB06484232669510094727C /* UIBarButtonItemExtension.swift in Sources */,
 				DCB064D323266EE80094727C /* UTabBarController.swift in Sources */,
 				DC4F094D23572A3F009F4F91 /* UAddNumberCell.swift in Sources */,
+				DC2E4A85236A7F6900649EDE /* APICatListResponseModel.swift in Sources */,
 				DC54C59B233F03E400ECFB25 /* UGoodsOrdinaryBuyCell.swift in Sources */,
 				DC34A653233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift in Sources */,
 				DC56BC8B233872770089EE61 /* APIMainService.swift in Sources */,
