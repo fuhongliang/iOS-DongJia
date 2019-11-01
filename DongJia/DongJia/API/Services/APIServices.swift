@@ -100,6 +100,8 @@ enum NetApi {
     case collectionList(param: [String:Any])
     /// 添加收藏商品
     case addCollectionGoods(param: [String:Any])
+    /// 家装方案列表
+    case dosCase(param: [String:Any])
 }
 
 //MARK: 请求对象的封装
@@ -166,14 +168,16 @@ extension NetApi: TargetType {
             return "/index.php?r=api/user/favorite-list"
         case .addCollectionGoods:
             return "/index.php?r=api/user/favorite-add"
+        case .dosCase:
+            return "/index.php?r=api/default/topic-list"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.catList,.catGoodsList,.catMchList,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign,.collectionList,.addCollectionGoods:
+        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.catList,.catGoodsList,.catMchList,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign,.collectionList,.dosCase:
             return .get
-        case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress,.submitOrder:
+        case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress,.submitOrder,.addCollectionGoods:
             return .post
         }
     }
@@ -238,8 +242,9 @@ extension NetApi: TargetType {
         case .collectionList(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .addCollectionGoods(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
+        case .dosCase(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
-            
         }
         
     }

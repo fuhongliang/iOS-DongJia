@@ -9,8 +9,26 @@
 import UIKit
 
 class UIDosController: UBaseViewController {
+    
+    private let service = APIDosServices()
+    
+    var currentPage = 1 // 当前的页数
+    var currentPageForItem = 0 // 当前页的数据大小
+    /// 当前是否已经是最大页数
+    var isMaxPage: Bool{
+        get {
+            return currentPageForItem < 6
+        }
+    }
 
-    var data:[String]? = ["","",""]
+    var data:[dos_model]? {
+        didSet{
+            guard data == nil else {
+                tableView.reloadData()
+                return
+            }
+        }
+    }
     
     let tableView = UITableView(frame: .zero, style: .grouped).then {
         $0.backgroundColor = .background
@@ -22,11 +40,43 @@ class UIDosController: UBaseViewController {
     
     
     override func configUI() {
+        tableView.uempty = UEmptyView { [weak self] in self?.refreshDosList() }
+        tableView.uHead = URefreshHeader { [weak self] in self?.refreshDosList() }
+        tableView.uFoot = URefreshFooter { [weak self] in self?.getDosList()}
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+        getDosList()
+    }
+    
+    func refreshDosList(){
+        currentPage = 1
+        getDosList()
+    }
+    
+    func getDosList(){
+        checkLoginState {
+            service.getDosList(page: currentPage, { (DosList) in
+                self.currentPageForItem = DosList.data.list.count
+                if (self.currentPage == 1){
+                    self.data = DosList.data.list
+                    self.tableView.uHead.endRefreshing()
+                } else {
+                    self.data?.append(contentsOf: DosList.data.list)
+                }
+                if (self.isMaxPage) {
+                    self.tableView.uFoot.endRefreshingWithNoMoreData()
+                } else {
+                    self.currentPage += 1
+                    self.tableView.uFoot.endRefreshing()
+                }
+                self.tableView.uempty?.allowShow = true
+            }) { (APIErrorModel) in
+                
+            }
         }
     }
 
@@ -63,7 +113,7 @@ extension UIDosController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UDosCell.self)
-        cell.model = 1
+        cell.model = data?[indexPath.section]
         return cell
     }
     

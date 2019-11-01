@@ -59,7 +59,6 @@ class USearchView: BaseView {
     }
     
     let layout = ZLCollectionViewVerticalLayout().then{
-        $0.scrollDirection = .vertical //设置滚动方向
         $0.estimatedItemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
         $0.itemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
         $0.sectionInset = UIEdgeInsets.init(top: 15, left: 0, bottom: 15, right: 0)

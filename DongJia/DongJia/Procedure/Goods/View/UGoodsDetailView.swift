@@ -79,6 +79,9 @@ class UGoodsDetailView: BaseView {
         whiteBg.addSubview(addCartBtn)
         whiteBg.addSubview(buyNowBtn)
         buyNowBtn.addTarget(self, action: #selector(buyNowAction), for: .touchUpInside)
+        collectionBtn.addTarget(self, action: #selector(addCollectionAction), for: .touchUpInside)
+        cartBtn.addTarget(self, action: #selector(jumpShopCartAction), for: .touchUpInside)
+        addCartBtn.addTarget(self, action: #selector(addCartAction), for: .touchUpInside)
         
         //MARK:商品详情TableView
         tableView.snp.makeConstraints { (make) in
@@ -123,6 +126,15 @@ class UGoodsDetailView: BaseView {
     }
     @objc func buyNowAction(){
         delegate?.buyNowAction()
+    }
+    @objc func addCollectionAction(){
+        delegate?.collectionList()
+    }
+    @objc func jumpShopCartAction(){
+        delegate?.viewToCartAction()
+    }
+    @objc func addCartAction(){
+        delegate?.addCartAction()
     }
     
 }

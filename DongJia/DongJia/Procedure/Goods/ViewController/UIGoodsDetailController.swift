@@ -34,6 +34,8 @@ protocol UIGoodsDetailControllerDelegate {
 class UIGoodsDetailController: UBaseViewController {
     
     private let service = APIGoodsService()
+    
+    private let addCollectionService = APIMineServices()
 
     let goodsDetailView = UGoodsDetailView()
     /// 请求的商品数据
@@ -65,6 +67,7 @@ class UIGoodsDetailController: UBaseViewController {
     override func configUI() {
         goodsDetailView.tableView.delegate = self
         goodsDetailView.tableView.dataSource = self
+        goodsDetailView.delegate = self
         self.view.addSubview(goodsDetailView)
         goodsDetailView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -135,22 +138,32 @@ extension UIGoodsDetailController: UGoodsDetailViewProtocol{
     func buyNowAction() {
         // TODO 逻辑处理待检查
         checkLoginState {
-            let vc = UIConfirmOrderController()
-            vc.title = "确认订单"
-            self.pushViewController(vc, animated: true)
+            showChooseAttrController()
         }
     }
     
     func addCartAction() {
-        showChooseAttrController()
+        checkLoginState {
+            showChooseAttrController()
+        }
     }
     
     func viewToCartAction() {
-        
+        checkLoginState {
+            let vc = UShopCartViewController()
+            vc.title = "购物车"
+            self.pushViewController(vc, animated: true)
+        }
     }
     
     func collectionList() {
-        
+        checkLoginState {
+            addCollectionService.addCollectionGoods(goodsId: goodsId, { (APIObjectModel) in
+                showHUDInView(text: "收藏成功", inView: self.view, isClick: true)
+            }, { (APIErrorModel) in
+                
+            })
+        }
     }
     
 }

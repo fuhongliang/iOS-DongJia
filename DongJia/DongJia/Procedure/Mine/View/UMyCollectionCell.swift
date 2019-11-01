@@ -50,8 +50,8 @@ class UMyCollectionCell: UBaseCollectionViewCell {
         
         //MARK:商品图片
         picture.snp.makeConstraints { (make) in
-            make.width.equalTo(collectionCellWidth-5)
-            make.height.equalTo(collectionCellWidth-15)
+            make.width.equalTo(collectionCellWidth)
+            make.height.equalTo(collectionCellWidth-10)
             make.top.left.equalToSuperview()
         }
         //MARK:商品名称

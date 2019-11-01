@@ -41,6 +41,8 @@
 		DC2B69B0236BD1F0006A78E8 /* APICatMchListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69AF236BD1F0006A78E8 /* APICatMchListResponseModel.swift */; };
 		DC2B69B2236C2A1B006A78E8 /* UIMyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B1236C2A1B006A78E8 /* UIMyOrderViewController.swift */; };
 		DC2B69B4236C3021006A78E8 /* APICollectionListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */; };
+		DC2B69B6236C4043006A78E8 /* APIDosServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B5236C4043006A78E8 /* APIDosServices.swift */; };
+		DC2B69B8236C4147006A78E8 /* APIDosListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B7236C4147006A78E8 /* APIDosListResponseModel.swift */; };
 		DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3567234D79D80064EB75 /* APIGoodsService.swift */; };
 		DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */; };
 		DC2E4A85236A7F6900649EDE /* APICatListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */; };
@@ -242,6 +244,8 @@
 		DC2B69AF236BD1F0006A78E8 /* APICatMchListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICatMchListResponseModel.swift; sourceTree = "<group>"; };
 		DC2B69B1236C2A1B006A78E8 /* UIMyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMyOrderViewController.swift; sourceTree = "<group>"; };
 		DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollectionListResponseModel.swift; sourceTree = "<group>"; };
+		DC2B69B5236C4043006A78E8 /* APIDosServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDosServices.swift; sourceTree = "<group>"; };
+		DC2B69B7236C4147006A78E8 /* APIDosListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDosListResponseModel.swift; sourceTree = "<group>"; };
 		DC2E3567234D79D80064EB75 /* APIGoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsService.swift; sourceTree = "<group>"; };
 		DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsDetailResponseModel.swift; sourceTree = "<group>"; };
 		DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICatListResponseModel.swift; sourceTree = "<group>"; };
@@ -866,6 +870,7 @@
 				DCB064C223266E0D0094727C /* APIServices.swift */,
 				DC56BC8A233872770089EE61 /* APIMainService.swift */,
 				DCCEC4C3233B4B7300892D11 /* APIMineServices.swift */,
+				DC2B69B5236C4043006A78E8 /* APIDosServices.swift */,
 				DC2E3567234D79D80064EB75 /* APIGoodsService.swift */,
 				DC3FAA2223505A1800B310EC /* APIStoreService.swift */,
 				DC30ADE02360456800B21725 /* APIAddressServices.swift */,
@@ -903,6 +908,7 @@
 				DC2B69AD236BD028006A78E8 /* APICatGoodsListResponseModel.swift */,
 				DC2B69AF236BD1F0006A78E8 /* APICatMchListResponseModel.swift */,
 				DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */,
+				DC2B69B7236C4147006A78E8 /* APIDosListResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1250,6 +1256,7 @@
 				DC6F05472359BD0E007EB039 /* UOrderGoodsInfoCell.swift in Sources */,
 				DCB0644A23263AD40094727C /* ViewController.swift in Sources */,
 				DCB064A123266A000094727C /* CustomPhotoPickerViewController.swift in Sources */,
+				DC2B69B6236C4043006A78E8 /* APIDosServices.swift in Sources */,
 				DC1368BF2366CF920085D841 /* APIOrderPayDataResponseModel.swift in Sources */,
 				DC34A651233C95910042EEA8 /* UIButtonExtension.swift in Sources */,
 				DCB064AB23266A000094727C /* FTConfiguration.swift in Sources */,
@@ -1346,6 +1353,7 @@
 				DC785A5A23547A400076A5C9 /* UChooseCityView.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
 				DC2E4A87236A8E6200649EDE /* UIStoreAndGoodsCategoriesControllerViewController.swift in Sources */,
+				DC2B69B8236C4147006A78E8 /* APIDosListResponseModel.swift in Sources */,
 				DC54C5A5233F53A500ECFB25 /* UGoodsDetailWKWebViewCell.swift in Sources */,
 				DC34A65B233E16040042EEA8 /* UGoodsLimitedBuyCell.swift in Sources */,
 				DC392AE823544C37005E292D /* APIMineResponseModel.swift in Sources */,

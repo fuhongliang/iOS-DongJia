@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ZLCollectionViewFlowLayout
 
 /// 我的收藏页面
 class UIMyCollectionController: UBaseViewController {
@@ -31,23 +32,23 @@ class UIMyCollectionController: UBaseViewController {
         }
     }
 
-    
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
         $0.showsVerticalScrollIndicator = false
-        $0.layer.cornerRadius = 4
-        $0.layer.masksToBounds = true
         $0.backgroundColor = .background
         $0.register(cellType: UMyCollectionCell.self)
     }
     
-    let layout = UICollectionViewFlowLayout().then{
-        $0.scrollDirection = .vertical //设置滚动方向
+    let layout = ZLCollectionViewVerticalLayout().then{
         $0.estimatedItemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
-        $0.minimumInteritemSpacing = 5
+        $0.itemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
         $0.sectionInset = UIEdgeInsets.init(top: 15, left: 0, bottom: 15, right: 0)
+        
+        $0.canDrag = true
+        $0.header_suspension = false
     }
     
     override func configUI() {
+        layout.delegate = self
         collectionView.collectionViewLayout = layout
         collectionView.uFoot = URefreshFooter { [weak self] in self?.getCollectionListData() }
         collectionView.uempty = UEmptyView { [weak self] in self?.getCollectionListData() }
@@ -113,6 +114,17 @@ extension UIMyCollectionController: UICollectionViewDelegate, UICollectionViewDa
         let vc = UIGoodsDetailController()
         vc.goodsId = String(collectionListData![indexPath.item].goods_id)
         self.pushViewController(vc, animated: true)
+    }
+    
+}
+extension UIMyCollectionController: ZLCollectionViewBaseFlowLayoutDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewFlowLayout, typeOfLayout section: Int) -> ZLLayoutType {
+        return ClosedLayout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewFlowLayout, columnCountOfSection section: Int) -> Int {
+        return 2
     }
     
 }
