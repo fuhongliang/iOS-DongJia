@@ -10,6 +10,11 @@ import UIKit
 import JXSegmentedView
 
 class UIStoreAndGoodsCategoriesControllerViewController: UBaseViewController {
+    
+    /// 修改状态栏颜色
+    override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
+    
+    var cat_id = ""
 
     let segmentedDataSource = JXSegmentedTitleDataSource()
     let segmentedView = JXSegmentedView()
@@ -17,10 +22,19 @@ class UIStoreAndGoodsCategoriesControllerViewController: UBaseViewController {
         return JXSegmentedListContainerView(dataSource: self)
     }()
     
+    let cornerView = UIView().then{
+        $0.backgroundColor = .white
+        $0.layer.qmui_maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        $0.layer.cornerRadius = 7
+        $0.layer.masksToBounds = true
+    }
+    
     let indicator = JXSegmentedIndicatorBackgroundView()
     let titles = ["商品","店铺"]
     
     override func configUI() {
+        
+        view.addSubview(cornerView)
         
         //配置数据源
         segmentedDataSource.isTitleColorGradientEnabled = true
@@ -38,7 +52,7 @@ class UIStoreAndGoodsCategoriesControllerViewController: UBaseViewController {
         indicator.indicatorCornerRadius = 0
         indicator.indicatorHeight = 2
         
-        //segmentedViewDataSource一定要通过属性强持有！！！！！！！！！
+        //segmentedViewDataSource一定要通过属性强持有！！！
         segmentedView.dataSource = segmentedDataSource
         segmentedView.indicators = [indicator]
         segmentedView.delegate = self
@@ -47,7 +61,7 @@ class UIStoreAndGoodsCategoriesControllerViewController: UBaseViewController {
         view.addSubview(segmentedView)
         
         segmentedView.contentScrollView = listContainerView.scrollView
-        view.addSubview(listContainerView)
+        cornerView.addSubview(listContainerView)
         view.backgroundColor = .theme
         
     }
@@ -58,16 +72,14 @@ class UIStoreAndGoodsCategoriesControllerViewController: UBaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        segmentedView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 50)
-        listContainerView.frame = CGRect(x: 0, y: 60, width: view.bounds.size.width, height: view.bounds.size.height - 50)
+        cornerView.frame = CGRect(x: 0, y: 50, width: screenWidth, height: view.bounds.size.height - 50)
+        segmentedView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 40)
+        listContainerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: cornerView.bounds.size.height)
     }
-    
 
 }
 
 extension UIStoreAndGoodsCategoriesControllerViewController: JXSegmentedViewDelegate{
-    
     
     func segmentedView(_ segmentedView: JXSegmentedView, didClickSelectedItemAt index: Int) {
         listContainerView.didClickSelectedItem(at: index)
@@ -89,10 +101,9 @@ extension UIStoreAndGoodsCategoriesControllerViewController: JXSegmentedListCont
     
     func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
         if (index == 0){
-            return UGoodsCategoriesView()
+            return UGoodsCategoriesView(catId: cat_id)
         }
-        return UStoreCategoriesView()
+        return UStoreCategoriesView(catId: cat_id)
     }
-    
     
 }

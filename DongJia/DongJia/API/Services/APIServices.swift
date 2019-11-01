@@ -56,6 +56,10 @@ enum NetApi {
     case searchGoods(param: [String:Any])
     /// 分类列表
     case catList(param: [String:Any])
+    /// 分类商品列表
+    case catGoodsList(param: [String:Any])
+    /// 分类商家列表
+    case catMchList(param: [String:Any])
     /// 微信登录接口
     case wxLogin(param: [String:Any])
     /// 我的页面数据
@@ -92,6 +96,10 @@ enum NetApi {
     case submitOrder(param: [String:Any])
     /// 获取订单支付签名
     case obtainOrderPaySign(param: [String:Any])
+    /// 获取收藏列表
+    case collectionList(param: [String:Any])
+    /// 添加收藏商品
+    case addCollectionGoods(param: [String:Any])
 }
 
 //MARK: 请求对象的封装
@@ -114,6 +122,10 @@ extension NetApi: TargetType {
             return "/index.php?r=api/default/search"
         case .catList:
             return "/index.php?r=api/default/cat-list"
+        case .catGoodsList:
+            return "/index.php?r=api/default/goods-list"
+        case .catMchList:
+            return "/index.php?r=api/default/mch-list"
         case .wxLogin:
             return "/index.php?r=api/passport/app-login"
         case .mineData:
@@ -150,12 +162,16 @@ extension NetApi: TargetType {
             return "/index.php?r=api/order/submit"
         case .obtainOrderPaySign:
             return "/index.php?r=api/order/pay-data"
+        case .collectionList:
+            return "/index.php?r=api/user/favorite-list"
+        case .addCollectionGoods:
+            return "/index.php?r=api/user/favorite-add"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.catList,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign:
+        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.catList,.catGoodsList,.catMchList,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign,.collectionList,.addCollectionGoods:
             return .get
         case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress,.submitOrder:
             return .post
@@ -178,6 +194,10 @@ extension NetApi: TargetType {
         case .searchGoods(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .catList(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .catMchList(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .catGoodsList(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .wxLogin(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
@@ -214,6 +234,10 @@ extension NetApi: TargetType {
         case .submitOrder(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
         case .obtainOrderPaySign(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .collectionList(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .addCollectionGoods(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
             
         }

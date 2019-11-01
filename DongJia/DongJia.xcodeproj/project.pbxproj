@@ -37,6 +37,10 @@
 		DC246E022331C8D90087D84A /* UDosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E012331C8D90087D84A /* UDosCell.swift */; };
 		DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E03233204BC0087D84A /* UDosDetailView.swift */; };
 		DC29156423697F3600F58FF6 /* UIAllCategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC29156323697F3600F58FF6 /* UIAllCategoriesController.swift */; };
+		DC2B69AE236BD028006A78E8 /* APICatGoodsListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69AD236BD028006A78E8 /* APICatGoodsListResponseModel.swift */; };
+		DC2B69B0236BD1F0006A78E8 /* APICatMchListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69AF236BD1F0006A78E8 /* APICatMchListResponseModel.swift */; };
+		DC2B69B2236C2A1B006A78E8 /* UIMyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B1236C2A1B006A78E8 /* UIMyOrderViewController.swift */; };
+		DC2B69B4236C3021006A78E8 /* APICollectionListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */; };
 		DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3567234D79D80064EB75 /* APIGoodsService.swift */; };
 		DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */; };
 		DC2E4A85236A7F6900649EDE /* APICatListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */; };
@@ -234,6 +238,10 @@
 		DC246E012331C8D90087D84A /* UDosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosCell.swift; sourceTree = "<group>"; };
 		DC246E03233204BC0087D84A /* UDosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosDetailView.swift; sourceTree = "<group>"; };
 		DC29156323697F3600F58FF6 /* UIAllCategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAllCategoriesController.swift; sourceTree = "<group>"; };
+		DC2B69AD236BD028006A78E8 /* APICatGoodsListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICatGoodsListResponseModel.swift; sourceTree = "<group>"; };
+		DC2B69AF236BD1F0006A78E8 /* APICatMchListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICatMchListResponseModel.swift; sourceTree = "<group>"; };
+		DC2B69B1236C2A1B006A78E8 /* UIMyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMyOrderViewController.swift; sourceTree = "<group>"; };
+		DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollectionListResponseModel.swift; sourceTree = "<group>"; };
 		DC2E3567234D79D80064EB75 /* APIGoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsService.swift; sourceTree = "<group>"; };
 		DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsDetailResponseModel.swift; sourceTree = "<group>"; };
 		DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICatListResponseModel.swift; sourceTree = "<group>"; };
@@ -599,6 +607,7 @@
 				DC19F7A8233478F500BDFE7D /* UIMyCollectionController.swift */,
 				DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */,
 				DCF595702334CCE200C50B88 /* UIAddAddressController.swift */,
+				DC2B69B1236C2A1B006A78E8 /* UIMyOrderViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -891,6 +900,9 @@
 				DC1CD75A23680E8A008E6A51 /* APISupportCityListResponseModel.swift */,
 				DC1CD75C23680FC0008E6A51 /* APISearchGoodsResponseModel.swift */,
 				DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */,
+				DC2B69AD236BD028006A78E8 /* APICatGoodsListResponseModel.swift */,
+				DC2B69AF236BD1F0006A78E8 /* APICatMchListResponseModel.swift */,
+				DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1247,6 +1259,7 @@
 				DCB064B723266A660094727C /* Utils.swift in Sources */,
 				DC6F05492359C727007EB039 /* UOrderStoreInfoHeaderView.swift in Sources */,
 				DCCEC4BE233A4C2D00892D11 /* ConfigureMacro.swift in Sources */,
+				DC2B69B0236BD1F0006A78E8 /* APICatMchListResponseModel.swift in Sources */,
 				DC308226234C34CB00271840 /* UBaseTableViewController.swift in Sources */,
 				DCB064BF23266DF80094727C /* JPushRegistrationID.swift in Sources */,
 				DCB064D223266EE80094727C /* UBaseViewController.swift in Sources */,
@@ -1282,6 +1295,7 @@
 				DC768AB22332230F00595E2B /* UILabelExtension.swift in Sources */,
 				DC1E77F7234ED912005765F0 /* APIGoodsRecommendResponseModel.swift in Sources */,
 				DCB064D123266EE80094727C /* BaseView.swift in Sources */,
+				DC2B69AE236BD028006A78E8 /* APICatGoodsListResponseModel.swift in Sources */,
 				DC785A5E235499840076A5C9 /* UISearchController.swift in Sources */,
 				DCB064CF23266EE80094727C /* UBaseCollectionViewCell.swift in Sources */,
 				DC39CF922329E77A00E61C3A /* UMainLimitedCell.swift in Sources */,
@@ -1298,6 +1312,7 @@
 				DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */,
 				DCB064F62327A7230094727C /* UMainBannerCell.swift in Sources */,
 				DCB06482232669510094727C /* UITextFieldExtension.swift in Sources */,
+				DC2B69B4236C3021006A78E8 /* APICollectionListResponseModel.swift in Sources */,
 				DC35D5FD23617C2100D68D1B /* APIOrderSubmitViewResponseModel.swift in Sources */,
 				DCB064AF23266A000094727C /* FTPopOverMenu.swift in Sources */,
 				DCB064AA23266A000094727C /* ParallaxHeader.swift in Sources */,
@@ -1344,6 +1359,7 @@
 				DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
 				DC35D5FF236198D100D68D1B /* DoubleExtension.swift in Sources */,
+				DC2B69B2236C2A1B006A78E8 /* UIMyOrderViewController.swift in Sources */,
 				DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */,
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
 				DC1E77FB234F2348005765F0 /* UClassicCaseCell.swift in Sources */,

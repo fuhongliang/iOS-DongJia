@@ -43,8 +43,11 @@ extension UIAllCategoriesController: UAllCategoriesViewDelegate{
         categoriesView.secondartList = catList![index].list
     }
     
-    func secondaryClassificationClick() {
-        
+    func secondaryClassificationClick(section: Int, item: Int) {
+        let vc = UIStoreAndGoodsCategoriesControllerViewController()
+        vc.title = catList![section].list[item].name
+        vc.cat_id = catList![section].list[item].id
+        self.pushViewController(vc, animated: true)
     }
     
     

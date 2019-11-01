@@ -21,7 +21,7 @@ class UIChooseCityController: UBaseViewController {
     
     override func configUI() {
         view.addSubview(chooseCityView)
-        chooseCityView.currentCity.text = UserDefaults.standard.string(forKey: "Main_City") ?? "陆丰市"
+        chooseCityView.currentCity.text = getCity()
         chooseCityView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -54,7 +54,7 @@ extension UIChooseCityController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.chooseCityView.currentCity.text = supportCityList![indexPath.item].name
-        UserDefaults.standard.set(supportCityList![indexPath.item].name, forKey: "Main_City")
+        saveCity(supportCityList![indexPath.item].name)
         self.pressBack()
     }
     

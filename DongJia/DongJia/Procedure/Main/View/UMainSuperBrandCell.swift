@@ -98,19 +98,19 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: USuperBrandCell.self)
         cell.goods1Action = {
-            //TODO 商品详情跳转
+            //商品详情跳转
             let vc = UIGoodsDetailController()
             vc.goodsId = self.model![indexPath.row].goods_list[0].id
             topVC?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.goods2Action = {
-            //TODO 商品详情跳转
+            //商品详情跳转
             let vc = UIGoodsDetailController()
             vc.goodsId = self.model![indexPath.row].goods_list[1].id
             topVC?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.goods3Action = {
-            //TODO 商品详情跳转
+            //商品详情跳转
             let vc = UIGoodsDetailController()
             vc.goodsId = self.model![indexPath.row].goods_list[2].id
             topVC?.navigationController?.pushViewController(vc, animated: true)
@@ -121,15 +121,14 @@ extension UMainSuperBrandCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let vc = UIStoreController()
-        if APIUser.shared.user?.access_token == nil {
-            showHUDInView(text: "请先登录", inView: topVC!.view, isClick: true)
-            return
+
+        checkLoginState {
+            let vc = UIStoreController()
+            vc.title = "店铺详情"
+            vc.storeId = self.model![indexPath.row].id
+            topVC?.navigationController?.pushViewController(vc, animated: true)
         }
-        let vc = UIStoreController()
-        vc.title = "店铺详情"
-        vc.storeId = self.model![indexPath.row].id
-        topVC?.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }

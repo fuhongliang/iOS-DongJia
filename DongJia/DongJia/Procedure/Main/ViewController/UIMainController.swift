@@ -33,6 +33,7 @@ class UIMainController: UBaseViewController {
     var city: String!
     
     var bannerList:[banner_list]! //banner图列表
+    var navIconList:[nav_icon_list]! // 分类导航列表
     var couponList:[coupon_list]!
     var limitedList:miaosha! //限时抢购列表
     var hotGoodsList:[recommend_goods]! //爆款热卖列表
@@ -66,6 +67,7 @@ class UIMainController: UBaseViewController {
     
     override func configUI() {
         self.tableView.uFoot = URefreshFooter { [weak self] in self?.getFeaturedData() }
+        self.tableView.uempty = UEmptyView { [weak self] in self?.getMainData() }
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -76,13 +78,19 @@ class UIMainController: UBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        city = UserDefaults.standard.string(forKey: "Main_City") ?? "陆丰市"
+        city = getCity()
         getMainData()
+    }
+    
+    /// 从url中获取CatId
+    func getCatId(_ url: String) -> String{
+        let indexEqual = url.index(url.lastIndex(of: "=")!, offsetBy: 1)
+        return String(url[indexEqual..<url.endIndex])
     }
     
     /// 获取首页数据
     func getMainData() {
-        
+        tableView.uempty?.allowShow = true
         service.getMainData(district: city, { (Model) in
             if Model.data == nil {
                 showHUDInView(text: "没有数据", inView: self.view)
@@ -90,10 +98,15 @@ class UIMainController: UBaseViewController {
             }
             self.currentPage = 1
             self.bannerList = Model.data?.banner_list
+            self.navIconList = Model.data?.nav_icon_list
             self.limitedList = Model.data?.miaosha
             self.hotGoodsList = Model.data?.recommend_goods
             self.superBrandList = Model.data?.new_mch_list
-            self.cells = [.search, .banner, .classification, .limited, .hot, .superbrand]
+            if (self.limitedList.goods_list?.isEmpty ?? true){
+                self.cells = [.search, .banner, .classification, .hot, .superbrand]
+            } else {
+                self.cells = [.search, .banner, .classification, .limited, .hot, .superbrand]
+            }
             self.getFeaturedData(true)
             
         }) { (APIErrorModel) in
@@ -201,19 +214,28 @@ extension UIMainController : UITableViewDelegate, UITableViewDataSource {
         case .classification:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UMainClassificationCell.self)
             cell.buildingMaterialsAction = {
-                showHUDInView(text: "建材", inView: self.view)
                 let vc = UIStoreAndGoodsCategoriesControllerViewController()
-                vc.title = "建材"
+                vc.title = self.navIconList![0].name
+                vc.cat_id = self.getCatId(self.navIconList![0].url)
                 self.pushViewController(vc, animated: true)
             }
             cell.residentialFurnitureAction = {
-                showHUDInView(text: "住宅家具", inView: self.view)
+                let vc = UIStoreAndGoodsCategoriesControllerViewController()
+                vc.title = self.navIconList![1].name
+                vc.cat_id = self.getCatId(self.navIconList![1].url)
+                self.pushViewController(vc, animated: true)
             }
             cell.domesticInstallationAction = {
-                showHUDInView(text: "家政安装", inView: self.view)
+                let vc = UIStoreAndGoodsCategoriesControllerViewController()
+                vc.title = self.navIconList![2].name
+                vc.cat_id = self.getCatId(self.navIconList![2].url)
+                self.pushViewController(vc, animated: true)
             }
             cell.householdAppliancesAction = {
-                showHUDInView(text: "家用电器", inView: self.view)
+                let vc = UIStoreAndGoodsCategoriesControllerViewController()
+                vc.title = self.navIconList![3].name
+                vc.cat_id = self.getCatId(self.navIconList![3].url)
+                self.pushViewController(vc, animated: true)
             }
             cell.toViewMoreAction = {
                 let vc = UIAllCategoriesController()

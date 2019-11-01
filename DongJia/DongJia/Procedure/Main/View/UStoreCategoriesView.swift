@@ -11,11 +11,20 @@ import JXSegmentedView
 import ZLCollectionViewFlowLayout
 
 class UStoreCategoriesView: BaseView {
-    let view = UIView().then{
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 7
-        $0.layer.masksToBounds = true
+    
+    private var service = APIMainService()
+    
+    private var cat_id: String = ""
+    
+    var currentPage = 1 // 当前精选的页数
+    var pageCount = 0 // 精选的总页数
+    /// 当前是否已经是精选列表的最大页数
+    var isMaxPage: Bool{
+        get {
+            return currentPage >= pageCount
+        }
     }
+    
     /// 综合排序
     let comprehensiveSort = UIButton().then{
         $0.backgroundColor = .white
@@ -23,6 +32,7 @@ class UStoreCategoriesView: BaseView {
         $0.setTitleColor(.theme, for: .selected)
         $0.setTitleColor(.hex(hexString: "#333333"), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 13)
+        $0.isSelected = true
     }
     /// 销量排序
     let salesVolumeSort = QMUIButton().then{
@@ -31,8 +41,6 @@ class UStoreCategoriesView: BaseView {
         $0.setTitleColor(.theme, for: .selected)
         $0.setTitleColor(.hex(hexString: "#333333"), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 13)
-        $0.setImage(UIImage.init(named: "normol_sort"), for: .normal)
-        $0.imagePosition = .right
     }
     /// 最新排序
     let latestSort = UIButton().then{
@@ -45,52 +53,42 @@ class UStoreCategoriesView: BaseView {
     
     var storeListView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init()).then{
         $0.showsVerticalScrollIndicator = false
-        $0.layer.cornerRadius = 4
-        $0.layer.masksToBounds = true
         $0.backgroundColor = .white
-        $0.isHidden = true
         $0.register(cellType: USuperBrandCell.self)
     }
     
     let layout = ZLCollectionViewVerticalLayout().then{
-        $0.scrollDirection = .vertical //设置滚动方向
-        $0.estimatedItemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
-        $0.itemSize = CGSize(width: collectionCellWidth, height: 213)//设置cell的大小
-        $0.sectionInset = UIEdgeInsets.init(top: 15, left: 0, bottom: 15, right: 0)
+        $0.estimatedItemSize = CGSize(width: screenWidth-30, height: 202)//设置cell的大小
+        $0.itemSize = CGSize(width: screenWidth-30, height: 202)//设置cell的大小
+        $0.sectionInset = UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
         
         $0.canDrag = true
         $0.header_suspension = false
     }
     
-    var storeListData: [String]?{
+    var storeListData: [cat_mch_list_model]?{
         didSet{
+            guard storeListData != nil else { return }
+            storeListView.uempty?.allowShow = true
             storeListView.reloadData()
         }
     }
     
-    /// 判断升降排序 升true 降false 未选中nil
-    var upOrDown: Bool? {
-        didSet{
-            guard let isUp = upOrDown else {
-                salesVolumeSort.isSelected = false
-                return
-            }
-            salesVolumeSort.isSelected = true
-            salesVolumeSort.setImage(UIImage.init(named: isUp ? "ascending_sort" : "descending_sort"), for: .selected)
-        }
+    init(catId: String) {
+        cat_id = catId
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func configUI() {
         
-        
-        self.backgroundColor = .theme
-        self.addSubview(view)
-        view.addSubview(comprehensiveSort)
-        view.addSubview(salesVolumeSort)
-        view.addSubview(latestSort)
+        self.addSubview(comprehensiveSort)
+        self.addSubview(salesVolumeSort)
+        self.addSubview(latestSort)
         self.addSubview(storeListView)
-        
-        
         
         comprehensiveSort.addTarget(self, action: #selector(comprehensiveSortAction), for: .touchUpInside)
         salesVolumeSort.addTarget(self, action: #selector(salesVolumeSortAction), for: .touchUpInside)
@@ -100,11 +98,8 @@ class UStoreCategoriesView: BaseView {
         storeListView.collectionViewLayout = layout
         storeListView.delegate = self
         storeListView.dataSource = self
-        
-        view.snp.makeConstraints { (make) in
-            make.top.width.equalToSuperview()
-            make.height.equalTo(50)
-        }
+        storeListView.uFoot = URefreshFooter { [weak self] in self?.getCatStoreList() }
+        storeListView.uempty = UEmptyView { [weak self] in self?.getCatStoreList() }
         
         //MARK:综合排序
         comprehensiveSort.snp.makeConstraints { (make) in
@@ -129,35 +124,67 @@ class UStoreCategoriesView: BaseView {
         //MARK:店铺列表
         storeListView.snp.makeConstraints { (make) in
             make.top.equalTo(salesVolumeSort.snp.bottom)
-            make.width.bottom.equalToSuperview()
+            make.width.left.bottom.equalToSuperview()
+            make.height.equalTo(42)
         }
         
+        getCatStoreList()
+        
+    }
+    
+    /// 获取该分类下的商家列表
+    func getCatStoreList(){
+        var sort = 0
+        if (comprehensiveSort.isSelected){
+            sort = 1
+        } else if (latestSort.isSelected){
+            sort = 3
+        } else {
+            sort = 2
+        }
+        
+        service.catMchList(district: getCity(), cat_id: cat_id, sort: sort, page: currentPage, { (CatStoreList) in
+            self.pageCount = CatStoreList.data.page_count
+            
+            if (self.currentPage == 1){
+                self.storeListData = CatStoreList.data.list
+            } else {
+                self.storeListData?.append(contentsOf: CatStoreList.data.list)
+            }
+            if (self.isMaxPage) {
+                self.storeListView.uFoot.endRefreshingWithNoMoreData()
+            } else {
+                self.currentPage += 1
+                self.storeListView.uFoot.endRefreshing()
+            }
+        }) { (APIErrorModel) in
+            
+        }
     }
     
     // 综合排序点击
     @IBAction func comprehensiveSortAction(){
         comprehensiveSort.isSelected = true
-        upOrDown = nil
+        salesVolumeSort.isSelected = false
         latestSort.isSelected = false
-        showHUDInView(text: "综合排序点击", inView: topVC!.view, isClick: true)
+        currentPage = 1
+        getCatStoreList()
     }
     // 销量排序点击
     @IBAction func salesVolumeSortAction(){
         comprehensiveSort.isSelected = false
+        salesVolumeSort.isSelected = true
         latestSort.isSelected = false
-        if (upOrDown == nil) {
-            upOrDown = true
-        } else {
-            upOrDown = !(upOrDown!)
-        }
-        showHUDInView(text: "销量排序点击", inView: topVC!.view, isClick: true)
+        currentPage = 1
+        getCatStoreList()
     }
     // 最新排序点击
     @IBAction func latestSortAction(){
         comprehensiveSort.isSelected = false
-        upOrDown = nil
+        salesVolumeSort.isSelected = false
         latestSort.isSelected = true
-        showHUDInView(text: "最新排序点击", inView: topVC!.view, isClick: true)
+        currentPage = 1
+        getCatStoreList()
     }
 
 }
@@ -182,7 +209,27 @@ extension UStoreCategoriesView: UICollectionViewDelegate, UICollectionViewDataSo
     //MARK:返回每个Item的cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: USuperBrandCell.self)
-
+        cell.catStoreData = storeListData![indexPath.item]
+        
+        cell.goods1Action = {
+            //商品详情跳转
+            let vc = UIGoodsDetailController()
+            vc.goodsId = self.storeListData![indexPath.item].goods_list[0].id
+            topVC?.navigationController?.pushViewController(vc, animated: true)
+        }
+        cell.goods2Action = {
+            //商品详情跳转
+            let vc = UIGoodsDetailController()
+            vc.goodsId = self.storeListData![indexPath.item].goods_list[1].id
+            topVC?.navigationController?.pushViewController(vc, animated: true)
+        }
+        cell.goods3Action = {
+            //商品详情跳转
+            let vc = UIGoodsDetailController()
+            vc.goodsId = self.storeListData![indexPath.item].goods_list[2].id
+            topVC?.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         return cell
     }
     

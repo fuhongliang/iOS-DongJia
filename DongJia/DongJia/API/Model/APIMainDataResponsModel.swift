@@ -16,9 +16,12 @@ class APIMainDataResponsModel: Codable {
 struct APIMainDataModel: Codable {
     var new_user: Int
     var module_list: [module_list]
-    var store: store /// 平台信息
-    var banner_list: [banner_list] /// 轮播图列表
-    var nav_icon_list: [nav_icon_list] /// 分类图标列表
+    /// 平台信息
+    var store: store
+    /// 轮播图列表
+    var banner_list: [banner_list]
+    /// 分类图标列表
+    var nav_icon_list: [nav_icon_list]
     var cat_goods_cols: Int
     var cat_list: [String]
     var block_list: [block_list]

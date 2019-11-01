@@ -46,6 +46,16 @@ func checkLoginState(_ login:() -> ()){
     }
 }
 
+/// 保存当前选中的城市
+func saveCity(_ cityName: String){
+    UserDefaults.standard.set(cityName, forKey: "Main_City")
+}
+
+/// 取出存储的城市
+func getCity() -> String{
+    return UserDefaults.standard.string(forKey: "Main_City") ?? "陆丰市"
+}
+
 /// 时间戳转日期时间
 func dateForMatter(timeString:Int, join:String) -> String{
     let timeInterval = TimeInterval(timeString)

@@ -45,5 +45,7 @@ class APIUser {
         user = nil
         UserDefaults.standard.set("", forKey: "MYiMei_USER")
     }
+    
+   
 
 }

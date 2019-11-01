@@ -13,7 +13,7 @@ protocol UAllCategoriesViewDelegate {
     /// 一级分类点击
     func primaryClassificationClick(_ index: Int)
     /// 二级分类点击
-    func secondaryClassificationClick()
+    func secondaryClassificationClick(section: Int, item: Int)
 }
 
 class UAllCategoriesView: BaseView {
@@ -108,7 +108,7 @@ extension UAllCategoriesView: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.secondaryClassificationClick()
+        delegate?.secondaryClassificationClick(section: selectPrimary, item: indexPath.item)
     }
     
 }

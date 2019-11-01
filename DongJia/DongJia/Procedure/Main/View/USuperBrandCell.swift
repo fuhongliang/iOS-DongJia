@@ -143,7 +143,7 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods1(){
-        guard data?.goods_list.count ?? 0 > 0 else { return }
+        guard (data?.goods_list.count ?? 0 > 0 || catStoreData?.goods_list.count ?? 0 > 0) else { return }
         
         contentView.addSubview(goods1BgView)
         goods1BgView.addSubview(goods1PicView)
@@ -151,9 +151,29 @@ class USuperBrandCell: UBaseCollectionViewCell {
         goods1BgView.addSubview(goods1CurrentPrice)
         goods1BgView.addSubview(goods1Btn)
         
-        goods1PicView.load(data!.goods_list[0].cover_pic)
-        goods1BeforePrice.text = data!.goods_list[0].original_price
-        goods1CurrentPrice.text = data?.goods_list[0].price
+        var coverPic = ""
+        if(data != nil){
+            coverPic = data!.goods_list[0].cover_pic
+        } else {
+            coverPic = catStoreData!.goods_list[0].cover_pic
+        }
+        goods1PicView.load(coverPic)
+        
+        var originalPrice = ""
+        if(data != nil){
+            originalPrice = data!.goods_list[0].original_price
+        } else {
+            originalPrice = catStoreData!.goods_list[0].original_price
+        }
+        goods1BeforePrice.text = originalPrice
+        
+        var price = ""
+        if(data != nil){
+            price = data!.goods_list[0].price
+        } else {
+            price = catStoreData!.goods_list[0].price
+        }
+        goods1CurrentPrice.text = price
         
         //MARK:商品1白色背景
         goods1BgView.snp.makeConstraints { (make) in
@@ -189,7 +209,7 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods2(){
-        guard data?.goods_list.count ?? 0 > 1 else { return }
+        guard (data?.goods_list.count ?? 0 > 1 || catStoreData?.goods_list.count ?? 0 > 1) else { return }
         
         contentView.addSubview(goods2BgView)
         goods2BgView.addSubview(goods2PicView)
@@ -197,9 +217,33 @@ class USuperBrandCell: UBaseCollectionViewCell {
         goods2BgView.addSubview(goods2CurrentPrice)
         goods2BgView.addSubview(goods2Btn)
         
-        goods2PicView.load(data!.goods_list[1].cover_pic)
-        goods2BeforePrice.text = data!.goods_list[1].original_price
-        goods2CurrentPrice.text = data?.goods_list[1].price
+        var coverPic = ""
+        if(data != nil){
+            coverPic = data!.goods_list[1].cover_pic
+        } else {
+            coverPic = catStoreData!.goods_list[1].cover_pic
+        }
+        goods2PicView.load(coverPic)
+        
+        var originalPrice = ""
+        if(data != nil){
+            originalPrice = data!.goods_list[1].original_price
+        } else {
+            originalPrice = catStoreData!.goods_list[1].original_price
+        }
+        goods2BeforePrice.text = originalPrice
+        
+        var price = ""
+        if(data != nil){
+            price = data!.goods_list[1].price
+        } else {
+            price = catStoreData!.goods_list[1].price
+        }
+        goods2CurrentPrice.text = price
+        
+//        goods2PicView.load(data!.goods_list[1].cover_pic)
+//        goods2BeforePrice.text = data!.goods_list[1].original_price
+//        goods2CurrentPrice.text = data?.goods_list[1].price
         
         //MARK:商品2白色背景
         goods2BgView.snp.makeConstraints { (make) in
@@ -235,7 +279,7 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods3(){
-        guard data?.goods_list.count ?? 0 > 2 else { return }
+        guard (data?.goods_list.count ?? 0 > 2 || catStoreData?.goods_list.count ?? 0 > 2) else { return }
         
         contentView.addSubview(goods3BgView)
         goods3BgView.addSubview(goods3PicView)
@@ -243,9 +287,33 @@ class USuperBrandCell: UBaseCollectionViewCell {
         goods3BgView.addSubview(goods3CurrentPrice)
         goods3BgView.addSubview(goods3Btn)
         
-        goods3PicView.load(data!.goods_list[2].cover_pic)
-        goods3BeforePrice.text = data!.goods_list[2].original_price
-        goods3CurrentPrice.text = data?.goods_list[2].price
+        var coverPic = ""
+        if(data != nil){
+            coverPic = data!.goods_list[2].cover_pic
+        } else {
+            coverPic = catStoreData!.goods_list[2].cover_pic
+        }
+        goods3PicView.load(coverPic)
+        
+        var originalPrice = ""
+        if(data != nil){
+            originalPrice = data!.goods_list[2].original_price
+        } else {
+            originalPrice = catStoreData!.goods_list[2].original_price
+        }
+        goods3BeforePrice.text = originalPrice
+        
+        var price = ""
+        if(data != nil){
+            price = data!.goods_list[2].price
+        } else {
+            price = catStoreData!.goods_list[2].price
+        }
+        goods3CurrentPrice.text = price
+        
+//        goods3PicView.load(data!.goods_list[2].cover_pic)
+//        goods3BeforePrice.text = data!.goods_list[2].original_price
+//        goods3CurrentPrice.text = data?.goods_list[2].price
         
         //MARK:商品3白色背景
         goods3BgView.snp.makeConstraints { (make) in
@@ -289,6 +357,7 @@ class USuperBrandCell: UBaseCollectionViewCell {
         goods3Action?()
     }
     
+    /// 首页中的cell数据填充
     var data: new_mch_list? {
         didSet {
             guard let data = data else { return }
@@ -296,6 +365,21 @@ class USuperBrandCell: UBaseCollectionViewCell {
             bgPicView.load(data.header_bg)
             shopName.text = data.mch_name
             shopIcon.load(data.mch_logo)
+            
+            configGoods1()
+            configGoods2()
+            configGoods3()
+        }
+    }
+    
+    /// 分类中的cell数据填充
+    var catStoreData: cat_mch_list_model? {
+        didSet {
+            guard let catStoreData = catStoreData else { return }
+            bgColorView.backgroundColor = UIColor.hex(hexString: catStoreData.mch_color)
+            bgPicView.load(catStoreData.header_bg)
+            shopName.text = catStoreData.mch_name
+            shopIcon.load(catStoreData.logo)
             
             configGoods1()
             configGoods2()
