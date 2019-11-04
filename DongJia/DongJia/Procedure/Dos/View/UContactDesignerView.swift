@@ -148,9 +148,9 @@ class UContactDesignerView: BaseView {
     }
     
     @objc func tapCommitMessageAction(){
-        let name = contactName.text ?? ""
-        let phone = contactPhone.text ?? ""
-        let message = question.text ?? ""
+        let name = String(contactName.text ?? "")
+        let phone = String(contactPhone.text ?? "")
+        let message = String(question.text ?? "")
         delegate?.commitMessage(name: name, phone: phone, question: message)
     }
     

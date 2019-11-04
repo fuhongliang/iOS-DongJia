@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 protocol UDosDetailViewDelegate {
     func contactDesignerAction()
@@ -71,22 +72,27 @@ class UDosDetailView: BaseView {
         $0.text = "联系设计师"
     }
     
+    let scrollView = UIScrollView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: screenHeight)).then{
+        $0.showsVerticalScrollIndicator = false //是否显示滚动条
+        $0.backgroundColor = .white
+        $0.bounces = true //设置是否可以拉出空白区域
+        $0.isScrollEnabled = true //设置允许滑动
+    }
+    
+    var webContent: WKWebView!
     override func configUI() {
-        dosImg.image = UIImage.init(named: "todo_img")
-        dosAuthorIcon.image = UIImage.init(named: "default_icon")
-        dosAuthorName.text = "Alice_Arisu"
-        dosTitle.text = "小姐姐的艺术公寓之：假装在北欧"
-        releaseTime.text = "10分钟前"
-        model =  " 二室二厅装修装饰布置必须确定布局的房子结构是否 合理，这将直接影响后期使用效果和生活质量。例如 隔音效果好的房间用作房间，客厅如何减少门的开启 确定厨房和炊具的位置，展示物品的选择，阳台是否 开放。在二室二厅装修过程中应遵循：使用尽可能多 的壁橱，吊柜和角柜作为改善，尽可能的利用空间， 尽可能考虑自然采光，考虑预埋水，电，通讯，有线 电视，音频等。 二室二厅装修装饰布置必须确定布局的房子结构是否 合理，这将直接影响后期使用效果和生活质量。例如 隔音效果好的房间用作房间，客厅如何减少门的开启 确定厨房和炊具的位置，展示物品的选择，阳台是否 开放。在二室二厅装修过程中应遵循：使用尽可能多 的壁橱，吊柜和角柜作为改善，尽可能的利用空间， 尽可能考虑自然采光，考虑预埋水，电，通讯，有线 电视，音频等。 二室二厅装修装饰布置必须确定布局的房子结构是否 合理，这将直接影响后期使用效果和生活质量。例如 隔音效果好的房间用作房间，客厅如何减少门的开启 确定厨房和炊具的位置，展示物品的选择，阳台是否 开放。在二室二厅装修过程中应遵循：使用尽可能多 的壁橱，吊柜和角柜作为改善，尽可能的利用空间， 尽可能考虑自然采光，考虑预埋水，电，通讯，有线 电视，音频等。 二室二厅装修装饰布置必须确定布局的房子结构是否 合理，这将直接影响后期使用效果和生活质量。例如 隔音效果好的房间用作房间，客厅如何减少门的开启 确定厨房和炊具的位置，展示物品的选择，阳台是否 开放。在二室二厅装修过程中应遵循：使用尽可能多 的壁橱，吊柜和角柜作为改善，尽可能的利用空间， 尽可能考虑自然采光，考虑预埋水，电，通讯，有线 电视，音频等。 二室二厅装修装饰布置必须确定布局的房子结构是否 合理，这将直接影响后期使用效果和生活质量。例如 隔音效果好的房间用作房间，客厅如何减少门的开启 确定厨房和炊具的位置，展示物品的选择，阳台是否 开放。在二室二厅装修过程中应遵循：使用尽可能多 的壁橱，吊柜和角柜作为改善，尽可能的利用空间， 尽可能考虑自然采光，考虑预埋水，电，通讯，有线 电视，音频等。 二室二厅装修装饰布置必须确定布局的房子结构是否 合理，这将直接影响后期使用效果和生活质量。例如 隔音效果好的房间用作房间，客厅如何减少门的开启 确定厨房和炊具的位置，展示物品的选择，阳台是否 开放。在二室二厅装修过程中应遵循：使用尽可能多 的壁橱，吊柜和角柜作为改善，尽可能的利用空间， 尽可能考虑自然采光，考虑预埋水，电，通讯，有线 电视，音频等。 "
         
-        let scrollView = UIScrollView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: screenHeight)).then{
-            $0.showsVerticalScrollIndicator = false //是否显示滚动条
-            $0.backgroundColor = .white
-            $0.bounces = true //设置是否可以拉出空白区域
-            $0.isScrollEnabled = true //设置允许滑动
-
-        }
         
+        let js = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta); var imgs = document.getElementsByTagName('img');for (var i in imgs){imgs[i].style.maxWidth='100%';imgs[i].style.height='auto';}"
+        let wkUScript = WKUserScript.init(source: js, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
+        let wkUController = WKUserContentController()
+        wkUController.addUserScript(wkUScript)
+        let wkWebConfig = WKWebViewConfiguration()
+        wkWebConfig.userContentController = wkUController
+        
+        /// 商品详情加载WebView
+        webContent = WKWebView(frame: .zero, configuration: wkWebConfig)
+        webContent.scrollView.bounces = false
         self.addSubview(scrollView)
         
         scrollView.addSubview(dosImg)
@@ -95,9 +101,11 @@ class UDosDetailView: BaseView {
         scrollView.addSubview(dosTitle)
         scrollView.addSubview(releaseTime)
         scrollView.addSubview(line)
-        scrollView.addSubview(dosDetailText)
         scrollView.addSubview(bottomWhiteBgView)
         scrollView.addSubview(bottomGrayBgView)
+        
+        scrollView.addSubview(webContent)
+        webContent.navigationDelegate = self
         
         self.addSubview(goBack)
         goBack.addTarget(self, action: #selector(tapGoBack), for: .touchUpInside)
@@ -150,19 +158,17 @@ class UDosDetailView: BaseView {
             make.top.equalTo(releaseTime.snp.bottom).offset(15)
             make.height.equalTo(2)
         }
-        //MARK:方案内容文本
-        dosDetailText.snp.makeConstraints { (make) in
+        webContent.snp.makeConstraints { (make) in
             make.top.equalTo(line.snp.bottom).offset(16)
             make.width.equalToSuperview().inset(15.5)
             make.centerX.equalToSuperview()
+            make.height.equalTo(50)
         }
-        
         //MARK:详情文本下白色背景高度占位
         bottomWhiteBgView.snp.makeConstraints { (make) in
             make.left.width.equalToSuperview()
             make.height.equalTo(13.5)
-            make.top.equalTo(dosDetailText.snp.bottom)
-            make.left.equalToSuperview()
+            make.top.equalTo(webContent.snp.bottom)
         }
         //MARK:scrollView底部灰色占位图
         bottomGrayBgView.snp.makeConstraints { (make) in
@@ -204,11 +210,40 @@ class UDosDetailView: BaseView {
         delegate?.contactDesignerAction()
     }
     
-    var model: String? {
+    var model: dos_case_detail? {
         didSet{
             guard let model = model else { return }
-            dosDetailText.setTextAndLineSpacing(text:model, space:15)
+            webContent.loadHTMLString(model.content, baseURL: nil)
+            dosImg.load(model.cover_pic)
+            dosAuthorIcon.load(model.author_logo)
+            dosAuthorName.text = model.author
+            dosTitle.text = model.title
+            releaseTime.text = model.addtime
         }
     }
+    
+}
 
+extension UDosDetailView: WKNavigationDelegate{
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        var high: Int?
+        webView.evaluateJavaScript("document.body.scrollHeight") { (obj, error) in
+            guard let height = obj as? Int else { return }
+            high = height
+                self.webContent.snp.remakeConstraints{ (make) in
+                    make.top.equalTo(self.line.snp.bottom).offset(16)
+                    make.width.equalToSuperview().inset(15.5)
+                    make.centerX.equalToSuperview()
+                    make.height.equalTo(height+15)
+                }
+        }
+        /// 当确认页面加载完成时通知TableView修改Cell高度
+        self.webContent.evaluateJavaScript("document.readyState") { (obj, complete) in
+            if obj as? String == "complete" && !self.webContent.isLoading{
+                print("计算完成  高度:\(high ?? 0)")
+                self.webContent.layoutIfNeeded()
+
+            }
+        }
+    }
 }

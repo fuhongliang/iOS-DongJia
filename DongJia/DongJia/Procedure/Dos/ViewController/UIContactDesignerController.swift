@@ -10,6 +10,10 @@ import UIKit
 
 class UIContactDesignerController: UBaseViewController {
     
+    var topicId: String = ""
+    
+    private let service = APIDosServices()
+    
     var designerView = UContactDesignerView()
     
     override func configUI() {
@@ -28,10 +32,15 @@ extension UIContactDesignerController: UContactDesignerViewDelegate{
             showHUDInView(text: "请完善联系方式", inView: self.view)
             return
         }
-        
-        showAlert(title: "提交成功", subTitle: "name:\(name) \n phone:\(phone) \n message:\(question) \n 请保持电话通畅,设计师将与您电话联系"){ (alert) in
-            alert.addButton("知道了", textColor: .theme){
-                self.pressBack()
+        checkLoginState {
+            service.contactDesigner(contact: "\(name)", message: "\(question)", telephone: "\(phone)", topic_id: topicId, { (APIObjectModel) in
+                showAlert(title: "提交成功", subTitle: "请保持电话通畅,设计师将与您电话联系"){ (alert) in
+                    alert.addButton("知道了", textColor: .theme){
+                        self.pressBack()
+                    }
+                }
+            }) { (APIErrorModel) in
+                
             }
         }
         

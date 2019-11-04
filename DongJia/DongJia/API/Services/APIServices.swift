@@ -101,7 +101,11 @@ enum NetApi {
     /// 添加收藏商品
     case addCollectionGoods(param: [String:Any])
     /// 家装方案列表
-    case dosCase(param: [String:Any])
+    case dosCaseList(param: [String:Any])
+    /// 家装方案详情
+    case dosCaseDetail(param: [String:Any])
+    /// 联系设计师
+    case contactDesigner(param: [String:Any])
 }
 
 //MARK: 请求对象的封装
@@ -168,16 +172,20 @@ extension NetApi: TargetType {
             return "/index.php?r=api/user/favorite-list"
         case .addCollectionGoods:
             return "/index.php?r=api/user/favorite-add"
-        case .dosCase:
+        case .dosCaseList:
             return "/index.php?r=api/default/topic-list"
+        case .dosCaseDetail:
+            return "/index.php?r=api/default/topic"
+        case .contactDesigner:
+            return "/index.php?r=api/user/create-user-message"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.catList,.catGoodsList,.catMchList,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign,.collectionList,.dosCase:
+        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.catList,.catGoodsList,.catMchList,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign,.collectionList,.dosCaseList,.dosCaseDetail:
             return .get
-        case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress,.submitOrder,.addCollectionGoods:
+        case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress,.submitOrder,.addCollectionGoods,.contactDesigner:
             return .post
         }
     }
@@ -187,6 +195,7 @@ extension NetApi: TargetType {
         return Data()
     }
 
+    
     var task: Task {
         switch self {
         case .getMainData(let param):
@@ -243,8 +252,12 @@ extension NetApi: TargetType {
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .addCollectionGoods(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
-        case .dosCase(let param):
+        case .dosCaseList(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .dosCaseDetail(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .contactDesigner(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
         }
         
     }
@@ -254,7 +267,7 @@ extension NetApi: TargetType {
             "Content-Type":"application/json"
         ]
         switch self {
-        case .addOrEditAddress,.submitOrder:
+        case .addOrEditAddress,.submitOrder,.contactDesigner:
             dict["Content-Type"] = "application/x-www-form-urlencoded"
             return dict
         default:

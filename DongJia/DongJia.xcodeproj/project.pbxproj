@@ -93,6 +93,7 @@
 		DC56BC8B233872770089EE61 /* APIMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8A233872770089EE61 /* APIMainService.swift */; };
 		DC56BC8D2338732C0089EE61 /* APIMainDataResponsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */; };
 		DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC56BC8E2338E2B90089EE61 /* URLExtension.swift */; };
+		DC5C4AB7236FC758006879AD /* APIDosCaseDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5C4AB6236FC758006879AD /* APIDosCaseDetailResponseModel.swift */; };
 		DC6133A32333205000C52E9F /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A22333205000C52E9F /* NSObjectExtension.swift */; };
 		DC6133A82333377F00C52E9F /* UMineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A72333377F00C52E9F /* UMineView.swift */; };
 		DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6133A923335B6000C52E9F /* UIMineController.swift */; };
@@ -296,6 +297,7 @@
 		DC56BC8A233872770089EE61 /* APIMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMainService.swift; sourceTree = "<group>"; };
 		DC56BC8C2338732C0089EE61 /* APIMainDataResponsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMainDataResponsModel.swift; sourceTree = "<group>"; };
 		DC56BC8E2338E2B90089EE61 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		DC5C4AB6236FC758006879AD /* APIDosCaseDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDosCaseDetailResponseModel.swift; sourceTree = "<group>"; };
 		DC6133A22333205000C52E9F /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		DC6133A72333377F00C52E9F /* UMineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMineView.swift; sourceTree = "<group>"; };
 		DC6133A923335B6000C52E9F /* UIMineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMineController.swift; sourceTree = "<group>"; };
@@ -909,6 +911,7 @@
 				DC2B69AF236BD1F0006A78E8 /* APICatMchListResponseModel.swift */,
 				DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */,
 				DC2B69B7236C4147006A78E8 /* APIDosListResponseModel.swift */,
+				DC5C4AB6236FC758006879AD /* APIDosCaseDetailResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1363,6 +1366,7 @@
 				DC30ADE12360456800B21725 /* APIAddressServices.swift in Sources */,
 				DC1E77F5234EC670005765F0 /* UStoreHotRecommendCell.swift in Sources */,
 				DC34A659233E08490042EEA8 /* UPicCell.swift in Sources */,
+				DC5C4AB7236FC758006879AD /* APIDosCaseDetailResponseModel.swift in Sources */,
 				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,
 				DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,

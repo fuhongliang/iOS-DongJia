@@ -118,7 +118,9 @@ extension UIDosController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushViewController(UIDosDetailController(), animated: true)
+        let vc = UIDosDetailController()
+        vc.dosCaseId = data![indexPath.section].id
+        pushViewController(vc, animated: true)
     }
     
     

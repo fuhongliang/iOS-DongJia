@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 
+/// webView的加载完成回调
 protocol UGoodsDetailWKWebViewHeightCallBack {
     func wkWebViewHeightCallBack(height: CGFloat)
 }
@@ -64,6 +65,7 @@ class UGoodsDetailWKWebViewCell: UBaseTableViewCell {
         }
     }
     
+    /// 当前是否加载完成
     var isWebReload: Bool = false
 
 }
@@ -76,12 +78,10 @@ extension UGoodsDetailWKWebViewCell: WKNavigationDelegate{
             if !self.isWebReload {
                 self.wkWebView.snp.makeConstraints { (make) in
                     make.top.equalTo(self.goodsDetailLabel.snp.bottom).offset(15)
-                    //TODO 保存一个高度约束  动态返回时  在改变
+                    //修改计算得到的高度
                     make.height.equalTo(height)
-                    make.width.left.equalToSuperview()
-                    make.bottom.equalToSuperview()
+                    make.width.left.bottom.equalToSuperview()
                 }
-            
             }
         }
         /// 当确认页面加载完成时通知TableView修改Cell高度
@@ -90,7 +90,7 @@ extension UGoodsDetailWKWebViewCell: WKNavigationDelegate{
                 if !self.isWebReload {
                     // 第一次计算高度完成通知后  后续则不再刷新高度
                     self.heightDelegate?.wkWebViewHeightCallBack(height: CGFloat(high ?? 0))
-                     self.isWebReload = true
+                    self.isWebReload = true
                 }
             }
         }
