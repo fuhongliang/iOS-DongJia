@@ -91,7 +91,7 @@ class UIConfirmOrderController: UBaseViewController {
     func submitOrder(payment: Int){
         service.submitOrder(address_id: addressId, cart_id_list: toJson(cart_id_list ?? []), mch_list: mch_list ?? "", payment: payment, { (SubmitOrderData) in
             self.confirmOrderView.postOrder.isEnabled = false
-                self.obtainOrderPaySign(orderId: SubmitOrderData.data?.order_id, orderListId: SubmitOrderData.data?.order_id_list)
+            self.obtainOrderPaySign(orderId: SubmitOrderData.data?.order_id, orderListId: SubmitOrderData.data?.order_id_list)
         }) { (APIErrorModel) in
             
         }
@@ -133,7 +133,6 @@ extension UIConfirmOrderController: UConfirmOrderViewProtocol, UIConfirmOrderCon
     // 选择地址回调
     func setAddress(address: address_model) {
         self.previewData?.address = address
-        
     }
     
     // 提交订单
