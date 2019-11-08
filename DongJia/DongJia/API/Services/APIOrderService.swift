@@ -12,7 +12,7 @@ protocol APIOrderServiceProtocol {
     
     func submitPreView(cart_id_list: [Int], mch_list: String, goods_info: String, _ success: @escaping(((APIOrderSubmitViewResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
-    func submitOrder(address_id: String, cart_id_list: String, mch_list: String, payment: Int, _ success: @escaping(((APISubmitOrderResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    func submitOrder(address_id: String, cart_id_list: String, mch_list: String, payment: Int, goods_info: String, _ success: @escaping(((APISubmitOrderResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
     func obtainOrderPaySign(order_id: Int?, order_id_list: [Int]?, _ success: @escaping(((APIOrderPayDataResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
@@ -55,7 +55,8 @@ class APIOrderService: APIOrderServiceProtocol{
     ///     - cart_id_list: 自营商品 购物车ID
     ///     - mch_lsit: 商家商品 商家ID,购物车ID
     ///     - payment: 支付方式 0 微信支付 1 余额支付
-    func submitOrder(address_id: String, cart_id_list: String, mch_list: String, payment: Int, _ success: @escaping (((APISubmitOrderResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+    ///     - goods_info: 商品信息 (必填)
+    func submitOrder(address_id: String, cart_id_list: String, mch_list: String, payment: Int, goods_info: String, _ success: @escaping (((APISubmitOrderResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
         let param: [String:Any] = [
             "access_token": APIUser.shared.user!.access_token,
             "store_id": 4,
@@ -64,7 +65,8 @@ class APIOrderService: APIOrderServiceProtocol{
             "address_id": address_id,
             "cart_id_list": cart_id_list,
             "mch_list": mch_list,
-            "payment": payment
+            "payment": payment,
+            "goods_info": goods_info
         ]
         APIService.shared.request(.submitOrder(param: param), { (data) in
             do {

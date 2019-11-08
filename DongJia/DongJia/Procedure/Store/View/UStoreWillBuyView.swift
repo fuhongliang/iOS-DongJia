@@ -34,7 +34,7 @@ class UStoreWillBuyView: BaseView {
     }
     
     override func configUI() {
-        self.backgroundColor = .background
+        backgroundColor = .background
         self.addSubview(view)
         view.addSubview(titleLabel)
         //MARK:标题
@@ -74,8 +74,7 @@ class UStoreWillBuyView: BaseView {
     
     func setData(){
         //更新collectionView的高度约束
-        
-        let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
+        let contentSize = collectionView.collectionViewLayout.collectionViewContentSize
         heightConstraint?.update(offset: contentSize.height)
     }
     

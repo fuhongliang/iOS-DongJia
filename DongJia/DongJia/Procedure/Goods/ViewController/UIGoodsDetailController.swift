@@ -275,7 +275,7 @@ extension UIGoodsDetailController: UIGoodsDetailControllerDelegate{
             let vc = UIConfirmOrderController()
             vc.title = "确认订单"
             vc.goodsInfo = generateGoodsInfo(num: num)
-            vc.mch_list = toJson([["id":self.goodsData.mch.id]])
+//            vc.mch_list = toJson([["id":self.goodsData.mch.id]])
             self.pushViewController(vc, animated: true)
         default:
             self.goodsDetailView.tableView.reloadRows(at: [IndexPath(row: 0, section: cells.firstIndex(of: .selectAttr)!)], with: .none)

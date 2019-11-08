@@ -77,6 +77,7 @@ class UIConfirmOrderController: UBaseViewController {
         service.submitPreView(cart_id_list: cart_id_list ?? [], mch_list: mch_list ?? "", goods_info: goodsInfo ?? "", { (SubmitPreviewData) in
             self.previewData = SubmitPreviewData.data
             self.addressId = SubmitPreviewData.data?.address.id ?? ""
+            // 根据商家数量创建对应的留言存储
             for _ in self.previewData?.mch_list ?? [] {
                 self.messageData.append("")
             }
@@ -89,7 +90,9 @@ class UIConfirmOrderController: UBaseViewController {
     /// - Parameters:
     ///     - payment: 0 微信支付
     func submitOrder(payment: Int){
-        service.submitOrder(address_id: addressId, cart_id_list: toJson(cart_id_list ?? []), mch_list: mch_list ?? "", payment: payment, { (SubmitOrderData) in
+        //直接购买置空购物车ID
+        let cartIdList = (cart_id_list != nil ? toJson(cart_id_list!) : "")
+        service.submitOrder(address_id: addressId, cart_id_list: cartIdList, mch_list: mch_list ?? "", payment: payment, goods_info: goodsInfo ?? "", { (SubmitOrderData) in
             self.confirmOrderView.postOrder.isEnabled = false
             self.obtainOrderPaySign(orderId: SubmitOrderData.data?.order_id, orderListId: SubmitOrderData.data?.order_id_list)
         }) { (APIErrorModel) in
@@ -97,7 +100,7 @@ class UIConfirmOrderController: UBaseViewController {
         }
     }
     
-    /// 获取订单支付签名 并吊起微信支付页面
+    /// 获取订单支付签名 并调起微信支付页面
     /// - Parameters:
     ///     - orderListId: 请求的订单id列表
     func obtainOrderPaySign(orderId: Int? = nil, orderListId: [Int]? = nil){
@@ -115,6 +118,7 @@ class UIConfirmOrderController: UBaseViewController {
         }
     }
     
+    /// 微信支付提示
     @objc func WXPayRequestResult(_ notification: Notification){
         let payResp = notification.object as! PayResp
         switch payResp.errCode{
