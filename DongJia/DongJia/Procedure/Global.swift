@@ -75,11 +75,10 @@ func stringArrayConvertDoubleArray(stringArray:[String]) -> [Double]{
 }
 
 /// 数组(里面类型为字典)转字符串
-func toJson(_ obj: Any/*[Dictionary<String,String>]*/)->String{
+func toJson(_ obj: Any)->String{
     
     //首先判断能不能转换
     if (!JSONSerialization.isValidJSONObject(obj)) {
-        //print("is not a valid json object")
         return ""
     }
     

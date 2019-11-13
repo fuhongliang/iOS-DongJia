@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import Moya
 import MBProgressHUD
+import QMUIKit
 
 let ssl: Bool = true
 //MARK:开发环境
@@ -26,7 +27,10 @@ let loadingPlugin = NetworkActivityPlugin { (type, target) in
     case .began:
         MBProgressHUD.hide(for: vc.view, animated: false)
         MBProgressHUD.showAdded(to: vc.view, animated: true)
+//        QMUITips.hideAllTips(in: vc.view)
+//        QMUITips.showLoading(in: vc.view)
     case .ended:
+//        QMUITips.hideAllTips(in: vc.view)
         MBProgressHUD.hide(for: vc.view, animated: false)
     }
 }
@@ -106,6 +110,12 @@ enum NetApi {
     case dosCaseDetail(param: [String:Any])
     /// 联系设计师
     case contactDesigner(param: [String:Any])
+    /// 订单列表
+    case orderList(param: [String:Any])
+    /// 订单详情
+    case orderDetail(param: [String:Any])
+    /// 取消订单
+    case cancleOrder(param: [String:Any])
 }
 
 //MARK: 请求对象的封装
@@ -178,12 +188,18 @@ extension NetApi: TargetType {
             return "/index.php?r=api/default/topic"
         case .contactDesigner:
             return "/index.php?r=api/user/create-user-message"
+        case .orderList:
+            return "/index.php?r=api/order/list"
+        case .orderDetail:
+            return "/index.php?r=api/order/detail"
+        case .cancleOrder:
+            return "/index.php?r=api/order/revoke"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.catList,.catGoodsList,.catMchList,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign,.collectionList,.dosCaseList,.dosCaseDetail:
+        case .getMainData,.getMainFeaturedData,.supportCiytList,.searchGoods,.catList,.catGoodsList,.catMchList,.goodsDetail,.goodsHotRecommend,.storeInfo,.getGoodsAttrData,.storeClassicCase,.mineData,.getCartGoodsList,.deleteCartGoods,.addressList,.districtList,.deleteAddress,.submitPreView,.obtainOrderPaySign,.collectionList,.dosCaseList,.dosCaseDetail,.orderList,.orderDetail,.cancleOrder:
             return .get
         case .wxLogin,.addToCart,.editCartGoods,.addOrEditAddress,.submitOrder,.addCollectionGoods,.contactDesigner:
             return .post
@@ -258,6 +274,12 @@ extension NetApi: TargetType {
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         case .contactDesigner(let param):
             return .requestParameters(parameters: param, encoding: URLEncoding.httpBody)
+        case .orderList(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .orderDetail(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .cancleOrder(let param):
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
         }
         
     }

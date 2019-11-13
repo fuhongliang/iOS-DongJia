@@ -184,7 +184,7 @@ class UMineView: BaseView {
     }
     /// 已完成
     let completeOrder = UIButton().then{
-        $0.setTitle("待收货", for: .normal)
+        $0.setTitle("已完成", for: .normal)
         $0.setTitleColor(.hex(hexString: "#999999"), for: .normal)
         $0.backgroundColor = .white
         $0.setImage(UIImage.init(named: "complete_order"), for: .normal)

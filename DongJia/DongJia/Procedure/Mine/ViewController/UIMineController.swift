@@ -57,7 +57,9 @@ class UIMineController: UBaseViewController {
 }
 extension UIMineController: UMineViewDelegate {
     func myAllOrder() {
-        showHUDInView(text: "全部订单", inView: self.view, isClick: true)
+        let vc = UManagerOrdersController()
+        vc.title = "全部订单"
+        pushViewController(vc, animated: true)
     }
     
     func wechatLogin() {
@@ -78,19 +80,31 @@ extension UIMineController: UMineViewDelegate {
     }
     
     func notPayOrder() {
-        showHUDInView(text: "待付款订单", inView: self.view, isClick: true)
+        let vc = UOrderListController()
+        vc.title = "待付款"
+        vc.orderType = OrderType.NotPay
+        pushViewController(vc, animated: true)
     }
     
     func notSendOrder() {
-        showHUDInView(text: "待发货订单", inView: self.view, isClick: true)
+        let vc = UOrderListController()
+        vc.title = "待发货"
+        vc.orderType = OrderType.NotReceipt
+        pushViewController(vc, animated: true)
     }
     
     func notObtainOrder() {
-        showHUDInView(text: "待收货订单", inView: self.view, isClick: true)
+        let vc = UOrderListController()
+        vc.title = "待收货"
+        vc.orderType = OrderType.NotObtain
+        pushViewController(vc, animated: true)
     }
     
     func completeOrder() {
-        showHUDInView(text: "已完成订单", inView: self.view, isClick: true)
+        let vc = UOrderListController()
+        vc.title = "已完成"
+        vc.orderType = OrderType.Complete
+        pushViewController(vc, animated: true)
     }
     
     func myCoupon(){

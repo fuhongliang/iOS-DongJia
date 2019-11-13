@@ -10,6 +10,7 @@
 		4F101B28AF60D2F28070F541 /* Pods_DongJia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BA66E763ECE734FA65A063 /* Pods_DongJia.framework */; };
 		DC1368BD2366C63F0085D841 /* APISubmitOrderResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1368BC2366C63F0085D841 /* APISubmitOrderResponseModel.swift */; };
 		DC1368BF2366CF920085D841 /* APIOrderPayDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1368BE2366CF920085D841 /* APIOrderPayDataResponseModel.swift */; };
+		DC14EB5D237AC9C0000D67DF /* UOrderListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC14EB5C237AC9C0000D67DF /* UOrderListFooterView.swift */; };
 		DC19F0C82356C35900148B8F /* UHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F0C72356C35900148B8F /* UHeaderView.swift */; };
 		DC19F0CA2356F5DA00148B8F /* UChooseAttrCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F0C92356F5DA00148B8F /* UChooseAttrCell.swift */; };
 		DC19F7A5233468EB00BDFE7D /* UIAboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19F7A4233468EB00BDFE7D /* UIAboutUsController.swift */; };
@@ -33,6 +34,13 @@
 		DC2380102330B0FC006AE76F /* USuperBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */; };
 		DC2380122330D94C006AE76F /* UFeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2380112330D94C006AE76F /* UFeaturedCell.swift */; };
 		DC2380142330E040006AE76F /* UMainFeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2380132330E040006AE76F /* UMainFeaturedCell.swift */; };
+		DC245476237BB8B000C6FB89 /* UOrderDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC245475237BB8B000C6FB89 /* UOrderDetailController.swift */; };
+		DC245478237BB9D200C6FB89 /* UOrderDetailNotPayOrCancleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC245477237BB9D200C6FB89 /* UOrderDetailNotPayOrCancleHeader.swift */; };
+		DC24547A237BDDB600C6FB89 /* UOrderDetailSendObtainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC245479237BDDB600C6FB89 /* UOrderDetailSendObtainHeader.swift */; };
+		DC24547C237BE18700C6FB89 /* UPayInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24547B237BE18700C6FB89 /* UPayInfoCell.swift */; };
+		DC24547E237BE5D600C6FB89 /* UOrderInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24547D237BE5D600C6FB89 /* UOrderInfoCell.swift */; };
+		DC245480237BE84C00C6FB89 /* UOrderNotPayOrCancleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24547F237BE84C00C6FB89 /* UOrderNotPayOrCancleCell.swift */; };
+		DC245482237BED0E00C6FB89 /* APIOrderDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC245481237BED0E00C6FB89 /* APIOrderDetailResponseModel.swift */; };
 		DC246E002331C4180087D84A /* UIDosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246DFF2331C4180087D84A /* UIDosController.swift */; };
 		DC246E022331C8D90087D84A /* UDosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E012331C8D90087D84A /* UDosCell.swift */; };
 		DC246E04233204BC0087D84A /* UDosDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC246E03233204BC0087D84A /* UDosDetailView.swift */; };
@@ -43,6 +51,11 @@
 		DC2B69B4236C3021006A78E8 /* APICollectionListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */; };
 		DC2B69B6236C4043006A78E8 /* APIDosServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B5236C4043006A78E8 /* APIDosServices.swift */; };
 		DC2B69B8236C4147006A78E8 /* APIDosListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B69B7236C4147006A78E8 /* APIDosListResponseModel.swift */; };
+		DC2D389C237A492200FC1D06 /* UManagerOrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D389B237A492200FC1D06 /* UManagerOrdersController.swift */; };
+		DC2D38A2237A87FB00FC1D06 /* UOrderListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D38A1237A87FB00FC1D06 /* UOrderListController.swift */; };
+		DC2D38A4237A897A00FC1D06 /* UOrderListGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D38A3237A897A00FC1D06 /* UOrderListGoodsCell.swift */; };
+		DC2D38A6237A9DE800FC1D06 /* APIOrderListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D38A5237A9DE800FC1D06 /* APIOrderListResponseModel.swift */; };
+		DC2D38A9237AC8E800FC1D06 /* UOrderListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2D38A8237AC8E800FC1D06 /* UOrderListHeaderView.swift */; };
 		DC2E3568234D79D80064EB75 /* APIGoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3567234D79D80064EB75 /* APIGoodsService.swift */; };
 		DC2E356C234D7E540064EB75 /* APIGoodsDetailResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */; };
 		DC2E4A85236A7F6900649EDE /* APICatListResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */; };
@@ -214,6 +227,7 @@
 		B5BA66E763ECE734FA65A063 /* Pods_DongJia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DongJia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1368BC2366C63F0085D841 /* APISubmitOrderResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubmitOrderResponseModel.swift; sourceTree = "<group>"; };
 		DC1368BE2366CF920085D841 /* APIOrderPayDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOrderPayDataResponseModel.swift; sourceTree = "<group>"; };
+		DC14EB5C237AC9C0000D67DF /* UOrderListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderListFooterView.swift; sourceTree = "<group>"; };
 		DC19F0C72356C35900148B8F /* UHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHeaderView.swift; sourceTree = "<group>"; };
 		DC19F0C92356F5DA00148B8F /* UChooseAttrCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UChooseAttrCell.swift; sourceTree = "<group>"; };
 		DC19F7A4233468EB00BDFE7D /* UIAboutUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAboutUsController.swift; sourceTree = "<group>"; };
@@ -237,6 +251,13 @@
 		DC23800F2330B0FC006AE76F /* USuperBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USuperBrandCell.swift; sourceTree = "<group>"; };
 		DC2380112330D94C006AE76F /* UFeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UFeaturedCell.swift; sourceTree = "<group>"; };
 		DC2380132330E040006AE76F /* UMainFeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMainFeaturedCell.swift; sourceTree = "<group>"; };
+		DC245475237BB8B000C6FB89 /* UOrderDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderDetailController.swift; sourceTree = "<group>"; };
+		DC245477237BB9D200C6FB89 /* UOrderDetailNotPayOrCancleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderDetailNotPayOrCancleHeader.swift; sourceTree = "<group>"; };
+		DC245479237BDDB600C6FB89 /* UOrderDetailSendObtainHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderDetailSendObtainHeader.swift; sourceTree = "<group>"; };
+		DC24547B237BE18700C6FB89 /* UPayInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPayInfoCell.swift; sourceTree = "<group>"; };
+		DC24547D237BE5D600C6FB89 /* UOrderInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderInfoCell.swift; sourceTree = "<group>"; };
+		DC24547F237BE84C00C6FB89 /* UOrderNotPayOrCancleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderNotPayOrCancleCell.swift; sourceTree = "<group>"; };
+		DC245481237BED0E00C6FB89 /* APIOrderDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOrderDetailResponseModel.swift; sourceTree = "<group>"; };
 		DC246DFF2331C4180087D84A /* UIDosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDosController.swift; sourceTree = "<group>"; };
 		DC246E012331C8D90087D84A /* UDosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosCell.swift; sourceTree = "<group>"; };
 		DC246E03233204BC0087D84A /* UDosDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDosDetailView.swift; sourceTree = "<group>"; };
@@ -247,6 +268,11 @@
 		DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollectionListResponseModel.swift; sourceTree = "<group>"; };
 		DC2B69B5236C4043006A78E8 /* APIDosServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDosServices.swift; sourceTree = "<group>"; };
 		DC2B69B7236C4147006A78E8 /* APIDosListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDosListResponseModel.swift; sourceTree = "<group>"; };
+		DC2D389B237A492200FC1D06 /* UManagerOrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UManagerOrdersController.swift; sourceTree = "<group>"; };
+		DC2D38A1237A87FB00FC1D06 /* UOrderListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderListController.swift; sourceTree = "<group>"; };
+		DC2D38A3237A897A00FC1D06 /* UOrderListGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderListGoodsCell.swift; sourceTree = "<group>"; };
+		DC2D38A5237A9DE800FC1D06 /* APIOrderListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOrderListResponseModel.swift; sourceTree = "<group>"; };
+		DC2D38A8237AC8E800FC1D06 /* UOrderListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOrderListHeaderView.swift; sourceTree = "<group>"; };
 		DC2E3567234D79D80064EB75 /* APIGoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsService.swift; sourceTree = "<group>"; };
 		DC2E356B234D7E540064EB75 /* APIGoodsDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGoodsDetailResponseModel.swift; sourceTree = "<group>"; };
 		DC2E4A84236A7F6900649EDE /* APICatListResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICatListResponseModel.swift; sourceTree = "<group>"; };
@@ -614,6 +640,9 @@
 				DC19F7AE2334A7D900BDFE7D /* UIMyObtainAddressViewController.swift */,
 				DCF595702334CCE200C50B88 /* UIAddAddressController.swift */,
 				DC2B69B1236C2A1B006A78E8 /* UIMyOrderViewController.swift */,
+				DC2D389B237A492200FC1D06 /* UManagerOrdersController.swift */,
+				DC2D38A1237A87FB00FC1D06 /* UOrderListController.swift */,
+				DC245475237BB8B000C6FB89 /* UOrderDetailController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -628,6 +657,14 @@
 				DC19F7B22334B30C00BDFE7D /* UObtainAddressCell.swift */,
 				DCF595722334CD2500C50B88 /* UAddAddressView.swift */,
 				DC30ADDE2360352600B21725 /* WeXinLoginAlertView.swift */,
+				DC2D38A3237A897A00FC1D06 /* UOrderListGoodsCell.swift */,
+				DC2D38A8237AC8E800FC1D06 /* UOrderListHeaderView.swift */,
+				DC14EB5C237AC9C0000D67DF /* UOrderListFooterView.swift */,
+				DC245477237BB9D200C6FB89 /* UOrderDetailNotPayOrCancleHeader.swift */,
+				DC245479237BDDB600C6FB89 /* UOrderDetailSendObtainHeader.swift */,
+				DC24547B237BE18700C6FB89 /* UPayInfoCell.swift */,
+				DC24547D237BE5D600C6FB89 /* UOrderInfoCell.swift */,
+				DC24547F237BE84C00C6FB89 /* UOrderNotPayOrCancleCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -912,6 +949,8 @@
 				DC2B69B3236C3021006A78E8 /* APICollectionListResponseModel.swift */,
 				DC2B69B7236C4147006A78E8 /* APIDosListResponseModel.swift */,
 				DC5C4AB6236FC758006879AD /* APIDosCaseDetailResponseModel.swift */,
+				DC2D38A5237A9DE800FC1D06 /* APIOrderListResponseModel.swift */,
+				DC245481237BED0E00C6FB89 /* APIOrderDetailResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1239,6 +1278,7 @@
 				DC1CD75D23680FC0008E6A51 /* APISearchGoodsResponseModel.swift in Sources */,
 				DCCEC4BC233A4C2D00892D11 /* UIColor+KLExtension.swift in Sources */,
 				DC47AE6D235568F100D01AD6 /* UIChooseAttrViewController.swift in Sources */,
+				DC14EB5D237AC9C0000D67DF /* UOrderListFooterView.swift in Sources */,
 				DC23800C232F9E79006AE76F /* UHotGoodsCell.swift in Sources */,
 				DC8517022351D6F200E0759A /* UStoreWillBuyView.swift in Sources */,
 				DC308222234C345700271840 /* UIStoreControlle.swift in Sources */,
@@ -1248,6 +1288,7 @@
 				DCB064F023277EF30094727C /* UIMainController.swift in Sources */,
 				DC32D546235D957F00B3D2BD /* UShopCartHeaderView.swift in Sources */,
 				DCE6BD182355BD3500821EC9 /* ChooseAttrViewAnimated.swift in Sources */,
+				DC2D389C237A492200FC1D06 /* UManagerOrdersController.swift in Sources */,
 				DC6133A82333377F00C52E9F /* UMineView.swift in Sources */,
 				DCEA78BB2351D52E002F2F1E /* UStoreInfoView.swift in Sources */,
 				DC8AA9062358233C00108476 /* UIConfirmOrderController.swift in Sources */,
@@ -1285,8 +1326,10 @@
 				DC3FAA2123501CF600B310EC /* UDesignTeamCell.swift in Sources */,
 				DC2380142330E040006AE76F /* UMainFeaturedCell.swift in Sources */,
 				DCB064C123266E040094727C /* APIToken.swift in Sources */,
+				DC245482237BED0E00C6FB89 /* APIOrderDetailResponseModel.swift in Sources */,
 				DC768AB62332359000595E2B /* UContactDesignerView.swift in Sources */,
 				DC19F0CA2356F5DA00148B8F /* UChooseAttrCell.swift in Sources */,
+				DC2D38A6237A9DE800FC1D06 /* APIOrderListResponseModel.swift in Sources */,
 				DCB064A423266A000094727C /* ScreenHelper.swift in Sources */,
 				DC19F7A72334692200BDFE7D /* UAboutUsView.swift in Sources */,
 				DCB065082327CDA90094727C /* ZKCycleScrollView.swift in Sources */,
@@ -1312,6 +1355,7 @@
 				DCB064F4232797E50094727C /* UMainSearchCell.swift in Sources */,
 				DC47AE6F2355694400D01AD6 /* UChooseAttrView.swift in Sources */,
 				DCB06484232669510094727C /* UIBarButtonItemExtension.swift in Sources */,
+				DC2D38A9237AC8E800FC1D06 /* UOrderListHeaderView.swift in Sources */,
 				DCB064D323266EE80094727C /* UTabBarController.swift in Sources */,
 				DC4F094D23572A3F009F4F91 /* UAddNumberCell.swift in Sources */,
 				DC2E4A85236A7F6900649EDE /* APICatListResponseModel.swift in Sources */,
@@ -1319,6 +1363,7 @@
 				DC2E4A8C236ABD0F00649EDE /* ListBaseViewController.swift in Sources */,
 				DC34A653233CAAF30042EEA8 /* APIMainFeaturedDataResponsModel.swift in Sources */,
 				DC56BC8B233872770089EE61 /* APIMainService.swift in Sources */,
+				DC24547C237BE18700C6FB89 /* UPayInfoCell.swift in Sources */,
 				DC39CF98232A3C1300E61C3A /* UMainHotCell.swift in Sources */,
 				DCB064F62327A7230094727C /* UMainBannerCell.swift in Sources */,
 				DCB06482232669510094727C /* UITextFieldExtension.swift in Sources */,
@@ -1329,6 +1374,7 @@
 				DC785A5C23547DB10076A5C9 /* UChooseCityCell.swift in Sources */,
 				DC3FAA1F23501A3100B310EC /* UStoreDesignTeamCell.swift in Sources */,
 				DC30ADE5236047D900B21725 /* APIDistrictListResponseModel.swift in Sources */,
+				DC245476237BB8B000C6FB89 /* UOrderDetailController.swift in Sources */,
 				DCB064D023266EE80094727C /* UBaseTableViewCell.swift in Sources */,
 				DCB064A623266A000094727C /* UEmptyDataSet.swift in Sources */,
 				DCCEC4C4233B4B7300892D11 /* APIMineServices.swift in Sources */,
@@ -1344,8 +1390,10 @@
 				DC8517002351D6CB00E0759A /* UStoreClassicCaseView.swift in Sources */,
 				DC785A54235464970076A5C9 /* UShopCartViewController.swift in Sources */,
 				DC785A56235464D80076A5C9 /* UShopCartView.swift in Sources */,
+				DC24547E237BE5D600C6FB89 /* UOrderInfoCell.swift in Sources */,
 				DC34A655233CBC380042EEA8 /* UFootLoadMoreView.swift in Sources */,
 				DC2E4A89236A939700649EDE /* UStoreCategoriesView.swift in Sources */,
+				DC245478237BB9D200C6FB89 /* UOrderDetailNotPayOrCancleHeader.swift in Sources */,
 				DCF595732334CD2500C50B88 /* UAddAddressView.swift in Sources */,
 				DCCEC4C0233A4C2D00892D11 /* UIView+KLExtension.swift in Sources */,
 				DCB064A323266A000094727C /* PickerPresentAnimated.swift in Sources */,
@@ -1354,6 +1402,7 @@
 				DCB064DC232733B20094727C /* ULoginViewController.swift in Sources */,
 				DC56BC8F2338E2B90089EE61 /* URLExtension.swift in Sources */,
 				DC785A5A23547A400076A5C9 /* UChooseCityView.swift in Sources */,
+				DC2D38A4237A897A00FC1D06 /* UOrderListGoodsCell.swift in Sources */,
 				DCB064BD23266DE00094727C /* APIUser.swift in Sources */,
 				DC2E4A87236A8E6200649EDE /* UIStoreAndGoodsCategoriesControllerViewController.swift in Sources */,
 				DC2B69B8236C4147006A78E8 /* APIDosListResponseModel.swift in Sources */,
@@ -1370,9 +1419,11 @@
 				DCCEC4C2233B495800892D11 /* NotificationNameExtension.swift in Sources */,
 				DC34A64D233C72320042EEA8 /* UIGoodsDetailController.swift in Sources */,
 				DC23800E2330763F006AE76F /* UMainSuperBrandCell.swift in Sources */,
+				DC24547A237BDDB600C6FB89 /* UOrderDetailSendObtainHeader.swift in Sources */,
 				DC35D5FF236198D100D68D1B /* DoubleExtension.swift in Sources */,
 				DC2B69B2236C2A1B006A78E8 /* UIMyOrderViewController.swift in Sources */,
 				DC6133AA23335B6000C52E9F /* UIMineController.swift in Sources */,
+				DC2D38A2237A87FB00FC1D06 /* UOrderListController.swift in Sources */,
 				DC768AB4233232FF00595E2B /* UIContactDesignerController.swift in Sources */,
 				DC1E77FB234F2348005765F0 /* UClassicCaseCell.swift in Sources */,
 				DC1E77F9234F22AE005765F0 /* UStoreClassicCaseCell.swift in Sources */,
@@ -1392,6 +1443,7 @@
 				DCB0647F232669510094727C /* UIImageViewExtension.swift in Sources */,
 				DCCEC4BD233A4C2D00892D11 /* KLCityPickerView.swift in Sources */,
 				DC6F054523597350007EB039 /* UConfirmOrderAddressCell.swift in Sources */,
+				DC245480237BE84C00C6FB89 /* UOrderNotPayOrCancleCell.swift in Sources */,
 				DCB064A823266A000094727C /* ParallaxHeaderMode.swift in Sources */,
 				DC8AA90823583E9200108476 /* UConfirmOrderView.swift in Sources */,
 				DC54C5A1233F386F00ECFB25 /* UGoodsStoreInfoCell.swift in Sources */,

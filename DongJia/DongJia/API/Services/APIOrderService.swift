@@ -10,15 +10,119 @@ import Foundation
 
 protocol APIOrderServiceProtocol {
     
+    //订单预览
     func submitPreView(cart_id_list: [Int], mch_list: String, goods_info: String, _ success: @escaping(((APIOrderSubmitViewResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
+    //提交订单
     func submitOrder(address_id: String, cart_id_list: String, mch_list: String, payment: Int, goods_info: String, _ success: @escaping(((APISubmitOrderResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
+    //获取支付签名
     func obtainOrderPaySign(order_id: Int?, order_id_list: [Int]?, _ success: @escaping(((APIOrderPayDataResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    
+    //订单列表
+    func orderList(status: OrderType, _ success: @escaping(((APIOrderListResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    
+    //取消订单
+    func cancleOrder(orderId: Int, _ success: @escaping(((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
+    
+    //订单详情
+    func orderDetail(orderId: Int, _ success: @escaping(((APIOrderDetailResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void))
     
 }
 
 class APIOrderService: APIOrderServiceProtocol{
+    /// 订单详情
+    /// - Parameters:
+    ///     - orderId: 订单id
+    func orderDetail(orderId: Int, _ success: @escaping (((APIOrderDetailResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        let param: [String:Any] = [
+            "access_token": APIUser.shared.user!.access_token,
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1,
+            "order_id": orderId
+        ]
+        APIService.shared.request(.orderDetail(param: param), { (data) in
+            do {
+                let model = try JSONDecoder().decode(APIOrderDetailResponseModel.self, from: data)
+                success(model)
+            } catch {
+                let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
+                print(errorModel.msg!)
+                fail(errorModel)
+            }
+        }) { (APIErrorModel) in
+            print(APIErrorModel.msg ?? "----")
+        }
+    }
+    
+    /// 取消订单
+    /// - Parameters:
+    ///     - orderId: 订单id
+    func cancleOrder(orderId: Int, _ success: @escaping (((APIObjectModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        let param: [String:Any] = [
+            "access_token": APIUser.shared.user!.access_token,
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1,
+            "order_id": orderId
+        ]
+        APIService.shared.request(.cancleOrder(param: param), { (data) in
+            do {
+                let model = try JSONDecoder().decode(APIObjectModel.self, from: data)
+                success(model)
+            } catch {
+                let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
+                print(errorModel.msg!)
+                fail(errorModel)
+            }
+        }) { (APIErrorModel) in
+            print(APIErrorModel.msg ?? "----")
+        }
+    }
+    
+    /// 订单列表
+    /// - Parameters:
+    ///     - status: 订单类型
+    func orderList(status: OrderType, _ success: @escaping (((APIOrderListResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
+        var param: [String:Any] = [
+            "access_token": APIUser.shared.user!.access_token,
+            "store_id": 4,
+            "_uniacid": -1,
+            "_acid": -1
+        ]
+        switch status {
+        case .All:
+            param["status"] = 6
+        case .NotPay:
+            param["status"] = 0
+        case .NotReceipt:
+            param["status"] = 1
+        case .NotObtain:
+            param["status"] = 2
+        case .Complete:
+            param["status"] = 3
+        case .Sales:
+            param["status"] = 4
+        case .Cancle:
+            param["status"] = 5
+        }
+        
+        APIService.sharedBackground.request(.orderList(param: param), { (data) in
+            do {
+                let model = try JSONDecoder().decode(APIOrderListResponseModel.self, from: data)
+                success(model)
+            } catch {
+                let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
+                print(errorModel.msg!)
+                fail(errorModel)
+            }
+        }) { (APIErrorModel) in
+            print(APIErrorModel.msg ?? "----")
+        }
+    }
+    
+    /// 获取支付签名接口
     func obtainOrderPaySign(order_id: Int?, order_id_list: [Int]?, _ success: @escaping (((APIOrderPayDataResponseModel) -> Void)), _ fail: @escaping ((APIErrorModel) -> Void)) {
         var param: [String:Any] = [
             "access_token": APIUser.shared.user!.access_token,
