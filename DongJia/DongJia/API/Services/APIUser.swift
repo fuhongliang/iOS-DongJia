@@ -23,6 +23,7 @@ class APIUser {
         do {
             let data = try JSONEncoder().encode(user!)
             UserDefaults.standard.set(data, forKey: "MYiMei_USER")
+            
         }
         catch {
             // do nothing

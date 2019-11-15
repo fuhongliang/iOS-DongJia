@@ -43,7 +43,6 @@ class UOrderDetailController: UBaseViewController {
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15))
         }
-        
         getOrderDetail()
     }
     
@@ -57,7 +56,6 @@ class UOrderDetailController: UBaseViewController {
     
     func getOrderTypeForStatusCode(statusCode: Int) -> OrderType{
         ///获取订单类型
-        
         switch (statusCode){
         case 0:
             return .NotPay
@@ -98,11 +96,23 @@ extension UOrderDetailController: UITableViewDelegate, UITableViewDataSource{
             case .NotReceipt,.NotObtain,.Complete:
                 let headerView = UOrderDetailSendObtainHeader()
                 headerView.data = orderDetail
+                headerView.goToMch = {
+                    let vc = UIStoreController()
+                    vc.title = "商家主页"
+                    vc.storeId = "\(self.orderDetail!.mch.id)"
+                    self.pushViewController(vc, animated: true)
+                }
                 headerView.frame = tableView.bounds
                 return headerView
             case .Cancle,.NotPay:
                 let headerView = UOrderDetailNotPayOrCancleHeader()
                 headerView.data = orderDetail
+                headerView.goToMch = {
+                    let vc = UIStoreController()
+                    vc.title = "商家主页"
+                    vc.storeId = "\(self.orderDetail!.mch.id)"
+                    self.pushViewController(vc, animated: true)
+                }
                 headerView.frame = tableView.bounds
                 return headerView
             default:
@@ -146,6 +156,10 @@ extension UOrderDetailController: UITableViewDelegate, UITableViewDataSource{
         } else {
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UOrderInfoCell.self)
             cell.data = orderDetail
+            cell.copyAction = {
+                UIPasteboard.general.string = self.orderDetail?.order_no
+                showHUDInView(text: "复制成功", inView: self.view, isClick: true)
+            }
             return cell
         }
     }

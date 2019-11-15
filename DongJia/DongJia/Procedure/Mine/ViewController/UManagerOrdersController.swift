@@ -17,7 +17,7 @@ class UManagerOrdersController: UBaseViewController {
     }()
     
     let indicator = JXSegmentedIndicatorBackgroundView()
-    let titles = ["全部","待付款", "待发货", "待收货", "已完成", "已取消"]
+    let titles = ["全部","待付款", "待发货", "待收货", "售后", "已完成", "已取消"]
     
     let totalItemWidth: CGFloat = 150
     
@@ -89,8 +89,10 @@ extension UManagerOrdersController : JXSegmentedViewDelegate,JXSegmentedListCont
         case 3:
             vc.orderType = OrderType.NotObtain
         case 4:
-            vc.orderType = OrderType.Complete
+            vc.orderType = OrderType.Sales
         case 5:
+            vc.orderType = OrderType.Complete
+        case 6:
             vc.orderType = OrderType.Cancle
         default:
             vc.orderType = OrderType.All

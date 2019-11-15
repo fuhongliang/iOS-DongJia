@@ -10,10 +10,12 @@ import UIKit
 
 class UOrderDetailNotPayOrCancleHeader: BaseView {
     
+    var goToMch:(()->())?
+    
     let view = UIView().then{
         $0.backgroundColor = .white
     }
-    
+    let gotoMchBtn = UIButton()
     /// 订单状态
     let orderState = UILabel().then{
         $0.textColor = .hex(hexString: "#999999")
@@ -73,6 +75,7 @@ class UOrderDetailNotPayOrCancleHeader: BaseView {
     override func configUI() {
         
         addSubview(view)
+        view.addSubview(gotoMchBtn)
         view.addSubview(orderState)
         view.addSubview(stateLine)
         view.addSubview(image)
@@ -83,11 +86,12 @@ class UOrderDetailNotPayOrCancleHeader: BaseView {
         view.addSubview(mchPic)
         view.addSubview(mchName)
         view.addSubview(mchLine)
-        
+        gotoMchBtn.addTarget(self, action: #selector(goToMchAction), for: .touchUpInside)
         view.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)
             make.centerX.width.equalToSuperview()
         }
+        
         
         //MARK:订单状态
         orderState.snp.makeConstraints { (make) in
@@ -128,6 +132,15 @@ class UOrderDetailNotPayOrCancleHeader: BaseView {
             make.top.equalTo(image.snp.bottom).offset(23)
             make.height.equalTo(1)
         }
+        
+        
+        //MARK:进入商家
+        gotoMchBtn.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.top.equalTo(addressLine.snp.bottom)
+            make.size.equalTo(CGSize(width: 180, height: 35))
+        }
+        
         //MARK:商家图片
         mchPic.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
@@ -147,6 +160,10 @@ class UOrderDetailNotPayOrCancleHeader: BaseView {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-15)
         }
+    }
+    
+    @objc func goToMchAction(){
+        goToMch?()
     }
     
     var data: order_detail_model?{

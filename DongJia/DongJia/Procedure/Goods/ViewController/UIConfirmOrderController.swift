@@ -54,6 +54,9 @@ class UIConfirmOrderController: UBaseViewController {
     /// 地址ID
     var addressId = ""
     
+    /// 提交后的订单ID
+    var orderId = -1
+    
     override func configUI() {
         self.view.addSubview(confirmOrderView)
         confirmOrderView.snp.makeConstraints { (make) in
@@ -76,7 +79,7 @@ class UIConfirmOrderController: UBaseViewController {
     func requestSubmitPreviewData(){
         service.submitPreView(cart_id_list: cart_id_list ?? [], mch_list: mch_list ?? "", goods_info: goodsInfo ?? "", { (SubmitPreviewData) in
             self.previewData = SubmitPreviewData.data
-            self.addressId = SubmitPreviewData.data?.address.id ?? ""
+            self.addressId = SubmitPreviewData.data?.address?.id ?? ""
             // 根据商家数量创建对应的留言存储
             for _ in self.previewData?.mch_list ?? [] {
                 self.messageData.append("")
@@ -91,6 +94,10 @@ class UIConfirmOrderController: UBaseViewController {
     ///     - payment: 0 微信支付
     func submitOrder(payment: Int){
         //直接购买置空购物车ID
+        if (addressId == ""){
+            showHUDInView(text: "请先选择地址", inView: self.view, isClick: true)
+            return
+        }
         let cartIdList = (cart_id_list != nil ? toJson(cart_id_list!) : "")
         service.submitOrder(address_id: addressId, cart_id_list: cartIdList, mch_list: mch_list ?? "", payment: payment, goods_info: goodsInfo ?? "", { (SubmitOrderData) in
             self.confirmOrderView.postOrder.isEnabled = false
@@ -104,6 +111,7 @@ class UIConfirmOrderController: UBaseViewController {
     /// - Parameters:
     ///     - orderListId: 请求的订单id列表
     func obtainOrderPaySign(orderId: Int? = nil, orderListId: [Int]? = nil){
+        self.orderId = orderId ?? (orderListId?[0] ?? 0)
         service.obtainOrderPaySign(order_id: orderId, order_id_list: orderListId, { (PayData) in
             let payRequest = PayReq()
             payRequest.nonceStr = PayData.data.noncestr
@@ -125,9 +133,15 @@ class UIConfirmOrderController: UBaseViewController {
         case WXSuccess.rawValue:
             showHUDInView(text: "微信支付成功", inView: self.view, isClick: true)
             // 跳转到我的订单页面
+            let vc = UOrderDetailController()
+            vc.orderId = orderId
+            pushViewController(vc, animated: true)
         default:
             showHUDInView(text: "微信支付失败", inView: self.view, isClick: true)
             // 跳转到我的订单页面
+            let vc = UOrderDetailController()
+            vc.orderId = orderId
+            pushViewController(vc, animated: true)
         }
     }
 
@@ -137,6 +151,7 @@ extension UIConfirmOrderController: UConfirmOrderViewProtocol, UIConfirmOrderCon
     // 选择地址回调
     func setAddress(address: address_model) {
         self.previewData?.address = address
+        addressId = address.id
     }
     
     // 提交订单

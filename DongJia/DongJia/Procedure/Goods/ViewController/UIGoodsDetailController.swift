@@ -135,6 +135,11 @@ class UIGoodsDetailController: UBaseViewController {
 }
 
 extension UIGoodsDetailController: UGoodsDetailViewProtocol{
+    
+    func goBack() {
+        self.pressBack()
+    }
+    
     func buyNowAction() {
         // TODO 逻辑处理待检查
         checkLoginState {
@@ -222,6 +227,7 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .ordinaryBuy:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsOrdinaryBuyCell.self)
+            cell.data = goodsData
             return cell
         case .nameService:
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: UGoodsNameServiceCell.self)
@@ -252,13 +258,15 @@ extension UIGoodsDetailController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (cells[indexPath.section] == .selectAttr){
-            let vc = UIChooseAttrViewController()
-            vc.delegate = self
-            vc.attrData = goodsData.attr_group_list
-            vc.goodsId = goodsId
-            self.definesPresentationContext = true
-            vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-            self.present(vc, animated: true)
+            checkLoginState {
+                let vc = UIChooseAttrViewController()
+                vc.delegate = self
+                vc.attrData = goodsData.attr_group_list
+                vc.goodsId = goodsId
+                self.definesPresentationContext = true
+                vc.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+                self.present(vc, animated: true)
+            }
             
         }
     }

@@ -12,19 +12,19 @@ class UGoodsOrdinaryBuyCell: UBaseTableViewCell {
     
     /// 当前价格
     let rmbLabel = UILabel().then{
-        $0.text = "￥3398-5999"
+//        $0.text = "￥3398-5999"
         $0.font = .boldSystemFont(ofSize: 17)
         $0.textColor = .hex(hexString: "#F51616")
     }
     /// 购买人数
     let buyPeopleNumber = UILabel().then{
-        $0.text = "33人已买"
+//        $0.text = "33人已买"
         $0.font = .systemFont(ofSize: 13)
         $0.textColor = .hex(hexString: "#999999")
     }
     /// 满额包邮
     let shipping = UILabel().then{
-        $0.text = "满200元包邮"
+//        $0.text = "满200元包邮"
         $0.font = .systemFont(ofSize: 13)
         $0.textColor = .hex(hexString: "#999999")
     }
@@ -52,6 +52,15 @@ class UGoodsOrdinaryBuyCell: UBaseTableViewCell {
             make.centerY.equalTo(buyPeopleNumber)
         }
         
+    }
+    
+    var data: APIGoodsDetailModel?{
+        didSet{
+            guard let data = data else { return }
+            rmbLabel.text = data.price
+//            shipping.text = data.
+//            buyPeopleNumber = data.nu
+        }
     }
 
 }

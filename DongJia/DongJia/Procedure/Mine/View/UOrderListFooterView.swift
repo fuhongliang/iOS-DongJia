@@ -169,7 +169,7 @@ class UOrderListFooterView: BaseView {
         didSet{
             guard let state = state else { return }
             switch state {
-            case .Cancle,.Complete:
+            case .Cancle,.Complete,.Sales:
                 completeOrCancle()
             case .NotPay:
                 notPay()

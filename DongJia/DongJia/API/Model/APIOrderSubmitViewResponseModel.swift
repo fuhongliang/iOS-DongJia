@@ -17,7 +17,7 @@ struct submit_view_model: Codable{
     var total_price: Double
 //    var goods_info: submit_view_goods_info_model
     var list: [submit_view_list_model]
-    var address: address_model
+    var address: address_model?
     var express_price: Double
 //    var integral: Int
     var goods_card_list: [String]
@@ -25,7 +25,7 @@ struct submit_view_model: Codable{
     var offer_rule: submit_view_offer_rule_model
     var coupon_list: [String]
     var shop_list: [submit_view_shop_list_model]
-    var is_shop: submit_view_is_shop_model
+    var is_shop: submit_view_is_shop_model?
     var level: String?
     var send_type: Int
     var form: submit_view_form_model
@@ -107,7 +107,7 @@ struct submit_view_offer_rule_model: Codable {
     var msg: String
 }
 struct submit_view_shop_list_model: Codable {
-    var address: String
+    var address: String?
     var mobile: String
     var id: String
     var name: String
@@ -120,7 +120,7 @@ struct submit_view_is_shop_model: Codable {
     var store_id: String
     var name: String
     var mobile: String
-    var address: String
+    var address: String?
     var is_delete: String
     var addtime: String
     var longitude: String

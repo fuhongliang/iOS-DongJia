@@ -32,8 +32,8 @@ struct store_info: Codable {
     var mch_color: String
     var logo: String
     var header_bg: String
-    var goods_num: String?
-    var sale_num: String
+//    var goods_num: String?
+//    var sale_num: String
 }
 struct store_goods_list: Codable {
     var id: String

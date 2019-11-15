@@ -29,12 +29,16 @@ class UIStoreController: UBaseViewController {
     func getStoreInfo(){
         
         service.getStoreInfo(mchId: storeId, page: "1", { (StoreInfoData) in
+            if StoreInfoData.data == nil {
+                showHUDInView(text: StoreInfoData.msg ?? "", inView: self.view, isClick: true)
+                return
+            }
             self.storeInfoData = StoreInfoData.data
             self.v.setData(storeInfoData: self.storeInfoData)
             //请求精品案例数据
             self.getStoreClassicCase()
         }) { (APIErrorModel) in
-            
+            showHUDInView(text: APIErrorModel.msg ?? "", inView: self.view, isClick: true)
         }
     }
     /// 获取商家精品案例数据

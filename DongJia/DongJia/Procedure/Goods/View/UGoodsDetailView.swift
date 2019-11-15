@@ -13,6 +13,7 @@ protocol UGoodsDetailViewProtocol {
     func addCartAction()
     func viewToCartAction()
     func collectionList()
+    func goBack()
 }
 
 class UGoodsDetailView: BaseView {
@@ -33,6 +34,10 @@ class UGoodsDetailView: BaseView {
         $0.register(cellType: UGoodsChooseAttrCell.self)
         $0.register(cellType: UGoodsStoreInfoCell.self)
         $0.register(cellType: UGoodsDetailWKWebViewCell.self)
+    }
+    
+    let goBack = UIButton().then{
+        $0.setBackgroundImage(UIImage.init(named: "circle_back"), for: .normal)
     }
     /// 底部的白色背景
     let whiteBg = UIView().then{
@@ -78,6 +83,10 @@ class UGoodsDetailView: BaseView {
         whiteBg.addSubview(cartBtn)
         whiteBg.addSubview(addCartBtn)
         whiteBg.addSubview(buyNowBtn)
+        
+        self.addSubview(goBack)
+        goBack.addTarget(self, action: #selector(tapGoBack), for: .touchUpInside)
+        
         buyNowBtn.addTarget(self, action: #selector(buyNowAction), for: .touchUpInside)
         collectionBtn.addTarget(self, action: #selector(addCollectionAction), for: .touchUpInside)
         cartBtn.addTarget(self, action: #selector(jumpShopCartAction), for: .touchUpInside)
@@ -87,6 +96,13 @@ class UGoodsDetailView: BaseView {
         tableView.snp.makeConstraints { (make) in
             make.top.width.left.equalToSuperview()
             make.height.equalTo(screenHeight-54)
+        }
+        
+        //MARK:返回键
+        goBack.snp.makeConstraints { (make) in
+            make.size.equalTo(20)
+            make.left.equalToSuperview().offset(15)
+            make.top.equalToSuperview().offset(15+statusbarHeight)
         }
         
         //MARK:底部白色背景
@@ -124,6 +140,11 @@ class UGoodsDetailView: BaseView {
         cartBtn.setButtonShowType(.Bottom)
         
     }
+    
+    @objc func tapGoBack(){
+        delegate?.goBack()
+    }
+    
     @objc func buyNowAction(){
         delegate?.buyNowAction()
     }

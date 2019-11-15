@@ -35,10 +35,11 @@ class APIStoreService: APIStoreServiceProtocol {
                 success(model)
             } catch {
                 let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: "解析失败--\(error)", _data: nil)
-                print(errorModel.msg!)
-                fail(errorModel)
+                print(errorModel.msg ?? "")
+                showHUDInView(text: errorModel.msg!, inView: topVC!.view, isClick: true)
             }
         }) { (APIErrorModel) in
+            showHUDInView(text: APIErrorModel.msg ?? "----", inView: topVC!.view, isClick: true)
             print(APIErrorModel.msg ?? "----")
         }
     }

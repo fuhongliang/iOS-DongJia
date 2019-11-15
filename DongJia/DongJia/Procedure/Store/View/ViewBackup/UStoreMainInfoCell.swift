@@ -81,11 +81,6 @@ class UStoreMainInfoCell: UBaseTableViewCell {
         storeInfoBg.addSubview(allFeel)
         storeInfoBg.addSubview(starLevel)
         
-//        storeBg.image = UIImage.init(named: "todo_img")
-        storeIcon.image = UIImage.init(named: "default_icon")
-        storeName.text = "天神"
-        brandInfo.setTextAndLineSpacing(text: "南洋胡氏在家居鉴赏家眼中无与伦比的声誉和地位，不仅源于我鉴赏家眼中无与伦比的声誉和地位以及丰富的制艺历史与技术。我们无可争议的领军地位同样来自公司始终秉承 1993年创立以来的卓越制造理来的卓越制造理鉴赏家眼中无与伦比的声誉和地位鉴赏家眼中无与伦比的声誉和地位我们无可争议的领军地位同样来自公司始终秉承 1993年创立以来的卓越制造理来的卓越制造理鉴赏家眼中无与伦比的声誉和地位鉴赏家眼中无与伦比的声誉和地位", fontSize: 11, space: 5)
-        
         //MARK:背景主颜色
         bgColorImage.snp.makeConstraints { (make) in
             make.top.width.left.equalToSuperview()

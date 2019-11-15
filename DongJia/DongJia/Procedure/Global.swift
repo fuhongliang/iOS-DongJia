@@ -38,7 +38,16 @@ func checkLoginState(_ login:() -> ()){
     if !isLogin {
         showAlert(title: "微信登录", subTitle: "Hi~我们目前只支持微信授权登录哦~"){ (alert) in
             alert.addButton("微信一键登录", backgroundColor: .theme, textColor: .white){
-                showHUDInView(text: "测试", inView: topVC!.view, isClick: true)
+                if !WXApi.isWXAppInstalled() {
+                    showHUDInView(text: "还未安装微信,请先安装", inView: topVC!.view,isClick: true)
+                    return
+                }
+                let req = SendAuthReq()
+                req.scope = "snsapi_userinfo"
+                req.state = "dongjia_wechat_login_request"
+                WXApi.send(req)
+                
+                print("----微信请求信息----")
             }
         }
     } else {

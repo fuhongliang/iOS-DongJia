@@ -116,8 +116,6 @@ extension UIAddAddressController: UAddAddressViewDelegate {
         }) { (APIErrorModel) in
             showHUDInView(text: APIErrorModel.msg ?? "", inView: self.view, isClick: true)
         }
-        showHUDInView(text: "保存操作", inView: self.view, isClick: true)
-       
 
     }
     

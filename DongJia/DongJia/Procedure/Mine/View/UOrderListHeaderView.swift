@@ -9,6 +9,8 @@
 import UIKit
 
 class UOrderListHeaderView: BaseView {
+    
+    var goToMch: (()->())?
 
     let view = UIView()
     /// 商家图片
@@ -17,6 +19,7 @@ class UOrderListHeaderView: BaseView {
         $0.layer.cornerRadius = 10
         $0.layer.masksToBounds = true
     }
+    let gotoMchBtn = UIButton()
     /// 商家名称
     let mchName = UILabel().then{
         $0.font = .systemFont(ofSize: 15)
@@ -32,13 +35,21 @@ class UOrderListHeaderView: BaseView {
     override func configUI() {
         backgroundColor = .white
         addSubview(view)
+        view.addSubview(gotoMchBtn)
         view.addSubview(mchPic)
         view.addSubview(mchName)
         view.addSubview(orderState)
         
+        gotoMchBtn.addTarget(self, action: #selector(goToMchAction), for: .touchUpInside)
+        
         view.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: screenWidth, height: 44))
             make.left.top.equalToSuperview()
+        }
+        //MARK:进入商家
+        gotoMchBtn.snp.makeConstraints { (make) in
+            make.left.centerY.equalToSuperview()
+            make.size.equalTo(CGSize(width: 80, height: 35))
         }
         //MARK:商家图片
         mchPic.snp.makeConstraints { (make) in
@@ -82,6 +93,10 @@ class UOrderListHeaderView: BaseView {
             default: break
             }
         }
+    }
+    
+    @objc func goToMchAction(){
+        goToMch?()
     }
 
     /// 商家信息

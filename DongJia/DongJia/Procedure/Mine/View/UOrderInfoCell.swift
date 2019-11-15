@@ -10,6 +10,7 @@ import QMUIKit
 
 class UOrderInfoCell: UBaseTableViewCell {
 
+    var copyAction: (()->())?
     
     let orderInfo = UILabel().then{
         $0.textColor = .black
@@ -62,6 +63,8 @@ class UOrderInfoCell: UBaseTableViewCell {
         contentView.addSubview(orderTimeLabel)
         contentView.addSubview(orderTime)
         
+        copy.addTarget(self, action: #selector(tapCopyAction), for: .touchUpInside)
+        
         //MARK:支付信息
         orderInfo.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(15)
@@ -104,6 +107,10 @@ class UOrderInfoCell: UBaseTableViewCell {
             make.bottom.equalToSuperview().offset(-15)
         }
 
+    }
+    
+    @objc func tapCopyAction(){
+        copyAction?()
     }
 
     var data: order_detail_model?{

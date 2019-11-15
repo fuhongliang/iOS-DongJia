@@ -216,35 +216,35 @@ class UMineView: BaseView {
         $0.layer.masksToBounds = true
     }
     /// 我的优惠券
-    let myCoupon = UIButton().then{
-        $0.setTitle("我的优惠券", for: .normal)
-        $0.setTitleColor(.hex(hexString: "#333333"), for: .normal)
-        $0.backgroundColor = .white
-        $0.setImage(UIImage.init(named: "coupon"), for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 13)
-        $0.contentVerticalAlignment = .center
-        $0.contentHorizontalAlignment = .left
-        $0.layoutButton(style: .Left, imageTitleSpace: 12.5, styleSpace: 26)
-    }
+//    let myCoupon = UIButton().then{
+//        $0.setTitle("我的优惠券", for: .normal)
+//        $0.setTitleColor(.hex(hexString: "#333333"), for: .normal)
+//        $0.backgroundColor = .white
+//        $0.setImage(UIImage.init(named: "coupon"), for: .normal)
+//        $0.titleLabel?.font = .systemFont(ofSize: 13)
+//        $0.contentVerticalAlignment = .center
+//        $0.contentHorizontalAlignment = .left
+//        $0.layoutButton(style: .Left, imageTitleSpace: 12.5, styleSpace: 26)
+//    }
     /// 我的售后🧵
-    let myCouponLine = UIView().then{
-        $0.backgroundColor = .hex(hexString: "#F2F2F2")
-    }
+//    let myCouponLine = UIView().then{
+//        $0.backgroundColor = .hex(hexString: "#F2F2F2")
+//    }
     /// 我的售后
-    let myAfterSales = UIButton().then{
-        $0.setTitle("我的售后", for: .normal)
-        $0.setTitleColor(.hex(hexString: "#333333"), for: .normal)
-        $0.backgroundColor = .white
-        $0.setImage(UIImage.init(named: "after_sales"), for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 13)
-        $0.contentVerticalAlignment = .center
-        $0.contentHorizontalAlignment = .left
-        $0.layoutButton(style: .Left, imageTitleSpace: 12.5, styleSpace: 26)
-    }
-    /// 我的售后🧵
-    let myAfterSalesLine = UIView().then{
-        $0.backgroundColor = .hex(hexString: "#F2F2F2")
-    }
+//    let myAfterSales = UIButton().then{
+//        $0.setTitle("我的售后", for: .normal)
+//        $0.setTitleColor(.hex(hexString: "#333333"), for: .normal)
+//        $0.backgroundColor = .white
+//        $0.setImage(UIImage.init(named: "after_sales"), for: .normal)
+//        $0.titleLabel?.font = .systemFont(ofSize: 13)
+//        $0.contentVerticalAlignment = .center
+//        $0.contentHorizontalAlignment = .left
+//        $0.layoutButton(style: .Left, imageTitleSpace: 12.5, styleSpace: 26)
+//    }
+//    /// 我的售后🧵
+//    let myAfterSalesLine = UIView().then{
+//        $0.backgroundColor = .hex(hexString: "#F2F2F2")
+//    }
     /// 我的收藏
     let myCollection = UIButton().then{
         $0.setTitle("我的收藏", for: .normal)
@@ -291,13 +291,19 @@ class UMineView: BaseView {
         $0.backgroundColor = .hex(hexString: "#F2F2F2")
     }
     /// 退出登录
-    let logout = UIButton().then{
-        $0.setTitle("退出登录", for: .normal)
-        $0.setTitleColor(.hex(hexString:"#F51616"), for: .normal)
-        $0.layer.cornerRadius = 22
-        $0.layer.borderWidth = 0.5
-        $0.layer.borderColor = UIColor.hex(hexString: "#F51616").cgColor
-        $0.titleLabel?.font = .systemFont(ofSize: 16)
+//    let logout = UIButton().then{
+//        $0.setTitle("退出登录", for: .normal)
+//        $0.setTitleColor(.hex(hexString:"#F51616"), for: .normal)
+//        $0.layer.cornerRadius = 22
+//        $0.layer.borderWidth = 0.5
+//        $0.layer.borderColor = UIColor.hex(hexString: "#F51616").cgColor
+//        $0.titleLabel?.font = .systemFont(ofSize: 16)
+//    }
+    
+    let logoutImg = UIButton().then{
+        $0.setImage(UIImage(named: "logout"),for: .normal)
+//        $0.backgroundColor = .black
+//        $0.image = UIImage(named: "logout")
     }
     
     override func configUI() {
@@ -306,8 +312,11 @@ class UMineView: BaseView {
         
         scroll.addSubview(themeBg)
         scroll.addSubview(mineLabel)
+        themeBg.addSubview(logoutImg)
         scroll.addSubview(mineWhiteBg)
         scroll.addSubview(mineIcon)
+        
+        logoutImg.addTarget(self, action: #selector(tapLogout), for: .touchUpInside)
         
         mineWhiteBg.addSubview(mineName)
         
@@ -348,17 +357,17 @@ class UMineView: BaseView {
         
         //MARK: 收藏售后优惠券
         scroll.addSubview(operationWhiteBg)
-        operationWhiteBg.addSubview(myCoupon)
-        operationWhiteBg.addSubview(myCouponLine)
-        operationWhiteBg.addSubview(myAfterSales)
+//        operationWhiteBg.addSubview(myCoupon)
+//        operationWhiteBg.addSubview(myCouponLine)
+//        operationWhiteBg.addSubview(myAfterSales)
         operationWhiteBg.addSubview(myCollection)
         operationWhiteBg.addSubview(myObtainAddress)
         operationWhiteBg.addSubview(aboutOus)
-        operationWhiteBg.addSubview(myAfterSalesLine)
+//        operationWhiteBg.addSubview(myAfterSalesLine)
         operationWhiteBg.addSubview(myCollectionLine)
         operationWhiteBg.addSubview(myObtainAddressLine)
-        myCoupon.addTarget(self, action: #selector(tapMyCoupon), for: .touchUpInside)
-        myAfterSales.addTarget(self, action: #selector(tapMyAfterSales), for: .touchUpInside)
+//        myCoupon.addTarget(self, action: #selector(tapMyCoupon), for: .touchUpInside)
+//        myAfterSales.addTarget(self, action: #selector(tapMyAfterSales), for: .touchUpInside)
         myCollection.addTarget(self, action: #selector(tapMyCollection), for: .touchUpInside)
         myObtainAddress.addTarget(self, action: #selector(tapObtainAddress), for: .touchUpInside)
         aboutOus.addTarget(self, action: #selector(tapAboutOus), for: .touchUpInside)
@@ -370,7 +379,8 @@ class UMineView: BaseView {
         
         //MARK:绿色背景
         themeBg.snp.makeConstraints { (make) in
-            make.top.width.equalToSuperview()
+            make.top.left.equalToSuperview()
+            make.width.equalTo(screenWidth)
             make.height.equalTo(177.5 + statusbarHeight)
         }
         //MARK:个人中心
@@ -379,6 +389,16 @@ class UMineView: BaseView {
             make.centerX.equalToSuperview()
             make.height.equalTo(44)
         }
+        
+        logoutImg.isHidden = true
+        //MARK:退出登录
+        logoutImg.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(mineLabel)
+            make.centerY.equalTo(mineLabel)
+            make.right.equalToSuperview().offset(-30)
+            make.size.equalTo(20)
+        }
+        
         //MARK:个人信息的白色背景
         mineWhiteBg.snp.makeConstraints { (make) in
             make.top.equalTo(mineLabel.snp.bottom).offset(49)
@@ -547,36 +567,36 @@ class UMineView: BaseView {
             make.width.equalToSuperview().inset(15)
             make.centerX.equalToSuperview()
             make.top.equalTo(orderWhiteBg.snp.bottom).offset(15)
-            make.height.equalTo(44 * 5)
+            make.height.equalTo(44 * 3)
         }
         //MARK:我的优惠券
-        myCoupon.snp.makeConstraints { (make) in
-            make.width.top.left.equalToSuperview()
-            make.height.equalTo(44)
-        }
-        //MARK:我的优惠券🧵
-        myCouponLine.snp.makeConstraints { (make) in
-            make.width.left.equalToSuperview()
-            make.height.equalTo(0.5)
-            make.top.equalTo(myCoupon.snp.bottom)
-        }
+//        myCoupon.snp.makeConstraints { (make) in
+//            make.width.top.left.equalToSuperview()
+//            make.height.equalTo(44)
+//        }
+//        //MARK:我的优惠券🧵
+//        myCouponLine.snp.makeConstraints { (make) in
+//            make.width.left.equalToSuperview()
+//            make.height.equalTo(0.5)
+//            make.top.equalTo(myCoupon.snp.bottom)
+//        }
         //MARK:我的售后
-        myAfterSales.snp.makeConstraints { (make) in
-            make.width.left.equalToSuperview()
-            make.height.equalTo(44)
-            make.top.equalTo(myCoupon.snp.bottom)
-        }
-        //MARK:我的售后🧵
-        myAfterSalesLine.snp.makeConstraints { (make) in
-            make.width.left.equalToSuperview()
-            make.height.equalTo(0.5)
-            make.top.equalTo(myAfterSales.snp.bottom)
-        }
+//        myAfterSales.snp.makeConstraints { (make) in
+//            make.width.left.equalToSuperview()
+//            make.height.equalTo(44)
+//            make.top.equalTo(myCoupon.snp.bottom)
+//        }
+//        //MARK:我的售后🧵
+//        myAfterSalesLine.snp.makeConstraints { (make) in
+//            make.width.left.equalToSuperview()
+//            make.height.equalTo(0.5)
+//            make.top.equalTo(myAfterSales.snp.bottom)
+//        }
         //MARK:我的收藏
         myCollection.snp.makeConstraints { (make) in
             make.width.left.equalToSuperview()
             make.height.equalTo(44)
-            make.top.equalTo(myAfterSales.snp.bottom)
+            make.top.equalToSuperview()
         }
         //MARK:我的收藏🧵
         myCollectionLine.snp.makeConstraints { (make) in
@@ -608,38 +628,34 @@ class UMineView: BaseView {
         notObtainOrder.setButtonShowType(.Bottom)
         completeOrder.setButtonShowType(.Bottom)
         
-        scroll.addSubview(logout)
-        logout.isHidden = true
-        //MARK:退出登录
-        logout.snp.makeConstraints { (make) in
-            make.top.equalTo(operationWhiteBg.snp.bottom).offset(40)
-            make.width.equalToSuperview().inset(15)
-            make.centerX.bottom.equalToSuperview()
-            make.height.equalTo(44)
-        }
-        logout.addTarget(self, action: #selector(tapLogout), for: .touchUpInside)
+//        scroll.addSubview(logout)
+//        logout.isHidden = true
+//        //MARK:退出登录
+//        logout.snp.makeConstraints { (make) in
+//            make.top.equalTo(operationWhiteBg.snp.bottom).offset(40)
+//            make.width.equalToSuperview().inset(15)
+//            make.centerX.bottom.equalToSuperview()
+//            make.height.equalTo(44)
+//        }
+//        logout.addTarget(self, action: #selector(tapLogout), for: .touchUpInside)
         
     }
     
     var loginData: APILoginDataModel? {
         didSet{
             guard let loginData = loginData else {
-                UIView.animate(withDuration: 0.5) {
-                    self.haveLoginView.isHidden = true
-                    self.logoutBgView.isHidden = false
-                    self.logout.isHidden = true
-                    self.mineName.text = "Hi~欢迎来到懂家"
-                    self.mineIcon.image = UIImage.init(named: "default_icon")
-                }
+                self.haveLoginView.isHidden = true
+                self.logoutBgView.isHidden = false
+                self.logoutImg.isHidden = true
+                self.mineName.text = "Hi~欢迎来到懂家"
+                self.mineIcon.image = UIImage.init(named: "default_icon")
                 return
             }
-            UIView.animate(withDuration: 0.5) {
-                self.haveLoginView.isHidden = false
-                self.logoutBgView.isHidden = true
-                self.mineName.text = loginData.nickname
-                self.mineIcon.load(loginData.avatar_url)
-                self.logout.isHidden = false
-            }
+            self.haveLoginView.isHidden = false
+            self.logoutBgView.isHidden = true
+            self.mineName.text = loginData.nickname
+            self.mineIcon.load(loginData.avatar_url)
+            self.logoutImg.isHidden = false
             
         }
     }
@@ -685,12 +701,10 @@ class UMineView: BaseView {
     }
     
     @objc func tapWechatLogin(){
-
         delegate?.wechatLogin()
     }
     
     @objc func tapLogout(){
-        
         delegate?.logout()
     }
 

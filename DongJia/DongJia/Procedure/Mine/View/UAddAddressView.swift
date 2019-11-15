@@ -292,8 +292,8 @@ class UAddAddressView: BaseView {
             showHUDInView(text: "收货人不能为空", inView: topVC!.view, isClick: true)
             return
         }
-        guard phone != "" else {
-            showHUDInView(text: "手机号不能为空", inView: topVC!.view, isClick: true)
+        guard phone.count < 11 else {
+            showHUDInView(text: "手机号错误", inView: topVC!.view, isClick: true)
             return
         }
         guard chooseAddress != "" else {

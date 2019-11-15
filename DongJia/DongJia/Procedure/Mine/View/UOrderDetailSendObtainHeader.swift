@@ -10,14 +10,12 @@ import UIKit
 
 class UOrderDetailSendObtainHeader: BaseView {
 
+    var goToMch:(()->())?
     
     let view = UIView().then{
         $0.backgroundColor = .white
-//        $0.layer.qmui_maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-//        $0.layer.cornerRadius = 7
-//        $0.layer.masksToBounds = true
     }
-    
+    let gotoMchBtn = UIButton()
     /// 订单状态
     let orderState = UILabel().then{
         $0.textColor = .hex(hexString: "#999999")
@@ -100,6 +98,7 @@ class UOrderDetailSendObtainHeader: BaseView {
         
         
         addSubview(view)
+        view.addSubview(gotoMchBtn)
         view.addSubview(orderState)
         view.addSubview(stateLine)
         view.addSubview(image)
@@ -114,6 +113,8 @@ class UOrderDetailSendObtainHeader: BaseView {
         view.addSubview(mchPic)
         view.addSubview(mchName)
         view.addSubview(mchLine)
+        
+        gotoMchBtn.addTarget(self, action: #selector(goToMchAction), for: .touchUpInside)
         
         view.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)
@@ -184,6 +185,15 @@ class UOrderDetailSendObtainHeader: BaseView {
             make.top.equalTo(image.snp.bottom).offset(23)
             make.height.equalTo(1)
         }
+        
+        
+        //MARK:进入商家
+        gotoMchBtn.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.top.equalTo(addressLine.snp.bottom)
+            make.size.equalTo(CGSize(width: 180, height: 35))
+        }
+        
         //MARK:商家图片
         mchPic.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
@@ -204,6 +214,12 @@ class UOrderDetailSendObtainHeader: BaseView {
             make.bottom.equalToSuperview().offset(-15)
         }
     }
+    
+    
+    @objc func goToMchAction(){
+        goToMch?()
+    }
+    
     
     var data: order_detail_model?{
         didSet{

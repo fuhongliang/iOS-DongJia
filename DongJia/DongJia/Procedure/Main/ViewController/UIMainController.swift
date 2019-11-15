@@ -30,7 +30,7 @@ class UIMainController: UBaseViewController {
     }
     
     /// 当前选择的城市
-    var city: String!
+    var city: String = "--"
     
     var bannerList:[banner_list]! //banner图列表
     var navIconList:[nav_icon_list]! // 分类导航列表
@@ -78,7 +78,7 @@ class UIMainController: UBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        city = getCity()
+        
         getMainData()
     }
     
@@ -91,6 +91,11 @@ class UIMainController: UBaseViewController {
     /// 获取首页数据
     func getMainData() {
         tableView.uempty?.allowShow = true
+        // 如果当前城市跟存储的城市相同则不刷新
+        if (city == getCity()){
+            return
+        }
+        city = getCity()
         service.getMainData(district: city, { (Model) in
             if Model.data == nil {
                 showHUDInView(text: "没有数据", inView: self.view)

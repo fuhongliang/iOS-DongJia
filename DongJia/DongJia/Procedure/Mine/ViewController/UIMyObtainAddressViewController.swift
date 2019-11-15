@@ -78,9 +78,11 @@ class UIMyObtainAddressViewController: UBaseViewController {
 extension UIMyObtainAddressViewController: UMyObtainAddressViewDelegate {
     
     func addAddress() {
-        let vc = UIAddAddressController()
-        vc.title = "新增地址"
-        pushViewController(vc, animated: true)
+        checkLoginState {
+            let vc = UIAddAddressController()
+            vc.title = "新增地址"
+            pushViewController(vc, animated: true)
+        }
     }
     
 }

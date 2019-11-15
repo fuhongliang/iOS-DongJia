@@ -55,9 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("registrationID获取失败：\(registrationID ?? "----")")
             }
         }
+        
         return true
     }
-
     
     func configBase() {
         IQKeyboardManager.shared.enable = true
@@ -189,7 +189,15 @@ extension AppDelegate: WXApiDelegate{
         } else if resp.errCode == 0 && resp.type == 0 { // 登录授权成功
             let response = resp as! SendAuthResp
             
-            NotificationCenter.default.post(name: Notification.Name.weChatLoginNotification, object: response.code)
+            print("微信返回的Code----\(response.code ?? "")")
+            APIUserServices().login(wxCode: response.code ?? "", { (APILoginResponseModel) in
+                APIUser.shared.user = APILoginResponseModel.data
+                APIUser.shared.saveUserToCache()
+                (self.window!.rootViewController as! UTabBarController).mineVC.refreshUserData()
+            }) { (APIErrorModel) in
+                
+            }
+            
         }
     }
     

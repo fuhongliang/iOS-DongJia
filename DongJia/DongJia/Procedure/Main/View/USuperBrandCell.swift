@@ -143,6 +143,8 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods1(){
+        //重用时删除之前已经添加的
+        goods1BgView.removeFromSuperview()
         guard (data?.goods_list.count ?? 0 > 0 || catStoreData?.goods_list.count ?? 0 > 0) else { return }
         
         contentView.addSubview(goods1BgView)
@@ -209,6 +211,8 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods2(){
+        //重用时删除之前已经添加的
+        goods2BgView.removeFromSuperview()
         guard (data?.goods_list.count ?? 0 > 1 || catStoreData?.goods_list.count ?? 0 > 1) else { return }
         
         contentView.addSubview(goods2BgView)
@@ -279,6 +283,8 @@ class USuperBrandCell: UBaseCollectionViewCell {
     }
     
     func configGoods3(){
+        //重用时删除之前已经添加的
+        goods3BgView.removeFromSuperview()
         guard (data?.goods_list.count ?? 0 > 2 || catStoreData?.goods_list.count ?? 0 > 2) else { return }
         
         contentView.addSubview(goods3BgView)

@@ -14,11 +14,11 @@ import QMUIKit
 
 let ssl: Bool = true
 //MARK:开发环境
- let baseHttpsUrl: String = "https://testjiaju.ifhu.cn"
- let baseHttpUrl: String = "https://testjiaju.ifhu.cn"
+// let baseHttpsUrl: String = "https://testjiaju.ifhu.cn"
+// let baseHttpUrl: String = "https://testjiaju.ifhu.cn"
 //MARK:正式环境
-//let baseHttpsUrl: String = "https://jiaju.ifhu.cn"
-//let baseHttpUrl: String = "https://jiaju.ifhu.cn"
+let baseHttpsUrl: String = "https://jiaju.ifhu.cn"
+let baseHttpUrl: String = "https://jiaju.ifhu.cn"
 
 // MARK: 网络请求加载插件
 let loadingPlugin = NetworkActivityPlugin { (type, target) in
@@ -383,6 +383,8 @@ class APIService {
                 let errorModel = APIErrorModel.getErrorModel(_code: nil, _msg: nil, _data: error.failureReason)
                 fail(errorModel)
             }
+            guard let vc = topVC else { return }
+            MBProgressHUD.hide(for: vc.view, animated: false)
             print("----------响应结束--------------")
         }
     }

@@ -84,31 +84,31 @@ class UShopCartViewController: UBaseViewController {
     
     /// 获取购物车数据
     func getCartListData(){
-        if (!isLogin) {
-            showHUDInView(text: "请先登录", inView: self.view, isClick: true)
-            return
-        }
-        service.getCartGoodsList({ (Data) in
-            self.isCheckArray.removeAll()
-            self.cartListData = Data.data
-            if !(self.cartListData?.list ?? []).isEmpty {
-                // 拼接平台自营商品列表
-                self.isCheckArray.append([Bool]())
-                for _ in self.cartListData!.list{
-                    self.isCheckArray[0].append(false)
+        checkLoginState {
+            service.getCartGoodsList({ (Data) in
+                self.isCheckArray.removeAll()
+                self.cartListData = Data.data
+                // 全选状态 先置为未选中
+                self.shopCartView.selectAllBtn.isSelected = false
+                if !(self.cartListData?.list ?? []).isEmpty {
+                    // 拼接平台自营商品列表
+                    self.isCheckArray.append([Bool]())
+                    for _ in self.cartListData!.list{
+                        self.isCheckArray[0].append(false)
+                    }
                 }
-            }
-            // 拼接商家商品列表
-            for (index,item) in (self.cartListData?.mch_list ?? []).enumerated(){
-                self.isCheckArray.append([Bool]())
-                for _ in item.list{
-                    self.isCheckArray[index].append(false)
+                // 拼接商家商品列表
+                for (index,item) in (self.cartListData?.mch_list ?? []).enumerated(){
+                    self.isCheckArray.append([Bool]())
+                    for _ in item.list{
+                        self.isCheckArray[index].append(false)
+                    }
                 }
+                self.shopCartView.tableView.uHead.endRefreshing()
+                self.shopCartView.reloadData()
+            }) { (APIErrorModel) in
+                
             }
-            self.shopCartView.tableView.uHead.endRefreshing()
-            self.shopCartView.reloadData()
-        }) { (APIErrorModel) in
-            
         }
     }
     

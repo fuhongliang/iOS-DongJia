@@ -36,6 +36,9 @@ class UOrderListController: UBaseViewController {
         }
     }
     
+    /// 当前选中支付的订单ID
+    var orderId = 0
+    
     var currentPage = 1 // 当前精选的页数
     var pageCount = 0 // 精选的总页数
     /// 当前是否已经是精选列表的最大页数
@@ -104,6 +107,7 @@ class UOrderListController: UBaseViewController {
     /// - Parameters:
     ///     - orderListId: 请求的订单id列表
     func obtainOrderPaySign(orderId: Int? = nil, orderListId: [Int]? = nil){
+        self.orderId = orderId ?? (orderListId?[0] ?? 0)
         service.obtainOrderPaySign(order_id: orderId, order_id_list: orderListId, { (PayData) in
             let payRequest = PayReq()
             payRequest.nonceStr = PayData.data.noncestr
@@ -124,10 +128,16 @@ class UOrderListController: UBaseViewController {
         switch payResp.errCode{
         case WXSuccess.rawValue:
             showHUDInView(text: "微信支付成功", inView: self.view, isClick: true)
-        // 跳转到我的订单页面
+            // 跳转到我的订单页面
+            let vc = UOrderDetailController()
+            vc.orderId = self.orderId
+            pushViewController(vc, animated: true)
         default:
             showHUDInView(text: "微信支付失败", inView: self.view, isClick: true)
             // 跳转到我的订单页面
+            let vc = UOrderDetailController()
+            vc.orderId = self.orderId
+            pushViewController(vc, animated: true)
         }
     }
     
@@ -172,6 +182,12 @@ extension UOrderListController: UITableViewDelegate, UITableViewDataSource{
         let header = UOrderListHeaderView()
         header.mch = list![section].mch
         header.state = getOrderDataType(order: list![section])
+        header.goToMch = {
+            let vc = UIStoreController()
+            vc.title = "商家主页"
+            vc.storeId = "\(self.list![section].mch.id)"
+            self.pushViewController(vc, animated: true)
+        }
         header.frame = tableView.bounds
         return header
     }
@@ -192,13 +208,13 @@ extension UOrderListController: UITableViewDelegate, UITableViewDataSource{
             })
         }
         footer.deleteOrderAction = {
-            showHUDInView(text: "删除订单", inView: self.view, isClick: true)
+            showHUDInView(text: "暂不支持删除订单", inView: self.view, isClick: true)
         }
         footer.confirmObtainAction = {
             showHUDInView(text: "确认收货", inView: self.view, isClick: true)
         }
         footer.contactMchAction = {
-            showHUDInView(text: "联系卖家", inView: self.view, isClick: true)
+            showHUDInView(text: "App暂不支持联系卖家", inView: self.view, isClick: true)
         }
         footer.buyNowAction = {
             let alert = QMUIAlertController.init(title: "请选择支付方式", message: nil, preferredStyle: .actionSheet)

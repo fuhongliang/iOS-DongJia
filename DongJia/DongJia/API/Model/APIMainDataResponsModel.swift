@@ -112,7 +112,7 @@ struct pic_list: Codable {
 struct coupon_list: Codable {
     var id: String
     var store_id: String
-    var mch_id: String
+//    var mch_id: String
     var name: String
     var desc: String
     var pic_url: String?// 文档上标注类型为null

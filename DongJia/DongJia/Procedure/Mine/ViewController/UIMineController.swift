@@ -6,7 +6,7 @@
 //  Copyright © 2019 hongshuzhi. All rights reserved.
 //
 
-import UIKit
+import QMUIKit
 
 class UIMineController: UBaseViewController {
     
@@ -20,8 +20,6 @@ class UIMineController: UBaseViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     override func configUI() {
-        //注册通知--用于接收微信登录的返回的code
-        NotificationCenter.default.addObserver(self, selector: #selector(WXLoginSuccess(_:)), name: Notification.Name.weChatLoginNotification, object: nil)
         
         self.view.addSubview(mineView)
         mineView.delegate = self
@@ -29,6 +27,14 @@ class UIMineController: UBaseViewController {
             make.edges.equalToSuperview()
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        refreshUserData()
+    }
+    
+    func refreshUserData(){
         // 判断当前已经登录 就把保存的登录状态赋值
         if APIUser.shared.user != nil {
             mineView.loginData = APIUser.shared.user
@@ -39,21 +45,6 @@ class UIMineController: UBaseViewController {
             }
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    @objc func WXLoginSuccess(_ notification: Notification){
-        let code = notification.object as! String
-        print("微信返回的Code----\(code)")
-        loginService.login(wxCode: code, { (APILoginResponseModel) in
-            self.mineView.loginData = APILoginResponseModel.data
-        }) { (APIErrorModel) in
-            
-        }
-    }
-
 }
 extension UIMineController: UMineViewDelegate {
     func myAllOrder() {
@@ -75,34 +66,43 @@ extension UIMineController: UMineViewDelegate {
     }
     
     func logout() {
-        mineView.loginData = nil
-        APIUser.shared.cleanUser()
+        let alert = QMUIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actionLogout = QMUIAlertAction.init(title: "退出登录", style: .default) { (_, _) in
+            self.mineView.loginData = nil
+            APIUser.shared.cleanUser()
+        }
+        
+        let action = QMUIAlertAction.init(title: "取消", style: .cancel) { (_, _) in}
+        alert.addAction(action)
+        alert.addAction(actionLogout)
+        alert.showWith(animated: true)
+        
     }
     
     func notPayOrder() {
         let vc = UOrderListController()
-        vc.title = "待付款"
+        vc.title = "待付款订单"
         vc.orderType = OrderType.NotPay
         pushViewController(vc, animated: true)
     }
     
     func notSendOrder() {
         let vc = UOrderListController()
-        vc.title = "待发货"
+        vc.title = "待发货订单"
         vc.orderType = OrderType.NotReceipt
         pushViewController(vc, animated: true)
     }
     
     func notObtainOrder() {
         let vc = UOrderListController()
-        vc.title = "待收货"
+        vc.title = "待收货订单"
         vc.orderType = OrderType.NotObtain
         pushViewController(vc, animated: true)
     }
     
     func completeOrder() {
         let vc = UOrderListController()
-        vc.title = "已完成"
+        vc.title = "已完成订单"
         vc.orderType = OrderType.Complete
         pushViewController(vc, animated: true)
     }
@@ -113,6 +113,10 @@ extension UIMineController: UMineViewDelegate {
     
     func myAfterSales() {
         showHUDInView(text: "我的售后", inView: self.view, isClick: true)
+        let vc = UOrderListController()
+        vc.title = "我的售后订单"
+        vc.orderType = OrderType.Sales
+        pushViewController(vc, animated: true)
     }
     
     func myCollection() {

@@ -113,5 +113,5 @@ struct goods_detail_mch: Codable {
     var header_bg: String
     /// 商品总数
     var goods_num: String
-    var sale_num: String
+//    var sale_num: String
 }
